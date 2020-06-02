@@ -1,0 +1,10 @@
+[
+    {
+        "Key": "JobEnqueueConductor.ValidateWorkerFromType.BackgroundJobCouldNotBeEnqueued",
+        "Value": "{0} could not enqueue {1}."
+    },
+    {
+        "Key": "JobEnqueueConductor.ValidateWorkerFromType.WorkerNotFound",
+        "Value": "The Worker could not be determined from the supplied type {0}."
+    }
+]

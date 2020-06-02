@@ -1,0 +1,25 @@
+{
+    "author": "andculture",
+    "description": "Gravity Boots API and Frontend",
+    "devDependencies": {
+        "and-cli": "0.6.0",
+        "prettier": "^1.19.1"
+    },
+    "homepage": "https://github.com/AndcultureCode#readme",
+    "license": "ISC",
+    "main": "npx and-cli",
+    "name": "gravity-boots",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@bitbucket.org/andCultureCode.git"
+    },
+    "scripts": {
+        "all-tests": "and-cli dotnet-test --skip-clean --by-project && cd ./frontend && npm run cypress:run && cd .. && and-cli webpack-test --ci && npm run build-storybook",
+        "build-storybook": "cd ./frontend && npm run build-storybook && cd ../",
+        "frontend-install": "cd ./frontend && npm install && cd ../",
+        "storybook": "cd ./frontend && npm run storybook && cd ../"
+    },
+    "version": "0.0.1",
+    "dependencies": {}
+}

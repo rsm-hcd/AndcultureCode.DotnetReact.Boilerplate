@@ -1,0 +1,26 @@
+[
+    {
+        "Key": "Web.Controller.BADREQUEST_INVALID_FK",
+        "Value": ""
+    },
+    {
+        "Key": "Web.Controller.ERROR_DB_EXCEPTION",
+        "Value": ""
+    },
+    {
+        "Key": "Web.Controller.ERROR_ID_MISMATCH",
+        "Value": ""
+    },
+    {
+        "Key": "Web.Controller.ERROR_PARAMETER_REQUIRED",
+        "Value": ""
+    },
+    {
+        "Key": "Web.Controller.ERROR_RESOURCE_NOT_FOUND",
+        "Value": ""
+    },
+    {
+        "Key": "Web.ErrorsController.InternalError",
+        "Value": "Prueba de registro y respuesta API de errores internos"
+    }
+]

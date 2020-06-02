@@ -1,0 +1,7 @@
+# Auto-generated files
+node_modules/
+frontend/public/manifest.json
+package-lock.json
+
+# Ignoring dotnet directly until Prettier officially supports C#
+dotnet/

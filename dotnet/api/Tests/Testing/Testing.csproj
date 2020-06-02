@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.3.3" />
+    <PackageReference Include="AndcultureCode.CSharp.Testing" Version="0.2.1" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Bogus" Version="28.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Moq" Version="4.13.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Core\Core.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Data.SqlServer\Data.SqlServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".\xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

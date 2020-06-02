@@ -1,0 +1,26 @@
+[
+    {
+        "Key": "Web.Controller.BADREQUEST_INVALID_FK",
+        "Value": "The id provided does not match a database record"
+    },
+    {
+        "Key": "Web.Controller.ERROR_DB_EXCEPTION",
+        "Value": "There was an error communicating with the database"
+    },
+    {
+        "Key": "Web.Controller.ERROR_ID_MISMATCH",
+        "Value": "A route parameter '{0}' does not match the related '{1}' property on the DTO."
+    },
+    {
+        "Key": "Web.Controller.ERROR_PARAMETER_REQUIRED",
+        "Value": "At least one parameter is required for this query"
+    },
+    {
+        "Key": "Web.Controller.ERROR_RESOURCE_NOT_FOUND",
+        "Value": "The resource or related resource {0} that was requested was not found."
+    },
+    {
+        "Key": "Web.ErrorsController.InternalError",
+        "Value": "Testing logging and API response of internal errors"
+    }
+]

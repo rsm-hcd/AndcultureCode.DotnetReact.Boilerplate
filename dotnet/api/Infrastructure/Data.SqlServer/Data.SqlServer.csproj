@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>AndcultureCode.GB.Infrastructure.Data.SqlServer</AssemblyName>
+    <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
+    <AssemblyVersion>0.0.2</AssemblyVersion>
+    <PackageVersion>0.0.2</PackageVersion>
+    <Version>0.0.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.3.3" />
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.2.0" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="2.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="2.2.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Cultures\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

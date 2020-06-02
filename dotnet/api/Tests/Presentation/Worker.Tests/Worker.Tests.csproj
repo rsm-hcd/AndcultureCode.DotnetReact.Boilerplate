@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.2.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Testing" Version="0.2.1" />
+    <PackageReference Include="coverlet.msbuild" Version="2.6.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Bogus" Version="28.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Moq" Version="4.13.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Testing\Testing.csproj" />
+    <ProjectReference Include="..\..\..\Business\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\Business\Conductors\Conductors.csproj" />
+    <ProjectReference Include="..\..\..\Presentation\Worker\Worker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include=".\xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>AndcultureCode.GB.Presentation.Worker</AssemblyName>
+    <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
+    <AssemblyVersion>0.0.2</AssemblyVersion>
+    <PackageVersion>0.0.2</PackageVersion>
+    <Version>0.0.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Cultures\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

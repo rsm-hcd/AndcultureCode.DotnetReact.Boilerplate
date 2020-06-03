@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Models;
-using AndcultureCode.GB.Business.Core.Enumerations.Subscriptions;
-using AndcultureCode.GB.Business.Core.Models.Entities.Subscriptions;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 
 namespace AndcultureCode.GB.Business.Core.Models.Entities.Roles
@@ -12,7 +10,6 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Roles
 
         public string Description { get; set; }
         public string Name { get; set; }
-        public RoleType? RoleType { get; set; }
 
         #endregion Properties
 

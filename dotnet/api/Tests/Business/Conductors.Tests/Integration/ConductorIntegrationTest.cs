@@ -10,9 +10,6 @@ using Microsoft.Extensions.Localization;
 using Moq;
 using AndcultureCode.GB.Business.Conductors.Extensions.Startup;
 using AndcultureCode.GB.Business.Core.Interfaces.Data;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Authentication;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Xml;
-using AndcultureCode.GB.Business.Core.Providers.Xml;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Testing.Tests;
@@ -21,7 +18,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
 {
-    public class ConductorIntegrationTest<TSut> : CodesApiIntegrationTest, IDisposable
+    public class ConductorIntegrationTest<TSut> : ApiIntegrationTest, IDisposable
         where TSut : class
     {
         #region Member Variables
@@ -183,9 +180,6 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
 
         private IServiceCollection ConfigureProviders(IServiceCollection services)
         {
-            services.AddScoped<IExternalAuthenticationProvider>((sp) => Mock.Of<IExternalAuthenticationProvider>());
-            services.AddScoped(typeof(IXmlProvider), typeof(XmlProvider));
-
             return services;
         }
 

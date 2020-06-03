@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using AndcultureCode.GB.Business.Core.Constants.Authentication;
-using AndcultureCode.GB.Business.Core.Constants.Roles;
 
 namespace AndcultureCode.GB.Business.Core.Extensions
 {

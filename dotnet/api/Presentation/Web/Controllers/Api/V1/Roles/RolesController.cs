@@ -13,7 +13,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
 {
     [FormatFilter]
     [ApiRoute("roles")]
-    public class RolesController : CodesApiController
+    public class RolesController : ApiController
     {
         #region Private Members
 

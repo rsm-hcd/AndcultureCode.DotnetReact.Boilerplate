@@ -7,7 +7,7 @@ using AndcultureCode.GB.Business.Core.Extensions;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class ResourceVerbExtensionsTest : CodesApiUnitTest
+    public class ResourceVerbExtensionsTest : ApiUnitTest
     {
 
         #region Properties

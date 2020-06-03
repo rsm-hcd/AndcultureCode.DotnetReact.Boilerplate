@@ -10,7 +10,7 @@ using System.Net;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class HttpRequestExtensionsTest : CodesApiUnitTest
+    public class HttpRequestExtensionsTest : ApiUnitTest
     {
         #region Setup
 

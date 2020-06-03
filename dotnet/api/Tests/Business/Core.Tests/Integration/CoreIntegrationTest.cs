@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Tests.Business.Core.Tests.Integration
 {
-    public class CoreIntegrationTest : CodesApiIntegrationTest, IDisposable
+    public class CoreIntegrationTest : ApiIntegrationTest, IDisposable
     {
 
         #region Member Variables

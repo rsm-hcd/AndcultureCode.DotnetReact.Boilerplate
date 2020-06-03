@@ -1,5 +1,4 @@
 using System;
-using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions.Seeds;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions
 {
@@ -11,12 +10,12 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions
         {
             Console.WriteLine("[GBApiContextExtensions#EnsureSeedData] Seeding Production Data...");
 
-            context.SeedSystemSettings();
+            // context.SeedSystemSettings();
 
             if (hasDevelopmentData)
             {
                 Console.WriteLine("Seeding Development Data...");
-                context.SeedRoles();
+                // context.SeedRoles();
             }
         }
 

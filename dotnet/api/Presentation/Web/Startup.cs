@@ -29,6 +29,8 @@ using System.Reflection;
 using AndcultureCode.GB.Presentation.Web.Filters.Swagger;
 using AndcultureCode.GB.Presentation.Web.Constants;
 using AndcultureCode.GB.Presentation.Web.Filters;
+using Microsoft.OpenApi.Models;
+using AndcultureCode.CSharp.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web
 {

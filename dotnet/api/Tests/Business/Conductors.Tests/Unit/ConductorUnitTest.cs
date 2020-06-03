@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Business.Conductors.Tests.Unit
 {
-    public class ConductorUnitTest : CodesApiUnitTest
+    public class ConductorUnitTest : ApiUnitTest
     {
         public ConductorUnitTest(ITestOutputHelper output) : base(output)
         {

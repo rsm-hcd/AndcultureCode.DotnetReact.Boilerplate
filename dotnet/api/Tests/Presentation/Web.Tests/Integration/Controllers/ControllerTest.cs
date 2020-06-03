@@ -19,7 +19,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using AndcultureCode.GB.Business.Conductors.Extensions.Startup;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Authentication;
 using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
@@ -33,7 +32,6 @@ using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Hosting;
-using AndcultureCode.GB.Infrastructure.Search.AmazonCloudSearch.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Localization;
@@ -160,7 +158,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
         static ControllerTest()
         {
             LoadFactories(typeof(ControllerTest<>).GetTypeInfo().Assembly);
-            LoadFactories(typeof(CodesApiIntegrationTest).GetTypeInfo().Assembly);
+            LoadFactories(typeof(ApiIntegrationTest).GetTypeInfo().Assembly);
         }
 
         /// <summary>

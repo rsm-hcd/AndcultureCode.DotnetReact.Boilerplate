@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class DictionaryExtensionsTest : CodesApiUnitTest
+    public class DictionaryExtensionsTest : ApiUnitTest
     {
         #region Constants
 

@@ -46,43 +46,43 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #region Create
 
-        [Fact(Skip = "Broken due to refactor.")]
-        public void Create_With_Valid_Job_Enqueues_Job_Returns_Created()
-        {
-            // Arrange
-            var dto = new JobDto
-            {
-                WorkerName = "Publication Worker"
-            };
+        // [Fact(Skip = "TODO")]
+        // public void Create_With_Valid_Job_Enqueues_Job_Returns_Created()
+        // {
+        //     // Arrange
+        //     var dto = new JobDto
+        //     {
+        //         WorkerName = "Publication Worker"
+        //     };
 
-            // Mock out provider that call background job processing library.
-            var jobId = Fake.Random.Guid().ToString();
-            var workerProviderMock = new Mock<IWorkerProvider>();
-            workerProviderMock
-                .Setup((e) => e.Enqueue<IPublicationImportWorker>(It.IsAny<Expression<Action<IPublicationImportWorker>>>()))
-                .Returns(jobId);
-            RegisterDep(workerProviderMock);
+        //     // Mock out provider that call background job processing library.
+        //     var jobId = Fake.Random.Guid().ToString();
+        //     var workerProviderMock = new Mock<IWorkerProvider>();
+        //     workerProviderMock
+        //         .Setup((e) => e.Enqueue<ITestStubWorker>(It.IsAny<Expression<Action<ITestStubWorker>>>()))
+        //         .Returns(jobId);
+        //     RegisterDep(workerProviderMock);
 
-            // Act
-            var result = Sut.Create(dto).AsCreated<Result<JobDto>>();
+        //     // Act
+        //     var result = Sut.Create(dto).AsCreated<Result<JobDto>>();
 
-            // Assert
-            result.ShouldNotHaveErrors();
-            result.ResultObject.ShouldNotBeNull();
+        //     // Assert
+        //     result.ShouldNotHaveErrors();
+        //     result.ResultObject.ShouldNotBeNull();
 
-            var resultObject = result.ResultObject;
+        //     var resultObject = result.ResultObject;
 
-            resultObject.ShouldSatisfyAllConditions(
-                () => resultObject.DebugJson.ShouldBeNull(),
-                () => resultObject.Error.ShouldBeNull(),
-                () => resultObject.EndedOn.ShouldNotBeNull(),
-                () => resultObject.StartedOn.ShouldNotBeNull(),
-                () => resultObject.StartedById.ShouldNotBeNull(),
-                () => resultObject.Status.ShouldBe(JobStatus.Completed),
-                () => resultObject.WorkerName.ShouldNotBeNull(),
-                () => resultObject.WorkerArgs.ShouldNotBeNull()
-            );
-        }
+        //     resultObject.ShouldSatisfyAllConditions(
+        //         () => resultObject.DebugJson.ShouldBeNull(),
+        //         () => resultObject.Error.ShouldBeNull(),
+        //         () => resultObject.EndedOn.ShouldNotBeNull(),
+        //         () => resultObject.StartedOn.ShouldNotBeNull(),
+        //         () => resultObject.StartedById.ShouldNotBeNull(),
+        //         () => resultObject.Status.ShouldBe(JobStatus.Completed),
+        //         () => resultObject.WorkerName.ShouldNotBeNull(),
+        //         () => resultObject.WorkerArgs.ShouldNotBeNull()
+        //     );
+        // }
 
         #endregion Create
 

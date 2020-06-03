@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Models.Security
 {
-    public class AclStringsTest : CodesApiUnitTest, IDisposable
+    public class AclStringsTest : ApiUnitTest, IDisposable
     {
         #region Setup
 

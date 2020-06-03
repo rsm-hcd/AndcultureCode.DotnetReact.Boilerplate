@@ -12,11 +12,10 @@ using Newtonsoft.Json;
 using AndcultureCode.CSharp.Core.Enumerations;
 using System.Collections.Generic;
 using AndcultureCode.CSharp.Extensions;
-using AndcultureCode.GB.Business.Core.Constants.Errors;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class IResultExtensionsTest : CodesApiUnitTest
+    public class IResultExtensionsTest : ApiUnitTest
     {
         #region Setup
 
@@ -164,55 +163,5 @@ namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
         }
 
         #endregion AddValidationError(localizer, key, arguments)
-
-        #region HasUserConfigurationErrors
-
-        [Fact]
-        public void HasUserConfigurationErrors_When_Errors_Empty_Returns_False()
-        {
-            // Arrange
-            var sut = new Result<object>();
-
-            // Act
-            var result = sut.HasUserConfigurationErrors();
-
-            // Assert
-            result.ShouldBeFalse();
-        }
-
-        [Fact]
-        public void HasUserConfigurationErrors_Has_Error_Key_Not_In_UserConfigurationErrorKeys_Returns_False()
-        {
-            // Arrange
-            var sut = new Result<object>(
-                errorKey: Random.String(),
-                errorMessage: Random.String()
-            );
-
-            // Act
-            var result = sut.HasUserConfigurationErrors();
-
-            // Assert
-            result.ShouldBeFalse();
-        }
-
-        [Fact]
-        public void HasUserConfigurationErrors_Has_Error_Key_In_UserConfigurationErrorKeys_Returns_True()
-        {
-            // Arrange
-            var errorKey = typeof(UserConfigurationErrorKeys).GetPublicConstantValues<string>().PickRandom();
-            var sut = new Result<object>(
-                errorKey: errorKey,
-                errorMessage: Random.String()
-            );
-
-            // Act
-            var result = sut.HasUserConfigurationErrors();
-
-            // Assert
-            result.ShouldBeTrue();
-        }
-
-        #endregion HasUserConfigurationErrors
     }
 }

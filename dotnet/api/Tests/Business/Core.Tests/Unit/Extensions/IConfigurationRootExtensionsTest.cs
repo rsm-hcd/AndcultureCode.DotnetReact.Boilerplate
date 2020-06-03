@@ -8,7 +8,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class IConfigurationRootExtensionsTest : CodesApiUnitTest
+    public class IConfigurationRootExtensionsTest : ApiUnitTest
     {
         #region Setup
 

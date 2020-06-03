@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace Data.SqlServer.Tests.Integration
 {
-    public class RepositoryIntegrationTest : CodesApiIntegrationTest, IDisposable
+    public class RepositoryIntegrationTest : ApiIntegrationTest, IDisposable
     {
         #region Member Variables
 

@@ -15,7 +15,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.SystemSettings
     [FormatFilter]
     [NoCache]
     [ApiRoute("systemsettings")]
-    public class SystemSettingsController : CodesApiController
+    public class SystemSettingsController : ApiController
     {
         #region Private Properties
 

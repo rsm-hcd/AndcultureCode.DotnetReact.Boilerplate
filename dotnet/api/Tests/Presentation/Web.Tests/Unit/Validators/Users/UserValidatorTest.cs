@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Users
 {
-    public class UserValidatorTest : CodesApiUnitTest, IDisposable
+    public class UserValidatorTest : ApiUnitTest, IDisposable
     {
 
         #region Member Variables

@@ -21,7 +21,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Errors
     [AllowAnonymous]
     [FormatFilter]
     [ApiRoute("errors")]
-    public class ErrorsController : CodesApiController
+    public class ErrorsController : ApiController
     {
         #region Constants
 

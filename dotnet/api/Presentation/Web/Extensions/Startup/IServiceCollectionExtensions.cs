@@ -15,7 +15,6 @@ using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.GB.Business.Core.Extensions;
 using System;
 using AndcultureCode.GB.Presentation.Worker.Extensions;
-using RestSharp;
 using AspNetCoreRateLimit;
 using Microsoft.Extensions.Hosting;
 using AndcultureCode.GB.Presentation.Web.Middleware.Localization;
@@ -52,7 +51,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 
         public static IServiceCollection AddClients(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            services.AddScoped<IRestClient, RestClient>();
+            // services.AddScoped<IRestClient, RestClient>(); // RestSharp
 
             return services;
         }

@@ -21,7 +21,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Jobs
 {
     [FormatFilter]
     [ApiRoute("jobs")]
-    public class JobsController : CodesApiController
+    public class JobsController : ApiController
     {
         #region Private Members
 

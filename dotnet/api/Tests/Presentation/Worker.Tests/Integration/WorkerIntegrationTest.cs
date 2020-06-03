@@ -9,8 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Moq;
 using AndcultureCode.GB.Business.Conductors.Extensions.Startup;
 using AndcultureCode.GB.Business.Core.Interfaces.Data;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Xml;
-using AndcultureCode.GB.Business.Core.Providers.Xml;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Presentation.Worker.Extensions;
@@ -22,7 +20,7 @@ using Xunit.Abstractions;
 namespace AndcultureCode.GB.Presentation.Worker.Tests.Integration
 {
     [Collection("WorkerIntegration")]
-    public class WorkerIntegrationTest<TSut> : CodesApiIntegrationTest, IDisposable
+    public class WorkerIntegrationTest<TSut> : ApiIntegrationTest, IDisposable
         where TSut : class
     {
         #region Member Variables
@@ -151,7 +149,6 @@ namespace AndcultureCode.GB.Presentation.Worker.Tests.Integration
                 .AddConductors(Configuration)
                 .AddWorkers();
 
-            ConfigureProviders(services);
             ConfigureMvcActors(services);
 
             return services;
@@ -164,13 +161,6 @@ namespace AndcultureCode.GB.Presentation.Worker.Tests.Integration
             services.AddScoped<GBApiContext>((sp) => GBApiContext);
             services.AddScoped<IContext>((sp) => GBApiContext);
             services.AddScoped<IGBApiContext>((sp) => GBApiContext);
-
-            return services;
-        }
-
-        private IServiceCollection ConfigureProviders(IServiceCollection services)
-        {
-            services.AddScoped(typeof(IXmlProvider), typeof(XmlProvider));
 
             return services;
         }

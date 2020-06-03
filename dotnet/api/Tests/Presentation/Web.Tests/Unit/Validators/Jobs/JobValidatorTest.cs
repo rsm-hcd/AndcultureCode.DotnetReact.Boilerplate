@@ -9,7 +9,7 @@ using Xunit.Abstractions;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Jobs
 {
-    public class JobValidatorTest : CodesApiUnitTest, IDisposable
+    public class JobValidatorTest : ApiUnitTest, IDisposable
     {
         #region Member Variables
 

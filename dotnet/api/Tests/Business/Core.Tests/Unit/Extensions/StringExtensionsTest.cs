@@ -9,7 +9,7 @@ using AndcultureCode.CSharp.Testing.Extensions;
 
 namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
 {
-    public class StringExtensionsTest : CodesApiUnitTest
+    public class StringExtensionsTest : ApiUnitTest
     {
         #region Constants
 

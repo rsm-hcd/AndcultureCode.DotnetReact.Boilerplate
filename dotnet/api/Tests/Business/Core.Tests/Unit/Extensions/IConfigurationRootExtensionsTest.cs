@@ -53,15 +53,15 @@ namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
             // Arrange
             var expected = Random.String();
 
-            var codesApiConfigurationSectionMock = new Mock<IConfigurationSection>();
-            codesApiConfigurationSectionMock
+            var apiConfigurationSectionMock = new Mock<IConfigurationSection>();
+            apiConfigurationSectionMock
                 .SetupGet(e => e.Value)
                 .Returns(expected);
 
             var connectionsConfigurationSectionMock = new Mock<IConfigurationSection>();
             connectionsConfigurationSectionMock
                 .Setup(e => e.GetSection(ApplicationConstants.DATABASE_CONFIGURATION_KEY))
-                .Returns(codesApiConfigurationSectionMock.Object);
+                .Returns(apiConfigurationSectionMock.Object);
 
             var configurationMock = new Mock<IConfigurationRoot>();
             configurationMock
@@ -115,15 +115,15 @@ namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
             // Arrange
             var valueWithoutProperty = "Prop1=Value1;Proper2=Value2";
 
-            var codesApiConfigurationSectionMock = new Mock<IConfigurationSection>();
-            codesApiConfigurationSectionMock
+            var apiConfigurationSectionMock = new Mock<IConfigurationSection>();
+            apiConfigurationSectionMock
                 .SetupGet(e => e.Value)
                 .Returns(valueWithoutProperty);
 
             var connectionsConfigurationSectionMock = new Mock<IConfigurationSection>();
             connectionsConfigurationSectionMock
                 .Setup(e => e.GetSection(ApplicationConstants.DATABASE_CONFIGURATION_KEY))
-                .Returns(codesApiConfigurationSectionMock.Object);
+                .Returns(apiConfigurationSectionMock.Object);
 
             var configurationMock = new Mock<IConfigurationRoot>();
             configurationMock
@@ -148,15 +148,15 @@ namespace AndcultureCode.GB.Business.Core.Tests.Unit.Extensions
             var expected = "databaseValue";
             var valueWithoutProperty = $"Prop1=Value1;{databaseKey}={expected}";
 
-            var codesApiConfigurationSectionMock = new Mock<IConfigurationSection>();
-            codesApiConfigurationSectionMock
+            var apiConfigurationSectionMock = new Mock<IConfigurationSection>();
+            apiConfigurationSectionMock
                 .SetupGet(e => e.Value)
                 .Returns(valueWithoutProperty);
 
             var connectionsConfigurationSectionMock = new Mock<IConfigurationSection>();
             connectionsConfigurationSectionMock
                 .Setup(e => e.GetSection(ApplicationConstants.DATABASE_CONFIGURATION_KEY))
-                .Returns(codesApiConfigurationSectionMock.Object);
+                .Returns(apiConfigurationSectionMock.Object);
 
             var configurationMock = new Mock<IConfigurationRoot>();
             configurationMock

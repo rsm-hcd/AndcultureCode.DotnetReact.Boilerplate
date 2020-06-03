@@ -29,7 +29,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test
             // project's .csproj file correctly.
-            Connection = _configuration.GetTestDatabaseGBApiConnection();
+            Connection = _configuration.GetTestDatabaseConnection();
 
             Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.Database}");
             Console.WriteLine($"[DatabaseFixture] -- Shared mode (higher performance): Leave 'TEST_DATABASE_NAME' environment variable unset or assign your own value.");

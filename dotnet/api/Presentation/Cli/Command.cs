@@ -72,7 +72,7 @@ namespace AndcultureCode.GB.Presentation.Cli
             {
                 if (_cachedTestDatabaseContext == null)
                 {
-                    var connection = _configurationRoot.GetTestDatabaseGBApiConnection();
+                    var connection = _configurationRoot.GetTestDatabaseConnection();
                     _cachedTestDatabaseContext = new GBApiContext(connection, null);
                 }
 
@@ -146,7 +146,7 @@ namespace AndcultureCode.GB.Presentation.Cli
         /// </summary>
         protected void MakeNewContextsUseTestDatabase()
         {
-            var connection = _configurationRoot.GetTestDatabaseGBApiConnection();
+            var connection = _configurationRoot.GetTestDatabaseConnection();
             Configuration.SetConnectionString(connection.ToString());
         }
 

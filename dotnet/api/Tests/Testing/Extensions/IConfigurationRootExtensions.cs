@@ -8,47 +8,51 @@ namespace Testing.Extensions
     {
         /// <summary>
         /// Requires the appsettings.json/environment variables
-        /// configure the ConnectionStrings__CodesApi in an object format.
+        /// configure the ConnectionStrings__GBApi in an object format.
         /// Not a delimited string.
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static GBApiConnection GetGBApiConnection(this IConfigurationRoot configuration)
+        public static GBApiConnection GetDatabaseConnection(this IConfigurationRoot configuration)
         {
-            var section = configuration.GetSection("ConnectionStrings:Api").Get<GBApiConnection>();
+            var section = configuration
+                .GetSection("ConnectionStrings")
+                .GetSection(ApplicationConstants.DATABASE_CONFIGURATION_KEY)
+                .Get<GBApiConnection>();
+
             if (section == null)
             {
-                throw new Exception("[IConfigurationRootExtensions.GetGBApiConnection] Ensure appsettings loaded provide CodesApi connection string in the object format (like the web.test project)");
+                throw new Exception("[IConfigurationRootExtensions.GetGBApiConnection] Ensure appsettings loaded provide GBApi connection string in the object format (like the web.test project)");
             }
 
             return section;
         }
 
         /// <summary>
-        /// Retrieves an CodesApiConnection configured to work with the test database.
+        /// Retrieves an GBApiConnection configured to work with the test database.
         ///
         /// Requires the appsettings.json/environment variables
-        /// configure the ConnectionStrings__CodesApi in an object format.
+        /// configure the ConnectionStrings__GBApi in an object format.
         /// Not a delimited string.
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static GBApiConnection GetTestDatabaseGBApiConnection(this IConfigurationRoot configuration)
+        public static GBApiConnection GetTestDatabaseConnection(this IConfigurationRoot configuration)
         {
-            var connection = configuration.GetGBApiConnection();
+            var connection = configuration.GetDatabaseConnection();
             connection.Database = configuration.GetTestDatabaseName();
             return connection;
         }
 
         public static string GetTestDatabaseName(this IConfigurationRoot configuration)
         {
-            var connection = configuration.GetGBApiConnection();
+            var connection = configuration.GetDatabaseConnection();
             var databaseName = Environment.GetEnvironmentVariable("TEST_DATABASE_NAME");
 
             // When a test database name isn't specified, we default it for the runner
             if (string.IsNullOrWhiteSpace(databaseName))
             {
-                return "CodesApi-Test";
+                return "GravityBootsApi-Test";
             }
 
             // Running system context explicitly wants the database name to be generated

@@ -593,7 +593,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
         private void SetDefaultEnvironmentVariables(GBApiConnection connection)
         {
             Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing");
-            Environment.SetEnvironmentVariable("ConnectionStrings__CodesApi", connection.ToString());
+            Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.DATABASE_CONFIGURATION_KEY}", connection.ToString());
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isDashboardEnabled", "false");
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isServerEnabled",    "false");
         }

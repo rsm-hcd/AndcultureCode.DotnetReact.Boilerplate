@@ -4,5 +4,5 @@ public static class ApplicationConstants
     /// Key name used to identify the web application's primary
     /// database in the 'ConnectionStrings' section
     /// </summary>
-    public const string DATABASE_CONFIGURATION_KEY = "GBApi";
+    public const string DATABASE_CONFIGURATION_KEY = "Api";
 }

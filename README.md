@@ -23,8 +23,8 @@
 
 2. Create the following databases
 
-    - Development: `GBApi` (See [appsettings.json](./dotnet/api/Presentation/Web/appsettings.json) for details.)
-    - Test: `GBApi-Test` (See [appsettings.cli.json](./dotnet/api/Presentation/Cli/appsettings.cli.json) for details.)
+    - Development: `GravityBootsApi` (See [appsettings.json](./dotnet/api/Presentation/Web/appsettings.json) for details.)
+    - Test: `GravityBootsApi-Test` (See [appsettings.cli.json](./dotnet/api/Presentation/Cli/appsettings.cli.json) for details.)
 
 3. Configure user.
     - Get credentials from the `appsettings.json` file listed above.

@@ -12,7 +12,6 @@ using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
 using Hangfire;
 using Microsoft.Extensions.Localization;
-using AndcultureCode.GB.Business.Core.Extensions;
 
 namespace AndcultureCode.GB.Business.Conductors.Domain.Jobs
 {

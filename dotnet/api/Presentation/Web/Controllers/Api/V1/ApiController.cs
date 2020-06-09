@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Localization;
-using AndcultureCode.GB.Business.Core.Extensions;
-using AndcultureCode.GB.Business.Core.Interfaces.Localization;
+using AndcultureCode.CSharp.Core.Interfaces;
+using AndcultureCode.CSharp.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
 {

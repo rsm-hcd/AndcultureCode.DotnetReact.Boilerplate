@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
 using AndcultureCode.GB.Presentation.Web.Constants;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Middleware.Localization
 {

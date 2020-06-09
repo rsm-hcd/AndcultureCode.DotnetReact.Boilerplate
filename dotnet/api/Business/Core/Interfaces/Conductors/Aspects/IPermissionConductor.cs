@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using AndcultureCode.CSharp.Core.Interfaces;
+using AndcultureCode.CSharp.Core.Models.Security;
 using AndcultureCode.GB.Business.Core.Enumerations;
-using AndcultureCode.GB.Business.Core.Models.Security;
 
 namespace AndcultureCode.GB.Business.Core.Interfaces.Conductors
 {

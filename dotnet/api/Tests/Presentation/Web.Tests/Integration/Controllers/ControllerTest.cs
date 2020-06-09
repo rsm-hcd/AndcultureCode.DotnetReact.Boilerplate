@@ -35,10 +35,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Localization;
-using AndcultureCode.GB.Business.Core.Interfaces.Localization;
 using AndcultureCode.GB.Business.Core.Constants.Localization;
 using System.Globalization;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
+using AndcultureCode.CSharp.Core.Interfaces;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {

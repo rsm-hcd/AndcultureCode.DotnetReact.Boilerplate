@@ -1,6 +1,6 @@
+using AndcultureCode.CSharp.Core.Enumerations;
+using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Testing.Factories;
-using AndcultureCode.GB.Business.Core.Enumerations;
-using AndcultureCode.GB.Business.Core.Models.Entities.Acls;
 
 namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Acls
 {
@@ -16,18 +16,18 @@ namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Acls
         {
             this.DefineFactory(() => new Acl
             {
+                Permission = Permission.Allow,
                 Resource = "Test.Object",
-                Verb = "Read",
                 Subject = "*",
-                Permission = Permission.Allow
+                Verb = "Read"
             });
 
             this.DefineFactory(DENY, () => new Acl
             {
+                Permission = Permission.Deny,
                 Resource = "Test.Object",
-                Verb = "Read",
                 Subject = "*",
-                Permission = Permission.Deny
+                Verb = "Read"
             });
         }
     }

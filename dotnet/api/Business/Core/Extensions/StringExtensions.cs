@@ -7,7 +7,6 @@ using AndcultureCode.CSharp.Core;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using Newtonsoft.Json;
-using AndcultureCode.GB.Business.Core.Models.Localization;
 
 namespace AndcultureCode.GB.Business.Core.Extensions
 {
@@ -35,23 +34,6 @@ namespace AndcultureCode.GB.Business.Core.Extensions
             r.ResultObject = default(T);
         })
         .Result;
-
-        /// <summary>
-        /// Loads a given translation .json file and maps contents to CultureTranslation objects
-        /// </summary>
-        public static List<CultureTranslation> LoadTranslations(this string filePath, string cultureCode, JsonSerializerSettings serializerSettings)
-        {
-            var fileContents = File.ReadAllText(filePath);
-            var translations = JsonConvert.DeserializeObject<List<CultureTranslation>>(fileContents, serializerSettings);
-
-            translations.ForEach(t =>
-            {
-                t.CultureCode = cultureCode;
-                t.FilePath = filePath;
-            });
-
-            return translations;
-        }
 
         #endregion Public Methods
     }

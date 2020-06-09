@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Middleware.Localization
 {

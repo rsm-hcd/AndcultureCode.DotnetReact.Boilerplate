@@ -6,6 +6,8 @@ using AndcultureCode.GB.Presentation.Web.Filters.Authorization;
 using AndcultureCode.GB.Presentation.Web.Requirements;
 using System;
 using System.Collections.Generic;
+using AndcultureCode.CSharp.Core.Models.Security;
+using AndcultureCode.CSharp.Core.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Attributes
 {

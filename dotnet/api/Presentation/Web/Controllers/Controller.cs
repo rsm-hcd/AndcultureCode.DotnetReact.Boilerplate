@@ -10,9 +10,8 @@ using Microsoft.Extensions.Logging;
 using AndcultureCode.GB.Business.Core.Providers.Logging;
 using AndcultureCode.GB.Business.Core.Extensions;
 using Microsoft.AspNetCore.Localization;
-using AndcultureCode.GB.Business.Core.Interfaces.Localization;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
 using Microsoft.Extensions.Localization;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers
 {

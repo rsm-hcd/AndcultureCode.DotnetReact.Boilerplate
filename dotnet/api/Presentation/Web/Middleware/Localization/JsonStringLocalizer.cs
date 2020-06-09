@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.Extensions.Localization;
 using System.Linq;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Middleware.Localization
 {

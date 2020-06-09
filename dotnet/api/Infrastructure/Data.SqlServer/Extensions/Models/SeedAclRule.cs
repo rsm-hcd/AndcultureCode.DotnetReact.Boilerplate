@@ -1,4 +1,4 @@
-using AndcultureCode.GB.Business.Core.Enumerations;
+using AndcultureCode.CSharp.Core.Enumerations;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions.Models
 {

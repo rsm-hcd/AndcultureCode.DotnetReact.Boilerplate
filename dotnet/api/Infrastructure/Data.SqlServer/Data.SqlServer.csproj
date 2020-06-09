@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.3.3" />
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.2.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.0" />
     <PackageReference Include="EFCore.BulkExtensions" Version="2.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="2.2.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />

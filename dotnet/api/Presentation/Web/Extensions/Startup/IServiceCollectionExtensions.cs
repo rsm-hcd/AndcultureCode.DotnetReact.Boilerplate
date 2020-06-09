@@ -18,7 +18,6 @@ using AndcultureCode.GB.Presentation.Worker.Extensions;
 using AspNetCoreRateLimit;
 using Microsoft.Extensions.Hosting;
 using AndcultureCode.GB.Presentation.Web.Middleware.Localization;
-using AndcultureCode.GB.Business.Core.Utilities.Localization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Localization;
@@ -26,6 +25,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Routing;
 using AndcultureCode.GB.Presentation.Web.Constants;
 using Microsoft.AspNetCore.HttpOverrides;
+using AndcultureCode.CSharp.Core.Utilities.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {

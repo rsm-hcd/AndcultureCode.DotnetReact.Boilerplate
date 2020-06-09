@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using AndcultureCode.GB.Business.Core.Interfaces.Data;
-using AndcultureCode.GB.Business.Core.Models.Entities.Acls;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
@@ -18,6 +17,7 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using AndcultureCode.CSharp.Core.Models.Entities;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
 {

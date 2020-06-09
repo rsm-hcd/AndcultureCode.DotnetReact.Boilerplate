@@ -1,12 +1,11 @@
 using Hangfire;
 using Hangfire.Storage;
-using AndcultureCode.GB.Business.Core.Constants.Workers;
 using AndcultureCode.GB.Business.Core.Enumerations;
 using AndcultureCode.GB.Business.Core.Models.Entities.Worker;
 using AndcultureCode.GB.Business.Core.Providers.Worker;
 using System;
 using System.Linq.Expressions;
-
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Providers
 {

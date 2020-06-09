@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
-using AndcultureCode.GB.Business.Core.Constants.Network;
 using AndcultureCode.GB.Presentation.Web.Attributes;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Home
 {

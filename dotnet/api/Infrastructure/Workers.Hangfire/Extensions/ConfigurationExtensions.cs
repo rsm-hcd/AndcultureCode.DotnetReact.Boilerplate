@@ -3,12 +3,12 @@ using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AndcultureCode.GB.Business.Core.Constants.Workers;
 using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Filters;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Providers;
 using System;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions
 {

@@ -9,9 +9,9 @@ using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.GB.Business.Core.Extensions;
 using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
-using AndcultureCode.GB.Business.Core.Extensions;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Repositories
 {
@@ -117,7 +117,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Repositories
             return result;
         }
 
-        public virtual IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> entities, Func<T, TKey> property, long? createdById = default(long?)) => BulkCreate(entities.DistinctBy(property), createdById);
+        public virtual IResult<List<T>> BulkCreateDistinct<TKey>(IEnumerable<T> entities, Func<T, TKey> property, long? createdById = default(long?))
+            => BulkCreate(entities.DistinctBy(property), createdById);
 
         public IResult<bool> BulkDelete(IEnumerable<T> entities, long? deletedById = null, bool soft = true)
         {

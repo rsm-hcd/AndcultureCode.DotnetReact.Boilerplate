@@ -17,9 +17,7 @@ namespace AndcultureCode.GB.Business.Core.Extensions
         /// <param name="property"></param>
         /// <returns></returns>
         public static IEnumerable<T> DistinctBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> property)
-        {
-            return source.GroupBy(property).Select(x => x.First());
-        }
+            => source.GroupBy(property).Select(x => x.First());
 
         /// <summary>
         /// Returns a distinct list by a specific property
@@ -30,9 +28,7 @@ namespace AndcultureCode.GB.Business.Core.Extensions
         /// <param name="property"></param>
         /// <returns></returns>
         public static IEnumerable<T> DistinctBy<T, TKey>(this List<T> source, Func<T, TKey> property)
-        {
-            return source.GroupBy(property).Select(x => x.First());
-        }
+            => source.GroupBy(property).Select(x => x.First());
 
         /// <summary>
         /// Returns a list of items, grouped by adjacent values
@@ -76,7 +72,10 @@ namespace AndcultureCode.GB.Business.Core.Extensions
         /// <typeparam name="T"></typeparam>
         public static void AddTo<T>(this List<T> self, IEnumerable<T> newItems)
         {
-            if (newItems != null) self.AddRange(newItems);
+            if (newItems != null)
+            {
+                self.AddRange(newItems);
+            }
         }
     }
 }

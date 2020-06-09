@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.Routing;
 using AndcultureCode.GB.Presentation.Web.Constants;
 using Microsoft.AspNetCore.HttpOverrides;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
+using AndcultureCode.CSharp.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {

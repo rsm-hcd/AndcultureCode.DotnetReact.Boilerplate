@@ -18,6 +18,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.CSharp.Core.Interfaces.Data;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
 {

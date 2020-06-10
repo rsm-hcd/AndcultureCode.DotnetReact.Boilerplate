@@ -9,9 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
 using AndcultureCode.GB.Presentation.Web.Extensions;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Web.Filters.Authorization
 {
+    /// <summary>
+    /// TODO: Extract to AndcultureCode.CSharp.Web
+    /// </summary>
     public class BasicAuthFilter : IAuthorizationFilter
     {
         #region Constants

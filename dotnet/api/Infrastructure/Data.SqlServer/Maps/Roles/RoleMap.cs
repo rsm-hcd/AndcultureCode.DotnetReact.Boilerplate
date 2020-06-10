@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
-using AndcultureCode.GB.Business.Core.Models.Configuration;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Roles
 {

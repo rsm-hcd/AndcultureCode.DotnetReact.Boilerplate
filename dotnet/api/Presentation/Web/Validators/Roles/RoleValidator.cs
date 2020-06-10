@@ -1,6 +1,7 @@
 using FluentValidation;
 using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.Roles;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Web.Validators.Roles
 {

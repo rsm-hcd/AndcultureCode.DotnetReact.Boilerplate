@@ -38,6 +38,7 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
@@ -592,7 +593,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
         private void SetDefaultEnvironmentVariables(GBApiConnection connection)
         {
             Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing");
-            Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.DATABASE_CONFIGURATION_KEY}", connection.ToString());
+            Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.API_DATABASE_CONFIGURATION_KEY}", connection.ToString());
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isDashboardEnabled", "false");
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isServerEnabled",    "false");
         }

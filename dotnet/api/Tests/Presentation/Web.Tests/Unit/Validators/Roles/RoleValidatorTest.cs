@@ -5,6 +5,7 @@ using System;
 using AndcultureCode.GB.Testing.Tests;
 using Xunit;
 using Xunit.Abstractions;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Roles
 {

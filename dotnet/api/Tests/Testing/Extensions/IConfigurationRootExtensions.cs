@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Extensions.Configuration;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace Testing.Extensions
 {
@@ -17,7 +18,7 @@ namespace Testing.Extensions
         {
             var section = configuration
                 .GetSection("ConnectionStrings")
-                .GetSection(ApplicationConstants.DATABASE_CONFIGURATION_KEY)
+                .GetSection(ApplicationConstants.API_DATABASE_CONFIGURATION_KEY)
                 .Get<GBApiConnection>();
 
             if (section == null)

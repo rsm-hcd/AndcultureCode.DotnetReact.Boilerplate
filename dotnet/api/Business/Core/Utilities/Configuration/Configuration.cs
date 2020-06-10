@@ -1,3 +1,4 @@
+using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 
@@ -36,7 +37,7 @@ namespace AndcultureCode.GB.Business.Core.Utilities.Configuration
 
         public static IConfigurationRoot GetConfiguration() => _configurationRoot ?? (_configurationRoot = Builder.Build());
 
-        public static string GetConnectionString(string name = ApplicationConstants.DATABASE_CONFIGURATION_KEY)
+        public static string GetConnectionString(string name = ApplicationConstants.API_DATABASE_CONFIGURATION_KEY)
         {
             if (!string.IsNullOrWhiteSpace(_connectionString))
             {

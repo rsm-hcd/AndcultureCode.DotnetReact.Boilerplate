@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models.Security;
 using AndcultureCode.GB.Business.Core.Enumerations;
 
 namespace AndcultureCode.GB.Business.Core.Interfaces.Conductors
 {
-
     public interface IPermissionConductor
     {
         /// <summary>

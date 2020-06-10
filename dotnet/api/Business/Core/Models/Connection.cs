@@ -1,3 +1,4 @@
+using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.GB.Business.Core.Interfaces.Data;
 using System.Collections.Generic;
@@ -5,6 +6,9 @@ using System.Linq;
 
 namespace AndcultureCode.GB.Business.Core.Models
 {
+    /// <summary>
+    /// TODO: Remove in favor of AndcultureCode.CSharp.Core version
+    /// </summary>
     public class Connection : IConnection
     {
         #region Properties

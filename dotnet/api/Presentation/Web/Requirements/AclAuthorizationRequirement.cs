@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using AndcultureCode.GB.Business.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models.Security;
+using AndcultureCode.CSharp.Core.Enumerations;
 
 namespace AndcultureCode.GB.Presentation.Web.Requirements
 {

@@ -1,7 +1,7 @@
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using AndcultureCode.GB.Business.Core.Models.Configuration;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
 {

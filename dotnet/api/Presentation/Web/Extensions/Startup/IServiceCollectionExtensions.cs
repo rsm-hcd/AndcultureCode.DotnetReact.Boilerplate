@@ -10,9 +10,6 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Presentation.Web.Models;
 using Serilog;
 using Serilog.Extensions.Logging;
-using AndcultureCode.GB.Business.Core.Models.Mail;
-using AndcultureCode.GB.Business.Core.Models.Configuration;
-using AndcultureCode.GB.Business.Core.Extensions;
 using System;
 using AndcultureCode.GB.Presentation.Worker.Extensions;
 using AspNetCoreRateLimit;
@@ -27,6 +24,8 @@ using AndcultureCode.GB.Presentation.Web.Constants;
 using Microsoft.AspNetCore.HttpOverrides;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Extensions;
+using AndcultureCode.CSharp.Core.Models.Mail;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {

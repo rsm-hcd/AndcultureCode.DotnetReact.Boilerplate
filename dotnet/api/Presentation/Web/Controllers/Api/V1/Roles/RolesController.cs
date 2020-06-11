@@ -51,9 +51,6 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
         /// <response code="200">Requested RoleDto</response>
         /// <response code="500">Error Getting Role</response>
         [HttpGet("{id}")]
-        // TODO: Revisit adding this ACL restriction back when we iron out what a default "authorized" role looks like
-        // Currently, this will prevent users from logging in when they have no role.
-        // [AclAuthorize(AclStrings.ROLE_READ)]
         [ProducesResponseType(200, Type = typeof(RoleDto))]
         public IActionResult Get(long id)
         {
@@ -79,9 +76,6 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
         /// <response code="200">List of RoleDtos</response>
         /// <response code="500">Error Getting Roles</response>
         [HttpGet]
-        // TODO: Revisit adding this ACL restriction back when we iron out what a default "authorized" role looks like
-        // Currently, this will prevent users from logging in when they have no role.
-        // [AclAuthorize(AclStrings.ROLE_READ)]
         [ProducesResponseType(200, Type = typeof(IList<RoleDto>))]
         public IActionResult Index()
         {

@@ -62,12 +62,13 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
 
         #region IGBApiContextImplementation
 
-        IQueryable<Acl> IGBApiContext.Acls => Acls;
+        IQueryable<Acl> IApplicationContext.Acls => Acls;
         IQueryable<Job> IGBApiContext.Jobs => Jobs;
         IQueryable<Role> IGBApiContext.Roles => Roles;
         IQueryable<User> IGBApiContext.Users => Users;
         IQueryable<UserLogin> IGBApiContext.UserLogins => UserLogins;
         IQueryable<UserRole> IGBApiContext.UserRoles => UserRoles;
+
 
         #endregion IGBApiContextImplementation
 

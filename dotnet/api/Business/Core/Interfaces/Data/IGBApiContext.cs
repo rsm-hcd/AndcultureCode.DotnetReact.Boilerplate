@@ -2,16 +2,12 @@ using System.Linq;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
-using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.CSharp.Core.Interfaces.Data;
 
 namespace AndcultureCode.GB.Business.Core.Interfaces.Data
 {
-    /// <summary>
-    /// TODO: Inherit AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext
-    /// </summary>
-    public interface IGBApiContext
+    public interface IGBApiContext : IApplicationContext
     {
-        IQueryable<Acl> Acls { get; }
         IQueryable<Job> Jobs { get; }
         IQueryable<Role> Roles { get; }
         IQueryable<User> Users { get; }

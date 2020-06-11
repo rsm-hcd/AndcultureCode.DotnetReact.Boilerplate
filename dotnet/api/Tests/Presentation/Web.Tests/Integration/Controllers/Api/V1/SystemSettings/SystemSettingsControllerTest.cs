@@ -31,7 +31,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #region Index
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Index_When_NonProduction_Environment_Returns_Record()
         {
             // Arrange
@@ -50,7 +50,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
             result.MachineName.ShouldBe(Environment.MachineName);
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Index_When_Production_Environment_Return_Record_Without_NonProduction_Properties()
         {
             // Arrange

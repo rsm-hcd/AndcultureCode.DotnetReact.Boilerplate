@@ -44,7 +44,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #region Get
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Get_When_FindById_HasErrors_Returns_InternalError()
         {
             // Arrange
@@ -56,13 +56,13 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
             var result = Sut.Get(10).AsInternalError<Result<RoleDto>>();
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Get_When_NotFound_Returns_NotFound()
         {
             Sut.Get(404).AsNotFound<Result<RoleDto>>();
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Get_When_Exists_Returns_Record()
         {
             // Arrange
@@ -80,7 +80,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #region Index
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Index_When_FindAll_HasErrors_Returns_InternalError()
         {
             // Arrange
@@ -92,7 +92,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
             var result = Sut.Index().AsInternalError<Result<List<RoleDto>>>();
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Index_When_NoRecords_Exist_Returns_EmptyList()
         {
             // Act & Arrange
@@ -103,7 +103,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
             result.ResultObject.ShouldBeEmpty();
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
         public void Index_When_Valid_Request_Returns_Records()
         {
             // Arrange

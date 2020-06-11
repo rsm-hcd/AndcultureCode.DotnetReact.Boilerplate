@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
-using AndcultureCode.GB.Business.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models.Security;
 using AndcultureCode.CSharp.Core.Enumerations;
 
@@ -11,7 +10,7 @@ namespace AndcultureCode.GB.Presentation.Web.Requirements
         #region Properties
 
         public bool IsSuperAdminRequired { get; }
-        public BitwiseOperator Operator { get; }
+        public LogicalOperator Operator { get; }
         public IEnumerable<ResourceVerb> RequiredPermissions { get; }
 
         #endregion Properties
@@ -19,7 +18,7 @@ namespace AndcultureCode.GB.Presentation.Web.Requirements
         #region Constructor
 
         public AclAuthorizationRequirement(
-            BitwiseOperator op,
+            LogicalOperator op,
             IEnumerable<ResourceVerb> requiredPermissions,
             bool isSuperAdminRequired = false)
         {

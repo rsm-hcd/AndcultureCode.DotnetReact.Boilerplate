@@ -11,6 +11,7 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Presentation.Cli.Test;
 using AndcultureCode.GB.Presentation.Web.Extensions.Startup;
 using AndcultureCode.GB.Presentation.Web.Models;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Cli
 {
@@ -48,8 +49,8 @@ namespace AndcultureCode.GB.Presentation.Cli
                     .AddEnvironmentVariables();
 
                 _cachedConfiguration = builder.Build();
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.SetConfiguration(_cachedConfiguration);
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.GetConnectionString();
+                ConfigurationUtils.SetConfiguration(_cachedConfiguration);
+                ConfigurationUtils.GetConnectionString();
 
                 return _cachedConfiguration;
             }

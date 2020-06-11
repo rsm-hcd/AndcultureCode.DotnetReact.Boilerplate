@@ -1,4 +1,4 @@
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Storage;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Storage;
 
 namespace AndcultureCode.GB.Business.Core.Models.Storage
 {

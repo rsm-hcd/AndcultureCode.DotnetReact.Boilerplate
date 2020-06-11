@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AndcultureCode.GB.Business.Core.Enumerations;
+using AndcultureCode.CSharp.Core.Enumerations;
 
 namespace AndcultureCode.GB.Presentation.Web.Models.Dtos.Jobs
 {

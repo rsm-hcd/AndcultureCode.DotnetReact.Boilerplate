@@ -9,7 +9,6 @@ using AndcultureCode.GB.Business.Core.Interfaces.Data;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
-using AndcultureCode.GB.Business.Core.Utilities.Configuration;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Jobs;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Roles;
@@ -19,6 +18,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
 {
@@ -38,7 +38,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
         #region Constructor
 
         public GBApiContext()
-        : base(Configuration.GetConnectionString(), null)
+        : base(ConfigurationUtils.GetConnectionString(), null)
         {
             // Uncomment for debugging purposes only
             // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");

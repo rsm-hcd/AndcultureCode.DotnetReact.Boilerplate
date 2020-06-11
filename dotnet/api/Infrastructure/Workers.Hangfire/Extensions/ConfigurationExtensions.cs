@@ -3,12 +3,13 @@ using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Filters;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Providers;
 using System;
 using AndcultureCode.CSharp.Core.Constants;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 
 namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions
 {
@@ -22,7 +23,7 @@ namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions
         public static IServiceCollection AddBackgroundWorkers(this IServiceCollection services, IConfigurationRoot config)
         {
             var workerConfig = config.GetSection("WorkersHangfire").Get<HangfireWorkerConfiguration>();
-            var connectionString = AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.GetConnectionString();
+            var connectionString = ConfigurationUtils.GetConnectionString();
             var sqlOptions = new SqlServerStorageOptions
             {
                 CommandBatchMaxTimeout = TimeSpan.FromMinutes(workerConfig.SqlServerOptions.CommandBatchMaxTimeout),

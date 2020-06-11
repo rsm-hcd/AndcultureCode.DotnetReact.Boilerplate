@@ -6,6 +6,9 @@ using AndcultureCode.CSharp.Core.Models.Entities;
 
 namespace AndcultureCode.GB.Business.Core.Interfaces.Data
 {
+    /// <summary>
+    /// TODO: Inherit AndcultureCode.CSharp.Core.Interfaces.Data.IApplicationContext
+    /// </summary>
     public interface IGBApiContext
     {
         IQueryable<Acl> Acls { get; }

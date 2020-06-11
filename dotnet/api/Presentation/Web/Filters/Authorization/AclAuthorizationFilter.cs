@@ -9,6 +9,7 @@ using AndcultureCode.GB.Presentation.Web.Requirements;
 using AndcultureCode.GB.Business.Core.Extensions;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Core.Extensions;
+using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 
 namespace AndcultureCode.GB.Presentation.Web.Filters.Authorization
 {

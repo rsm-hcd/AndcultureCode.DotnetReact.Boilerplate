@@ -4,7 +4,7 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
 using Newtonsoft.Json;
-using AndcultureCode.GB.Business.Core.Enumerations;
+using AndcultureCode.CSharp.Core.Enumerations;
 
 namespace AndcultureCode.GB.Business.Core.Models.Jobs
 {

@@ -6,9 +6,13 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Testing.Extensions;
-using Config = AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
+
 namespace AndcultureCode.GB.Tests.Testing.Fixtures
 {
+    /// <summary>
+    /// TODO: Refactor to AndcultureCode.CSharp.Testing
+    /// </summary>
     public abstract class DatabaseFixture : IDisposable
     {
         #region Properties
@@ -24,7 +28,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
 
         protected DatabaseFixture()
         {
-            _configuration = Config.GetConfiguration();
+            _configuration = ConfigurationUtils.GetConfiguration();
 
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test

@@ -1,11 +1,11 @@
 using Hangfire;
 using Hangfire.Storage;
-using AndcultureCode.GB.Business.Core.Enumerations;
-using AndcultureCode.GB.Business.Core.Models.Entities.Worker;
-using AndcultureCode.GB.Business.Core.Providers.Worker;
+using AndcultureCode.CSharp.Core.Enumerations;
 using System;
 using System.Linq.Expressions;
 using AndcultureCode.CSharp.Core.Constants;
+using AndcultureCode.CSharp.Core.Models.Entities.Worker;
+using AndcultureCode.CSharp.Core.Providers.Worker;
 
 namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Providers
 {
@@ -23,7 +23,6 @@ namespace AndcultureCode.GB.Infrastructure.Workers.Hangfire.Providers
         public override long DeletedCount() => JobStorage.Current.GetMonitoringApi().DeletedListCount();
 
         public override string Enqueue(Expression<Action> methodCall) => BackgroundJob.Enqueue(methodCall);
-
         public override string Enqueue<T>(Expression<Action<T>> methodCall) => BackgroundJob.Enqueue(methodCall);
 
         public override long EnqueuedCount(string queue = Queue.DEFAULT) => JobStorage.Current.GetMonitoringApi().EnqueuedCount(queue);

@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Jobs;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Interfaces.Workers;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
 using AndcultureCode.GB.Business.Core.Models.Security;

@@ -6,13 +6,13 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Extensions;
 using Microsoft.Extensions.Logging;
-using AndcultureCode.GB.Business.Core.Enumerations;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors;
 using AndcultureCode.GB.Business.Core.Models.Security;
 using AndcultureCode.CSharp.Core.Models.Security;
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Core.Models.Collections;
+using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 
 namespace AndcultureCode.GB.Business.Conductors.Aspects
 {
@@ -20,17 +20,17 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
     {
         #region Constants
 
-        public const string RESOURCE_NULL_ARGUMENT_EXCEPTION_KEY = "nullargumentexception.resource";
+        public const string RESOURCE_NULL_ARGUMENT_EXCEPTION_KEY = "resource.nullargumentexception";
         public const string RESOURCE_NULL_ARGUMENT_EXCEPTION_MESSAGE = "resource cannot be null or empty";
-        public const string VERB_NULL_ARGUMENT_EXCEPTION_KEY = "nullargumentexception.verb";
+        public const string VERB_NULL_ARGUMENT_EXCEPTION_KEY = "verb.nullargumentexception";
         public const string VERB_NULL_ARGUMENT_EXCEPTION_MESSAGE = "verb cannot be null or empty";
 
         #endregion Constants
 
         #region Properties
 
-        readonly IRepository<Acl> _aclRepository;
-        readonly ILogger<PermissionConductor> _logger;
+        private readonly IRepository<Acl> _aclRepository;
+        private readonly ILogger<PermissionConductor> _logger;
 
         #endregion Properties
 
@@ -45,9 +45,9 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
             _logger = logger;
         }
 
-        #endregion
+        #endregion Constructor
 
-        #region IPermissionConductor Implementation
+        #region Public Methods
 
         public IResult<List<AccessRule>> GetAcls(string resource, string verb) => Do<List<AccessRule>>.Try((r) =>
         {
@@ -165,7 +165,7 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
         })
         .Result;
 
-        public IResult<bool> IsAllowed(BitwiseOperator op, IEnumerable<ResourceVerb> resourceVerbs, string subject) => Do<bool>.Try((r) =>
+        public IResult<bool> IsAllowed(LogicalOperator op, IEnumerable<ResourceVerb> resourceVerbs, string subject) => Do<bool>.Try((r) =>
         {
             bool isAllowed = false;
 
@@ -186,16 +186,14 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
                 }
 
                 // If any are required (OR), immediately return true when one is allowed
-                if (op == BitwiseOperator.Or
-                    && allowed.ResultObject == true)
+                if (op == LogicalOperator.Or && allowed.ResultObject == true)
                 {
                     isAllowed = true;
                     return isAllowed;
                 }
 
                 // If all are required (AND), immediately return false when one is not allowed
-                if (op == BitwiseOperator.And
-                    && allowed.ResultObject == false)
+                if (op == LogicalOperator.And && allowed.ResultObject == false)
                 {
                     isAllowed = false;
                     return isAllowed;
@@ -208,7 +206,7 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
         })
         .Result;
 
-        public IResult<bool> IsAllowed(BitwiseOperator op, string resourcePrefix, string subject) => Do<bool>.Try((r) =>
+        public IResult<bool> IsAllowed(LogicalOperator op, string resourcePrefix, string subject) => Do<bool>.Try((r) =>
         {
             var resourceVerbs = AclStrings.GetAclStringsByPrefix(resourcePrefix)?.ToResourceVerbs();
 
@@ -223,7 +221,7 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
         })
         .Result;
 
-        #endregion
+        #endregion Public Methods
 
         #region Private Methods
 
@@ -250,7 +248,6 @@ namespace AndcultureCode.GB.Business.Conductors.Aspects
             return !result.HasErrors;
         }
 
-        #endregion
+        #endregion Private Methods
     }
-
 }

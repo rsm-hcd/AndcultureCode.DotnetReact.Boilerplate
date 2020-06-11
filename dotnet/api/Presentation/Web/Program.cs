@@ -2,8 +2,8 @@
 using AndcultureCode.CSharp.Core.Utilities.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using AndcultureCode.GB.Business.Core.Providers.Configuration;
 using Serilog;
+using AndcultureCode.CSharp.Core.Providers.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Web
 {
@@ -17,11 +17,6 @@ namespace AndcultureCode.GB.Presentation.Web
 
         #region Public Methods
 
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
-
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             AndcultureCodeWebHost
                 .Preload(args)
@@ -32,7 +27,9 @@ namespace AndcultureCode.GB.Presentation.Web
                 .UseStartup<Startup>()
                 .UseSerilog();
 
-        #endregion Public Methods
+        public static void Main(string[] args)
+            => CreateWebHostBuilder(args).Build().Run();
 
+        #endregion Public Methods
     }
 }

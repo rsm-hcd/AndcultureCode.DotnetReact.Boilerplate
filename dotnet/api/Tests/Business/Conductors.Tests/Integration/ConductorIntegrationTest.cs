@@ -15,6 +15,7 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Testing.Tests;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit.Abstractions;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
 
 namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
 {
@@ -47,8 +48,8 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
                     .AddEnvironmentVariables();
 
                 cachedConfiguration = builder.Build();
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.SetConfiguration(cachedConfiguration);
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.GetConnectionString();
+                ConfigurationUtils.SetConfiguration(cachedConfiguration);
+                ConfigurationUtils.GetConnectionString();
 
                 return cachedConfiguration;
             }

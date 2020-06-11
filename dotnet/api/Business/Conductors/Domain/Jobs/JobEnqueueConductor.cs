@@ -8,10 +8,10 @@ using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Jobs;
 using AndcultureCode.GB.Business.Core.Interfaces.Workers;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
 using Hangfire;
 using Microsoft.Extensions.Localization;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 
 namespace AndcultureCode.GB.Business.Conductors.Domain.Jobs
 {

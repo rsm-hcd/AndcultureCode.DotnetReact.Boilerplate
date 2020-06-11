@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
-using AndcultureCode.GB.Business.Core.Providers.Configuration;
 using Serilog;
+using AndcultureCode.CSharp.Core.Providers.Configuration;
 
 namespace AndcultureCode.GB.Business.Core.Providers.Logging
 {

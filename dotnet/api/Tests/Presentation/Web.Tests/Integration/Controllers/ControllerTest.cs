@@ -19,7 +19,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using AndcultureCode.GB.Business.Conductors.Extensions.Startup;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
@@ -39,6 +38,8 @@ using System.Globalization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Constants;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
@@ -123,8 +124,8 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                     .AddEnvironmentVariables();
 
                 cachedConfiguration = builder.Build();
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.SetConfiguration(cachedConfiguration);
-                AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.GetConnectionString();
+                ConfigurationUtils.SetConfiguration(cachedConfiguration);
+                ConfigurationUtils.GetConnectionString();
 
                 return cachedConfiguration;
             }

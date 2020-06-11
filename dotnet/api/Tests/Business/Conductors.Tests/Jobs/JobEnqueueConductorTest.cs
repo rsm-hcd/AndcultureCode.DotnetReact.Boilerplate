@@ -12,25 +12,26 @@ using Bogus;
 using Shouldly;
 using AndcultureCode.GB.Business.Core.Interfaces.Workers;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Jobs;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using System;
 using Microsoft.Extensions.Localization;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 
 namespace AndcultureCode.GB.Business.Conductors.Tests.Integration.Jobs
 {
     public class JobEnqueueConductorTest : BaseUnitTest
     {
         #region Properties
+
         private Faker Fake = new Faker();
 
-        #endregion
+        #endregion Properties
 
         #region Setup
 
         public JobEnqueueConductorTest(ITestOutputHelper output) : base(output) { }
 
-        #endregion
+        #endregion Setup
 
         #region Mocks
 
@@ -52,13 +53,13 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration.Jobs
             );
         }
 
-        #endregion
+        #endregion Mocks
 
         #region Interface
 
         public interface ITestImplementation : IWorker { }
 
-        #endregion
+        #endregion Interface
 
         #region Enqueue<TWorker>(workerArgs)
 
@@ -147,6 +148,6 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration.Jobs
             result.ResultObject.StartedById.ShouldBe(startedById);
         }
 
-        #endregion
+        #endregion Enqueue<TWorker>(workerArgs)
     }
 }

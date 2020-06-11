@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using AndcultureCode.GB.Business.Core.Enumerations;
 using AndcultureCode.GB.Business.Core.Extensions;
 using AndcultureCode.GB.Business.Core.Models.Security;
 using AndcultureCode.GB.Presentation.Web.Filters.Authorization;
@@ -16,25 +15,25 @@ namespace AndcultureCode.GB.Presentation.Web.Attributes
     {
         public AclAuthorizeAttribute()
             : base(typeof(AclAuthorizationFilter)) =>
-            Arguments = new[] { new AclAuthorizationRequirement(BitwiseOperator.And, new List<ResourceVerb>()) };
+            Arguments = new[] { new AclAuthorizationRequirement(LogicalOperator.And, new List<ResourceVerb>()) };
 
         public AclAuthorizeAttribute(bool isSuperAdminRequired)
             : base(typeof(AclAuthorizationFilter)) =>
-            Arguments = new[] { new AclAuthorizationRequirement(BitwiseOperator.And, new List<ResourceVerb>(), isSuperAdminRequired) };
+            Arguments = new[] { new AclAuthorizationRequirement(LogicalOperator.And, new List<ResourceVerb>(), isSuperAdminRequired) };
 
         public AclAuthorizeAttribute(params string[] resourceVerbs)
             : base(typeof(AclAuthorizationFilter)) =>
-            Arguments = new[] { new AclAuthorizationRequirement(BitwiseOperator.And, resourceVerbs.ToResourceVerbs()) };
+            Arguments = new[] { new AclAuthorizationRequirement(LogicalOperator.And, resourceVerbs.ToResourceVerbs()) };
 
         public AclAuthorizeAttribute(bool isSuperAdminRequired, params string[] resourceVerbs)
             : base(typeof(AclAuthorizationFilter)) =>
-            Arguments = new[] { new AclAuthorizationRequirement(BitwiseOperator.And, resourceVerbs.ToResourceVerbs(), isSuperAdminRequired) };
+            Arguments = new[] { new AclAuthorizationRequirement(LogicalOperator.And, resourceVerbs.ToResourceVerbs(), isSuperAdminRequired) };
 
-        public AclAuthorizeAttribute(BitwiseOperator op, params string[] resourceVerbs)
+        public AclAuthorizeAttribute(LogicalOperator op, params string[] resourceVerbs)
             : base(typeof(AclAuthorizationFilter)) =>
             Arguments = new[] { new AclAuthorizationRequirement(op, resourceVerbs.ToResourceVerbs()) };
 
-        public AclAuthorizeAttribute(bool isSuperAdminRequired, BitwiseOperator op, params string[] resourceVerbs)
+        public AclAuthorizeAttribute(bool isSuperAdminRequired, LogicalOperator op, params string[] resourceVerbs)
             : base(typeof(AclAuthorizationFilter)) =>
             Arguments = new[] { new AclAuthorizationRequirement(op, resourceVerbs.ToResourceVerbs(), isSuperAdminRequired) };
 
@@ -44,7 +43,7 @@ namespace AndcultureCode.GB.Presentation.Web.Attributes
         /// <param name="op">Logical operator for all acl strings matching prefix</param>
         /// <param name="prefix">String that acls must start with to be a match</param>
         /// <param name="isSuperAdminRequired">Requires user to have super admin role</param>
-        public AclAuthorizeAttribute(BitwiseOperator op, string prefix, bool isSuperAdminRequired = false)
+        public AclAuthorizeAttribute(LogicalOperator op, string prefix, bool isSuperAdminRequired = false)
             : base(typeof(AclAuthorizationFilter))
         {
             var resourceVerbs = AclStrings.GetAclStringsByPrefix(prefix).ToResourceVerbs();

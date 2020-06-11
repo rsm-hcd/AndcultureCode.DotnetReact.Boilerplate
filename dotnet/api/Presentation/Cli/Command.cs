@@ -5,12 +5,15 @@ using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using AndcultureCode.GB.Business.Core.Utilities.Configuration;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Testing.Extensions;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
 
 namespace AndcultureCode.GB.Presentation.Cli
 {
+    /// <summary>
+    /// TODO: Extract into new AndcultureCode.CSharp.Cli package
+    /// </summary>
     public abstract class Command
     {
         #region Constants
@@ -147,7 +150,7 @@ namespace AndcultureCode.GB.Presentation.Cli
         protected void MakeNewContextsUseTestDatabase()
         {
             var connection = _configurationRoot.GetTestDatabaseConnection();
-            Configuration.SetConnectionString(connection.ToString());
+            ConfigurationUtils.SetConnectionString(connection.ToString());
         }
 
         /// <summary>

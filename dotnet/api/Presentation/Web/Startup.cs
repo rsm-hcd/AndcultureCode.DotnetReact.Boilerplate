@@ -18,7 +18,6 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using AndcultureCode.GB.Business.Core.Extensions;
 using AndcultureCode.GB.Business.Core.Extensions.Startup;
-using AndcultureCode.GB.Business.Core.Interfaces.Providers.Worker;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions;
 using AndcultureCode.GB.Presentation.Web.Extensions.Startup;
 using AndcultureCode.GB.Presentation.Web.Filters.Validation;
@@ -32,6 +31,8 @@ using AndcultureCode.GB.Presentation.Web.Filters;
 using Microsoft.OpenApi.Models;
 using AndcultureCode.CSharp.Web.Extensions;
 using AndcultureCode.CSharp.Extensions;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 
 namespace AndcultureCode.GB.Presentation.Web
 {
@@ -67,8 +68,8 @@ namespace AndcultureCode.GB.Presentation.Web
             _configuration = builder.Build();
             _environment = env;
 
-            AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.SetConfiguration(_configuration);
-            AndcultureCode.GB.Business.Core.Utilities.Configuration.Configuration.GetConnectionString();
+            ConfigurationUtils.SetConfiguration(_configuration);
+            ConfigurationUtils.GetConnectionString();
         }
 
         #endregion Constructor

@@ -1,6 +1,6 @@
 after_script:
 - bash <(curl -s https://codecov.io/bash)
-dotnet: 3.1.5
+dotnet: 3.1
 env:
   global:
   - DOTNET_CLI_TELEMETRY_OPTOUT: 1

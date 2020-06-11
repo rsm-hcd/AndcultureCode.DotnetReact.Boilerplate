@@ -1,7 +1,5 @@
 # AndcultureCode.DotnetReact.Boilerplate [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)
 
-# AndcultureCode.DotnetReact.Boilerplate
-
 Code name: Gravity Boots (GB)
 
 ---

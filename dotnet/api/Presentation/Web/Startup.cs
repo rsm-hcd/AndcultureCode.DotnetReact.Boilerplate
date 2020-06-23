@@ -82,8 +82,6 @@ namespace AndcultureCode.GB.Presentation.Web
         {
             services.AddMvc(config =>
             {
-                config.EnableEndpointRouting = false;
-
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
@@ -94,7 +92,6 @@ namespace AndcultureCode.GB.Presentation.Web
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
                 .AddViewLocalization().AddDataAnnotationsLocalization();
-
 
             services.AddBackgroundWorkers(_configuration);
             services.AddApi(_configuration, _environment);
@@ -183,19 +180,25 @@ namespace AndcultureCode.GB.Presentation.Web
             // Internationlization
             app.UseRequestLocalization(requestOptions.Value);
 
+            // SPA static file routing
+            app.UseSpaStaticFiles(); // Should be called before UseRouting/UseEndpoints
+
             // Backend MVC route mapping - Default/bare route "/" falls through to SPA
-            app.UseMvc(routes =>
+            app.UseRouting(); // Adds metadata to controllers based upon request path
+
+            // Authentication and authorization middleware should be configured here
+
+            app.UseEndpoints(routes =>
             {
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "mvc controllers",
-                    template: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action=Index}/{id?}"
+                );
 
                 // In non-development environments, the backend wraps the home ("/") route in authorization handling
                 if (!env.IsDevelopment())
                 {
-                    routes.MapSpaFallbackRoute(
-                        name: "default",
-                        defaults: new { controller = "Home", action = "Index" }); // Home Controller handles authorization
+                    routes.MapFallbackToController(action: "Index", controller: "Home"); // Home Controller handles authorization
                 }
             });
 
@@ -204,7 +207,6 @@ namespace AndcultureCode.GB.Presentation.Web
             // - In development, "/" is proxied to webpack dev server
             // - In non-development, "/" serves a compiled version of react's index.html from /wwwroot.
             //   with all javascript, css and image assets absolutely referenced in Amazon CloudFront/S3
-            app.UseSpaStaticFiles();
             app.UseSpa(spa =>
             {
                 if (env.IsDevelopment())

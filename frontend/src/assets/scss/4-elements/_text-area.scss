@@ -1,0 +1,22 @@
+textarea {
+    @include placeholder() {
+        color: get-color-neutral("70");
+    }
+    @include font-style(
+        $font-primary,
+        "base",
+        get-color-neutral("dark-text"),
+        400
+    );
+    @include padding(13px, 18px);
+
+    &:focus {
+        @include placeholder() {
+            color: get-color-neutral("50");
+        }
+    }
+
+    border: 1px solid get-color-neutral("30");
+    border-radius: 5px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,23 @@
+.c-error-banner {
+    @include padding(8px, 24px, 8px, 32px);
+    @include font-style(
+        $font-primary,
+        "xsmall",
+        false,
+        400,
+        get-line-height("xsmall")
+    );
+    color: get-color-status("error-dark");
+    background-color: get-color-status("error-light");
+    border-radius: $border-radius-small;
+    position: relative;
+
+    svg {
+        position: absolute;
+        left: rem(8px);
+        top: rem(10px);
+        path {
+            fill: get-color-primary("error");
+        }
+    }
+}

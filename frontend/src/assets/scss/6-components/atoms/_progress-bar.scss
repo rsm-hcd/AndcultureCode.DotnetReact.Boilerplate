@@ -1,0 +1,43 @@
+.c-progress-bar {
+    width: 100%;
+    height: rem(6px);
+    border-radius: $border-radius-small;
+    border: 1px solid get-color-neutral("50");
+    background-color: get-color-neutral("30");
+
+    &.-thick {
+        height: rem(24px);
+
+        .c-progress-bar__bar {
+            height: rem(22px);
+        }
+    }
+
+    &.-error {
+        .c-progress-bar__bar {
+            background-color: get-color-status("error");
+        }
+    }
+
+    &__bar {
+        height: rem(4px);
+        border-top-left-radius: $border-radius-small;
+        border-bottom-left-radius: $border-radius-small;
+        background-color: get-color-status("success");
+
+        /**
+         * generate classes -w-0, -w-1, -w-2, etc. up to -w-100
+         * to set the width to the progress percentage
+         */
+        @for $i from 0 through 100 {
+            &.-w-#{$i} {
+                width: #{$i}#{unquote("%")};
+
+                @if ($i >= 100) {
+                    border-top-right-radius: $border-radius-small;
+                    border-bottom-right-radius: $border-radius-small;
+                }
+            }
+        }
+    }
+}

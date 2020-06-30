@@ -1,0 +1,28 @@
+.c-dropdown-button {
+    svg {
+        vertical-align: middle;
+    }
+
+    &__list {
+        @include box-shadow(0, 7px, 20px, rgba(0, 26, 57, 0.3));
+        @include margin-top(8px);
+        @include margin-left(64px);
+        @include font-style($size: "small");
+        background-color: get-color-neutral("white");
+        border-radius: $border-radius-small;
+
+        &__item {
+            @include padding(12px);
+            min-width: rem(162px);
+            cursor: pointer;
+
+            &:hover,
+            &:focus,
+            &:focus-within,
+            &[data-selected] {
+                // [data-selected] comes from the @reach-ui/menu-button component
+                background-color: get-color-neutral("05");
+            }
+        }
+    }
+}

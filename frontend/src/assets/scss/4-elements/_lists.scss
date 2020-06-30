@@ -1,0 +1,31 @@
+/*------------------------------------*\
+  LISTS
+\*------------------------------------*/
+
+ul {
+    position: relative;
+    list-style: none;
+    margin-left: 0;
+
+    > li {
+        @include margin-bottom(10px);
+    }
+
+    &.-has-icon {
+        li {
+            @include padding-left(10px);
+        }
+
+        &.-check > li:before {
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+    }
+}
+
+ol {
+    > li {
+        @include margin-bottom(10px);
+    }
+}

@@ -1,0 +1,90 @@
+.c-radio-list {
+    > ul {
+        > li {
+            margin-bottom: 0;
+            border-bottom: 1px solid get-color-neutral("30");
+            > .c-radio {
+                position: relative;
+                &:hover {
+                    background-color: get-color-neutral("white");
+                }
+                &.-selected {
+                    background-color: get-color-accents("blue-light");
+                    &:hover {
+                        background-color: darken(
+                            get-color-accents("blue-light"),
+                            5%
+                        );
+                    }
+                }
+
+                > label {
+                    position: static;
+                    width: 100%;
+                    &:before {
+                        top: calc(50% - 10px);
+                        right: 10px;
+                    }
+                    &:after {
+                        top: calc(50% - 5px);
+                        right: 15px; // 10px right + 1/2 of my width
+                    }
+                }
+            }
+        }
+    }
+
+    &.-button-style {
+        > ul {
+            > li {
+                border: none;
+
+                > .c-radio {
+                    @include padding(0, 0, 0, 8px);
+                    border-radius: $border-radius-large;
+                    border: 1px solid get-color-neutral("30");
+
+                    // Styles for native implmentation of :focus-within.
+                    &:focus-within {
+                        @include c-radio-focus-hover;
+                    }
+
+                    // Styles for polyfill implementation to support IE. When grouping selectors
+                    // together, IE doesn't display desired styles.
+                    &.focus-within {
+                        @include c-radio-focus-hover;
+                    }
+
+                    &:hover {
+                        @include c-radio-focus-hover;
+                    }
+
+                    &.-selected {
+                        background-color: get-color-accents("blue-dark");
+
+                        > label {
+                            color: get-color-neutral("white");
+                        }
+                    }
+
+                    > label {
+                        @include padding(8px);
+                        @include padding-left(32px);
+                        color: get-color-accents("blue-dark");
+                        padding-right: 0;
+
+                        &:before {
+                            right: unset;
+                            left: rem(10px);
+                        }
+
+                        &:after {
+                            right: unset;
+                            left: rem(15px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.c-tooltip {
+    @include box-shadow(0, 7px, 20px, rgba(0, 26, 57, 0.3));
+    @include font-style($size: "small");
+    @include padding(12px);
+    background-color: get-color-neutral("90");
+    color: get-color-neutral("white");
+    border-radius: $border-radius-small;
+
+    .tippy-content {
+        div {
+            word-break: break-word;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        bottom: rem(-8px);
+        width: rem(16px);
+        height: rem(16px);
+        background-color: get-color-neutral("90");
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+    }
+}

@@ -1,0 +1,431 @@
+/*------------------------------------*\
+	MIXINS
+\*------------------------------------*/
+
+@mixin animation($value) {
+    -webkit-animation: $value;
+    -moz-animation: $value;
+    animation: $value;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $spread: false, $inset: false) {
+    @if $inset {
+        @if $spread {
+            -webkit-box-shadow: inset $top $left $blur $color;
+            -moz-box-shadow: inset $top $left $blur $color;
+            box-shadow: inset $top $left $blur $color;
+        } @else {
+            -webkit-box-shadow: inset $top $left $blur $color;
+            -moz-box-shadow: inset $top $left $blur $color;
+            box-shadow: inset $top $left $blur $color;
+        }
+    } @else {
+        @if $spread {
+            -webkit-box-shadow: $top $left $blur $spread $color;
+            -moz-box-shadow: $top $left $blur $spread $color;
+            box-shadow: $top $left $blur $spread $color;
+        } @else {
+            -webkit-box-shadow: $top $left $blur $color;
+            -moz-box-shadow: $top $left $blur $color;
+            box-shadow: $top $left $blur $color;
+        }
+    }
+}
+
+/**
+ * Cut off text and truncate with ...
+ * display must be block or inline-block
+ * for this to work.
+ */
+@mixin ellipsis($display: inline-block) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: $display;
+}
+
+@mixin fill-viewport-height() {
+    height: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin fixedViewHeightScrollY {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-y: auto;
+}
+
+@mixin icon-fill($color) {
+    svg {
+        path {
+            fill: $color;
+        }
+    }
+}
+
+/**
+ * Surround the content in an Internet Explorer-specific media query
+ * so that these styles only apply to Internet Explorer.
+ */
+@mixin if-internet-explorer() {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+/**
+ * Surround the content in an Firefox-specific media query
+ * so that these styles only apply to Firefox.
+ */
+@mixin if-firefox() {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+/**
+ * set object-fit with a workaround for IE.
+ * NOTE: for this to work properly on IE, you must
+ * explicitly set position: relative; on the parent
+ * element.
+ */
+@mixin object-fit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin site-container() {
+    @include grid-container;
+    margin: 0 auto;
+    max-width: 1180px;
+    position: relative;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin scrollbar(
+    $thumbColor: get-color-neutral("70"),
+    $trackColor: get-color-neutral("05")
+) {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumbColor;
+        border-radius: 8px;
+        height: 55px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $trackColor;
+    }
+
+    // for Firefox (can't get full customization like chrome)
+    scrollbar-color: $thumbColor;
+    scrollbar-width: thin;
+}
+
+@mixin transform($value) {
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    transform: $value;
+}
+
+/**
+ * Applies the default error styles for form fields;
+ * also allows you to pass overrides via the @content.
+ */
+@mixin form-field-error-styles() {
+    border-color: get-color-primary("error");
+    color: get-color-primary("error");
+    box-shadow: 0 0 0 3px rgba(213, 0, 50, 0.2);
+    @content;
+}
+
+// Font Mixins
+// -------------------------------
+
+@mixin font-style(
+    $family: $font-primary,
+    $size: "base",
+    $color: false,
+    $weight: 400,
+    $line-height: false,
+    $style: false // italic, etc.
+) {
+    @include font-size($size);
+    font-family: $family;
+    font-weight: $weight;
+
+    @if $color {
+        color: $color;
+    }
+    @if $line-height {
+        line-height: $line-height;
+    }
+
+    @if $style {
+        font-style: $style;
+    }
+}
+
+@mixin font-size($size: "base") {
+    @include rem-fallback(font-size, get-font-size($size));
+}
+
+@mixin line-height($size: "base") {
+    line-height: get-line-height($size);
+}
+
+// Responsive Styles
+// --------------------------
+
+@mixin non-retina {
+    @media not screen and (-webkit-min-device-pixel-ratio: 2),
+        not screen and (min--moz-device-pixel-ratio: 2),
+        not screen and (-o-min-device-pixel-ratio: 2/1),
+        not screen and (min-device-pixel-ratio: 2),
+        not screen and (min-resolution: 192dpi),
+        not screen and (min-resolution: 2dppx) {
+        @content;
+    }
+}
+
+@mixin respond-to($media) {
+    @if map-has-key($breakpoints, $media) {
+        @media (max-width: map-get($breakpoints, $media)) {
+            @content;
+        }
+    } @else if $media == non-retina {
+        @media screen and (-webkit-max-device-pixel-ratio: 1) {
+            @content;
+        }
+    } @else if $media == retina {
+        @include retina();
+    } @else {
+        @media only screen and (max-width: #{$media}px) {
+            @content;
+        }
+    }
+}
+
+// For use on mobile first stylesheets
+@mixin respond-to-min-width($media) {
+    @if map-has-key($breakpoints, $media) {
+        @media (min-width: map-get($breakpoints, $media)) {
+            @content;
+        }
+    } @else if $media == non-retina {
+        @media screen and (-webkit-max-device-pixel-ratio: 1) {
+            @content;
+        }
+    } @else if $media == retina {
+        @include retina();
+    } @else {
+        @media only screen and (min-width: #{$media}px) {
+            @content;
+        }
+    }
+}
+
+@mixin retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min--moz-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (min-device-pixel-ratio: 2),
+        only screen and (min-resolution: 192dpi),
+        only screen and (min-resolution: 2dppx) {
+        @content;
+    }
+}
+
+@mixin clearborder {
+    border: 0;
+}
+
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        display: block;
+        clear: both;
+        height: 1px;
+        margin-top: -1px;
+        visibility: hidden;
+    }
+
+    & {
+        *zoom: 1;
+    }
+}
+
+@mixin clearlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+// REM Mixins
+// -------------------------------
+
+@mixin rem-fallback($property, $values...) {
+    $max: length($values);
+    $pxValues: "";
+    $remValues: "";
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $pxValues: #{$pxValues + $value}px;
+
+        @if $i < $max {
+            $pxValues: #{$pxValues + " "};
+        }
+    }
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $remValues: #{$remValues + (rem($value))};
+
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+
+    #{$property}: $pxValues;
+    #{$property}: $remValues;
+}
+
+// Box Model
+// -------------------------------
+
+@mixin margin($values...) {
+    @include rem-fallback(margin, $values...);
+}
+
+@mixin margin-bottom($value) {
+    @include rem-fallback(margin-bottom, $value);
+}
+
+@mixin margin-left($value) {
+    @include rem-fallback(margin-left, $value);
+}
+
+@mixin margin-right($value) {
+    @include rem-fallback(margin-right, $value);
+}
+
+@mixin margin-top($value) {
+    @include rem-fallback(margin-top, $value);
+}
+
+@mixin padding($values...) {
+    @include rem-fallback(padding, $values...);
+}
+
+@mixin padding-bottom($value) {
+    @include rem-fallback(padding-bottom, $value);
+}
+
+@mixin padding-left($value) {
+    @include rem-fallback(padding-left, $value);
+}
+
+@mixin padding-right($value) {
+    @include rem-fallback(padding-right, $value);
+}
+
+@mixin padding-top($value) {
+    @include rem-fallback(padding-top, $value);
+}
+
+// Borders
+// -------------------------------
+
+@mixin border-top($size, $style: solid, $color: get-color-primary("black")) {
+    border-top: $size $style $color;
+}
+
+@mixin border-right($size, $style: solid, $color: get-color-primary("black")) {
+    border-right: $size $style $color;
+}
+
+@mixin border-bottom($size, $style: solid, $color: get-color-primary("black")) {
+    border-bottom: $size $style $color;
+}
+
+@mixin border-left($size, $style: solid, $color: get-color-primary("black")) {
+    border-left: $size $style $color;
+}
+
+@mixin border(
+    $topSize,
+    $rightSize,
+    $bottomSize,
+    $leftSize,
+    $style: solid,
+    $color: get-color-primary("black")
+) {
+    @include border-top($topSize, $style, $color);
+    @include border-right($rightSize, $style, $color);
+    @include border-bottom($bottomSize, $style, $color);
+    @include border-left($leftSize, $style, $color);
+}
+
+@mixin border-radius($size) {
+    @if ($size == "large") {
+        border-radius: $border-radius-medium;
+    }
+    @if ($size == "base") {
+        border-radius: $border-radius-small;
+    }
+}
+
+// Inputs
+// -------------------------------
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &::placeholder {
+        @content;
+    }
+}
+
+@mixin c-radio-focus-hover {
+    border: 1px solid get-color-accents("blue-dark");
+    box-shadow: 0 0 0 3px rgba(0, 176, 202, 0.4);
+}

@@ -1,0 +1,16 @@
+/*------------------------------------*\
+  UTILITIES
+\*------------------------------------*/
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 0;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -1,0 +1,42 @@
+.c-card {
+    position: relative;
+    box-shadow: 0px 3px 10px rgba(0, 26, 57, 0.2);
+
+    &__content {
+        background-color: #425163;
+        height: 147px;
+        border-radius: 5px 5px 0 0;
+        @include padding(16px);
+        position: relative;
+
+        p {
+            @include font-style($font-primary, "base", white, 400, 24px);
+            position: absolute;
+            bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    &__label {
+        background: white;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0 0 5px 5px;
+        border: 1px solid #8d98a5;
+
+        p {
+            @include font-style(
+                $font-primary,
+                "small",
+                get-color("neutral", "dark-text")
+            );
+            @include padding(0, 16px);
+            @include margin(0);
+            letter-spacing: 0.02em;
+            font-style: italic;
+        }
+    }
+}

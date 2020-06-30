@@ -1,0 +1,44 @@
+.c-select {
+    position: relative;
+    display: inline-block;
+    @include icon-fill(get-color-neutral("30"));
+
+    &:hover {
+        select {
+            border: 1px solid get-color-neutral("50");
+        }
+
+        @include icon-fill(get-color-neutral("50"));
+    }
+
+    select {
+        @include padding(8px);
+        @include padding-right(32px);
+        @include font-style($color: get-color-neutral("90"));
+        border: 1px solid get-color-neutral("30");
+        border-radius: $border-radius-small;
+        height: rem(40px);
+
+        // hides default arrow so we can place our chevron down icon instead
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+
+        &::-ms-expand {
+            // hide default arrow in IE 11
+            display: none;
+        }
+
+        option {
+            @include font-style($color: get-color-neutral("90"));
+        }
+    }
+
+    .c-icon {
+        position: absolute;
+        right: 8px;
+        top: 12px;
+        // forward pointer events to the <select> underneath the icon
+        pointer-events: none;
+    }
+}

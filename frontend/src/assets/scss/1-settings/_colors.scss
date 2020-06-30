@@ -1,0 +1,75 @@
+/*------------------------------------*\
+	SETTINGS - COLORS
+\*------------------------------------*/
+
+$colors: (
+    "accents": (
+        "blue-dark": #007283,
+        "blue-base": #00b0ca,
+        "blue-light": #e3f1f8,
+        "orange-light": #fff1d9,
+        "yellow": #fdc82f,
+    ),
+    "primary": (
+        "black": #000000,
+        "error": #d50032,
+    ),
+    "secondary": (
+        "blue": #3d5cc2,
+    ),
+    "neutral": (
+        "90": #001a39,
+        "70": #646a82,
+        "50": #aeb3c5,
+        "30": #d4d6de,
+        "05": #f1f1f4,
+        "02": #f5f6fa,
+        "white": #ffffff,
+        "lighter": #fefefe,
+        "light": #c5d4d8,
+        "dark": #9ea7a9,
+        "darker": #6e848c,
+        "dark-text": #57666a,
+    ),
+    "background": (
+        "dark": #001a39,
+        "medium": #425163,
+        "neutral": #f1f1f4,
+        "primary": #fefefe,
+        "secondary": #f5f6fa,
+    ),
+    "buttons": (
+        "destructive": #ffd9e3,
+        "destructive-hover": #d50032,
+        "destructive-disabled": #d4d6de,
+        "primary": #001a39,
+        "primary-hover": #646a82,
+        "primary-disabled": #d4d6de,
+        "secondary": #ffffff,
+        "secondary-border": #646a82,
+        "secondary-hover": #f1f1f4,
+        "secondary-disabled": #aeb3c5,
+        "tertiary": #f1f1f4,
+        "tertiary-alt": #ffffff,
+        "tertiary-hover": #d4d6de,
+        "tertiary-disabled": #f1f1f4,
+    ),
+    "links": (
+        "default": #001a39,
+        "secondary": #ffffff,
+    ),
+    "status": (
+        "success": #61af27,
+        "success-light": #eaf5e0,
+        "success-dark": #2a5923,
+        "warning": #ffa000,
+        "warning-light": #fff1d9,
+        "warning-dark": #8c3b17,
+        "error": #d50032,
+        "error-light": #ffd9e3,
+        "error-dark": #9c0036,
+        "info": #00b0ca,
+        "info-light": #e3f1f8,
+        "info-dark": #007283,
+    ),
+);

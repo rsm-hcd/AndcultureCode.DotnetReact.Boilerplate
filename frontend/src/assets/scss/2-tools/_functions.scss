@@ -1,0 +1,98 @@
+/*------------------------------------*\
+	FUNCTIONS
+\*------------------------------------*/
+
+// Color Functions
+// ------------------------------------
+
+@function get-color($palette: "primary", $color: "black") {
+    @return map-get(map-get($colors, $palette), $color);
+}
+
+@function get-color-primary($color: "black") {
+    @return get-color("primary", $color);
+}
+
+@function get-color-secondary($color: "blue") {
+    @return get-color("secondary", $color);
+}
+
+@function get-color-neutral($color: "light") {
+    @return get-color("neutral", $color);
+}
+
+@function get-color-buttons($color: "primary") {
+    @return get-color("buttons", $color);
+}
+
+@function get-color-background($color: "primary") {
+    @return get-color("background", $color);
+}
+
+@function get-color-accents($color: "blue-light") {
+    @return get-color("accents", $color);
+}
+
+@function get-color-status($color: "success") {
+    @return get-color("status", $color);
+}
+
+// Font Functions
+// ------------------------------------
+
+@function get-font-size($size: "base") {
+    @if not map-has-key($font-sizes, $size) {
+        @return $size;
+    }
+
+    @return map-get($font-sizes, $size);
+}
+
+@function get-line-height($size: "base") {
+    @if not map-has-key($line-heights, $size) {
+        @return $size;
+    }
+
+    @return map-get($line-heights, $size);
+}
+
+@function get-font-weight($weight: "base") {
+    @if (not map-has-key($font-weights, $weight)) {
+        @return $weight;
+    }
+
+    @return map-get($font-weights, $weight);
+}
+
+// REM
+// ------------------------------------
+
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+// REM Functions
+// ------------------------------------
+
+@function rem($px, $baseValue: 16px) {
+    @if not unitless($px) {
+        $px: strip-unit($px);
+    }
+
+    @if not unitless($baseValue) {
+        $baseValue: strip-unit($baseValue);
+    }
+
+    @return ($px / $baseValue) * 1rem;
+}
+
+// VH Functions
+// ------------------------------------
+
+@function vh($value: 100) {
+    @return calc(var(--vh, 1vh) * #{$value});
+}

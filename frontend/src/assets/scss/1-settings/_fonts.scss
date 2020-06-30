@@ -1,0 +1,47 @@
+/*------------------------------------*\
+  SETTINGS - FONTS
+\*------------------------------------*/
+
+// @font-face {
+//     font-family: "icomoon";
+//     src: url("../../icons/icomoon.eot?gv976y");
+//     src: url("../../icons/icomoon.eot?gv976y#iefix") format("embedded-opentype"),
+//         url("../../icons/icomoon.ttf?gv976y") format("truetype"),
+//         url("../../icons/icomoon.woff?gv976y") format("woff"),
+//         url("../../icons/icomoon.svg?gv976y#icomoon") format("svg");
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap");
+
+// ---------------------------------------------------------------------------
+// Font Sizes
+// ** Fonts defined between h1 and small are from the design system
+// ** The following sizes are to be deprecated from the size array:
+// ** largest, larger, large, medium-large, medium-small, smaller, smallest
+// ---------------------------------------------------------------------------
+
+$font-sizes: (
+    "base": 16px,
+    "large": 18px,
+    "small": 14px,
+    "xlarge": 24px,
+    "xsmall": 12px,
+);
+
+$line-heights: (
+    "base": 1.2em,
+    "large": 1.5em,
+    "small": 1.5em,
+    "xlarge": 1.4em,
+    "xsmall": 1.5em,
+);
+
+$font-weights: (
+    "base": 400,
+    "bold": 700,
+);
+
+$font-primary: "Roboto", serif !default;
+$font-icon: "icomoon" !default;

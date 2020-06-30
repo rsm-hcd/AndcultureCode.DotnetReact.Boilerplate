@@ -1,0 +1,40 @@
+.c-checkbox-button {
+    @include margin-bottom(24px);
+    @include padding(8px, 16px);
+    display: inline-flex;
+    align-items: center;
+    background: get-color-neutral("white");
+    box-shadow: 0px 1px 0px get-color-neutral("30");
+    border: 1px solid get-color-accents("blue-dark");
+    border-radius: $border-radius-large;
+    color: get-color-accents("blue-dark");
+
+    &.-checked {
+        background: get-color-accents("blue-dark");
+        color: get-color-neutral("white");
+        path {
+            fill: get-color-neutral("white");
+        }
+    }
+
+    &:focus-within,
+    &:hover {
+        box-shadow: 0 0 0 3px rgba(0, 176, 202, 0.4);
+    }
+
+    + .c-checkbox-button {
+        @include margin-left(16px);
+
+        @include respond-to("phone") {
+            margin-left: 0;
+        }
+    }
+
+    .c-icon {
+        @include margin-right(16px);
+    }
+
+    path {
+        fill: get-color-neutral("30");
+    }
+}

@@ -1,0 +1,17 @@
+.c-fraction {
+    display: inline;
+    &__numerator {
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        vertical-align: 0.3rem;
+    }
+    &__denominator {
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        vertical-align: -0.2rem;
+    }
+    &__separator {
+        font-size: 0.8rem;
+        line-height: 0.8rem;
+    }
+}

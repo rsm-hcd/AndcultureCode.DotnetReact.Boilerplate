@@ -1,0 +1,30 @@
+input {
+    @include placeholder() {
+        color: get-color-neutral("70");
+    }
+    @include font-style($font-primary, "base", get-color-neutral("90"), 400);
+    @include padding(13px, 18px);
+
+    border: 1px solid get-color-neutral("30");
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    &:focus {
+        @include placeholder() {
+            color: get-color-neutral("50");
+        }
+    }
+    &:placeholder-shown {
+        text-overflow: ellipsis;
+    }
+
+    &[type="email"]:disabled,
+    &[type="password"]:disabled,
+    &[type="text"]:disabled {
+        background-color: get-color-neutral("05");
+        border-color: get-color-neutral("50");
+        -webkit-text-fill-color: get-color-neutral("90");
+        opacity: 1; /* required on iOS */
+        cursor: not-allowed;
+    }
+}

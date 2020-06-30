@@ -1,0 +1,98 @@
+.c-form-field {
+    @include margin-bottom(20px);
+
+    &__required {
+        color: get-color-status("info");
+    }
+
+    label {
+        @include font-style(
+            $font-primary,
+            "small",
+            get-color-neutral("90"),
+            400,
+            18px
+        );
+    }
+
+    .e-checkbox {
+        @include rem-fallback("line-height", 20px);
+    }
+
+    input:not([type="checkbox"]),
+    .c-select,
+    select,
+    textarea {
+        @include margin-top(5px);
+        display: block;
+        width: 100%;
+    }
+
+    &.-password {
+        @include clearfix;
+
+        button {
+            @include font-style($font-primary, "small", #0e7fe7, 400, 18px);
+
+            float: right;
+            border: none;
+            background: none;
+
+            &:before {
+                @include margin-right(5px);
+                @include font-style($family: $font-icon);
+                @include rem-fallback("top", 2px);
+                position: relative;
+                // @extend .c-icon.-eye;
+            }
+        }
+    }
+    &.-invalid {
+        label {
+            color: get-color-primary("error");
+        }
+        input:not([type="checkbox"]) {
+            @include form-field-error-styles();
+        }
+    }
+
+    &.-search {
+        position: relative;
+        > input[type="text"] {
+            @include padding-right(45px);
+            margin-top: 0;
+        }
+        > button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45px;
+            height: 100%;
+            border-radius: 0 5px 5px 0;
+            padding: 0;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+
+        &__errors {
+            @include margin-top(8px);
+            @include margin-right(8px);
+            flex-grow: 1;
+            font-style: italic;
+
+            label {
+                display: block;
+                color: get-color-status("error");
+            }
+        }
+
+        &__character-count {
+            @include margin-top(8px);
+            text-align: right;
+            color: get-color-neutral("90");
+            font-size: get-font-size("xsmall");
+        }
+    }
+}

@@ -1,0 +1,175 @@
+.c-button {
+    @include font-style($font-primary, "small", #ffffff, 800, 16px);
+    @include padding(11px, 24px);
+    @include border-radius("base");
+    background-color: get-color-buttons("primary");
+    letter-spacing: 0.04em;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border: none;
+
+    &:hover,
+    &.-hover {
+        background-color: get-color-buttons("primary-hover");
+    }
+    &:disabled {
+        cursor: not-allowed;
+        background-color: get-color-neutral("30");
+    }
+    &:active,
+    &.-active {
+        opacity: 0.8;
+        box-shadow: 0 0 0 3px rgba(0, 176, 202, 0.5);
+    }
+
+    > .c-icon {
+        > path {
+            fill: #ffffff;
+        }
+    }
+
+    &.-large {
+        @include padding(30px, 24px);
+        width: 100%;
+    }
+
+    &.-medium {
+        @include padding(11px, 24px);
+    }
+
+    &.-small {
+        @include padding(7px, 16px);
+        @include font-style($font-primary, "xsmall", #ffffff, 800, 12px);
+
+        &.-icon-left {
+            @include padding(5px, 12px, 5px, 7px);
+
+            .c-icon {
+                @include margin-right(4px);
+                vertical-align: middle;
+            }
+        }
+    }
+
+    &.-xsmall {
+        @include padding(4px, 8px);
+        @include font-style($font-primary, "xsmall", #ffffff, 800, 12px);
+
+        .c-icon {
+            @include padding(1px);
+        }
+    }
+
+    &.-anchor {
+        background: none;
+        border: none;
+        padding: 0;
+        color: get-color-neutral("90");
+        text-decoration: underline;
+    }
+
+    &.-destructive {
+        background-color: get-color-buttons("destructive");
+        color: get-color-status("error-dark");
+
+        &:hover {
+            background-color: get-color-buttons("destructive-hover");
+            color: get-color-neutral("white");
+        }
+        &:disabled {
+            background-color: get-color-buttons("destructive-disabled");
+        }
+
+        > .c-icon {
+            > path {
+                fill: get-color-neutral("90");
+            }
+        }
+    }
+
+    &.-secondary {
+        background-color: get-color-buttons("secondary");
+        border: 1px solid get-color-buttons("secondary-border");
+
+        color: get-color-neutral("90");
+        &:hover {
+            background-color: get-color-buttons("secondary-hover");
+        }
+        &:disabled {
+            background-color: get-color-buttons("secondary-disabled");
+        }
+
+        > .c-icon {
+            > path {
+                fill: get-color-neutral("90");
+            }
+        }
+    }
+
+    &.-tertiary {
+        background-color: get-color-buttons("tertiary");
+        border: 1px solid get-color-buttons("tertiary");
+        color: get-color-neutral("90");
+
+        &:hover {
+            background-color: get-color-buttons("tertiary-hover");
+        }
+        &:disabled {
+            color: get-color-neutral("50");
+            background-color: get-color-buttons("tertiary-disabled");
+        }
+        > .c-icon {
+            > path {
+                fill: get-color-neutral("90");
+            }
+        }
+    }
+
+    &.-tertiary-alt {
+        background-color: get-color-buttons("tertiary-alt");
+        border: 1px solid get-color-buttons("tertiary-alt");
+        color: get-color-neutral("90");
+
+        &:hover {
+            opacity: 0.7;
+        }
+        > .c-icon {
+            > path {
+                fill: get-color-neutral("90");
+            }
+        }
+    }
+
+    &.-icon-left {
+        > i {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &.-icon {
+        border: none;
+        padding: 0;
+        line-height: 0;
+    }
+
+    &.-link {
+        @include font-style(
+            $font-primary,
+            "small",
+            get-color("links", "default"),
+            400,
+            16px
+        );
+        padding: 0;
+        background: initial;
+        text-decoration: underline;
+        border: none;
+
+        > .c-icon {
+            > path {
+                fill: get-color("links", "default");
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/*------------------------------------*\
+  ANCHORS
+\*------------------------------------*/
+
+a {
+    @include font-style(
+        $font-primary,
+        "small",
+        get-color("links", "default"),
+        400,
+        16px
+    );
+
+    &.c-button {
+        display: inline-block;
+        text-decoration: none;
+
+        &.-icon {
+            text-align: center;
+
+            .c-icon {
+                margin-top: calc(50% - 6px);
+
+                &.-large {
+                    margin-top: calc(50% - 12px);
+                }
+            }
+        }
+    }
+
+    &.-secondary {
+        color: get-color("links", "secondary");
+    }
+    &.-disabled {
+        cursor: not-allowed;
+    }
+}

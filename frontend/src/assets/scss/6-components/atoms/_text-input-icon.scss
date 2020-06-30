@@ -1,0 +1,17 @@
+.c-text-input-icon {
+    position: relative;
+
+    .c-icon {
+        position: absolute;
+        left: 0;
+        top: calc(50% - 14px);
+        path {
+            fill: get-color-neutral("50");
+        }
+    }
+    input {
+        border: none;
+        padding-left: 30px;
+        width: 100%;
+    }
+}

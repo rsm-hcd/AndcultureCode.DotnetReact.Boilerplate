@@ -1,0 +1,14 @@
+.c-application-layout {
+    @include fill-viewport-height();
+    display: flex;
+    word-break: break-word;
+
+    &__panel {
+        width: 100%;
+        overflow: hidden;
+
+        @include respond-to("phone") {
+            // margin-top: $sidebar-menu-width;
+        }
+    }
+}

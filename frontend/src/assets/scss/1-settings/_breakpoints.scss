@@ -1,0 +1,17 @@
+/*------------------------------------*\
+  SETTINGS - BREAKPOINTS
+\*------------------------------------*/
+// Merge with Rhythm breakpoints
+$breakpoints: (
+    "phone": 480px,
+    "sm-tablet": 600px,
+    "tablet": 768px,
+    "laptop": 940px,
+    "lg-laptop": 980px,
+    "sm-desktop": 1024px,
+    "desktop": 1180px,
+    "lg-desktop": 1408px,
+    "wide-desktop": 1664px,
+    "ultrawide": 1920px,
+    "super-ultrawide": 2560px,
+);

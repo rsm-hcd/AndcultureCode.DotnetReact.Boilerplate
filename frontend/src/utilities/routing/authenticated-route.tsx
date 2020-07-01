@@ -1,4 +1,4 @@
-import AccessDeniedPage from "pages/access-denied/access-denied-page";
+import AccessDeniedPage from "pages/errors/access-denied-page";
 import * as React from "react";
 import {
     Redirect,
@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import { routes } from "routes";
 import { useGlobalState } from "utilities/contexts/use-global-state-context";
-import RoleType from "utilities/enumerations/role-type";
 import { RouteDefinition } from "utilities/interfaces/route-definition";
 import { RouteUtils } from "utilities/route-utils";
 

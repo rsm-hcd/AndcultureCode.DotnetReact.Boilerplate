@@ -1,5 +1,4 @@
-import { UserDashboardPage } from "pages/dashboards/user-dashboard";
-import AccountDashboardPage from "pages/account/account-dashboard";
+import UserDashboardPage from "pages/dashboards/user-dashboard";
 import NotFoundPage from "pages/errors/not-found";
 import NewUserLoginPage from "pages/userlogins/new-userlogin";
 import { siteMap } from "sitemap";
@@ -35,7 +34,7 @@ export const routes: RouteMap = {
     userlogins: {
         authRequired: false,
         component: UserLoginLayout,
-        path: siteMap.userlogins.dashboard,
+        path: siteMap.userlogins.index,
         routes: {
             new: {
                 authRequired: false,
@@ -59,13 +58,6 @@ export const routes: RouteMap = {
         component: ApplicationLayout,
         path: siteMap.home,
         routes: {
-            accountDashboard: {
-                authRequired: true,
-                component: AccountDashboardPage,
-                path: siteMap.account.dashboard,
-                routes: {},
-            },
-
             // user dashboard
             user: {
                 authRequired: true,

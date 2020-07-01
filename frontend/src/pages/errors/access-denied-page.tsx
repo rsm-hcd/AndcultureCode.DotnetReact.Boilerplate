@@ -19,9 +19,7 @@ const AccessDeniedPage: React.FunctionComponent<AccessDeniedPageProps> = (
                 </Heading>
                 <Paragraph size={ParagraphSizes.Base}>
                     To access this page, you may need to{" "}
-                    <Anchor to={siteMap.signup.plans}>
-                        register for an account or upgrade your plan
-                    </Anchor>
+                    <Anchor to={siteMap.userlogins.new}>log in</Anchor>
                 </Paragraph>
             </main>
         </React.Fragment>

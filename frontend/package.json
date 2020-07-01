@@ -22,7 +22,7 @@
         "andculturecode-javascript-core": "0.1.0",
         "andculturecode-javascript-react": "0.0.7",
         "andculturecode.scss.rhythm": "1.0.2",
-        "axios": "0.19.0",
+        "axios": "0.19.2",
         "babel-polyfill": "6.26.0",
         "bourbon": "6.0.0",
         "focus-within-polyfill": "5.0.9",

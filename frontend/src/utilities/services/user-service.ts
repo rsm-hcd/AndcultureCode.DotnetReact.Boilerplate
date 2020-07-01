@@ -1,7 +1,6 @@
 import UserRecord from "models/view-models/user-record";
 import ServiceFactory from "utilities/services/service-factory";
 import ServiceHookFactory from "utilities/services/service-hook-factory";
-import CreateUserDtoRecord from "models/view-models/create-user-dto-record";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces
@@ -32,7 +31,6 @@ export interface UserListQueryParams {
 
 const baseEndpoint = "users";
 const resourceType = UserRecord;
-const createResourceType = CreateUserDtoRecord;
 const resourceEndpoint = `${baseEndpoint}/:id`;
 
 // #endregion Constants
@@ -45,7 +43,7 @@ const UserService = {
     /**
      * Create a new user
      */
-    create: ServiceFactory.create(createResourceType, baseEndpoint),
+    create: ServiceFactory.create(resourceType, baseEndpoint),
 
     /**
      * Soft delete a user entity
@@ -76,7 +74,7 @@ const UserService = {
     /**
      * Custom hook for leveraging service create calls in react components
      */
-    useCreate: ServiceHookFactory.useCreate(createResourceType, baseEndpoint),
+    useCreate: ServiceHookFactory.useCreate(resourceType, baseEndpoint),
 
     /**
      * Custom hook for leveraging service delete calls in react components

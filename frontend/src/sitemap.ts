@@ -1,16 +1,13 @@
 export const siteMap = {
-    home: "/",
-    account: {
-        dashboard: "/account",
-    },
     dashboards: {
         user: "/dashboards/user",
     },
     errors: {
         notFound: "/errors/not-found",
     },
+    home: "/",
     userlogins: {
-        dashboard: "/userlogins",
+        index: "/userlogins",
         new: "/userlogins/new",
     },
 };

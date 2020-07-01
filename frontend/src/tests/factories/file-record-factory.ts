@@ -1,5 +1,4 @@
 import FileRecord from "models/view-models/file-record";
-import SectionRecord from "models/view-models/section-record";
 import { Factory } from "rosie";
 import FactoryType from "tests/factories/factory-type";
 

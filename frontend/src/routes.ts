@@ -14,39 +14,6 @@ Routing Table
 */
 
 export const routes: RouteMap = {
-    /**
-     * Anything that doesn't use ApplicationLayout will
-     * need to be placed before the `root` route,
-     * such that the <Switch> component picks up the desired
-     * layout before the ApplicationLayout, since the `home`
-     * route is just "/"
-     */
-
-    // errors
-    notFound: {
-        authRequired: false,
-        component: NotFoundPage,
-        exact: true,
-        path: siteMap.errors.notFound,
-        routes: {},
-    },
-
-    // userlogins
-    userlogins: {
-        authRequired: false,
-        component: UserLoginLayout,
-        path: siteMap.userlogins.index,
-        routes: {
-            new: {
-                authRequired: false,
-                component: NewUserLoginPage,
-                path: siteMap.userlogins.new,
-                routes: {},
-            },
-        },
-    },
-
-    // root
     root: {
         /**
          * Anything that uses ApplicationLayout can be nested under the root route.
@@ -56,13 +23,39 @@ export const routes: RouteMap = {
         path: siteMap.root,
         routes: {
             // home
-            index: {
+            home: {
                 authRequired: false,
                 component: HomePage,
                 exact: true,
                 path: siteMap.root,
                 routes: {},
             },
+
+            // errors
+            notFound: {
+                authRequired: false,
+                component: NotFoundPage,
+                exact: true,
+                path: siteMap.errors.notFound,
+                routes: {},
+            },
+
+            // userlogins
+            userlogins: {
+                authRequired: false,
+                component: UserLoginLayout,
+                path: siteMap.userlogins.index,
+                routes: {
+                    new: {
+                        authRequired: false,
+                        component: NewUserLoginPage,
+                        exact: true,
+                        path: siteMap.userlogins.new,
+                        routes: {},
+                    },
+                },
+            },
+
             // user dashboard
             user: {
                 authRequired: true,

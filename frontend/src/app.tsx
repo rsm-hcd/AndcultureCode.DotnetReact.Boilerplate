@@ -2,15 +2,9 @@ import "assets/scss/app.scss";
 import "react-toastify/dist/ReactToastify.min.css";
 import GlobalStateRecord from "models/view-models/global-state-record";
 import React, { useEffect, useRef, useState } from "react";
-import {
-    Redirect,
-    BrowserRouter as Router,
-    Switch,
-    useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, useLocation } from "react-router-dom";
 import { ToastContainer, ToastPosition, Zoom } from "react-toastify";
 import { routes } from "routes";
-import { siteMap } from "sitemap";
 import GlobalStateContext, {
     useGlobalState,
 } from "utilities/contexts/use-global-state-context";
@@ -76,11 +70,6 @@ const App: React.FC = () => {
                     ------------------------------------------------------------------------------------------
                     */}
                     <Switch>
-                        {/* <Redirect
-                            from={siteMap.home}
-                            to={siteMap.dashboards.user}
-                            exact={true}
-                        /> */}
                         <NestedRoutes
                             redirectIfNotFound={true}
                             routes={routeArray}

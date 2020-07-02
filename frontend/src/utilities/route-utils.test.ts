@@ -3,8 +3,12 @@ import { siteMap } from "sitemap";
 import { RouteUtils } from "utilities/route-utils";
 
 describe("RouteUtils", () => {
+    // -----------------------------------------------------------------------------------------
+    // #region absoluteToRelativePath
+    // -----------------------------------------------------------------------------------------
+
     describe("#absoluteToRelativePath", () => {
-        it("When path is root path, then returns empty string", () => {
+        it("when path is root path, then returns empty string", () => {
             // Arrange
             const path = "https://google.com/";
 
@@ -15,7 +19,7 @@ describe("RouteUtils", () => {
             expect(result).toBe("");
         });
 
-        it("When path has an extension, then returns the relative extension", () => {
+        it("when path has an extension, then returns the relative extension", () => {
             // Arrange
             const path = "https://google.com/some/path/extension.png";
 
@@ -27,8 +31,14 @@ describe("RouteUtils", () => {
         });
     });
 
+    // #endregion absoluteToRelativePath
+
+    // -----------------------------------------------------------------------------------------
+    // #region removeQueryString
+    // -----------------------------------------------------------------------------------------
+
     describe("#removeQueryString", () => {
-        it("When there is no query string, then returns string as-is", () => {
+        it("when there is no query string, then returns string as-is", () => {
             // Arrange
             const path = "https://google.com/path/";
 
@@ -39,7 +49,7 @@ describe("RouteUtils", () => {
             expect(result).toBe(path);
         });
 
-        it("When there is a query string, then it is removed", () => {
+        it("when there is a query string, then it is removed", () => {
             // Arrange
             const path = "https://google.com/extension/?hasQueryString=true";
 
@@ -51,10 +61,16 @@ describe("RouteUtils", () => {
         });
     });
 
+    // #endregion removeQueryString
+
+    // -----------------------------------------------------------------------------------------
+    // #region getCurrentRouteDefinition
+    // -----------------------------------------------------------------------------------------
+
     describe("#getCurrentRouteDefinition", () => {
-        it("When route has no route parameters, then returns correct RouteDefinition", () => {
+        it("when route has no route parameters, then returns correct RouteDefinition", () => {
             // Arrange
-            const currentRoute = siteMap.userlogins.dashboard;
+            const currentRoute = siteMap.userlogins.index;
             const expectedRouteDefinition = routes.userlogins;
 
             // Act
@@ -64,7 +80,7 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("When route is nested and has no route parameters, then returns correct nested RouteDefinition", () => {
+        it("when route is nested and has no route parameters, then returns correct nested RouteDefinition", () => {
             // Arrange
             const currentRoute = siteMap.userlogins.new;
             const expectedRouteDefinition = routes.userlogins.routes.new;
@@ -76,7 +92,7 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("When route has no route parameters and has no matching RouteDefinition, then returns undefined", () => {
+        it("when route has no route parameters and has no matching RouteDefinition, then returns undefined", () => {
             const currentRoute = "/does/not/exist";
 
             // Act
@@ -86,11 +102,14 @@ describe("RouteUtils", () => {
             expect(result).toBeUndefined();
         });
 
-        it("When route has route parameters and matches a RouteDefinition, then returns matching RouteDefinition", () => {
+        it.skip("when route has route parameters and matches a RouteDefinition, then returns matching RouteDefinition", () => {
             // Arrange
-            const currentRoute = RouteUtils.getUrl(siteMap.share.section, {
-                guid: "c6a9172e-5825-4fa9-a4c0-b58ac3fe37b6",
-            });
+            const currentRoute = RouteUtils.getUrl(
+                "TODO: Dynamically add/remove route for test",
+                {
+                    id: 10,
+                }
+            );
             const expectedRouteDefinition = routes.share.routes.section;
 
             // Act
@@ -100,12 +119,14 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("When route is nested and has route params, then returns correct nested route", () => {
+        it.skip("when route is nested and has route params, then returns correct nested route", () => {
             // Arrange
-            const currentRoute = RouteUtils.getUrl(siteMap.publications.annex, {
-                publicationId: 1,
-                id: 2,
-            });
+            const currentRoute = RouteUtils.getUrl(
+                "TODO: Dynamically add/remove route for test",
+                {
+                    id: 2,
+                }
+            );
             const expectedRouteDefinition = routes.home.routes.annex;
 
             // Act
@@ -115,7 +136,7 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("When route has route parameters and no matching RouteDefinition, then returns undefined", () => {
+        it("when route has route parameters and no matching RouteDefinition, then returns undefined", () => {
             // Arrange
             const currentRoute = "/does/not/exist/:with/:params";
 
@@ -126,4 +147,6 @@ describe("RouteUtils", () => {
             expect(result).toBeUndefined();
         });
     });
+
+    // #endregion getCurrentRouteDefinition
 });

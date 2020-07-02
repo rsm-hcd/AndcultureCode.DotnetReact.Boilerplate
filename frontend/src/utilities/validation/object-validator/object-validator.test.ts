@@ -4,7 +4,6 @@ import {
 } from "utilities/validation/object-validator/object-validator";
 import StringUtils from "utilities/string-utils";
 import { CollectionUtils } from "utilities/collection-utils";
-import Publication from "models/interfaces/publication";
 
 interface TestObject {
     description?: string;
@@ -15,8 +14,10 @@ interface TestObject {
 class TestValidator extends ObjectValidator<TestObject> {
     public static ERROR_DESCRIPTION_REQUIRED: string =
         "Description is a required field.";
+
     public static ERROR_ID_LESS_THAN_ZERO: string =
         "Id cannot be less than or equal to 0.";
+
     public static ERROR_NAME_REQUIRED: string = "Name is a required field.";
 
     public validate(
@@ -44,8 +45,14 @@ class TestValidator extends ObjectValidator<TestObject> {
     }
 }
 
+interface TestStub {
+    description?: string;
+    title?: string;
+}
+
 describe("ObjectValidator", () => {
     let sut: TestValidator;
+
     beforeEach((): void => {
         sut = new TestValidator();
     });
@@ -73,7 +80,7 @@ describe("ObjectValidator", () => {
 
         test("when passed a validation result, it returns that validation result", (): void => {
             // Arrange
-            const validationResult: ObjectValidationResult<Publication> = {
+            const validationResult: ObjectValidationResult<TestStub> = {
                 title: ["Test"],
             };
 
@@ -88,7 +95,7 @@ describe("ObjectValidator", () => {
 
         test("when passed a validation result and one or more 'empty' results, it returns only the valid validation result", (): void => {
             // Arrange
-            const validationResult: ObjectValidationResult<Publication> = {
+            const validationResult: ObjectValidationResult<TestStub> = {
                 title: ["Test"],
             };
 
@@ -104,10 +111,10 @@ describe("ObjectValidator", () => {
 
         test("when passed multiple validation results with the same key, it returns a valid validation result with concatenated errors", (): void => {
             // Arrange
-            const validationResult1: ObjectValidationResult<Publication> = {
+            const validationResult1: ObjectValidationResult<TestStub> = {
                 title: ["Test1"],
             };
-            const validationResult2: ObjectValidationResult<Publication> = {
+            const validationResult2: ObjectValidationResult<TestStub> = {
                 title: ["Test2"],
             };
 
@@ -124,15 +131,15 @@ describe("ObjectValidator", () => {
 
         test("when passed multiple validation results with the various keys, it returns a valid validation result with merged and concatenated errors", (): void => {
             // Arrange
-            const validationResult1: ObjectValidationResult<Publication> = {
+            const validationResult1: ObjectValidationResult<TestStub> = {
                 title: ["Test1"],
             };
-            const validationResult2: ObjectValidationResult<Publication> = {
-                edition: ["There's an error here."],
+            const validationResult2: ObjectValidationResult<TestStub> = {
+                description: ["There's an error here."],
                 title: ["Test2"],
             };
-            const expectedValidationResult: ObjectValidationResult<Publication> = {
-                edition: [...validationResult2.edition!],
+            const expectedValidationResult: ObjectValidationResult<TestStub> = {
+                description: [...validationResult2.description!],
                 title: [
                     ...validationResult1.title!,
                     ...validationResult2.title!,

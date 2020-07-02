@@ -1,6 +1,8 @@
 import FileRecord from "models/view-models/file-record";
-import ServiceFactory from "utilities/services/service-factory";
-import ServiceHookFactory from "utilities/services/service-hook-factory";
+import {
+    ServiceFactory,
+    ServiceHookFactory,
+} from "andculturecode-javascript-react";
 
 // -------------------------------------------------------------------------------------------------
 // #region Interfaces

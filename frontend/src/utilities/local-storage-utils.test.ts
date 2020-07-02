@@ -1,36 +1,35 @@
-import UserLoginRecord from "models/view-models/user-login-record";
-import UserRoleRecord from "models/view-models/user-role-record";
 import { LocalStorageUtils } from "utilities/local-storage-utils";
+import ResultRecord from "models/view-models/result-record";
 
 describe("LocalStorageUtils", () => {
-    let record = new UserLoginRecord();
-    const userloginKey = "USER_LOGIN_KEY";
+    const testKey = "testKey";
+    let record = new ResultRecord<any>();
+
     beforeEach(() => {
         localStorage.clear();
 
-        record = new UserLoginRecord({
-            id: 1,
-            userId: 1,
-            keepAliveOn: "false",
-            userName: "test@test.com",
-            password: "",
-            roleId: 1,
+        record = new ResultRecord({
+            resultObject: { prop: "value" },
         });
     });
 
+    // -----------------------------------------------------------------------------------------
+    // #region get
+    // -----------------------------------------------------------------------------------------
+
     describe("get", () => {
-        test("should return UserLoginRecord", () => {
+        test("should return ResultRecord", () => {
             // Arrange
-            LocalStorageUtils.set<UserLoginRecord>(userloginKey, record);
+            LocalStorageUtils.set<ResultRecord<any>>(testKey, record);
 
             // Act
-            const result = LocalStorageUtils.get<UserLoginRecord>(
-                userloginKey,
-                UserLoginRecord
+            const result = LocalStorageUtils.get<ResultRecord<any>>(
+                testKey,
+                ResultRecord
             );
             // Assert
             expect(result).not.toBeUndefined();
-            expect(result).toBeInstanceOf(UserLoginRecord);
+            expect(result).toBeInstanceOf(ResultRecord);
         });
 
         test("should return array of integers", () => {
@@ -47,58 +46,72 @@ describe("LocalStorageUtils", () => {
         });
     });
 
+    // #endregion get
+
+    // -----------------------------------------------------------------------------------------
+    // #region getArray
+    // -----------------------------------------------------------------------------------------
+
     describe("getArray", () => {
         test("should return Array of Records", () => {
             // Arrange
-            let roles: UserRoleRecord[] = new Array<UserRoleRecord>();
+            let results: ResultRecord<any>[] = new Array<ResultRecord<any>>();
 
             for (let i = 0; i < 5; i++) {
-                roles.push(
-                    new UserRoleRecord({
-                        userId: i,
-                        roleId: 1,
-                        eulaAccepted: false,
-                    })
-                );
+                results.push(new ResultRecord({ resultObject: i }));
             }
 
-            LocalStorageUtils.set<UserRoleRecord[]>(userloginKey, roles);
+            LocalStorageUtils.set<ResultRecord<any>[]>(testKey, results);
 
             // Act
-            const result = LocalStorageUtils.getArray<UserRoleRecord>(
-                userloginKey,
-                UserRoleRecord
+            const result = LocalStorageUtils.getArray<ResultRecord<any>>(
+                testKey,
+                ResultRecord
             );
 
             // Assert
             expect(result).not.toBeUndefined();
             expect(result).toBeInstanceOf(Array);
-            expect(result![0]).toBeInstanceOf(UserRoleRecord);
+            expect(result![0]).toBeInstanceOf(ResultRecord);
             expect(result!.length).toBe(5);
         });
     });
 
+    // #endregion getArray
+
+    // -----------------------------------------------------------------------------------------
+    // #region set
+    // -----------------------------------------------------------------------------------------
+
     describe("set", () => {
         test("should set object to local storage", () => {
             // Act
-            LocalStorageUtils.set<UserLoginRecord>(userloginKey, record);
-            const result = localStorage.getItem(userloginKey);
+            LocalStorageUtils.set<ResultRecord<any>>(testKey, record);
+            const result = localStorage.getItem(testKey);
 
             // Assert
             expect(result).not.toBeNull();
         });
     });
 
+    // #endregion set
+
+    // -----------------------------------------------------------------------------------------
+    // #region remove
+    // -----------------------------------------------------------------------------------------
+
     describe("remove", () => {
         test("should remove object", () => {
             // Arrange
-            LocalStorageUtils.set<UserLoginRecord>(userloginKey, record);
+            LocalStorageUtils.set<ResultRecord<any>>(testKey, record);
 
             // Act
-            LocalStorageUtils.remove(userloginKey);
+            LocalStorageUtils.remove(testKey);
 
             // Assert
             expect(localStorage.length).toBe(0);
         });
     });
+
+    // #endregion remove
 });

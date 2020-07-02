@@ -1,6 +1,8 @@
 import UserRecord from "models/view-models/user-record";
-import ServiceFactory from "utilities/services/service-factory";
-import ServiceHookFactory from "utilities/services/service-hook-factory";
+import {
+    ServiceFactory,
+    ServiceHookFactory,
+} from "andculturecode-javascript-react";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces

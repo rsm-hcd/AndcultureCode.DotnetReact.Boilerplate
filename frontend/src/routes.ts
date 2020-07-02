@@ -5,6 +5,7 @@ import { siteMap } from "sitemap";
 import ApplicationLayout from "templates/application-layout";
 import UserLoginLayout from "templates/user-login-layout";
 import { RouteMap } from "utilities/interfaces/route-map";
+import HomePage from "pages/home/home";
 
 /*
 ---------------------------------------------------------------------------------------------
@@ -15,7 +16,7 @@ Routing Table
 export const routes: RouteMap = {
     /**
      * Anything that doesn't use ApplicationLayout will
-     * need to be placed before the `home` route,
+     * need to be placed before the `root` route,
      * such that the <Switch> component picks up the desired
      * layout before the ApplicationLayout, since the `home`
      * route is just "/"
@@ -44,20 +45,24 @@ export const routes: RouteMap = {
             },
         },
     },
-    //home
-    home: {
+
+    // root
+    root: {
         /**
-         * anything that uses ApplicationLayout can be nested under the home route, so that we can avoid
-         * needing blank index pages that don't do anything just to use the layout.
-         *
-         * authRequired needs to be false for the top-level home route, i.e. "/", otherwise
-         * it will try to check auth at "/" level, so "/userlogins/new" will try to
-         * check auth, resulting in an infinite redirect loop
+         * Anything that uses ApplicationLayout can be nested under the root route.
          */
         authRequired: false,
         component: ApplicationLayout,
-        path: siteMap.home,
+        path: siteMap.root,
         routes: {
+            // home
+            index: {
+                authRequired: false,
+                component: HomePage,
+                exact: true,
+                path: siteMap.root,
+                routes: {},
+            },
             // user dashboard
             user: {
                 authRequired: true,

@@ -12,7 +12,6 @@ import { ToastContainer, ToastPosition, Zoom } from "react-toastify";
 import { routes } from "routes";
 import { siteMap } from "sitemap";
 import GlobalStateContext, {
-    GlobalStateUpdater,
     useGlobalState,
 } from "utilities/contexts/use-global-state-context";
 import { CoreUtils } from "utilities/core-utils";
@@ -77,11 +76,11 @@ const App: React.FC = () => {
                     ------------------------------------------------------------------------------------------
                     */}
                     <Switch>
-                        <Redirect
+                        {/* <Redirect
                             from={siteMap.home}
                             to={siteMap.dashboards.user}
                             exact={true}
-                        />
+                        /> */}
                         <NestedRoutes
                             redirectIfNotFound={true}
                             routes={routeArray}

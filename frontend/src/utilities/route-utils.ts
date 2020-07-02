@@ -87,7 +87,7 @@ const getCurrentRouteDefinition = (
     // we already matched the home route above, so filter it out
     // and sort by length of path so that nested routes appear after their parents
     const allRoutes: Array<RouteDefinition> = _cachedFlattenedRoutes!
-        .filter((r: RouteDefinition) => r.path !== siteMap.home)
+        .filter((r: RouteDefinition) => r.path !== siteMap.root)
         .sort(
             (a: RouteDefinition, b: RouteDefinition) =>
                 a.path.length - b.path.length

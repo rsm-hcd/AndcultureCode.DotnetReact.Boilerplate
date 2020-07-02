@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Heading from "atoms/typography/heading";
 import { SkipNavContent } from "@reach/skip-nav";
 

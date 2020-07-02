@@ -1,5 +1,5 @@
 import InputCharacterCount from "atoms/forms/input-character-count";
-import { InputProperties } from "interfaces/forms/input-properties";
+import { InputProperties } from "atoms/interfaces/forms/input-properties";
 import React, { forwardRef, Ref, RefObject } from "react";
 import uuid from "uuid";
 import { InputTypes } from "atoms/constants/input-types";

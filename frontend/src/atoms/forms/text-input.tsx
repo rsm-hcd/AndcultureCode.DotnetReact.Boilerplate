@@ -1,5 +1,5 @@
 import { InputTypes } from "atoms/constants/input-types";
-import { InputProperties } from "interfaces/forms/input-properties";
+import { InputProperties } from "atoms/interfaces/forms/input-properties";
 import React from "react";
 
 /*

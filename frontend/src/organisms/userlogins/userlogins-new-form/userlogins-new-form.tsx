@@ -4,12 +4,10 @@ import { InputTypes } from "atoms/constants/input-types";
 import SubmitButton from "atoms/forms/submit-button";
 import Heading from "atoms/typography/heading";
 import Paragraph from "atoms/typography/paragraph";
-import ResultRecord from "models/view-models/result-record";
 import CheckboxFormField from "molecules/form-fields/checkbox-form-field";
 import InputFormField from "molecules/form-fields/input-form-field";
 import PasswordFormField from "molecules/form-fields/password-form-field";
 import Form from "molecules/forms/form";
-import moment from "moment";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { siteMap } from "sitemap";
@@ -17,9 +15,7 @@ import { CollectionUtils } from "utilities/collection-utils";
 import usePageErrors from "utilities/hooks/use-page-errors";
 import { RouteUtils } from "utilities/route-utils";
 import StringUtils from "utilities/string-utils";
-import { useGlobalState } from "utilities/contexts/use-global-state-context";
 import { useLocalization } from "andculturecode-javascript-react";
-import GlobalStateRecord from "models/view-models/global-state-record";
 import CultureResources from "utilities/interfaces/culture-resources";
 
 interface NewUserLoginFormProps {
@@ -37,17 +33,15 @@ interface NewUserLoginFormProps {
 const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     props: NewUserLoginFormProps
 ) => {
-    const { setGlobalState } = useGlobalState();
-
     const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+    const [passwordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
-    const [signingIn, setSigningIn] = useState(false);
+    const [signingIn] = useState(false);
     const [username, setUserName] = useState("");
-    const [usernameError, setUserNameError] = useState("");
+    const [usernameError] = useState("");
     const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
 
-    const { setPageErrors, pageErrors, resetPageErrors } = usePageErrors();
+    const { pageErrors } = usePageErrors();
     const { t } = useLocalization<CultureResources>();
 
     useEffect(() => {
@@ -60,28 +54,6 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         e.preventDefault();
 
         props.onSuccess?.();
-    };
-
-    const validate = async () => {
-        resetErrors();
-        let hasErrors = false;
-
-        if (username.length === 0) {
-            setUserNameError(
-                t("propertyIsRequired", { name: t("emailAddress") })
-            );
-            hasErrors = true;
-        }
-        if (password.length === 0) {
-            setPasswordError(t("propertyIsRequired", { name: t("password") }));
-            hasErrors = true;
-        }
-
-        return hasErrors;
-    };
-    const resetErrors = () => {
-        setUserNameError("");
-        setPasswordError("");
     };
 
     return (
@@ -143,10 +115,10 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
             {// if
             !signingIn && (
                 <div className="c-userlogin-new-form__help-links">
-                    <Anchor to={RouteUtils.getUrl(siteMap.home)}>
+                    <Anchor to={RouteUtils.getUrl(siteMap.root)}>
                         {t("forgotYourPassword")}
                     </Anchor>
-                    <Anchor to={RouteUtils.getUrl(siteMap.home)}>
+                    <Anchor to={RouteUtils.getUrl(siteMap.root)}>
                         {t("needHelpSigningIn")}
                     </Anchor>
                 </div>

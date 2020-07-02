@@ -5,7 +5,7 @@ export const siteMap = {
     errors: {
         notFound: "/errors/not-found",
     },
-    home: "/",
+    root: "/",
     userlogins: {
         index: "/userlogins",
         new: "/userlogins/new",

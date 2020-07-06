@@ -1,5 +1,5 @@
 .c-login-layout {
-    @extend .o-rhythm__row;
+    @extend .o-grid__row;
     @include fixedViewHeightScrollY();
     display: flex;
     align-content: flex-start;

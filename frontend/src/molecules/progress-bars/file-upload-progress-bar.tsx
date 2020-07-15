@@ -1,8 +1,11 @@
-import Button, { ButtonTypes } from "atoms/buttons/button";
-import { ButtonStyles } from "atoms/constants/button-styles";
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
-import Icon from "atoms/icons/icon";
+import {
+    Icon,
+    Icons,
+    IconSizes,
+    Button,
+    ButtonStyles,
+    ButtonTypes,
+} from "andculturecode-javascript-react-components";
 import ProgressBar from "atoms/progress/progress-bar";
 import Paragraph from "atoms/typography/paragraph";
 import React from "react";

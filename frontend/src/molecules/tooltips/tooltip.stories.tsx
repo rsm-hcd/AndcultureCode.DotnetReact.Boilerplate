@@ -1,5 +1,5 @@
 import { boolean, text } from "@storybook/addon-knobs";
-import Button from "atoms/buttons/button";
+import { Button } from "andculturecode-javascript-react-components";
 import React from "react";
 import Tooltip from "molecules/tooltips/tooltip";
 

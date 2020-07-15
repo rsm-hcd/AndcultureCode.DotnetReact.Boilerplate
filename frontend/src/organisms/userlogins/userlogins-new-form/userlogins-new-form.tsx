@@ -1,4 +1,4 @@
-import Anchor from "atoms/anchors/anchor";
+import { Anchor } from "andculturecode-javascript-react-components";
 import { HeadingPriority } from "atoms/constants/heading-priority";
 import { InputTypes } from "atoms/constants/input-types";
 import SubmitButton from "atoms/forms/submit-button";

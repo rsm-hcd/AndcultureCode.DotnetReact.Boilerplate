@@ -1,12 +1,12 @@
 import * as React from "react";
-
 import { useEffect, useState } from "react";
-
-import Button from "atoms/buttons/button";
-import { ButtonStyles } from "atoms/constants/button-styles";
-import Icon from "atoms/icons/icon";
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
+import {
+    Button,
+    ButtonStyles,
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 import { v4 } from "uuid";
 import { CollectionUtils } from "utilities/collection-utils";
 

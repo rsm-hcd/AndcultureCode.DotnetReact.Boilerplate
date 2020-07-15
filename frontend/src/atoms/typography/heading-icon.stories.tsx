@@ -1,6 +1,5 @@
 import { HeadingPriority } from "atoms/constants/heading-priority";
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
+import { Icons, IconSizes } from "andculturecode-javascript-react-components";
 import React from "react";
 import { TestUtils } from "utilities/test-utils";
 import { select } from "@storybook/addon-knobs";

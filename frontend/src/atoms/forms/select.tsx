@@ -1,5 +1,5 @@
-import { Icons } from "atoms/constants/icons";
-import Icon from "atoms/icons/icon";
+// import { Icons } from "atoms/constants/icons";
+import { Icon, Icons } from "andculturecode-javascript-react-components";
 import React, { ChangeEvent } from "react";
 import StringUtils from "utilities/string-utils";
 

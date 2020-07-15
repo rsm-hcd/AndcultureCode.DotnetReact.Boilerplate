@@ -1,7 +1,6 @@
 import { InputTypes } from "atoms/constants/input-types";
 import React from "react";
-import Icon from "atoms/icons/icon";
-import { Icons } from "atoms/constants/icons";
+import { Icon, Icons } from "andculturecode-javascript-react-components";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces

@@ -1,8 +1,10 @@
-import Anchor from "atoms/anchors/anchor";
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
-import Icon from "atoms/icons/icon";
-import { Icons } from "atoms/constants/icons";
+import {
+    Anchor,
+    ButtonSizes,
+    ButtonStyles,
+    Icon,
+    Icons,
+} from "andculturecode-javascript-react-components";
 import React from "react";
 
 export interface AnchorWithIconProps {

@@ -1,9 +1,12 @@
-import Button, { ButtonTypes } from "atoms/buttons/button";
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
-import Icon from "atoms/icons/icon";
+import {
+    Button,
+    ButtonTypes,
+    ButtonSizes,
+    ButtonStyles,
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 import Paragraph from "atoms/typography/paragraph";
 import {
     ListBoxBaseClassName,

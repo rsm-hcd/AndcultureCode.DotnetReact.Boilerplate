@@ -22,6 +22,8 @@ import { initReactI18next } from "react-i18next";
 import EnglishUnitedStates from "cultures/english-united-states";
 import SpanishSpain from "cultures/spanish-spain";
 import CultureResources from "utilities/interfaces/culture-resources";
+import { IconUtils } from "andculturecode-javascript-react-components";
+import { SvgIcons } from "atoms/constants/svg-icons";
 
 // -----------------------------------------------------------------------------------------
 // #region Application Component
@@ -41,6 +43,8 @@ const App: React.FC = () => {
         globalState,
         setGlobalState,
     });
+
+    IconUtils.register(SvgIcons);
 
     const routeArray = CoreUtils.objectToArray(routes);
     const flattenedRoutes = RouteUtils.getFlattenedRoutes(routeArray);

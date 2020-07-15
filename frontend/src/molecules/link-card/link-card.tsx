@@ -1,12 +1,14 @@
-import Anchor from "atoms/anchors/anchor";
 import { ParagraphSizes } from "atoms/constants/paragraph-sizes";
 import Paragraph from "atoms/typography/paragraph";
 import React from "react";
 import { LinkCardTypes } from "molecules/constants/link-card-types";
-import Button from "atoms/buttons/button";
 import StringUtils from "utilities/string-utils";
-import Icon from "atoms/icons/icon";
-import { Icons } from "atoms/constants/icons";
+import {
+    Anchor,
+    Button,
+    Icon,
+    Icons,
+} from "andculturecode-javascript-react-components";
 
 export interface LinkCardProps {
     children: any;
@@ -30,8 +32,8 @@ const LinkCard: React.FC<LinkCardProps> = (props: LinkCardProps) => {
                 <Button
                     onClick={props.onClick}
                     cssClassName={cssClassNames.join(" ")}>
-                    {// if
-                    props.includeIcon && <Icon type={Icons.Lightbulb} />}
+                    {// if - TODO: Switch to Lightbulb when AndcultureCode component gets it
+                    props.includeIcon && <Icon type={Icons.Checkmark} />}
                     <div className={`${CSS_BASE_CLASS_NAME}__content`}>
                         <Paragraph size={ParagraphSizes.Small}>
                             {props.children}
@@ -50,8 +52,8 @@ const LinkCard: React.FC<LinkCardProps> = (props: LinkCardProps) => {
             {// if
             props.type === LinkCardTypes.Link && (
                 <Anchor to={props.to} cssClassName={cssClassNames.join(" ")}>
-                    {// if
-                    props.includeIcon && <Icon type={Icons.Lightbulb} />}
+                    {// if - TODO: Switch to Lightbulb when AndcultureCode component gets it
+                    props.includeIcon && <Icon type={Icons.Checkmark} />}
                     <div className={`${CSS_BASE_CLASS_NAME}__content`}>
                         <Paragraph size={ParagraphSizes.Small}>
                             {props.children}

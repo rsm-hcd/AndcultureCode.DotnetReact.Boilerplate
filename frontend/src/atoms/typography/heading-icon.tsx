@@ -1,9 +1,11 @@
 import React from "react";
 import { HeadingPriority } from "atoms/constants/heading-priority";
 import Heading from "./heading";
-import Icon from "atoms/icons/icon";
-import { Icons } from "atoms/constants/icons";
-import { IconSizes } from "atoms/constants/icon-sizes";
+import {
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 
 /*
 -----------------------------------------------------------------------------------------

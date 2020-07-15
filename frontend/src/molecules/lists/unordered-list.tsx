@@ -1,5 +1,5 @@
 import React from "react";
-import { Icons } from "atoms/constants/icons";
+import { Icons } from "andculturecode-javascript-react-components";
 
 /*
 -----------------------------------------------------------------------------------------

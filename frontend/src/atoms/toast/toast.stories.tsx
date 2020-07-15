@@ -1,5 +1,7 @@
-import Button from "atoms/buttons/button";
-import { ButtonSizes } from "atoms/constants/button-sizes";
+import {
+    Button,
+    ButtonSizes,
+} from "andculturecode-javascript-react-components";
 import React from "react";
 import { ToastContainer, ToastPosition, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";

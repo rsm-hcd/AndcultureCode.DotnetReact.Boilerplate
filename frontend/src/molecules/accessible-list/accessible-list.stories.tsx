@@ -1,6 +1,8 @@
-import Button from "atoms/buttons/button";
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
+import {
+    Button,
+    ButtonSizes,
+    ButtonStyles,
+} from "andculturecode-javascript-react-components";
 import Faker from "faker";
 import AccessibleList from "molecules/accessible-list/accessible-list";
 import React from "react";

@@ -1,7 +1,9 @@
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
 import TextInput, { TextInputProps } from "atoms/forms/text-input";
-import Icon from "atoms/icons/icon";
+import {
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 import React from "react";
 
 // -------------------------------------------------------------------------------------------------

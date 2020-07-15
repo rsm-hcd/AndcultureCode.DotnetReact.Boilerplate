@@ -1,6 +1,8 @@
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
-import Icon from "atoms/icons/icon";
+import {
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 import React from "react";
 import { ToastContent } from "react-toastify";
 
@@ -21,20 +23,20 @@ const getTemplate = (
 );
 
 export class ToastTemplates {
-    static success(content: string | ToastContent): ToastContent {
-        return getTemplate(Icons.CheckmarkOvalFilled, content);
-    }
-
     static error(content: string | ToastContent): ToastContent {
         return getTemplate(Icons.Warning, content);
+    }
+
+    static info(content: string | ToastContent): ToastContent {
+        return getTemplate(Icons.Information, content);
+    }
+
+    static success(content: string | ToastContent): ToastContent {
+        return getTemplate(Icons.Checkmark, content);
     }
 
     static warning(content: string | ToastContent): ToastContent {
         // warning uses same icon as error, just colored differently
         return ToastTemplates.error(content);
-    }
-
-    static info(content: string | ToastContent): ToastContent {
-        return getTemplate(Icons.Information, content);
     }
 }

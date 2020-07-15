@@ -1,4 +1,4 @@
-import Anchor from "atoms/anchors/anchor";
+import { Anchor } from "andculturecode-javascript-react-components";
 import { HeadingPriority } from "atoms/constants/heading-priority";
 import { ParagraphSizes } from "atoms/constants/paragraph-sizes";
 import Heading from "atoms/typography/heading";

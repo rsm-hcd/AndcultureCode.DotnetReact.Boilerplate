@@ -1,8 +1,10 @@
 import { optionsKnob } from "@storybook/addon-knobs";
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
-import { Icons } from "atoms/constants/icons";
-import Icon from "atoms/icons/icon";
+import {
+    ButtonSizes,
+    ButtonStyles,
+    Icon,
+    Icons,
+} from "andculturecode-javascript-react-components";
 import DropdownButton, {
     DropdownItem,
 } from "molecules/dropdown-button/dropdown-button";

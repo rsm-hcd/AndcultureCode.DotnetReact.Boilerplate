@@ -1,5 +1,7 @@
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
+import {
+    ButtonSizes,
+    ButtonStyles,
+} from "andculturecode-javascript-react-components";
 import React from "react";
 import { Menu, MenuButton, MenuItem, MenuList } from "@reach/menu-button";
 import uuid from "uuid";

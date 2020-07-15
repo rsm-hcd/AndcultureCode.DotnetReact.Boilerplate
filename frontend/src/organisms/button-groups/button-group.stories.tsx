@@ -1,5 +1,7 @@
-import Button from "atoms/buttons/button";
-import { ButtonStyles } from "atoms/constants/button-styles";
+import {
+    Button,
+    ButtonStyles,
+} from "andculturecode-javascript-react-components";
 import ButtonGroup from "organisms/button-groups/button-group";
 import React from "react";
 

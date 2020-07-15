@@ -1,6 +1,9 @@
-import Button, { ButtonTypes } from "atoms/buttons/button";
-import { ButtonSizes } from "atoms/constants/button-sizes";
-import { ButtonStyles } from "atoms/constants/button-styles";
+import {
+    Button,
+    ButtonSizes,
+    ButtonStyles,
+    ButtonTypes,
+} from "andculturecode-javascript-react-components";
 import Paragraph from "atoms/typography/paragraph";
 import React, { ReactElement } from "react";
 import { CollectionUtils } from "utilities/collection-utils";

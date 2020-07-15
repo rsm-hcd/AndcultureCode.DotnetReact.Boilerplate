@@ -1,8 +1,10 @@
 import * as React from "react";
 
-import Icon from "atoms/icons/icon";
-import { IconSizes } from "atoms/constants/icon-sizes";
-import { Icons } from "atoms/constants/icons";
+import {
+    Icon,
+    Icons,
+    IconSizes,
+} from "andculturecode-javascript-react-components";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces

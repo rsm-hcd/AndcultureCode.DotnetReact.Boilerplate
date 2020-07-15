@@ -2,7 +2,7 @@ import React from "react";
 import UnorderedList from "./unordered-list";
 import Faker from "faker";
 import { select } from "@storybook/addon-knobs";
-import { Icons } from "atoms/constants/icons";
+import { Icons } from "andculturecode-javascript-react-components";
 
 export default {
     title: "Molecules | Lists / UnorderedList",

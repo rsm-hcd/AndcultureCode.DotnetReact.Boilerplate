@@ -4,6 +4,10 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { withInfo } from "@storybook/addon-info";
 import "assets/scss/app.scss";
 import "./storybook.css";
+import { IconUtils } from "andculturecode-javascript-react-components";
+import { SvgIcons } from "atoms/constants/svg-icons";
+
+IconUtils.register(SvgIcons);
 
 setDefaults({
     header: true,

@@ -23,6 +23,11 @@
  * Utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
  */
 
-@import "0-vendor/__vendor", "1-settings/__settings", "2-tools/__tools",
-    "3-generic/__generic", "4-elements/__elements", "5-objects/__objects",
-    "6-components/__components", "7-utilities/__utilities";
+@import "0-vendor/__vendor";
+@import "1-settings/__settings";
+@import "2-tools/__tools";
+@import "3-generic/__generic";
+@import "4-elements/__elements";
+@import "5-objects/__objects";
+@import "6-components/__components";
+@import "7-utilities/__utilities";

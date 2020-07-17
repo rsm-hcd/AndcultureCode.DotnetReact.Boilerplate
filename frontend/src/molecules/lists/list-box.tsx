@@ -4,7 +4,7 @@ import {
     ButtonStyles,
     ButtonTypes,
 } from "andculturecode-javascript-react-components";
-import Paragraph from "atoms/typography/paragraph";
+import { Paragraph } from "andculturecode-javascript-react-components";
 import React, { ReactElement } from "react";
 import { CollectionUtils } from "utilities/collection-utils";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Heading from "atoms/typography/heading";
+import { Heading } from "andculturecode-javascript-react-components";
 import { SkipNavContent } from "@reach/skip-nav";
 
 /*

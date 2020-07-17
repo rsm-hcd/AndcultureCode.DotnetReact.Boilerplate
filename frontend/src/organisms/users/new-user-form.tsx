@@ -1,5 +1,3 @@
-import SubmitButton from "atoms/forms/submit-button";
-import Paragraph from "atoms/typography/paragraph";
 import InputFormField from "molecules/form-fields/input-form-field";
 import PasswordFormField from "molecules/form-fields/password-form-field";
 import Form from "molecules/forms/form";
@@ -7,8 +5,12 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import StringUtils from "utilities/string-utils";
 import { v4 } from "uuid";
-import { ParagraphSizes } from "atoms/constants/paragraph-sizes";
 import { useHistory } from "react-router-dom";
+import {
+    Paragraph,
+    ParagraphSizes,
+    SubmitButton,
+} from "andculturecode-javascript-react-components";
 
 interface NewUserFormProps {
     /**

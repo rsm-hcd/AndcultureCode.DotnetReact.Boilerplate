@@ -1,6 +1,9 @@
 import React from "react";
 import uuid from "uuid";
-import Select, { SelectOption } from "atoms/forms/select";
+import {
+    SelectOption,
+    Select,
+} from "andculturecode-javascript-react-components/dist/atoms/forms/select";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces

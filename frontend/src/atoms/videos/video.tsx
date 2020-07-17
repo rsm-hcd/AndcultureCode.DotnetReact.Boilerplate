@@ -1,4 +1,4 @@
-import Paragraph from "atoms/typography/paragraph";
+import { Paragraph } from "andculturecode-javascript-react-components";
 import React from "react";
 import PathUtils from "utilities/path-utils";
 import { RouteUtils } from "utilities/route-utils";

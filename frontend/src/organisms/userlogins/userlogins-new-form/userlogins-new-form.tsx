@@ -1,9 +1,12 @@
-import { Anchor } from "andculturecode-javascript-react-components";
-import { HeadingPriority } from "atoms/constants/heading-priority";
-import { InputTypes } from "atoms/constants/input-types";
-import SubmitButton from "atoms/forms/submit-button";
-import Heading from "atoms/typography/heading";
-import Paragraph from "atoms/typography/paragraph";
+import {
+    Anchor,
+    Heading,
+    HeadingPriority,
+    SubmitButton,
+    Paragraph,
+    InputTypes,
+} from "andculturecode-javascript-react-components";
+
 import CheckboxFormField from "molecules/form-fields/checkbox-form-field";
 import InputFormField from "molecules/form-fields/input-form-field";
 import PasswordFormField from "molecules/form-fields/password-form-field";
@@ -19,8 +22,8 @@ import { useLocalization } from "andculturecode-javascript-react";
 import CultureResources from "utilities/interfaces/culture-resources";
 
 interface NewUserLoginFormProps {
-    defaultEmail?: string;
     buttonText?: string;
+    defaultEmail?: string;
 
     /**
      * Optional callback that will be fired after successfully logging in the user.

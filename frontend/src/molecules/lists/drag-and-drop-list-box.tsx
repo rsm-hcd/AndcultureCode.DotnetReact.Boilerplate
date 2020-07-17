@@ -6,8 +6,8 @@ import {
     Icon,
     Icons,
     IconSizes,
+    Paragraph,
 } from "andculturecode-javascript-react-components";
-import Paragraph from "atoms/typography/paragraph";
 import {
     ListBoxBaseClassName,
     ListBoxItem,

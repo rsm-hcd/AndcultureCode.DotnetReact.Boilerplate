@@ -1,8 +1,8 @@
 import Faker from "faker";
 import Form from "molecules/forms/form";
 import React from "react";
-import SubmitButton from "atoms/forms/submit-button";
 import { text } from "@storybook/addon-knobs";
+import { SubmitButton } from "andculturecode-javascript-react-components";
 
 export default {
     title: "Molecules | Forms / Form",

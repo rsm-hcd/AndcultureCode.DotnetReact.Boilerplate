@@ -1,10 +1,10 @@
-import { SelectOption } from "atoms/forms/select";
 import { KeyboardConstants } from "constants/keyboard-constants";
 import React, { useState } from "react";
 import Select, { OptionTypeBase, ValueType } from "react-select";
 import makeAnimated from "react-select/animated";
 import { CollectionUtils } from "utilities/collection-utils";
 import StringUtils from "utilities/string-utils";
+import { SelectOption } from "andculturecode-javascript-react-components/dist/atoms/forms/select";
 
 // -------------------------------------------------------------------------------------------------
 // #region Interfaces

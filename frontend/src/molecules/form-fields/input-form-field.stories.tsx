@@ -1,7 +1,7 @@
 import InputFormField from "molecules/form-fields/input-form-field";
 import { text, boolean, number, select } from "@storybook/addon-knobs";
 import React from "react";
-import { InputTypes } from "atoms/constants/input-types";
+import { InputTypes } from "andculturecode-javascript-react-components";
 
 export default {
     title: "Molecules | Forms / Input Form Field",

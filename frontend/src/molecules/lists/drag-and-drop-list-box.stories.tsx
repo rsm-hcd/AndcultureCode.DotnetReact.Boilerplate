@@ -1,4 +1,4 @@
-import Paragraph from "atoms/typography/paragraph";
+import { Paragraph } from "andculturecode-javascript-react-components";
 import DragAndDropListBox from "molecules/lists/drag-and-drop-list-box";
 import { ListBoxItem } from "molecules/lists/list-box";
 import { CollectionUtils } from "utilities/collection-utils";

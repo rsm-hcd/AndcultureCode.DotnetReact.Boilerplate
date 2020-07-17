@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
-import { InputProperties } from "atoms/interfaces/forms/input-properties";
-import PasswordInput from "atoms/forms/password-input";
 import uuid from "uuid";
+import {
+    InputProperties,
+    PasswordInput,
+} from "andculturecode-javascript-react-components";
 
 /*
 -----------------------------------------------------------------------------------------

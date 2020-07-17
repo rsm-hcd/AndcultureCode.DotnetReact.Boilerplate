@@ -5,9 +5,9 @@ import {
     Button,
     ButtonStyles,
     ButtonTypes,
+    Paragraph,
+    ProgressBar,
 } from "andculturecode-javascript-react-components";
-import ProgressBar from "atoms/progress/progress-bar";
-import Paragraph from "atoms/typography/paragraph";
 import React from "react";
 import StringUtils from "utilities/string-utils";
 

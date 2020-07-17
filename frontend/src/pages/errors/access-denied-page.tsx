@@ -1,8 +1,10 @@
-import { Anchor } from "andculturecode-javascript-react-components";
-import { HeadingPriority } from "atoms/constants/heading-priority";
-import { ParagraphSizes } from "atoms/constants/paragraph-sizes";
-import Heading from "atoms/typography/heading";
-import Paragraph from "atoms/typography/paragraph";
+import {
+    Anchor,
+    Heading,
+    HeadingPriority,
+    ParagraphSizes,
+    Paragraph,
+} from "andculturecode-javascript-react-components";
 import * as React from "react";
 import { siteMap } from "sitemap";
 

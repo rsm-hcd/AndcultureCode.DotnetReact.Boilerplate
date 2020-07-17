@@ -1,8 +1,10 @@
-import InputCharacterCount from "atoms/forms/input-character-count";
-import { InputProperties } from "atoms/interfaces/forms/input-properties";
+import {
+    InputCharacterCount,
+    InputProperties,
+    InputTypes,
+} from "andculturecode-javascript-react-components";
 import React, { forwardRef, Ref, RefObject } from "react";
 import uuid from "uuid";
-import { InputTypes } from "atoms/constants/input-types";
 import { CollectionUtils } from "utilities/collection-utils";
 import StringUtils from "utilities/string-utils";
 

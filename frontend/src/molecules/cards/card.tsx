@@ -1,12 +1,21 @@
-import React from "react";
-import Paragraph from "atoms/typography/paragraph";
+import React, { PropsWithChildren } from "react";
+import { Paragraph } from "andculturecode-javascript-react-components";
+
+// -------------------------------------------------------------------------------------------------
+// #region Interfaces
+// -------------------------------------------------------------------------------------------------
 
 export interface CardProps {
-    children: any;
     label: string;
 }
 
-const Card: React.FC<CardProps> = (props: CardProps) => {
+// #endregion Interfaces
+
+// -------------------------------------------------------------------------------------------------
+// #region Components
+// -------------------------------------------------------------------------------------------------
+
+const Card: React.FC<CardProps> = (props: PropsWithChildren<CardProps>) => {
     return (
         <div className="c-card">
             <div className="c-card__content">
@@ -19,10 +28,12 @@ const Card: React.FC<CardProps> = (props: CardProps) => {
     );
 };
 
-/*
----------------------------------------------------------------------------------------------
-Exports
----------------------------------------------------------------------------------------------
-*/
+// #endregion Components
+
+// -------------------------------------------------------------------------------------------------
+// #region Exports
+// -------------------------------------------------------------------------------------------------
 
 export default Card;
+
+// #endregion Exports

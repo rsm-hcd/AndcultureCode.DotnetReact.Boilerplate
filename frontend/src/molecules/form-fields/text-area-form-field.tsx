@@ -1,6 +1,6 @@
 import React from "react";
 import uuid from "uuid";
-import TextArea from "atoms/forms/text-area";
+import { TextArea } from "andculturecode-javascript-react-components";
 
 // -----------------------------------------------------------------------------------------
 // #region Interfaces

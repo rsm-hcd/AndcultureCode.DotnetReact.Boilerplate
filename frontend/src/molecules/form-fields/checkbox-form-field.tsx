@@ -1,7 +1,6 @@
-import CheckboxInput, {
-    CheckboxInputProperties,
-} from "atoms/forms/checkbox-input";
+import { CheckboxInput } from "andculturecode-javascript-react-components";
 import React from "react";
+import { CheckboxInputProperties } from "andculturecode-javascript-react-components/dist/atoms/forms/checkbox-input";
 
 /*
 -----------------------------------------------------------------------------------------

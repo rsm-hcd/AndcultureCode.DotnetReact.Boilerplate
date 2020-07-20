@@ -8,6 +8,12 @@ import { useLocalization } from "andculturecode-javascript-react";
 import CultureResources from "utilities/interfaces/culture-resources";
 
 // -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
@@ -21,6 +27,7 @@ interface NewUserLoginPageProps {}
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
     const { t } = useLocalization<CultureResources>();
+    // const { t } = useTranslation();
 
     return (
         <React.Fragment>

@@ -2,7 +2,12 @@ import "assets/scss/app.scss";
 import "react-toastify/dist/ReactToastify.min.css";
 import GlobalStateRecord from "models/view-models/global-state-record";
 import React, { useEffect, useRef, useState } from "react";
-import { BrowserRouter as Router, Switch, useLocation } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    useLocation,
+    Redirect,
+} from "react-router-dom";
 import { ToastContainer, ToastPosition, Zoom } from "react-toastify";
 import { routes } from "routes";
 import GlobalStateContext, {
@@ -24,6 +29,7 @@ import SpanishSpain from "cultures/spanish-spain";
 import CultureResources from "utilities/interfaces/culture-resources";
 import { IconUtils } from "andculturecode-javascript-react-components";
 import { SvgIcons } from "atoms/constants/svg-icons";
+import { siteMap } from "sitemap";
 
 // -----------------------------------------------------------------------------------------
 // #region Application Component
@@ -62,6 +68,11 @@ const App: React.FC = () => {
                     portions of your application more dyanmic and driven by routing.
                     */}
                     <Switch>
+                        <Redirect
+                            exact={true}
+                            from={siteMap.root}
+                            to={siteMap.userlogins.new}
+                        />
                         <NestedRoutesByProperty
                             propertyName="sidebar"
                             routes={flattenedRoutes}

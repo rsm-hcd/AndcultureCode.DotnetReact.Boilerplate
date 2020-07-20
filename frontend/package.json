@@ -21,7 +21,7 @@
         "@types/react-select": "3.0.11",
         "andculturecode-javascript-core": "0.1.0",
         "andculturecode-javascript-react": "0.0.9",
-        "andculturecode-javascript-react-components": "0.1.1",
+        "andculturecode-javascript-react-components": "wintondeshong/AndcultureCode.JavaScript.React.Components#master",
         "andculturecode-scss-grid": "2.0.4",
         "axios": "0.19.2",
         "babel-polyfill": "6.26.0",

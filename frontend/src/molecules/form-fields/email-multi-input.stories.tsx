@@ -4,26 +4,25 @@ import React, { useState } from "react";
 import StringUtils from "utilities/string-utils";
 
 export default {
-    title: "Molecules | Forms / Email Multi Input Form Field",
     component: EmailMultiInput,
+    title: "Molecules | Forms / Email Multi Input Form Field",
 };
 
 export const EmailMultiInputDefault = () => {
     const [emails, setEmails] = useState<Array<string>>([]);
-
     const labelKnob = text("Label", "");
+    const label = StringUtils.hasValue(labelKnob) ? labelKnob : undefined;
     const placeholderKnob = text("Placeholder", "");
+    const placeholder = StringUtils.hasValue(placeholderKnob)
+        ? placeholderKnob
+        : undefined;
 
     return (
         <EmailMultiInput
             emails={emails}
+            label={label}
             onEmailsChanged={setEmails}
-            label={StringUtils.hasValue(labelKnob) ? labelKnob : undefined}
-            placeholder={
-                StringUtils.hasValue(placeholderKnob)
-                    ? placeholderKnob
-                    : undefined
-            }
+            placeholder={placeholder}
         />
     );
 };

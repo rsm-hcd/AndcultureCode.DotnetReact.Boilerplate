@@ -1,16 +1,30 @@
-import InputFormField from "molecules/form-fields/input-form-field";
-import PasswordFormField from "molecules/form-fields/password-form-field";
-import Form from "molecules/forms/form";
+import {
+    Form,
+    InputFormField,
+    Paragraph,
+    ParagraphSizes,
+    PasswordFormField,
+    SubmitButton,
+} from "andculturecode-javascript-react-components";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import StringUtils from "utilities/string-utils";
 import { v4 } from "uuid";
 import { useHistory } from "react-router-dom";
-import {
-    Paragraph,
-    ParagraphSizes,
-    SubmitButton,
-} from "andculturecode-javascript-react-components";
+
+// -----------------------------------------------------------------------------------------
+// #region Constants
+// -----------------------------------------------------------------------------------------
+
+const BASE_CLASS = "c-new-user-form";
+const PASSWORD_REQUIREMENTS =
+    "Must be at least 6 characters long and contain 3 of the 4 following character types: 'UpperCase', 'LowerCase', 'Number', or 'Special Character'.";
+
+// #endregion Constants
+
+// -----------------------------------------------------------------------------------------
+// #region Interfaces
+// -----------------------------------------------------------------------------------------
 
 interface NewUserFormProps {
     /**
@@ -36,15 +50,11 @@ interface NewUserFormProps {
     submitButtonText: string;
 }
 
-// -----------------------------------------------------------------------------------------
-// #region Constants
-// -----------------------------------------------------------------------------------------
-
-const BASE_CLASS = "c-new-user-form";
-const PASSWORD_REQUIREMENTS =
-    "Must be at least 6 characters long and contain 3 of the 4 following character types: 'UpperCase', 'LowerCase', 'Number', or 'Special Character'.";
-
 // #endregion Constants
+
+// -----------------------------------------------------------------------------------------
+// #region Component
+// -----------------------------------------------------------------------------------------
 
 const NewUserForm: React.FunctionComponent<NewUserFormProps> = (
     props: NewUserFormProps
@@ -137,6 +147,8 @@ const NewUserForm: React.FunctionComponent<NewUserFormProps> = (
         </div>
     );
 };
+
+// #endregion Component
 
 // -----------------------------------------------------------------------------------------
 // #region Exports

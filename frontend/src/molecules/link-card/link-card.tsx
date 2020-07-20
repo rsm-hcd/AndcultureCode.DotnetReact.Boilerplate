@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { LinkCardTypes } from "molecules/constants/link-card-types";
 import StringUtils from "utilities/string-utils";
 import {
@@ -10,6 +10,18 @@ import {
     ParagraphSizes,
 } from "andculturecode-javascript-react-components";
 
+// -------------------------------------------------------------------------------------------------
+// #region Contants
+// -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-link-card";
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
+// #region Interfaces
+// -------------------------------------------------------------------------------------------------
+
 export interface LinkCardProps {
     children: any;
     includeIcon?: boolean;
@@ -19,64 +31,65 @@ export interface LinkCardProps {
     onClick?: () => void;
 }
 
+// #endregion Interfaces
+
+// -------------------------------------------------------------------------------------------------
+// #region Component
+// -------------------------------------------------------------------------------------------------
+
 const LinkCard: React.FC<LinkCardProps> = (props: LinkCardProps) => {
-    const CSS_BASE_CLASS_NAME = "c-link-card";
-    const cssClassNames = [CSS_BASE_CLASS_NAME];
+    const cssClassNames = [COMPONENT_CLASS];
     if (props.includeIcon) {
         cssClassNames.push("-with-icon");
     }
+    const cssClassNamesFlat = cssClassNames.join(" ");
+
+    const renderChildren = () => (
+        <React.Fragment>
+            {// if
+            props.includeIcon && <Icon type={Icons.Lightbulb} />}
+            <div className={`${COMPONENT_CLASS}__content`}>
+                <Paragraph size={ParagraphSizes.Small}>
+                    {props.children}
+                </Paragraph>
+                {// if
+                StringUtils.hasValue(props.label) && (
+                    <div className={`${COMPONENT_CLASS}__label`}>
+                        <Paragraph size={ParagraphSizes.XSmall}>
+                            {props.label}
+                        </Paragraph>
+                    </div>
+                )}
+            </div>
+        </React.Fragment>
+    );
+
     return (
         <div>
             {// if
             props.type === LinkCardTypes.Button && (
                 <Button
-                    onClick={props.onClick}
-                    cssClassName={cssClassNames.join(" ")}>
-                    {// if
-                    props.includeIcon && <Icon type={Icons.Lightbulb} />}
-                    <div className={`${CSS_BASE_CLASS_NAME}__content`}>
-                        <Paragraph size={ParagraphSizes.Small}>
-                            {props.children}
-                        </Paragraph>
-                        {// if
-                        StringUtils.hasValue(props.label) && (
-                            <div className={`${CSS_BASE_CLASS_NAME}__label`}>
-                                <Paragraph size={ParagraphSizes.XSmall}>
-                                    {props.label}
-                                </Paragraph>
-                            </div>
-                        )}
-                    </div>
+                    cssClassName={cssClassNamesFlat}
+                    onClick={props.onClick}>
+                    {renderChildren()}
                 </Button>
             )}
             {// if
             props.type === LinkCardTypes.Link && (
-                <Anchor to={props.to} cssClassName={cssClassNames.join(" ")}>
-                    {// if
-                    props.includeIcon && <Icon type={Icons.Lightbulb} />}
-                    <div className={`${CSS_BASE_CLASS_NAME}__content`}>
-                        <Paragraph size={ParagraphSizes.Small}>
-                            {props.children}
-                        </Paragraph>
-                        {// if
-                        StringUtils.hasValue(props.label) && (
-                            <div className={`${CSS_BASE_CLASS_NAME}__label`}>
-                                <Paragraph size={ParagraphSizes.XSmall}>
-                                    {props.label}
-                                </Paragraph>
-                            </div>
-                        )}
-                    </div>
+                <Anchor cssClassName={cssClassNamesFlat} to={props.to}>
+                    {renderChildren()}
                 </Anchor>
             )}
         </div>
     );
 };
 
-/*
----------------------------------------------------------------------------------------------
-Exports
----------------------------------------------------------------------------------------------
-*/
+// #endregion Component
+
+// -------------------------------------------------------------------------------------------------
+// #region Exports
+// -------------------------------------------------------------------------------------------------
 
 export default LinkCard;
+
+// #endregion Exports

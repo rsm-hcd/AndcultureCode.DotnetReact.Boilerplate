@@ -6,8 +6,8 @@ import ButtonGroup from "organisms/button-groups/button-group";
 import React from "react";
 
 export default {
-    title: "Organisms | Button Groups / Button Group",
     component: ButtonGroup,
+    title: "Organisms | Button Groups / Button Group",
 };
 
 export const buttonGroupDefault = () => (

@@ -1,6 +1,14 @@
 import React, { PropsWithChildren } from "react";
 
 // -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-button-group";
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
@@ -20,11 +28,10 @@ export interface ButtonGroupProps {
 const ButtonGroup: React.FC<PropsWithChildren<ButtonGroupProps>> = (
     props: PropsWithChildren<ButtonGroupProps>
 ) => {
-    const CSS_CLASS_NAME = "c-button-group";
     const { children } = props;
 
     return (
-        <div className={`${CSS_CLASS_NAME} ${props.cssClassName}`}>
+        <div className={`${COMPONENT_CLASS} ${props.cssClassName}`}>
             {children}
         </div>
     );

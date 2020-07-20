@@ -10,15 +10,33 @@ import {
 import { v4 } from "uuid";
 import { CollectionUtils } from "utilities/collection-utils";
 
+// -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-collapse-panel";
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
+// #region Interfaces
+// -------------------------------------------------------------------------------------------------
+
 export interface CollapsePanelProps {
-    collapse: boolean;
     /**
      * Text to be rendered inside an "sr-only" class span for the collapse/expand button trigger,
      * typically the text that is the header of the panel.
      */
     buttonAriaText: string;
+    collapse: boolean;
     panelTop: JSX.Element;
 }
+
+// #endregion Interfaces
+
+// -------------------------------------------------------------------------------------------------
+// #region Component
+// -------------------------------------------------------------------------------------------------
 
 const CollapsePanel: React.FC<CollapsePanelProps> = ({
     panelTop,
@@ -27,12 +45,17 @@ const CollapsePanel: React.FC<CollapsePanelProps> = ({
     collapse,
 }) => {
     const [isCollapsed, setCollapsed] = useState<boolean>(collapse);
-    const cssBaseClass = "c-collapse-panel";
     const hasChildren = CollectionUtils.hasValues(
         React.Children.toArray(children)
     );
     const accordionContentId = v4();
     const buttonId = v4();
+    const cssIsExpanded = !isCollapsed && hasChildren ? "-expanded" : "";
+    const toggleButtonStyle = isCollapsed
+        ? ButtonStyles.Secondary
+        : ButtonStyles.Tertiary;
+    const toggleIcon = isCollapsed ? Icons.ChevronRight : Icons.ChevronDown;
+    const toggleText = isCollapsed ? "Expand" : "Collapse";
 
     const handleToggle = () => {
         setCollapsed(!isCollapsed);
@@ -43,42 +66,34 @@ const CollapsePanel: React.FC<CollapsePanelProps> = ({
     }, [collapse]);
 
     return (
-        <div
-            className={`${cssBaseClass} ${
-                !isCollapsed && hasChildren ? "-expanded" : ""
-            }`}>
+        <div className={`${COMPONENT_CLASS} ${cssIsExpanded}`}>
             {hasChildren && (
                 <Button
-                    accessibleText={isCollapsed ? "Expand" : "Collapse"}
+                    accessibleText={toggleText}
                     ariaControls={accordionContentId}
                     ariaExpanded={!isCollapsed}
                     cssClassName="-icon"
                     id={buttonId}
                     onClick={handleToggle}
-                    style={
-                        isCollapsed
-                            ? ButtonStyles.Secondary
-                            : ButtonStyles.Tertiary
-                    }>
-                    <Icon
-                        type={
-                            isCollapsed ? Icons.ChevronRight : Icons.ChevronDown
-                        }
-                        size={IconSizes.Large}
-                    />
+                    style={toggleButtonStyle}>
+                    <Icon type={toggleIcon} size={IconSizes.Large} />
                     <span className={"sr-only"}>{buttonAriaText}</span>
                 </Button>
             )}
-            <div className={`${cssBaseClass}__heading`} onClick={handleToggle}>
+            <div
+                className={`${COMPONENT_CLASS}__heading`}
+                onClick={handleToggle}>
                 {panelTop}
             </div>
             <div
                 aria-hidden={isCollapsed}
                 aria-labelledby={buttonId}
-                className={`${cssBaseClass}__content`}
-                role="region"
-                id={accordionContentId}>
-                <div className={`${cssBaseClass}__accordion`}>{children}</div>
+                className={`${COMPONENT_CLASS}__content`}
+                id={accordionContentId}
+                role="region">
+                <div className={`${COMPONENT_CLASS}__accordion`}>
+                    {children}
+                </div>
             </div>
         </div>
     );
@@ -88,4 +103,12 @@ CollapsePanel.defaultProps = {
     collapse: true,
 } as Partial<CollapsePanelProps>;
 
+// #endregion Component
+
+// -------------------------------------------------------------------------------------------------
+// #region Exports
+// -------------------------------------------------------------------------------------------------
+
 export default CollapsePanel;
+
+// #endregion Exports

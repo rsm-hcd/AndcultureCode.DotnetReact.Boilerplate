@@ -1,16 +1,15 @@
 import {
     Anchor,
+    CheckboxFormField,
+    Form,
     Heading,
     HeadingPriority,
+    InputFormField,
+    PasswordFormField,
     SubmitButton,
     Paragraph,
     InputTypes,
 } from "andculturecode-javascript-react-components";
-
-import CheckboxFormField from "molecules/form-fields/checkbox-form-field";
-import InputFormField from "molecules/form-fields/input-form-field";
-import PasswordFormField from "molecules/form-fields/password-form-field";
-import Form from "molecules/forms/form";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { siteMap } from "sitemap";
@@ -20,6 +19,18 @@ import { RouteUtils } from "utilities/route-utils";
 import StringUtils from "utilities/string-utils";
 import { useLocalization } from "andculturecode-javascript-react";
 import CultureResources from "utilities/interfaces/culture-resources";
+
+// -----------------------------------------------------------------------------------------
+// #region Constants
+// -----------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-userlogin-new-form";
+
+// #endregion Constants
+
+// -----------------------------------------------------------------------------------------
+// #region Interfaces
+// -----------------------------------------------------------------------------------------
 
 interface NewUserLoginFormProps {
     buttonText?: string;
@@ -33,19 +44,24 @@ interface NewUserLoginFormProps {
     showSignInTitle?: boolean;
 }
 
+// #endregion Interfaces
+
+// -----------------------------------------------------------------------------------------
+// #region Component
+// -----------------------------------------------------------------------------------------
+
 const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     props: NewUserLoginFormProps
 ) => {
+    const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
+    const { pageErrors } = usePageErrors();
     const [password, setPassword] = useState("");
     const [passwordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
     const [signingIn] = useState(false);
+    const { t } = useLocalization<CultureResources>();
     const [username, setUserName] = useState("");
     const [usernameError] = useState("");
-    const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
-
-    const { pageErrors } = usePageErrors();
-    const { t } = useLocalization<CultureResources>();
 
     useEffect(() => {
         if (StringUtils.hasValue(props.defaultEmail)) {
@@ -60,7 +76,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     };
 
     return (
-        <div className="c-userlogin-new-form">
+        <div className={COMPONENT_CLASS}>
             {(props.showSignInTitle ?? true) && (
                 <Heading priority={HeadingPriority.One}>{t("signIn")}</Heading>
             )}
@@ -103,7 +119,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                             pageErrors.map((error: string, key: number) => (
                                 <Paragraph
                                     key={key}
-                                    cssClassName="c-userlogin-new-form__errors">
+                                    cssClassName={`${COMPONENT_CLASS}__errors`}>
                                     {error}
                                 </Paragraph>
                             ))}
@@ -117,7 +133,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
             </Form>
             {// if
             !signingIn && (
-                <div className="c-userlogin-new-form__help-links">
+                <div className={`${COMPONENT_CLASS}__help-links`}>
                     <Anchor to={RouteUtils.getUrl(siteMap.root)}>
                         {t("forgotYourPassword")}
                     </Anchor>
@@ -130,4 +146,12 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     );
 };
 
+// #endregion Component
+
+// -----------------------------------------------------------------------------------------
+// #region Exports
+// -----------------------------------------------------------------------------------------
+
 export default NewUserLoginForm;
+
+// #endregion Exports

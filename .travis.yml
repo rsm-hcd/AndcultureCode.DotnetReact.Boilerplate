@@ -21,5 +21,6 @@ before_script:
 script:
     - dotnet restore dotnet/api/Api.sln
     - dotnet test dotnet/api/Api.sln -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
-    - cd frontend && npm run test && cd ../
+    - cd frontend && npm run test -- --coverage && cd ../
+    - codecov --disable=gcov
 solution: dotnet/api/Api.sln

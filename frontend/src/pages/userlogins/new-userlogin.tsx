@@ -27,7 +27,6 @@ interface NewUserLoginPageProps {}
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
     const { t } = useLocalization<CultureResources>();
-    // const { t } = useTranslation();
 
     return (
         <React.Fragment>

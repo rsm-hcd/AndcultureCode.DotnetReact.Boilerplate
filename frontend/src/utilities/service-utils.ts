@@ -1,11 +1,13 @@
 import GlobalStateRecord from "models/view-models/global-state-record";
 import { GlobalStateUpdater } from "./contexts/use-global-state-context";
 import { AxiosResponse } from "axios";
-import ResultRecord from "models/view-models/result-record";
-import ServiceResponse from "utilities/interfaces/service-response";
-import Result from "models/interfaces/result";
-import PagedResult from "models/interfaces/paged-result";
-import PromiseFactory from "utilities/promises/promise-factory";
+import {
+    PagedResult,
+    PromiseFactory,
+    Result,
+    ResultRecord,
+    ServiceResponse,
+} from "andculturecode-javascript-core";
 import { ServiceUtils as AndcultureCodeServiceUtils } from "andculturecode-javascript-core";
 
 /*

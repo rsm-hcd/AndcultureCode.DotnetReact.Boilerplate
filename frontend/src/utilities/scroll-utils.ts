@@ -1,4 +1,4 @@
-import EnvUtils from "utilities/env-utils";
+import { EnvironmentUtils } from "andculturecode-javascript-core";
 
 export interface ScrollOptions extends ScrollIntoViewOptions {
     initialDelay?: number;
@@ -47,7 +47,7 @@ const _scrollToElementById = (
         retryCount += 1;
 
         if (retryCount > 50) {
-            EnvUtils.runIfDevelopment(() =>
+            EnvironmentUtils.runIfDevelopment(() =>
                 console.warn(
                     `Could not find element with ID ${id} in the page.`
                 )
@@ -89,7 +89,7 @@ const _scrollToElementBySelector = (
         retryCount += 1;
 
         if (retryCount > 50) {
-            EnvUtils.runIfDevelopment(() =>
+            EnvironmentUtils.runIfDevelopment(() =>
                 console.warn(
                     `Could not find element matching selector ${selector} in the page.`
                 )

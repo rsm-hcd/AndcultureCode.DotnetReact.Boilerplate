@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import ResultRecord from "models/view-models/result-record";
+import { ResultRecord } from "andculturecode-javascript-core";
 
 /**
  * Hook to bundle common page error handling functionality

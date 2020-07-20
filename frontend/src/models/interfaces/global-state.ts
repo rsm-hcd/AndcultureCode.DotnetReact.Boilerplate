@@ -1,5 +1,5 @@
 import IdentityRecord from "models/view-models/identity-record";
-import ResultRecord from "models/view-models/result-record";
+import { ResultRecord } from "andculturecode-javascript-core";
 
 export default interface GlobalState {
     // -----------------------------------------------------------------------------------------

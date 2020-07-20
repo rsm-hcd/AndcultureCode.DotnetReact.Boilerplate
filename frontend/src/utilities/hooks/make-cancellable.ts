@@ -1,4 +1,4 @@
-import PromiseFactory from "utilities/promises/promise-factory";
+import { PromiseFactory } from "andculturecode-javascript-core";
 
 // ---------------------------------------------------------
 // #region Public Methods

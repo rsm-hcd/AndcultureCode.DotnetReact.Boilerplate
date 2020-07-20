@@ -6,9 +6,5 @@
     &__panel {
         width: 100%;
         overflow: hidden;
-
-        @include respond-to("phone") {
-            // margin-top: $sidebar-menu-width;
-        }
     }
 }

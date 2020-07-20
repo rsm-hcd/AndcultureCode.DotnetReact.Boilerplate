@@ -1,7 +1,7 @@
 import { Record } from "immutable";
 import GlobalState from "models/interfaces/global-state";
 import IdentityRecord from "models/view-models/identity-record";
-import ResultRecord from "models/view-models/result-record";
+import { ResultRecord } from "andculturecode-javascript-core";
 import LocalStorageKey from "utilities/enumerations/local-storage-keys";
 import { LocalStorageUtils } from "utilities/local-storage-utils";
 

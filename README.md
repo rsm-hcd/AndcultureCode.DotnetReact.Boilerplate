@@ -11,9 +11,9 @@ Code name: Gravity Boots (GB)
 -   Dotnet Core 3.1
 -   Node 8.16
 -   NPM 6
--   React 16.11
+-   React 16.13
 -   SQL Server 2017+
--   TypeScript 3.7
+-   TypeScript 3.8
 
 ### Development Setup
 

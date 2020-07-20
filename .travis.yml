@@ -16,10 +16,10 @@ notifications:
 before_script:
     - nvm install 8.16.2
     - nvm use 8.16.2
-    - npm install && cd frontend && npm install
+    - npm install && cd frontend && npm install && cd ../
     - npm install -g codecov
 script:
     - dotnet restore dotnet/api/Api.sln
     - dotnet test dotnet/api/Api.sln -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
-    - cd frontend && npm run test
+    - cd frontend && npm run test && cd ../
 solution: dotnet/api/Api.sln

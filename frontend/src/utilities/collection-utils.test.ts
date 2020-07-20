@@ -1,6 +1,6 @@
 import { List } from "immutable";
 import { CollectionUtils } from "utilities/collection-utils";
-import ResultRecord from "models/view-models/result-record";
+import { ResultRecord } from "andculturecode-javascript-core";
 
 describe("CollectionUtils", () => {
     describe("hasValues", () => {

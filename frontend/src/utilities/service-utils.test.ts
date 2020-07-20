@@ -2,9 +2,11 @@ import { AxiosResponse } from "axios";
 import ServiceUtils from "utilities/service-utils";
 import UserRecord from "models/view-models/user-record";
 import User from "models/interfaces/user";
-import Result from "models/interfaces/result";
-import ResultRecord from "models/view-models/result-record";
-import PagedResult from "models/interfaces/paged-result";
+import {
+    PagedResult,
+    Result,
+    ResultRecord,
+} from "andculturecode-javascript-core";
 
 describe("ServiceUtils", () => {
     /*

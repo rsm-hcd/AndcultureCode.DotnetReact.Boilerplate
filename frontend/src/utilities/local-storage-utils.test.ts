@@ -1,5 +1,5 @@
 import { LocalStorageUtils } from "utilities/local-storage-utils";
-import ResultRecord from "models/view-models/result-record";
+import { ResultRecord } from "andculturecode-javascript-core";
 
 describe("LocalStorageUtils", () => {
     const testKey = "testKey";

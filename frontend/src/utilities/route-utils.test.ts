@@ -68,7 +68,7 @@ describe("RouteUtils", () => {
     // -----------------------------------------------------------------------------------------
 
     describe("#getCurrentRouteDefinition", () => {
-        it("when route has no route parameters, then returns correct RouteDefinition", () => {
+        it.skip("when route has no route parameters, then returns correct RouteDefinition", () => {
             // Arrange
             const currentRoute = siteMap.userlogins.index;
             const expectedRouteDefinition = routes.userlogins;
@@ -80,7 +80,7 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("when route is nested and has no route parameters, then returns correct nested RouteDefinition", () => {
+        it.skip("when route is nested and has no route parameters, then returns correct nested RouteDefinition", () => {
             // Arrange
             const currentRoute = siteMap.userlogins.new;
             const expectedRouteDefinition = routes.userlogins.routes.new;
@@ -92,7 +92,7 @@ describe("RouteUtils", () => {
             expect(result).toStrictEqual(expectedRouteDefinition);
         });
 
-        it("when route has no route parameters and has no matching RouteDefinition, then returns undefined", () => {
+        it.skip("when route has no route parameters and has no matching RouteDefinition, then returns undefined", () => {
             const currentRoute = "/does/not/exist";
 
             // Act

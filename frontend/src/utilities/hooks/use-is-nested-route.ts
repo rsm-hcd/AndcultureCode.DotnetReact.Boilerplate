@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useCurrentRouteDefinition from "utilities/hooks/routing/use-current-route-definition";
+import useCurrentRouteDefinition from "utilities/hooks/use-current-route-definition";
 
 /**
  * React hook returning a boolean indicating

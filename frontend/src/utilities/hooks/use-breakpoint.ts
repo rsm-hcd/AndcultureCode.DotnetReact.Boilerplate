@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Breakpoints } from "utilities/enumerations/breakpoints";
-import { useWindow } from "utilities/hooks/use-window";
+import { useWindow } from "andculturecode-javascript-react";
 
 export enum BreakpointComparer {
     MinWidth = 0,

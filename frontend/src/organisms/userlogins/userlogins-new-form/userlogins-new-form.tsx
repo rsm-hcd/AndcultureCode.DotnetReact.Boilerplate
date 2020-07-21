@@ -14,7 +14,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { siteMap } from "sitemap";
 import { CollectionUtils } from "utilities/collection-utils";
-import usePageErrors from "utilities/hooks/use-page-errors";
+import { usePageErrors } from "andculturecode-javascript-react";
 import { RouteUtils } from "utilities/route-utils";
 import StringUtils from "utilities/string-utils";
 import { useLocalization } from "andculturecode-javascript-react";

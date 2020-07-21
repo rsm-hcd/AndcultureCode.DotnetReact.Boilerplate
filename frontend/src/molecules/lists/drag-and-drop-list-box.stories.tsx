@@ -38,16 +38,16 @@ export const DragAndDropListBoxDefault = () => {
         result.splice(endIndex, 0, removedItem);
 
         setItems(result);
-
-        return (
-            <React.Fragment>
-                <Paragraph>Drag and drop items to reorder them.</Paragraph>
-                <DragAndDropListBox
-                    droppableId="drag-and-drop-list-box.tsx"
-                    items={items}
-                    onReordered={onReordered}
-                />
-            </React.Fragment>
-        );
     };
+
+    return (
+        <React.Fragment>
+            <Paragraph>Drag and drop items to reorder them.</Paragraph>
+            <DragAndDropListBox
+                droppableId="drag-and-drop-list-box.tsx"
+                items={items}
+                onReordered={onReordered}
+            />
+        </React.Fragment>
+    );
 };

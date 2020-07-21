@@ -1,7 +1,6 @@
 import { Paragraph } from "andculturecode-javascript-react-components";
 import DragAndDropListBox from "molecules/lists/drag-and-drop-list-box";
 import { ListBoxItem } from "molecules/lists/list-box";
-import { CollectionUtils } from "utilities/collection-utils";
 import React, { useState } from "react";
 
 export default {
@@ -33,23 +32,22 @@ export const DragAndDropListBoxDefault = () => {
         },
     ]);
 
-    const onReordered = (startIndex: number, endIndex: number) =>
-        setItems(
-            CollectionUtils.handleDragAndDropReorder(
-                items,
-                startIndex,
-                endIndex
-            )
-        );
+    const onReordered = (startIndex: number, endIndex: number) => {
+        const result = [...items];
+        const [removedItem] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removedItem);
 
-    return (
-        <React.Fragment>
-            <Paragraph>Drag and drop items to reorder them.</Paragraph>
-            <DragAndDropListBox
-                droppableId="drag-and-drop-list-box.tsx"
-                items={items}
-                onReordered={onReordered}
-            />
-        </React.Fragment>
-    );
+        setItems(result);
+
+        return (
+            <React.Fragment>
+                <Paragraph>Drag and drop items to reorder them.</Paragraph>
+                <DragAndDropListBox
+                    droppableId="drag-and-drop-list-box.tsx"
+                    items={items}
+                    onReordered={onReordered}
+                />
+            </React.Fragment>
+        );
+    };
 };

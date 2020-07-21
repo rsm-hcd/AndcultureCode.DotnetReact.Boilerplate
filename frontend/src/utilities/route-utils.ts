@@ -5,7 +5,7 @@ import {
     RouteUtils as AndcultureCodeRouteUtils,
     StringUtils,
 } from "andculturecode-javascript-core";
-import { CoreUtils } from "utilities/core-utils";
+import { CoreUtils } from "andculturecode-javascript-core";
 import { RouteDefinition } from "utilities/interfaces/route-definition";
 import { RouteMap } from "utilities/interfaces/route-map";
 

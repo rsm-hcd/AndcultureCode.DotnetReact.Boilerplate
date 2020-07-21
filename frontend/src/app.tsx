@@ -13,7 +13,6 @@ import { routes } from "routes";
 import GlobalStateContext, {
     useGlobalState,
 } from "utilities/contexts/use-global-state-context";
-import { CoreUtils } from "utilities/core-utils";
 import { RouteUtils } from "utilities/route-utils";
 import {
     NestedRoutes,
@@ -21,8 +20,11 @@ import {
 } from "utilities/routing/nested-route";
 import { ScrollUtils } from "utilities/scroll-utils";
 import ServiceUtils from "utilities/service-utils";
-import { ServiceUtils as AndcultureCodeServiceUtils } from "andculturecode-javascript-core";
-import { LocalizationUtils } from "andculturecode-javascript-core";
+import {
+    CoreUtils,
+    LocalizationUtils,
+    ServiceUtils as AndcultureCodeServiceUtils,
+} from "andculturecode-javascript-core";
 import { initReactI18next } from "react-i18next";
 import EnglishUnitedStates from "cultures/english-united-states";
 import SpanishSpain from "cultures/spanish-spain";

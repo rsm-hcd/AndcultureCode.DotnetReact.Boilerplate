@@ -1,4 +1,4 @@
-import { CoreUtils } from "utilities/core-utils";
+import { CoreUtils } from "andculturecode-javascript-core";
 import faker from "faker";
 
 // -----------------------------------------------------------------------------------------

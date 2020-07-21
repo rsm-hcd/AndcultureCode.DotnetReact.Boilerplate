@@ -1,4 +1,4 @@
-import { CoreUtils } from "utilities/core-utils";
+import { CoreUtils } from "andculturecode-javascript-core";
 import React, { Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { RouteDefinition } from "utilities/interfaces/route-definition";

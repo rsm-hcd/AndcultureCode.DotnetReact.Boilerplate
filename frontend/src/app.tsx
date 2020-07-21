@@ -18,11 +18,11 @@ import {
     NestedRoutes,
     NestedRoutesByProperty,
 } from "utilities/routing/nested-route";
-import { ScrollUtils } from "utilities/scroll-utils";
 import ServiceUtils from "utilities/service-utils";
 import {
     CoreUtils,
     LocalizationUtils,
+    ScrollUtils,
     ServiceUtils as AndcultureCodeServiceUtils,
 } from "andculturecode-javascript-core";
 import { initReactI18next } from "react-i18next";

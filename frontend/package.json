@@ -19,7 +19,7 @@
         "@reach/tabs": "0.10.1",
         "@tippyjs/react": "4.0.2",
         "@types/react-select": "3.0.11",
-        "andculturecode-javascript-core": "0.1.3",
+        "andculturecode-javascript-core": "0.1.4",
         "andculturecode-javascript-react": "0.1.0",
         "andculturecode-javascript-react-components": "0.2.1",
         "andculturecode-scss-grid": "2.0.4",

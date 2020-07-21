@@ -9,7 +9,7 @@ import {
     ProgressBar,
 } from "andculturecode-javascript-react-components";
 import React from "react";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
 // #region Interfaces

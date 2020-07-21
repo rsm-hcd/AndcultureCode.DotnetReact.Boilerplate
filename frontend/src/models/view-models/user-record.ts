@@ -1,6 +1,6 @@
 import { Record } from "immutable";
 import User from "models/interfaces/user";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 
 const defaultValues: User = {
     email: undefined,

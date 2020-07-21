@@ -1,5 +1,5 @@
 import { List } from "immutable";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 
 // -----------------------------------------------------------------------------------------
 // #region Functions

@@ -6,7 +6,7 @@ import {
 } from "andculturecode-javascript-react-components";
 import { Paragraph } from "andculturecode-javascript-react-components";
 import React, { ReactElement } from "react";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
 // #region Interfaces

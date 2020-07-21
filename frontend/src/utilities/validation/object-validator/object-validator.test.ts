@@ -2,8 +2,7 @@ import {
     ObjectValidationResult,
     ObjectValidator,
 } from "utilities/validation/object-validator/object-validator";
-import StringUtils from "utilities/string-utils";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 
 interface TestObject {
     description?: string;

@@ -13,11 +13,12 @@ import {
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { siteMap } from "sitemap";
-import { CollectionUtils } from "utilities/collection-utils";
-import { usePageErrors } from "andculturecode-javascript-react";
+import {
+    useLocalization,
+    usePageErrors,
+} from "andculturecode-javascript-react";
 import { RouteUtils } from "utilities/route-utils";
-import StringUtils from "utilities/string-utils";
-import { useLocalization } from "andculturecode-javascript-react";
+import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 import CultureResources from "utilities/interfaces/culture-resources";
 
 // -----------------------------------------------------------------------------------------

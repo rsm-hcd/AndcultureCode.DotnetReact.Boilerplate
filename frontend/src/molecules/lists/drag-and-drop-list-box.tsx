@@ -25,7 +25,7 @@ import {
     DroppableProvided,
     DroppableStateSnapshot,
 } from "react-beautiful-dnd";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 import uuid from "uuid";
 
 // -------------------------------------------------------------------------------------------------

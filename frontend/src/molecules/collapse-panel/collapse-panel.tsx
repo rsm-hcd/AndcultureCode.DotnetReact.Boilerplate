@@ -8,7 +8,7 @@ import {
     IconSizes,
 } from "andculturecode-javascript-react-components";
 import { v4 } from "uuid";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants

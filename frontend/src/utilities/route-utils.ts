@@ -1,11 +1,13 @@
 import { routes } from "routes";
 import { siteMap } from "sitemap";
-import { CollectionUtils } from "utilities/collection-utils";
+import {
+    CollectionUtils,
+    RouteUtils as AndcultureCodeRouteUtils,
+    StringUtils,
+} from "andculturecode-javascript-core";
 import { CoreUtils } from "utilities/core-utils";
 import { RouteDefinition } from "utilities/interfaces/route-definition";
 import { RouteMap } from "utilities/interfaces/route-map";
-import StringUtils from "utilities/string-utils";
-import { RouteUtils as AndcultureCodeRouteUtils } from "andculturecode-javascript-core";
 
 /*
 ---------------------------------------------------------------------------------------------

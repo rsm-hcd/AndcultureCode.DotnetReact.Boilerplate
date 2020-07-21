@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { RouteDefinition } from "utilities/interfaces/route-definition";
 import AuthenticatedRoute from "utilities/routing/authenticated-route";
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 import { siteMap } from "sitemap";
 
 /*

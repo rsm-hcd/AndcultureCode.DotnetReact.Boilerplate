@@ -8,7 +8,7 @@ import {
 } from "andculturecode-javascript-react-components";
 import * as React from "react";
 import { useState, useEffect } from "react";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 import { v4 } from "uuid";
 import { useHistory } from "react-router-dom";
 

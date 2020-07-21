@@ -1,4 +1,4 @@
-import { CollectionUtils } from "utilities/collection-utils";
+import { CollectionUtils } from "andculturecode-javascript-core";
 
 // -----------------------------------------------------------------------------------------
 // #region Types
@@ -39,6 +39,9 @@ interface ObjectValidatorInterface<T> {
 // #region ObjectValidator class
 // -----------------------------------------------------------------------------------------
 
+/**
+ * TODO: Extract into AndcultureCode.JavaScript.Core https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/26
+ */
 abstract class ObjectValidator<T> implements ObjectValidatorInterface<T> {
     // -----------------------------------------------------------------------------------------
     // #region Static Methods

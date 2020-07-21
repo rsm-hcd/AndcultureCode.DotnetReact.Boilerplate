@@ -2,8 +2,7 @@ import { KeyboardKeys } from "andculturecode-javascript-react-components";
 import React, { useState } from "react";
 import Select, { OptionTypeBase, ValueType } from "react-select";
 import makeAnimated from "react-select/animated";
-import { CollectionUtils } from "utilities/collection-utils";
-import StringUtils from "utilities/string-utils";
+import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 import { SelectOption } from "andculturecode-javascript-react-components/dist/atoms/forms/select";
 
 // -------------------------------------------------------------------------------------------------

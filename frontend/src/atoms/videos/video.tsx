@@ -2,7 +2,7 @@ import { Paragraph } from "andculturecode-javascript-react-components";
 import React from "react";
 import PathUtils from "utilities/path-utils";
 import { RouteUtils } from "utilities/route-utils";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
 // #region Interfaces

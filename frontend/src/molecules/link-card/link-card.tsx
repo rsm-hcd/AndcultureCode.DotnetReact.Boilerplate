@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { LinkCardTypes } from "molecules/constants/link-card-types";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 import {
     Anchor,
     Button,

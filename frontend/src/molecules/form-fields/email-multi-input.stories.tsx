@@ -1,7 +1,7 @@
 import { text } from "@storybook/addon-knobs";
 import EmailMultiInput from "molecules/form-fields/email-multi-input";
 import React, { useState } from "react";
-import StringUtils from "utilities/string-utils";
+import { StringUtils } from "andculturecode-javascript-core";
 
 export default {
     component: EmailMultiInput,

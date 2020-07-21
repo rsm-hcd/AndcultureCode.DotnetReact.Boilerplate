@@ -1,4 +1,4 @@
-import Auditable from "models/interfaces/auditable";
+import { Auditable } from "andculturecode-javascript-core";
 
 export default interface User extends Auditable {
     email?: string;

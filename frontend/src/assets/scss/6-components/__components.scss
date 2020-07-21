@@ -2,5 +2,8 @@
   COMPONENTS
 \*------------------------------------*/
 
-@import "atoms/__atoms", "molecules/__molecules", "organisms/__organisms",
-    "pages/__pages", "templates/__templates";
+@import "atoms/__atoms";
+@import "molecules/__molecules";
+@import "organisms/__organisms";
+@import "pages/__pages";
+@import "templates/__templates";

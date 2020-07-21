@@ -2,7 +2,7 @@ import { boolean, object, text } from "@storybook/addon-knobs";
 import ListBox, { ListBoxItem } from "molecules/lists/list-box";
 import React from "react";
 import { ToastContainer, ToastPosition, Zoom } from "react-toastify";
-import { ToastManager } from "utilities/toast/toast-manager";
+import { ToastManager } from "andculturecode-javascript-react-components";
 
 export default {
     title: "Molecules | Lists / ListBox",

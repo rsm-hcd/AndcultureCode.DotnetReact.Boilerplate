@@ -1,0 +1,33 @@
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Global variables and maps that are used throughout the project
+ *
+ * TOOLS
+ * Mixins and functions used throughout the application for better reuse
+ *
+ * GENERIC
+ * Normalization and resetting of all html elements
+ *
+ * ELEMENTS
+ * General elements such as headings, paragraphs, anchors, etc...
+ *
+ * OBJECTS
+ * Class-based selectors which define undecorated design patterns, for example media object known from OOCSS.
+ *
+ * COMPONENTS
+ * All items that describe the physical attributes like buttons, sliders, cards, badges, etc...
+ *
+ * UTILITIES
+ * Utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
+ */
+
+@import "0-vendor/__vendor";
+@import "1-settings/__settings";
+@import "2-tools/__tools";
+@import "3-generic/__generic";
+@import "4-elements/__elements";
+@import "5-objects/__objects";
+@import "6-components/__components";
+@import "7-utilities/__utilities";

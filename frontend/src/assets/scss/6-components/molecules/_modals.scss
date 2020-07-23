@@ -1,0 +1,87 @@
+.c-modal {
+    position: relative;
+    display: block;
+    background-color: get-color-neutral("white");
+    max-width: 50%;
+    border-radius: $border-radius-medium;
+    overflow: hidden;
+    margin: auto;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+    }
+
+    > .c-button.-modal-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &.-bottom {
+        @include padding(32px);
+        position: fixed;
+        bottom: 0;
+        margin: 0;
+        width: 100%;
+        max-width: initial;
+        border-radius: initial;
+        border-top-left-radius: $border-radius-medium;
+        border-top-right-radius: $border-radius-medium;
+
+        > .c-button.-modal-close {
+            position: static;
+            width: 100%;
+        }
+    }
+    &.-fullscreen {
+        @include padding(8px);
+        max-width: 95%;
+        max-height: 80vh;
+
+        > .c-modal__content {
+            overflow: auto;
+            max-height: 80vh;
+
+            // Special circumstances for tables rendered in the fullscreen modal
+            // "Limit" the width of the table and center it in the modal
+            > .c-table-section__body.-half > table {
+                margin: 0 auto;
+            }
+        }
+    }
+    &.-left {
+        @include padding(16px, 40px);
+        @include fill-viewport-height();
+        margin: 0;
+        border-radius: initial;
+        max-width: initial;
+        overflow: visible;
+
+        // Left modal will appear in the center of the IE window without these rules.
+        @include if-internet-explorer() {
+            position: fixed;
+            top: 0;
+        }
+
+        @include respond-to("phone") {
+            @include padding(16px, 16px, 0, 16px);
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        > .c-button.-modal-close {
+            position: absolute;
+            top: 0;
+            right: -40px;
+            width: 40px;
+            height: 40px;
+            border-radius: 0;
+            @include respond-to("sm-desktop") {
+                right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+.c-confirmation-modal {
+    max-width: rem(448px);
+    overflow: hidden;
+
+    @include respond-to("phone") {
+        max-width: rem(282px);
+    }
+
+    &__header {
+        padding: 16px 16px 8px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        > h2 {
+            @include font-style(
+                $font-primary,
+                "large",
+                get-color-neutral("90"),
+                400,
+                24px
+            );
+            display: inline-block;
+            font-weight: 700;
+            justify-self: left;
+        }
+
+        > .c-button {
+            justify-self: right;
+        }
+
+        button.-modal-close {
+            padding: 8px;
+
+            svg {
+                display: block;
+            }
+        }
+    }
+    &__content {
+        @include font-style(
+            $font-primary,
+            "base",
+            get-color-neutral("90"),
+            400,
+            rem(24px)
+        );
+        @include padding(8px, 32px);
+        max-height: 394px;
+        overflow-y: auto;
+    }
+    &__title {
+        @include font-style(
+            $font-primary,
+            "small",
+            get-color-neutral("90"),
+            700,
+            18px
+        );
+        @include padding(20, 16, 14);
+        display: block;
+        box-shadow: 0px 1px 0px get-color-neutral("30");
+    }
+    &__footer {
+        @include margin-top(24px);
+        @include margin-bottom(24px);
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+
+        @include respond-to("phone") {
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+        }
+
+        > .c-button:first-of-type {
+            @include margin-right(8px);
+
+            @include respond-to("phone") {
+                @include margin-top(16px);
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.c-application-layout {
+    @include fill-viewport-height();
+    display: flex;
+    word-break: break-word;
+
+    &__panel {
+        width: 100%;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,50 @@
+.c-userlogin-new-form {
+    max-width: 360px;
+    @include respond-to("phone") {
+        @include margin-left(0);
+    }
+
+    > h1 {
+        @include margin-bottom(36px);
+        font-size: rem(48px);
+    }
+
+    > img {
+        @include margin-bottom(48px);
+    }
+
+    > .c-form {
+        @include margin-top(13px);
+        @include margin-right(56px);
+    }
+
+    .c-button {
+        @include margin-bottom(25px);
+        display: inline-block;
+        + .c-form-field {
+            @include margin-left(24px);
+            display: inline-block;
+
+            @include respond-to("phone") {
+                display: block;
+                margin-left: 0;
+            }
+        }
+    }
+
+    &__help-links {
+        a {
+            @include margin-right(42px);
+
+            @include respond-to("phone") {
+                @include margin-bottom(16px);
+                display: block;
+            }
+        }
+    }
+
+    &__errors {
+        @include margin-bottom(25px);
+        color: get-color-primary("error");
+    }
+}

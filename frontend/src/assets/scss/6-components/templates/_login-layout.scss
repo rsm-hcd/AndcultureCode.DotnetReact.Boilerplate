@@ -1,0 +1,123 @@
+.c-login-layout {
+    @extend .o-grid__row;
+    @include fixedViewHeightScrollY();
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+
+    @include respond-to("sm-desktop") {
+        flex-wrap: wrap;
+        min-width: unset;
+    }
+
+    &__panel {
+        @include padding-top(104px);
+        @include padding-bottom(104px);
+        height: 100%;
+
+        @include respond-to("sm-desktop") {
+            height: initial;
+        }
+        @include respond-to("phone") {
+            @include padding-top(64px);
+            @include padding-bottom(48px);
+        }
+
+        &__features {
+            div {
+                @include margin-bottom(16px);
+                display: flex;
+                align-items: center;
+
+                &:last-of-type {
+                    @include margin-bottom(48px);
+                }
+
+                svg {
+                    flex-shrink: 0;
+                }
+
+                p {
+                    @include margin-left(16px);
+                }
+            }
+        }
+
+        &.-left {
+            @include padding-left(80px);
+            @include span-col(8, $no-gutter-grid);
+            flex-shrink: 1;
+
+            background-color: get-color("background", "neutral");
+
+            @include respond-to("sm-desktop") {
+                @include span-col(12, $no-gutter-grid);
+            }
+
+            @include respond-to("phone") {
+                @include padding-left(24px);
+            }
+        }
+
+        &.-right {
+            @include padding(180px, 105px, 104px, 80px);
+            @include span-col(4, $no-gutter-grid);
+            background-color: get-color("background", "dark");
+            min-width: 584px;
+
+            @include respond-to("sm-desktop") {
+                @include span-col(12, $no-gutter-grid);
+                @include padding-top(96px);
+                @include padding-right(148px);
+                min-width: unset;
+            }
+
+            @include respond-to("tablet") {
+                @include padding-right(80px);
+            }
+
+            @include respond-to("phone") {
+                @include padding(48px, 24px, 48px, 24px);
+            }
+
+            h2 {
+                @include font-style(
+                    $font-primary,
+                    "xsmall",
+                    get-color-neutral("white"),
+                    700,
+                    18px
+                );
+                letter-spacing: 0.15em;
+
+                & + p {
+                    @include margin-top(24px);
+                    @include margin-bottom(40px);
+                    @include font-style(
+                        $font-primary,
+                        "xlarge",
+                        false,
+                        300,
+                        45px
+                    );
+
+                    @include respond-to("phone") {
+                        @include font-size("xlarge");
+                        @include margin-bottom(24px);
+                        @include margin-top(16px);
+                        @include padding-left(0);
+                        @include rem-fallback(line-height, 34px);
+                    }
+                }
+            }
+
+            p {
+                color: get-color-neutral("white");
+            }
+
+            svg path {
+                fill: get-color-accents("yellow");
+            }
+        }
+    }
+}

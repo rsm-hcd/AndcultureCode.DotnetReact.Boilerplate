@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://localhost:5001",
+    "env": {
+        "apiBaseUrl": "/en-us/api/v1/"
+    },
+    "video": false
+}

@@ -1,0 +1,82 @@
+.c-tabs {
+    overflow: hidden;
+    position: relative;
+    &__list-wrapper {
+        @include padding(0, 24px);
+        position: relative;
+        overflow: hidden;
+
+        // Floating border effect
+        &:after {
+            bottom: 4px;
+            width: calc(100% + 48px);
+            left: -24px;
+            display: block;
+            position: relative;
+            border-bottom: 1px solid get-color-neutral("30");
+            content: "";
+        }
+
+        &__scroll {
+            position: absolute;
+            background: get-color-neutral("white");
+            top: 0;
+            left: 0;
+            line-height: 0;
+            height: 100%;
+            vertical-align: middle;
+
+            > svg > path {
+                fill: get-color-neutral("70");
+                &:hover {
+                    fill: get-color-neutral("50");
+                }
+            }
+            &.-right {
+                right: 0;
+                left: initial;
+            }
+        }
+    }
+
+    &__list {
+        position: relative;
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    &__tab {
+        @include font-style(
+            $font-primary,
+            "xsmall",
+            get-color-neutral("70"),
+            700,
+            18px
+        );
+        @include padding(8px);
+        background: none;
+
+        &:hover {
+            color: get-color-accents("blue-dark");
+        }
+
+        &.-active {
+            border-bottom: 3px solid get-color-accents("blue-base");
+            color: get-color-accents("blue-dark");
+            outline: none;
+        }
+        &:focus {
+            background-color: get-color-background("neutral");
+        }
+    }
+    &__panels {
+        @include padding(32px, 24px, 0, 24px);
+    }
+}

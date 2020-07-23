@@ -5,6 +5,7 @@
         @include padding(0, 24px);
         position: relative;
         overflow: hidden;
+
         // Floating border effect
         &:after {
             bottom: 4px;
@@ -15,9 +16,10 @@
             border-bottom: 1px solid get-color-neutral("30");
             content: "";
         }
+
         &__scroll {
             position: absolute;
-            background: #ffffff;
+            background: get-color-neutral("white");
             top: 0;
             left: 0;
             line-height: 0;

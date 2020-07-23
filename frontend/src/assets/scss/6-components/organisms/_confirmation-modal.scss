@@ -11,6 +11,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
 
         > h2 {
             @include font-style(
@@ -28,8 +29,6 @@
         > .c-button {
             justify-self: right;
         }
-
-        width: 100%;
 
         button.-modal-close {
             padding: 8px;

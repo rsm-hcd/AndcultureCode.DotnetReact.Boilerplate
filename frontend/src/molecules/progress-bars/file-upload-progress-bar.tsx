@@ -12,6 +12,18 @@ import React from "react";
 import { StringUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-file-upload-progress-bar";
+const BAR_CLASS = `${COMPONENT_CLASS}__bar`;
+const TOP_CLASS = `${COMPONENT_CLASS}__top`;
+const TOP_STATUS_CLASS = `${TOP_CLASS}__status`;
+const TOP_STATUS_TEXT_CLASS = `${TOP_STATUS_CLASS}__text`;
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
@@ -25,32 +37,47 @@ interface FileUploadProgressBarProps {
 // #endregion Interfaces
 
 // -------------------------------------------------------------------------------------------------
+// #region Functions
+// -------------------------------------------------------------------------------------------------
+
+/**
+ * Incoming value must be between 0 and 100
+ * @param value
+ */
+const preprocessValue = (value: number): number => {
+    value = Math.round(value);
+
+    if (value < 0) {
+        return 0;
+    }
+
+    if (value > 100) {
+        return 100;
+    }
+
+    return value;
+};
+
+// #endregion Functions
+
+// -------------------------------------------------------------------------------------------------
 // #region Component
 // -------------------------------------------------------------------------------------------------
 
 const FileUploadProgressBar: React.FC<FileUploadProgressBarProps> = (
     props: FileUploadProgressBarProps
 ) => {
-    const CSS_CLASS_NAME = "c-file-upload-progress-bar";
+    const classNames = [COMPONENT_CLASS];
+    const value = preprocessValue(props.value);
+    const isErrored = props.isErrored;
+    const isNotErrored = !isErrored;
+    const isUploaded = value >= 100;
 
-    // value must be an integer 0 < value < 100
-    let value = Math.round(props.value);
-
-    if (value < 0) {
-        value = 0;
-    }
-
-    if (value > 100) {
-        value = 100;
-    }
-
-    const classNames = [CSS_CLASS_NAME];
-
-    if (props.isErrored) {
+    if (isErrored) {
         classNames.push("-error");
     }
 
-    if (!props.isErrored && value >= 100) {
+    if (isNotErrored && isUploaded) {
         classNames.push("-success");
     }
 
@@ -60,17 +87,17 @@ const FileUploadProgressBar: React.FC<FileUploadProgressBarProps> = (
 
     return (
         <div className={classNames.join(" ")}>
-            <div className={`${CSS_CLASS_NAME}__top`}>
-                <div className={`${CSS_CLASS_NAME}__top__status`}>
+            <div className={TOP_CLASS}>
+                <div className={TOP_STATUS_CLASS}>
                     {// if
-                    value < 100 && !props.isErrored && (
-                        <div className={`${CSS_CLASS_NAME}__top__status__text`}>
+                    !isUploaded && isNotErrored && (
+                        <div className={TOP_STATUS_TEXT_CLASS}>
                             <Paragraph>Uploading...</Paragraph>
                         </div>
                     )}
                     {// if
-                    value >= 100 && !props.isErrored && (
-                        <div className={`${CSS_CLASS_NAME}__top__status__text`}>
+                    isUploaded && isNotErrored && (
+                        <div className={TOP_STATUS_TEXT_CLASS}>
                             <Icon
                                 type={Icons.Checkmark}
                                 size={IconSizes.Large}
@@ -79,9 +106,8 @@ const FileUploadProgressBar: React.FC<FileUploadProgressBarProps> = (
                         </div>
                     )}
                     {// if
-                    props.isErrored && (
-                        <div
-                            className={`${CSS_CLASS_NAME}__top__status__text -error`}>
+                    isErrored && (
+                        <div className={`${TOP_STATUS_TEXT_CLASS} -error`}>
                             <Paragraph>Upload Failed</Paragraph>
                             <Button
                                 onClick={() => props.onRetryClick?.()}
@@ -92,16 +118,16 @@ const FileUploadProgressBar: React.FC<FileUploadProgressBarProps> = (
                         </div>
                     )}
                     {// if
-                    !props.isErrored && (
+                    isNotErrored && (
                         <Paragraph
-                            cssClassName={`${CSS_CLASS_NAME}__top__status__percent`}>
+                            cssClassName={`${TOP_STATUS_CLASS}__percent`}>
                             {value}%
                         </Paragraph>
                     )}
                 </div>
             </div>
-            <div className={`${CSS_CLASS_NAME}__bar`}>
-                <ProgressBar value={value} isErrored={props.isErrored} />
+            <div className={BAR_CLASS}>
+                <ProgressBar value={value} isErrored={isErrored} />
             </div>
         </div>
     );

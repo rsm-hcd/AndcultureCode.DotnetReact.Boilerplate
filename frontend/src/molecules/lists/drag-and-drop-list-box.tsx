@@ -52,8 +52,8 @@ const DragAndDropListBox = <T extends any>(
 
     const handleDragEnd = (result: DropResult) => {
         if (
-            result == null ||
-            result.destination == null ||
+            result?.destination == null ||
+            result?.source == null ||
             result.source.index === result.destination.index
         ) {
             return;

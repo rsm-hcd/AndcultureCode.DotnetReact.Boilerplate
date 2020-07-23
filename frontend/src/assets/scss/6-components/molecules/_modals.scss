@@ -1,7 +1,7 @@
 .c-modal {
     position: relative;
     display: block;
-    background-color: #ffffff;
+    background-color: get-color-neutral("white");
     max-width: 50%;
     border-radius: $border-radius-medium;
     overflow: hidden;
@@ -46,7 +46,6 @@
             // Special circumstances for tables rendered in the fullscreen modal
             // "Limit" the width of the table and center it in the modal
             > .c-table-section__body.-half > table {
-                // max-width: $section-max-width;
                 margin: 0 auto;
             }
         }
@@ -54,9 +53,7 @@
     &.-left {
         @include padding(16px, 40px);
         @include fill-viewport-height();
-        // left: $sidebar-menu-width;
         margin: 0;
-        // width: calc(75% - #{$sidebar-menu-width});
         border-radius: initial;
         max-width: initial;
         overflow: visible;
@@ -65,10 +62,6 @@
         @include if-internet-explorer() {
             position: fixed;
             top: 0;
-        }
-
-        @include respond-to("sm-desktop") {
-            // width: calc(100% - #{$sidebar-menu-width});
         }
 
         @include respond-to("phone") {

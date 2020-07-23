@@ -62,7 +62,6 @@ const EmailMultiInput: React.FC<EmailMultiInputProps> = (
     }
 
     const [currentInputValue, setCurrentInputValue] = useState("");
-    const isRequired = props.required === true;
     const labelText = StringUtils.hasValue(props.label)
         ? props.label
         : "Email Addresses";
@@ -114,7 +113,7 @@ const EmailMultiInput: React.FC<EmailMultiInputProps> = (
         <div className={classNames.join(" ")}>
             <label>
                 {labelText}
-                {isRequired && (
+                {props.required && (
                     <span className={`${FORM_FIELD_CLASS}__required`}> *</span>
                 )}
             </label>

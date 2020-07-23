@@ -56,6 +56,16 @@ export default class GlobalStateRecord extends Record(defaultValues)
     // ---------------------------------------------------------------------------------------------
 
     /**
+     * Is the current user authenticated?
+     */
+    public isAuthenticated(): boolean {
+        if (this.currentIdentity == null) {
+            return false;
+        }
+        return this.currentIdentity.isValid();
+    }
+
+    /**
      * Initialize the global state record from values in local storage.
      * @returns GlobalStateRecord
      */
@@ -66,16 +76,6 @@ export default class GlobalStateRecord extends Record(defaultValues)
                 IdentityRecord
             ),
         });
-    }
-
-    /**
-     * Is the current user authenticated?
-     */
-    public isAuthenticated(): boolean {
-        if (this.currentIdentity == null) {
-            return false;
-        }
-        return this.currentIdentity.isValid();
     }
 
     /**

@@ -42,10 +42,6 @@ export default class FileRecord extends Record(defaultValues) implements File {
     // #region Public Methods
     // -------------------------------------------------------------------------------------------------
 
-    public with(values: Partial<File>): FileRecord {
-        return new FileRecord(Object.assign(this.toJS(), values));
-    }
-
     public fileName(): string {
         return PathUtils.relativePathToFilename(this.relativeProviderPath);
     }
@@ -56,6 +52,10 @@ export default class FileRecord extends Record(defaultValues) implements File {
      */
     public resourceType(): string {
         return PathUtils.fileTypeLabelFromPath(this.relativeProviderPath);
+    }
+
+    public with(values: Partial<File>): FileRecord {
+        return new FileRecord(Object.assign(this.toJS(), values));
     }
 
     // #endregion Public Methods

@@ -29,6 +29,14 @@ import { CollectionUtils } from "andculturecode-javascript-core";
 import uuid from "uuid";
 
 // -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = `${ListBoxBaseClassName} c-drag-and-drop-list-box`;
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
@@ -48,7 +56,21 @@ export interface DragAndDropListBoxProps<T>
 const DragAndDropListBox = <T extends any>(
     props: DragAndDropListBoxProps<T>
 ): ReactElement<ListBoxProps<T>> | null => {
-    const CSS_CLASS_NAME = `${ListBoxBaseClassName} c-drag-and-drop-list-box`;
+    const items = props.items;
+    const hasItems = CollectionUtils.hasValues(items);
+
+    // Short-circuit if no items in collection
+    if (items != null && !hasItems) {
+        if (props.hideWhenNoItems) {
+            return null;
+        }
+
+        return (
+            <div className={`${COMPONENT_CLASS} -empty`}>
+                <Paragraph>No Items Added</Paragraph>
+            </div>
+        );
+    }
 
     const handleDragEnd = (result: DropResult) => {
         if (
@@ -73,6 +95,9 @@ const DragAndDropListBox = <T extends any>(
     const DraggableItemList = React.memo(function<T extends any>(itemProps: {
         items: Array<ListBoxItem<T>>;
     }) {
+        const cssIsDragging = (snapshot: DraggableStateSnapshot) =>
+            snapshot.isDragging ? "-dragging" : "";
+
         return (
             <React.Fragment>
                 {itemProps.items.map((item: ListBoxItem<T>, index: number) => (
@@ -88,9 +113,9 @@ const DragAndDropListBox = <T extends any>(
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                                 ref={provided.innerRef}
-                                className={`${ListBoxItemClassName} ${
-                                    snapshot.isDragging ? "-dragging" : ""
-                                }`}
+                                className={`${ListBoxItemClassName} ${cssIsDragging(
+                                    snapshot
+                                )}`}
                                 style={provided.draggableProps.style}>
                                 <div className="-drag-handle">
                                     <Icon
@@ -134,17 +159,8 @@ const DragAndDropListBox = <T extends any>(
         );
     });
 
-    if (CollectionUtils.isEmpty(props.items) && props.items != null) {
-        if (props.hideWhenNoItems === true) {
-            return null;
-        }
-
-        return (
-            <div className={`${CSS_CLASS_NAME} -empty`}>
-                <Paragraph>No Items Added</Paragraph>
-            </div>
-        );
-    }
+    const cssIsDragging = (snapshot: DroppableStateSnapshot) =>
+        snapshot.isDraggingOver ? "-dragging-container" : "";
 
     return (
         <DragDropContext onDragEnd={handleDragEnd}>
@@ -156,12 +172,11 @@ const DragAndDropListBox = <T extends any>(
                     <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className={`${CSS_CLASS_NAME} ${
-                            snapshot.isDraggingOver ? "-dragging-container" : ""
-                        }`}>
-                        {CollectionUtils.hasValues(props.items) && (
-                            <DraggableItemList items={props.items} />
-                        )}
+                        className={`${COMPONENT_CLASS} ${cssIsDragging(
+                            snapshot
+                        )}`}>
+                        {// if
+                        hasItems && <DraggableItemList items={items} />}
                         {provided.placeholder}
                     </div>
                 )}

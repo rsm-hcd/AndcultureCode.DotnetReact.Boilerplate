@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, PropsWithChildren } from "react";
 import {
     Button,
     ButtonStyles,
@@ -38,12 +38,10 @@ export interface CollapsePanelProps {
 // #region Component
 // -------------------------------------------------------------------------------------------------
 
-const CollapsePanel: React.FC<CollapsePanelProps> = ({
-    panelTop,
-    children,
-    buttonAriaText,
-    collapse,
-}) => {
+const CollapsePanel: React.FC<CollapsePanelProps> = (
+    props: PropsWithChildren<CollapsePanelProps>
+) => {
+    const { buttonAriaText, children, collapse, panelTop } = props;
     const [isCollapsed, setCollapsed] = useState<boolean>(collapse);
     const hasChildren = CollectionUtils.hasValues(
         React.Children.toArray(children)

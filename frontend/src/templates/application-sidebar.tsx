@@ -1,28 +1,41 @@
 import * as React from "react";
 
-/*
----------------------------------------------------------------------------------------------
-Component
----------------------------------------------------------------------------------------------
-*/
+// -----------------------------------------------------------------------------------------
+// #region Constants
+// -----------------------------------------------------------------------------------------
 
-const ApplicationSidebar: React.FC<any> = (props: any) => {
+const COMPONENT_CLASS = "c-application-sidebar";
+
+// #endregion Constants
+
+// -----------------------------------------------------------------------------------------
+// #region Interfaces
+// -----------------------------------------------------------------------------------------
+
+export interface ApplicationSidebarProps {}
+
+// #endregion Interfaces
+
+// -----------------------------------------------------------------------------------------
+// #region Component
+// -----------------------------------------------------------------------------------------
+
+const ApplicationSidebar: React.FC<ApplicationSidebarProps> = (
+    props: React.PropsWithChildren<ApplicationSidebarProps>
+) => {
     return (
-        <nav className="c-application-sidebar">
-            <div className="__panel">
-                <ul>
-                    <li>Icon</li>
-                    <li>Icon</li>
-                </ul>
-            </div>
+        <nav className={COMPONENT_CLASS}>
+            <div className="__panel">{props.children}</div>
         </nav>
     );
 };
 
-/*
----------------------------------------------------------------------------------------------
-Exports
----------------------------------------------------------------------------------------------
-*/
+// #endregion Component
+
+// -----------------------------------------------------------------------------------------
+// #region Exports
+// -----------------------------------------------------------------------------------------
 
 export default ApplicationSidebar;
+
+// #endregion Exports

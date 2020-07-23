@@ -175,7 +175,7 @@ abstract class ObjectValidator<T> implements ObjectValidatorInterface<T> {
         validationResult: ObjectValidationResult<T>
     ): boolean {
         return (
-            CollectionUtils.hasValues(Object.keys(validationResult)) &&
+            ObjectValidator.hasErrors(validationResult) &&
             CollectionUtils.hasValues(validationResult[key])
         );
     }

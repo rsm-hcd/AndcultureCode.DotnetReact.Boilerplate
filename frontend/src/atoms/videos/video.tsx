@@ -61,8 +61,8 @@ const Video: React.FC<VideoProps> = (props: VideoProps) => {
 
     return (
         <video
-            className={classNames.join(" ")}
             autoPlay={props.autoplay}
+            className={classNames.join(" ")}
             controls={props.showControls}
             loop={props.loop}
             muted={props.muted}>

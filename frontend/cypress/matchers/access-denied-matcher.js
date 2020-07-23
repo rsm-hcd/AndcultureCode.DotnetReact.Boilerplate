@@ -1,9 +1,9 @@
 /// <reference types="Cypress" />
+import { shouldExist } from "./element-matchers";
 
 /**
  * Asserts that access denied page is rendered
  */
-const shouldRenderAccessDeniedPage = () =>
-    cy.get(".c-access-denied-page").should("exist");
+const shouldRenderAccessDeniedPage = () => shouldExist(".c-access-denied-page");
 
 export default shouldRenderAccessDeniedPage;

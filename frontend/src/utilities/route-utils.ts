@@ -138,10 +138,7 @@ const assertCurrentUrl = (
     let currentUrl = pageUrl ?? window.location.pathname;
 
     // cut off the query string, if there is one
-    const index = currentUrl.indexOf("?");
-    if (index > -1) {
-        currentUrl = currentUrl.substr(0, index);
-    }
+    currentUrl = removeQueryString(currentUrl);
 
     return givenUrl === currentUrl;
 };

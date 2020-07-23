@@ -16,7 +16,7 @@ import { useHistory } from "react-router-dom";
 // #region Constants
 // -----------------------------------------------------------------------------------------
 
-const BASE_CLASS = "c-new-user-form";
+const COMPONENT_CLASS = "c-new-user-form";
 const PASSWORD_REQUIREMENTS =
     "Must be at least 6 characters long and contain 3 of the 4 following character types: 'UpperCase', 'LowerCase', 'Number', or 'Special Character'.";
 
@@ -73,7 +73,7 @@ const NewUserForm: React.FunctionComponent<NewUserFormProps> = (
     };
 
     return (
-        <div className={BASE_CLASS}>
+        <div className={COMPONENT_CLASS}>
             <Form
                 buttonText={props.submitButtonText}
                 id={formId}
@@ -108,7 +108,7 @@ const NewUserForm: React.FunctionComponent<NewUserFormProps> = (
                     showCharacterCount={false}
                     value={""}
                 />
-                <div className={`${BASE_CLASS}__password`}>
+                <div className={`${COMPONENT_CLASS}__password`}>
                     <PasswordFormField
                         inputTestId="password"
                         label="Create a Password "

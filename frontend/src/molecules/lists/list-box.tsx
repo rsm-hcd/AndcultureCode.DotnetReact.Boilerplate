@@ -9,6 +9,15 @@ import React, { ReactElement } from "react";
 import { CollectionUtils } from "andculturecode-javascript-core";
 
 // -------------------------------------------------------------------------------------------------
+// #region Constants
+// -------------------------------------------------------------------------------------------------
+
+export const ListBoxBaseClassName = "c-list-box";
+export const ListBoxItemClassName = `${ListBoxBaseClassName}__item`;
+
+// #endregion Constants
+
+// -------------------------------------------------------------------------------------------------
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
@@ -21,10 +30,10 @@ export interface ListBoxItem<T> {
 
 export interface ListBoxProps<T> {
     actionText?: string;
+    children?: React.ReactNode | React.ReactNodeArray;
     hideWhenNoItems?: boolean;
     items?: Array<ListBoxItem<T>>;
     onActionClick?: (id: T) => void;
-    children?: React.ReactNode | React.ReactNodeArray;
 }
 
 // #endregion Interfaces
@@ -33,13 +42,10 @@ export interface ListBoxProps<T> {
 // #region Component
 // -------------------------------------------------------------------------------------------------
 
-export const ListBoxBaseClassName = "c-list-box";
-export const ListBoxItemClassName = `${ListBoxBaseClassName}__item`;
-
 const ListBox = <T extends any>(
     props: ListBoxProps<T>
 ): ReactElement<ListBoxProps<T>> | null => {
-    if (!CollectionUtils.hasValues(props.items) && props.items != null) {
+    if (props.items != null && CollectionUtils.isEmpty(props.items)) {
         if (props.hideWhenNoItems === true) {
             return null;
         }

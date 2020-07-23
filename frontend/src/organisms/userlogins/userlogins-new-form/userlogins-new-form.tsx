@@ -83,27 +83,27 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
             )}
             <Form onSubmit={handleSubmit} buttonText={t("signIn")}>
                 <InputFormField
+                    disabled={hasDefaultEmail || signingIn}
                     errorMessage={usernameError}
                     inputTestId="userName"
-                    isValid={usernameError.length === 0}
+                    isValid={StringUtils.isEmpty(usernameError)}
                     label={t("emailAddress")}
                     maxLength={100}
                     onChange={(e) => setUserName(e.target.value)}
                     required={!hasDefaultEmail}
                     showCharacterCount={false}
-                    value={username}
-                    disabled={hasDefaultEmail || signingIn}
                     type={InputTypes.Email}
+                    value={username}
                 />
                 <PasswordFormField
+                    disabled={signingIn}
                     errorMessage={passwordError}
                     inputTestId="password"
-                    isValid={passwordError.length === 0}
+                    isValid={StringUtils.isEmpty(passwordError)}
                     label={t("password")}
                     onChange={(e) => setPassword(e.target.value)}
                     required={true}
                     value={password}
-                    disabled={signingIn}
                 />
                 {// if
                 signingIn ? (

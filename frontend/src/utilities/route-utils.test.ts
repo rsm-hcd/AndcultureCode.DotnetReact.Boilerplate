@@ -68,6 +68,7 @@ describe("RouteUtils", () => {
     // -----------------------------------------------------------------------------------------
 
     describe("#getCurrentRouteDefinition", () => {
+        // TODO: https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/32
         it.skip("when route has no route parameters, then returns correct RouteDefinition", () => {
             // Arrange
             const currentRoute = siteMap.userlogins.index;

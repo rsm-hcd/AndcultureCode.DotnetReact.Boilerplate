@@ -12,6 +12,7 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
         public string Ip { get; set; }
         public bool IsSuccessful { get; set; }
         public DateTimeOffset? KeepAliveOn { get; set; }
+        public long? RoleId { get; set; }
         public string ServerName { get; set; }
         public string UserAgent { get; set; }
         public long? UserId { get; set; }

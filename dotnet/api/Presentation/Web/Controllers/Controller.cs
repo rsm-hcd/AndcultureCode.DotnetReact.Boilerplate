@@ -93,6 +93,9 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
         public AcceptedResult Accepted<T>(T value, IEnumerable<IError> errors)
             => base.Accepted(CreateResult(value, errors));
 
+        protected BadRequestObjectResult BadRequest<T>(IEnumerable<IError> errors)
+            => base.BadRequest(CreateResult<object>(null, errors));
+
         protected BadRequestObjectResult BadRequest<T>(T value, IEnumerable<IError> errors)
             => base.BadRequest(CreateResult(value, errors));
 
@@ -129,6 +132,9 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
 
         public CreatedResult Created<T>(T value)
             => base.Created(string.Empty, CreateResult(value, null));
+
+        public CreatedResult Created<T>(long uriIdentifier, T value)
+            => base.Created(uriIdentifier.ToString(), CreateResult(value, null));
 
         public CreatedResult Created<T>(string uri, T value)
             => base.Created(uri, CreateResult(value, null));

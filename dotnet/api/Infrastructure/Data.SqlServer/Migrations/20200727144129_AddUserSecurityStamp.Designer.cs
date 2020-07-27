@@ -4,14 +4,16 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
+namespace Data.SqlServer.Migrations
 {
     [DbContext(typeof(GBApiContext))]
-    partial class GBApiContextModelSnapshot : ModelSnapshot
+    [Migration("20200727144129_AddUserSecurityStamp")]
+    partial class AddUserSecurityStamp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,11 +113,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                     b.Property<bool>("IsSuperAdmin");
 
                     b.Property<string>("LastName");
-
-                    b.Property<string>("PasswordHash")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("Salt");
 
                     b.Property<string>("SecurityStamp")
                         .HasMaxLength(150);

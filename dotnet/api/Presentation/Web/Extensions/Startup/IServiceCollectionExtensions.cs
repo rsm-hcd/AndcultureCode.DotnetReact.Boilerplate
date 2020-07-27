@@ -26,6 +26,9 @@ using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Core.Models.Mail;
 using AndcultureCode.CSharp.Core.Models.Configuration;
+using AndcultureCode.GB.Business.Core.Models.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Threading.Tasks;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
@@ -67,6 +70,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             // Register Configuration Instance
             services.AddSingleton<IConfigurationRoot>(configuration);
             services.AddSingleton((sp) => authenticationSection.GetSection("Basic").Get<BasicAuthenticationConfiguration>());
+            services.AddSingleton((sp) => authenticationSection.GetSection("Cookie").Get<CookieAuthenticationConfiguration>());
             services.AddSingleton((sp) => configuration.GetSection("Email").Get<EmailSettings>());
 
             return services;
@@ -104,6 +108,44 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             Console.WriteLine($"Localization Cultures: {LocalizationUtils.CultureCodes(", ")}");
 
             return services;
+        }
+
+        /// <summary>
+        /// Adds cookie authentication
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void AddCookieAuthentication(this IServiceCollection services, IConfigurationRoot configuration)
+        {
+            var config = configuration.GetSection("Authentication").GetSection("Cookie").Get<CookieAuthenticationConfiguration>();
+            var cookie = new CookieBuilder
+            {
+                Name = config.CookieName,
+                SameSite = SameSiteMode.None
+            };
+            var cookieEvents = new CookieAuthenticationEvents
+            {
+                OnRedirectToAccessDenied = context =>
+                {
+                    context.Response.StatusCode = 403; // Don't redirect, set to forbidden
+                    return Task.CompletedTask;
+                },
+                OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = 401; // Don't redirect, set to unauthorized
+                    return Task.CompletedTask;
+                },
+            };
+
+            services
+                .AddAuthentication(config.AuthenticationScheme)
+                .AddCookie(config.AuthenticationScheme, options =>
+                {
+                    options.AccessDeniedPath = new PathString(config.AccessDeniedPath);
+                    options.Cookie = cookie;
+                    options.Events = cookieEvents;
+                    options.LoginPath = new PathString(config.LoginPath);
+                });
         }
 
         public static IServiceCollection AddMiddleware(this IServiceCollection services, IConfigurationRoot configuration)

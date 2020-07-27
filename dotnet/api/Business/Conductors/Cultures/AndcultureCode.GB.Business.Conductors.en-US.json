@@ -1,5 +1,9 @@
 [
     {
+        "Key": "ERROR_INVALID_CREDENTIALS",
+        "Value": "Invalid credentials"
+    },
+    {
         "Key": "JobEnqueueConductor.ValidateWorkerFromType.BackgroundJobCouldNotBeEnqueued",
         "Value": "{0} could not enqueue {1}."
     },

@@ -93,9 +93,10 @@ namespace AndcultureCode.GB.Presentation.Web
                 .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
                 .AddViewLocalization().AddDataAnnotationsLocalization();
 
-            services.AddBackgroundWorkers(_configuration);
-            services.AddApi(_configuration, _environment);
             services.AddAndcultureCodeLocalization();
+            services.AddApi(_configuration, _environment);
+            services.AddBackgroundWorkers(_configuration);
+            services.AddCookieAuthentication(_configuration);
             services.AddSerilogServices(_configuration);
             services.ConfigureForwardedHeaders();
 
@@ -145,8 +146,8 @@ namespace AndcultureCode.GB.Presentation.Web
                 //TODO: Use Security Headers Middlware
             }
 
-            app.UseForwardedHeaders();
             app.UseAuthentication();
+            app.UseForwardedHeaders();
             app.UseCookiePolicy(new CookiePolicyOptions
             {
                 MinimumSameSitePolicy = SameSiteMode.Lax,

@@ -4,6 +4,7 @@ using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Extensions;
+using AndcultureCode.GB.Presentation.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
 {
@@ -11,6 +12,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
     {
         #region Constants
 
+        protected const string HEADER_FORWARDED_FOR = "X-Forwarded-For";
         protected const string HEADER_USER_AGENT = "User-Agent";
 
         #endregion Constants
@@ -39,11 +41,46 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
         /// </summary>
         protected virtual string[] CurrentRoleIds => ApiClaimsPrincipal != null ? ApiClaimsPrincipal.RoleIds : User.RoleIds();
 
-
         /// <summary>
         /// Current authenticated user's id
         /// </summary>
         public virtual long? CurrentUserId => ApiClaimsPrincipal != null ? ApiClaimsPrincipal.UserId : User.UserId();
+
+        /// <summary>
+        /// Current authenticated user's UserLoginId
+        /// </summary>
+        /// <returns></returns>
+        public virtual long? CurrentUserLoginId => ApiClaimsPrincipal != null ? ApiClaimsPrincipal.UserLoginId : User.UserLoginId();
+
+        /// <summary>
+        /// Get current ip address
+        /// TODO: Abstract to base AndcultureCode Controller
+        /// </summary>
+        /// <value></value>
+        public virtual string IpAddress
+        {
+            get
+            {
+                var headers = Request?.Headers;
+                if (headers == null)
+                {
+                    return string.Empty;
+                }
+
+                if (headers.ContainsKey(HEADER_FORWARDED_FOR) && !string.IsNullOrWhiteSpace(headers[HEADER_FORWARDED_FOR]))
+                {
+                    return headers[HEADER_FORWARDED_FOR];
+                }
+
+                var forwardedIp = Request.GetForwardedIpAddress();
+                if (string.IsNullOrWhiteSpace(forwardedIp))
+                {
+                    return string.Empty;
+                }
+
+                return forwardedIp;
+            }
+        }
 
         /// <summary>
         /// Whether the current user is authenticated

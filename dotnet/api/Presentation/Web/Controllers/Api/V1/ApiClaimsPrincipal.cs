@@ -8,5 +8,6 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
         public virtual long? RoleId { get; set; }
         public virtual string[] RoleIds { get; set; }
         public virtual long? UserId { get; set; }
+        public virtual long? UserLoginId { get; set; }
     }
 }

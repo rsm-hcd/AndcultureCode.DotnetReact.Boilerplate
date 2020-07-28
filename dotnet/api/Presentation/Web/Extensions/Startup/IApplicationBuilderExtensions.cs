@@ -4,6 +4,7 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,8 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
     public static class IApplicationBuilderExtensions
     {
+        #region Public Methods
+
         public static void InitializeDatabase(this IApplicationBuilder app, IHostEnvironment env, IServiceScope serviceScope)
         {
             if (env.IsEnvironment("Testing"))
@@ -23,17 +26,34 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             var context = serviceProvider.GetService<GBApiContext>();
             var logger = serviceProvider.GetService<ILogger<IApplicationBuilder>>();
 
-            // Migrate
-            logger.LogInformation("Migrating database...");
-            context.Database.SetCommandTimeout(int.MaxValue);
-            context.Database.Migrate();
-            logger.LogInformation("Database migrated.");
+            Migrate(context.Database, logger);
+            Seed(context, logger, env);
+        }
 
-            // Seed
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private static void Migrate(DatabaseFacade database, ILogger<IApplicationBuilder> logger)
+        {
+            logger.LogInformation("Migrating database...");
+
+            database.SetCommandTimeout(int.MaxValue);
+            database.Migrate();
+
+            logger.LogInformation("Database migrated.");
+        }
+
+        private static void Seed(GBApiContext context, ILogger<IApplicationBuilder> logger, IHostEnvironment env)
+        {
             logger.LogInformation("Seeding database...");
+
             var seeds = new Seeds(logger, context, env.IsDevelopment());
             seeds.Create();
+
             logger.LogInformation("Database seeded.");
         }
+
+        #endregion Private Methods
     }
 }

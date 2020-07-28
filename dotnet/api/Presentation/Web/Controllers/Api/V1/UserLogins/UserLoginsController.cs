@@ -20,12 +20,13 @@ using AndcultureCode.GB.Presentation.Web.Middleware.Authentication;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
 {
+    [ApiRoute("userlogins")]
     [FormatFilter]
     [NoCache]
-    [ApiRoute("userlogins")]
     public class UserLoginsController : ApiController
     {
         #region Private Members
@@ -73,6 +74,7 @@ namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
 
         #region POST
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create(
             [FromBody] UserLoginDto dto,

@@ -142,8 +142,7 @@ namespace AndcultureCode.GB.Presentation.Web
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                app.ConfigureSeedData(env, serviceScope);
-                //TODO: Use Security Headers Middlware
+                app.InitializeDatabase(env, serviceScope);
             }
 
             app.UseAuthentication();

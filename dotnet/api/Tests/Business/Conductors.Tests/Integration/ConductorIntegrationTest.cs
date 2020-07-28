@@ -144,7 +144,7 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
             ConfigureContexts(services);
 
             services
-                .AddSqlServer()
+                .AddSqlServer(Configuration)
                 .AddConductors(Configuration);
 
 

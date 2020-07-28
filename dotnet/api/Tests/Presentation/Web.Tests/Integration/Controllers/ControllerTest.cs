@@ -474,7 +474,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddConfiguration(Configuration, "does-not-matter-for-tests", EnvironmentName)
                 .AddContexts(Configuration, EnvironmentName)
-                .AddSqlServer()
+                .AddSqlServer(Configuration)
                 .AddClients(Configuration)
                 .AddConductors(Configuration)
                 .AddAndcultureCodeLocalization()

@@ -94,7 +94,7 @@ namespace AndcultureCode.GB.Presentation.Cli
                     // .AddAutoMapper(typeof(MappingProfile))
                     .AddConfiguration(_configuration, "", _environmentName)
                     .AddContexts(_configuration, _environmentName)
-                    .AddSqlServer()
+                    .AddSqlServer(_configuration)
                     .AddConductors(_configuration);
 
                 return _cachedServiceCollection;

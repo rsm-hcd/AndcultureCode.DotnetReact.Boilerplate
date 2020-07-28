@@ -146,7 +146,7 @@ namespace AndcultureCode.GB.Presentation.Worker.Tests.Integration
             ConfigureContexts(services);
 
             services
-                .AddSqlServer()
+                .AddSqlServer(Configuration)
                 .AddConductors(Configuration)
                 .AddWorkers();
 

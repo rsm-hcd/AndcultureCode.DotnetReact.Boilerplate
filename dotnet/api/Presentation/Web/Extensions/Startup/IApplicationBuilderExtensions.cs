@@ -15,7 +15,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
     {
         #region Public Methods
 
-        public static void InitializeDatabase(this IApplicationBuilder app, IHostEnvironment env, IServiceScope serviceScope)
+        public static void ConfigureDatabase(this IApplicationBuilder app, IHostEnvironment env, IServiceScope serviceScope)
         {
             if (env.IsEnvironment("Testing"))
             {

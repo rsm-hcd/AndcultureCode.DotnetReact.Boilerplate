@@ -142,15 +142,12 @@ namespace AndcultureCode.GB.Presentation.Web
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                app.InitializeDatabase(env, serviceScope);
+                app.ConfigureDatabase(env, serviceScope);
             }
 
             app.UseAuthentication();
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
             app.UseForwardedHeaders();
-            app.UseCookiePolicy(new CookiePolicyOptions
-            {
-                MinimumSameSitePolicy = SameSiteMode.Lax,
-            });
 
             if (env.IsDevelopment())
             {

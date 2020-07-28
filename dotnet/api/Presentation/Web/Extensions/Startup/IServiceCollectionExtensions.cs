@@ -121,7 +121,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             var cookie = new CookieBuilder
             {
                 Name = config.CookieName,
-                SameSite = SameSiteMode.None
+                SameSite = SameSiteMode.Lax
             };
             var cookieEvents = new CookieAuthenticationEvents
             {

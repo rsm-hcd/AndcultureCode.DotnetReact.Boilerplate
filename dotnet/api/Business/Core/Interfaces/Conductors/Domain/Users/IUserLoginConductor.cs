@@ -13,8 +13,15 @@ namespace AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
-        /// <returns></returns>
         IResult<TUser> Authenticate(string userName, string password);
+
+        /// <summary>
+        /// Configures the provided user's password related properties
+        /// for the new provided password value
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="newPassword"></param>
+        IResult<TUser> ConfigurePassword(TUser user, string newPassword);
 
         /// <summary>
         /// Generates a hash from the given value and salt
@@ -32,5 +39,10 @@ namespace AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users
         /// <param name="bits">Size of the salt to generate in bits (must be a multiple of 8)</param>
         /// <returns>Base 64 encoded string of the salt</returns>
         string GenerateSalt(ushort bits = 128);
+
+        /// <summary>
+        /// Generate a user's security stamp
+        /// </summary>
+        string GenerateSecurityStamp();
     }
 }

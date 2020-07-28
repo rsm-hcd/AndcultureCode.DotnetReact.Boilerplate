@@ -71,14 +71,17 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
             return user;
         }).Result;
 
-        /// <summary>
-        /// Generates a hash from the given value and salt
-        /// </summary>
-        /// <param name="value">Value to hash</param>
-        /// <param name="salt">Salt to use (base 64 string)</param>
-        /// <param name="iterationCount">Iterations to perform (at least 10000)</param>
-        /// <param name="bits">Size of the hash in bits</param>
-        /// <returns>Base 64 encoded string of the hash</returns>
+        public IResult<TUser> ConfigurePassword(TUser user, string newPassword) => Do<TUser>.Try(r =>
+        {
+            var salt = GenerateSalt();
+
+            user.PasswordHash = GenerateHash(newPassword, salt);
+            user.Salt = salt;
+            user.SecurityStamp = GenerateSecurityStamp();
+
+            return user;
+        }).Result;
+
         public string GenerateHash(string value, string salt, int iterationCount = 10000, ushort bits = 256)
         {
             if (iterationCount < 10000)
@@ -107,11 +110,6 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
             return hashed;
         }
 
-        /// <summary>
-        /// Generate a salt to be used for hashing
-        /// </summary>
-        /// <param name="bits">Size of the salt to generate in bits (must be a multiple of 8)</param>
-        /// <returns>Base 64 encoded string of the salt</returns>
         public string GenerateSalt(ushort bits = 128)
         {
             if (bits < 128)
@@ -132,6 +130,8 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
 
             return Convert.ToBase64String(salt);
         }
+
+        public string GenerateSecurityStamp() => Guid.NewGuid().ToString("N");
 
         #endregion Public Methods
     }

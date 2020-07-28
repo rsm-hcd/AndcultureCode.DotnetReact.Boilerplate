@@ -1,3 +1,4 @@
+using System;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
@@ -27,7 +28,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             var logger = serviceProvider.GetService<ILogger<IApplicationBuilder>>();
 
             Migrate(context.Database, logger);
-            Seed(context, logger, env);
+            Seed(serviceProvider, env, logger);
         }
 
         #endregion Public Methods
@@ -41,17 +42,17 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             database.SetCommandTimeout(int.MaxValue);
             database.Migrate();
 
-            logger.LogInformation("Database migrated.");
+            logger.LogInformation("Database migrated");
         }
 
-        private static void Seed(GBApiContext context, ILogger<IApplicationBuilder> logger, IHostEnvironment env)
+        private static void Seed(IServiceProvider serviceProvider, IHostEnvironment env, ILogger<IApplicationBuilder> logger)
         {
             logger.LogInformation("Seeding database...");
 
-            var seeds = new Seeds(logger, context, env.IsDevelopment());
+            var seeds = new Seeds(serviceProvider, env.IsDevelopment());
             seeds.Create();
 
-            logger.LogInformation("Database seeded.");
+            logger.LogInformation("Database seeded");
         }
 
         #endregion Private Methods

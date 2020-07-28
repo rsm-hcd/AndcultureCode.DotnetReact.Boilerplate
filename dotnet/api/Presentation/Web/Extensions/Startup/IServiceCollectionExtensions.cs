@@ -43,12 +43,13 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
                 environment.EnvironmentName
             );
             services.AddContexts(configuration, environment.EnvironmentName);
-            services.AddSqlServer();
+            services.AddSqlServer(configuration);
             services.AddConductors(configuration);
             services.AddProviders();
             services.AddClients(configuration);
             services.AddWorkers();
             services.AddMiddleware(configuration);
+
             return services;
         }
 

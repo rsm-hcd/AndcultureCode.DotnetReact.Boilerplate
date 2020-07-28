@@ -1,63 +1,30 @@
-using Microsoft.Extensions.Logging;
+using System;
+using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds
 {
-    public class Seeds
+    public class Seeds : SeedsBase
     {
-        #region Properties
-
-        public GBApiContext Context { get; private set; }
-        public bool IsDevelopment { get; private set; }
-        public ILogger Logger { get; private set; }
-
-        #endregion Properties
-
         #region Constructor
 
-        public Seeds(ILogger logger, GBApiContext context, bool isDevelopment = false)
-        {
-            Context = context;
-            IsDevelopment = isDevelopment;
-            Logger = logger;
-        }
+        public Seeds(IServiceProvider serviceProvider, bool isDevelopment = false)
+            : base(serviceProvider, isDevelopment) { }
+
 
         #endregion Constructor
 
-        #region Public Methods
+        #region Protected Methods
 
-        /// <summary>
-        /// Primary entry point to initialize seed data
-        /// </summary>
-        public void Create()
-        {
-            CreateBase();
-
-            if (IsDevelopment)
-            {
-                CreateDevelopment();
-            }
-        }
-
-        #endregion Public Methods
-
-        #region Private Methods
-
-        /// <summary>
-        /// Seed data that is required for the application to run, regardless of the environment
-        /// </summary>
-        private void CreateBase()
+        protected override void CreateBase()
         {
 
         }
 
-        /// <summary>
-        /// Seed data that is only for development environments (ie. test accounts, use cases)
-        /// </summary>
-        private void CreateDevelopment()
+        protected override void CreateDevelopment()
         {
-
+            this.SeedUsers();
         }
 
-        #endregion Private Methods
+        #endregion Protected Methods
     }
 }

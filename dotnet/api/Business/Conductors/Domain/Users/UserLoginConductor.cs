@@ -52,7 +52,6 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
             var user = userResult.ResultObject.FirstOrDefault();
 
             // No user found with the specified userName
-            // -----------------------------------------
             if (user == null)
             {
                 r.AddValidationError(_localizer, ERROR_INVALID_CREDENTIALS);
@@ -60,11 +59,9 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
             }
 
             // Hash the password
-            // -----------------
             var passwordHash = GenerateHash(password, user.Salt);
 
             // Validate password
-            // -----------------
             if (user.PasswordHash != passwordHash)
             {
                 r.AddValidationError(_localizer, ERROR_INVALID_CREDENTIALS);

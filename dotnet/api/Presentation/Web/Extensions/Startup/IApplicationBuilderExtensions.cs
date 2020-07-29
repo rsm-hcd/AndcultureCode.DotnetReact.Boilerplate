@@ -2,6 +2,7 @@ using System;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
+using Core.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +17,31 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
     {
         #region Public Methods
 
-        public static void ConfigureDatabase(this IApplicationBuilder app, IHostEnvironment env, IServiceScope serviceScope)
+        public static void ConfigureDatabase(
+            this IApplicationBuilder app,
+            IServiceProvider serviceProvider,
+            bool migrate = true,
+            bool seed = true
+        )
         {
-            if (env.IsEnvironment("Testing"))
+            var env = serviceProvider.GetService<IHostEnvironment>();
+            if (env.IsEnvironment(EnvironmentConstants.TESTING))
             {
                 return;
             }
 
-            var serviceProvider = serviceScope.ServiceProvider;
             var context = serviceProvider.GetService<GBApiContext>();
             var logger = serviceProvider.GetService<ILogger<IApplicationBuilder>>();
 
-            Migrate(context.Database, logger);
-            Seed(serviceProvider, env, logger);
+            if (migrate)
+            {
+                Migrate(context.Database, logger);
+            }
+
+            if (seed)
+            {
+                Seed(serviceProvider, env, logger);
+            }
         }
 
         #endregion Public Methods
@@ -38,20 +51,16 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
         private static void Migrate(DatabaseFacade database, ILogger<IApplicationBuilder> logger)
         {
             logger.LogInformation("Migrating database...");
-
             database.SetCommandTimeout(int.MaxValue);
             database.Migrate();
-
             logger.LogInformation("Database migrated");
         }
 
         private static void Seed(IServiceProvider serviceProvider, IHostEnvironment env, ILogger<IApplicationBuilder> logger)
         {
             logger.LogInformation("Seeding database...");
-
             var seeds = new Seeds(serviceProvider, env.IsDevelopment());
             seeds.Create();
-
             logger.LogInformation("Database seeded");
         }
 

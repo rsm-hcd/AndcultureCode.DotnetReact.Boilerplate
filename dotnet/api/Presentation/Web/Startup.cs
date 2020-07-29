@@ -142,7 +142,11 @@ namespace AndcultureCode.GB.Presentation.Web
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                app.ConfigureDatabase(env, serviceScope);
+                app.ConfigureDatabase(
+                    serviceScope.ServiceProvider,
+                    migrate: true,
+                    seed: true
+                );
             }
 
             app.UseAuthentication();

@@ -11,7 +11,6 @@ using Microsoft.Extensions.Localization;
 
 namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
 {
-
     public class UserLoginConductor<TUser> : IUserLoginConductor<TUser>
         where TUser : User
     {
@@ -46,24 +45,18 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
         public IResult<TUser> Authenticate(string userName, string password) => Do<TUser>.Try(r =>
         {
             userName = userName.ToLower();
-            var userResult = _userReadConductor.FindAll(e => e.UserName.ToLower() == userName && e.DeletedOn == null);
-            var user = userResult.ResultObject.FirstOrDefault();
 
-            // No user found with the specified userName
-            if (user == null)
+            var userResult = _userReadConductor.FindAll(e => e.UserName.ToLower() == userName && e.DeletedOn == null);
+            if (userResult.HasErrors)
             {
-                r.AddValidationError(_localizer, ERROR_INVALID_CREDENTIALS);
-                return null;
+                return r.AddErrorsAndReturnDefault(userResult);
             }
 
-            // Hash the password
-            var passwordHash = EncryptionUtils.GenerateHash(password, user.Salt);
-
-            // Validate password
-            if (user.PasswordHash != passwordHash)
+            // Ensure user exists and password is valid
+            var user = userResult.ResultObject.FirstOrDefault();
+            if (user == null || user.PasswordHash != EncryptionUtils.GenerateHash(password, user.Salt))
             {
-                r.AddValidationError(_localizer, ERROR_INVALID_CREDENTIALS);
-                return null;
+                return InvalidCredentialsError(r);
             }
 
             return user;
@@ -81,5 +74,15 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
         }).Result;
 
         #endregion Public Methods
+
+        #region Private Methods
+
+        private TUser InvalidCredentialsError(IResult<TUser> result)
+        {
+            result.AddValidationError(_localizer, ERROR_INVALID_CREDENTIALS);
+            return null;
+        }
+
+        #endregion Private Methods
     }
 }

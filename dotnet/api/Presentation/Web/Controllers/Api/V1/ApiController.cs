@@ -4,7 +4,6 @@ using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Extensions;
-using AndcultureCode.GB.Presentation.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
 {

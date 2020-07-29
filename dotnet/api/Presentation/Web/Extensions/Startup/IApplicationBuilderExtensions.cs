@@ -17,6 +17,13 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
     {
         #region Public Methods
 
+        /// <summary>
+        /// Performs application startup related database configuration tasks
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="serviceProvider"></param>
+        /// <param name="migrate">Should outstanding code-first migrations be run?</param>
+        /// <param name="seed">Should seed data be evaluated?</param>
         public static void ConfigureDatabase(
             this IApplicationBuilder app,
             IServiceProvider serviceProvider,

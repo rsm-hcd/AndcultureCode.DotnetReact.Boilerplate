@@ -10,7 +10,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds
         public Seeds(IServiceProvider serviceProvider, bool isDevelopment = false)
             : base(serviceProvider, isDevelopment) { }
 
-
         #endregion Constructor
 
         #region Protected Methods

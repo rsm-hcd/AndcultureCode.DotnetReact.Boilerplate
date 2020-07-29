@@ -12,11 +12,13 @@ using AndcultureCode.GB.Business.Core.Extensions;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
+using Web.Interfaces;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers
 {
 
-    public class Controller : Microsoft.AspNetCore.Mvc.Controller
+
+    public class Controller : Microsoft.AspNetCore.Mvc.Controller, IController
     {
         #region Constants
 
@@ -93,16 +95,16 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
         public AcceptedResult Accepted<T>(T value, IEnumerable<IError> errors)
             => base.Accepted(CreateResult(value, errors));
 
-        protected BadRequestObjectResult BadRequest<T>(IEnumerable<IError> errors)
+        public BadRequestObjectResult BadRequest<T>(IEnumerable<IError> errors)
             => base.BadRequest(CreateResult<object>(null, errors));
 
-        protected BadRequestObjectResult BadRequest<T>(T value, IEnumerable<IError> errors)
+        public BadRequestObjectResult BadRequest<T>(T value, IEnumerable<IError> errors)
             => base.BadRequest(CreateResult(value, errors));
 
-        protected BadRequestObjectResult BadRequest<T>(T value, params IError[] errors)
+        public BadRequestObjectResult BadRequest<T>(T value, params IError[] errors)
             => base.BadRequest(CreateResult(value, errors));
 
-        protected BadRequestObjectResult BadRequest(string key, string message, ErrorType type = ErrorType.Error)
+        public BadRequestObjectResult BadRequest(string key, string message, ErrorType type = ErrorType.Error)
             => base.BadRequest(new List<Error>
             {
                 new Error
@@ -113,7 +115,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
                 }
             });
 
-        protected BadRequestObjectResult BadRequest<T>(T value, string key, string message, ErrorType type = ErrorType.Error)
+        public BadRequestObjectResult BadRequest<T>(T value, string key, string message, ErrorType type = ErrorType.Error)
             => base.BadRequest(CreateResult(value, new List<Error>
             {
                 new Error
@@ -185,7 +187,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
         public ObjectResult InternalError<T>(IEnumerable<IError> errors, ILogger logger = null)
             => InternalError(default(T), errors, logger);
 
-        protected ObjectResult InternalError<T>(string key, string message, ErrorType type = ErrorType.Error, ILogger logger = null)
+        public ObjectResult InternalError<T>(string key, string message, ErrorType type = ErrorType.Error, ILogger logger = null)
             => InternalError(default(T), new List<Error>
             {
                 new Error
@@ -202,7 +204,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
         public NotFoundObjectResult NotFound<T>(IEnumerable<IError> errors)
             => base.NotFound(CreateResult(default(T), errors));
 
-        protected NotFoundObjectResult NotFound<T>(T value, string key, string message, ErrorType type = ErrorType.Error)
+        public NotFoundObjectResult NotFound<T>(T value, string key, string message, ErrorType type = ErrorType.Error)
             => base.NotFound(CreateResult(value, new List<Error>
             {
                 new Error

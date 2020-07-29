@@ -122,6 +122,7 @@ namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
                 ServerName = Environment.MachineName,
                 UserAgent = UserAgent,
                 UserId = userId,
+                UserName = userName
             };
 
             return _conductor.Create(userLogin, userId);

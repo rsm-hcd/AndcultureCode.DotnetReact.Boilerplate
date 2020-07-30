@@ -21,12 +21,13 @@ using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Routing;
 using AndcultureCode.GB.Presentation.Web.Constants;
-using Microsoft.AspNetCore.HttpOverrides;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Core.Models.Mail;
 using AndcultureCode.CSharp.Core.Models.Configuration;
-using AndcultureCode.GB.Business.Core.Models.Configuration;
+using AndcultureCode.CSharp.Web.Constants;
+using AndcultureCode.CSharpCore.Constants;
+using AndcultureCode.CSharp.Business.Core.Models.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Threading.Tasks;
 
@@ -66,12 +67,11 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             string environmentName
         )
         {
-            var authenticationSection = configuration.GetSection("Authentication");
+            var authenticationSection = configuration.GetSection(WebConfiguration.AUTHENTICATION);
 
             // Register Configuration Instance
             services.AddSingleton<IConfigurationRoot>(configuration);
             services.AddSingleton((sp) => authenticationSection.GetSection("Basic").Get<BasicAuthenticationConfiguration>());
-            services.AddSingleton((sp) => authenticationSection.GetSection("Cookie").Get<CookieAuthenticationConfiguration>());
             services.AddSingleton((sp) => configuration.GetSection("Email").Get<EmailSettings>());
 
             return services;
@@ -80,8 +80,8 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
         public static IServiceCollection AddContexts(this IServiceCollection services, IConfigurationRoot configuration, string environmentName)
         {
             var connectionString = configuration.GetDatabaseConnectionString();
-
-            var loggerFactory = environmentName.ToLower() == "testing" ? null : new SerilogLoggerFactory(Log.Logger, false);
+            var isTestingEnvironment = environmentName.ToLower() == EnvironmentConstants.TESTING.ToLower();
+            var loggerFactory = isTestingEnvironment ? null : new SerilogLoggerFactory(Log.Logger, false);
 
             // Context gets registered several different ways (will this still be the same instance in the single scope?)
             services.AddDbContext<GBApiContext>(ServiceLifetime.Scoped);
@@ -109,44 +109,6 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             Console.WriteLine($"Localization Cultures: {LocalizationUtils.CultureCodes(", ")}");
 
             return services;
-        }
-
-        /// <summary>
-        /// Adds cookie authentication
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        public static void AddCookieAuthentication(this IServiceCollection services, IConfigurationRoot configuration)
-        {
-            var config = configuration.GetSection("Authentication").GetSection("Cookie").Get<CookieAuthenticationConfiguration>();
-            var cookie = new CookieBuilder
-            {
-                Name = config.CookieName,
-                SameSite = SameSiteMode.Lax
-            };
-            var cookieEvents = new CookieAuthenticationEvents
-            {
-                OnRedirectToAccessDenied = context =>
-                {
-                    context.Response.StatusCode = 403; // Don't redirect, set to forbidden
-                    return Task.CompletedTask;
-                },
-                OnRedirectToLogin = context =>
-                {
-                    context.Response.StatusCode = 401; // Don't redirect, set to unauthorized
-                    return Task.CompletedTask;
-                }
-            };
-
-            services
-                .AddAuthentication(config.AuthenticationScheme)
-                .AddCookie(config.AuthenticationScheme, options =>
-                {
-                    options.AccessDeniedPath = new PathString(config.AccessDeniedPath);
-                    options.Cookie = cookie;
-                    options.Events = cookieEvents;
-                    options.LoginPath = new PathString(config.LoginPath);
-                });
         }
 
         public static IServiceCollection AddMiddleware(this IServiceCollection services, IConfigurationRoot configuration)
@@ -208,16 +170,5 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
         {
             options.ConstraintMap.Add(Api.ROUTING_CULTURE_CONSTRAINT, typeof(CultureRouteConstraint));
         });
-
-        /// <summary>
-        /// Enables HTTP Header forwarding for proxies. This is not enabled by default when hosting out of process (i.e kestrel)
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection ConfigureForwardedHeaders(this IServiceCollection services)
-            => services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });
     }
 }

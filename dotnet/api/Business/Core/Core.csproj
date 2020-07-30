@@ -11,10 +11,9 @@
 
   <ItemGroup>
     <PackageReference Include="HangFire" Version="1.7.6" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.7" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.8" />
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.3" />
     <PackageReference Include="MailKit" Version="2.3.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="3.1.0" />

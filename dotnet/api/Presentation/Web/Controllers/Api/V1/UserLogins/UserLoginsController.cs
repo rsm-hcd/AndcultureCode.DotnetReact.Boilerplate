@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Http;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using AndcultureCode.GB.Presentation.Web.Controllers.Api.V1;
-using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using Microsoft.Extensions.Localization;
@@ -21,6 +20,7 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using AndcultureCode.CSharp.Business.Core.Models.Configuration;
 
 namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
 {

@@ -4,9 +4,9 @@ using AndcultureCode.CSharp.Core;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
+using AndcultureCode.CSharp.Core.Utilities.Security;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
-using AndcultureCode.GB.Business.Core.Utilities;
 using Microsoft.Extensions.Localization;
 
 namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins

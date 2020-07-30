@@ -1,9 +1,10 @@
 using System;
+using AndcultureCode.CSharp.Core;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds
 {
-    public class Seeds : SeedsBase
+    public class Seeds : SeedsBase<GBApiContext>
     {
         #region Constructor
 

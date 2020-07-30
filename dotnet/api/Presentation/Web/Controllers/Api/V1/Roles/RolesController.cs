@@ -7,8 +7,8 @@ using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.Roles;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using Microsoft.Extensions.Localization;
-using AndcultureCode.GB.Presentation.Web.Controllers.Interfaces;
-using AndcultureCode.GB.Presentation.Web.Controllers.Web.Extensions;
+using AndcultureCode.CSharp.Web.Interfaces;
+using AndcultureCode.CSharp.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
 {

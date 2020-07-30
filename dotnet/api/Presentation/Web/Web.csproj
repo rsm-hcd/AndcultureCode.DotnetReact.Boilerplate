@@ -19,9 +19,9 @@
 
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.7" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.8" />
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.3" />
-    <PackageReference Include="AndcultureCode.CSharp.Web" Version="0.0.2" />
+    <PackageReference Include="AndcultureCode.CSharp.Web" Version="0.0.3" />
     <PackageReference Include="AspNetCoreRateLimit" Version="3.0.5" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />

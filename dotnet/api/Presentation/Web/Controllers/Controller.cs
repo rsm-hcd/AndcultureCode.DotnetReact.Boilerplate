@@ -7,17 +7,14 @@ using AndcultureCode.CSharp.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AndcultureCode.GB.Business.Core.Providers.Logging;
 using AndcultureCode.GB.Business.Core.Extensions;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
-using Web.Interfaces;
+using AndcultureCode.CSharp.Web.Interfaces;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers
 {
-
-
     public class Controller : Microsoft.AspNetCore.Mvc.Controller, IController
     {
         #region Constants

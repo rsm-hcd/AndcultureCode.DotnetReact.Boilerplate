@@ -77,6 +77,8 @@ namespace AndcultureCode.GB.Presentation.Web
 
         #region Public Methods
 
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -97,8 +99,8 @@ namespace AndcultureCode.GB.Presentation.Web
             services.AddApi(_configuration, _environment);
             services.AddBackgroundWorkers(_configuration);
             services.AddCookieAuthentication(_configuration);
+            services.AddForwardedHeaders();
             services.AddSerilogServices(_configuration);
-            services.ConfigureForwardedHeaders();
 
             // Caching
             services.AddMemoryCache();
@@ -149,8 +151,7 @@ namespace AndcultureCode.GB.Presentation.Web
                 );
             }
 
-            app.UseAuthentication();
-            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
+            app.UseCookieAuthentication();
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())

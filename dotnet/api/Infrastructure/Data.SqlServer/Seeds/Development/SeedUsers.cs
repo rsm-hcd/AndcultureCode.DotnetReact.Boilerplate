@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AndcultureCode.CSharp.Business.Core.Models.Configuration;
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
-using AndcultureCode.GB.Infrastructure.Data.SqlServer.Configuration;
 using Core.Constants;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development

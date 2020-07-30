@@ -54,7 +54,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development
                 }
 
                 _userLoginConductor
-                    .ConfigurePassword(user, _config.DefaultUserPassword)
+                    .SetPassword(user, _config.DefaultUserPassword)
                     .ThrowIfAnyErrors();
 
                 context.Users.Add(user);

@@ -20,7 +20,7 @@ namespace AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users
         /// for the new provided password value
         /// </summary>
         /// <param name="user"></param>
-        /// <param name="newPassword"></param>
-        IResult<TUser> ConfigurePassword(TUser user, string newPassword);
+        /// <param name="password"></param>
+        IResult<TUser> SetPassword(TUser user, string password);
     }
 }

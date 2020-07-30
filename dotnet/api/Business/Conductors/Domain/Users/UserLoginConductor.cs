@@ -62,11 +62,11 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
             return user;
         }).Result;
 
-        public IResult<TUser> ConfigurePassword(TUser user, string newPassword) => Do<TUser>.Try(r =>
+        public IResult<TUser> SetPassword(TUser user, string password) => Do<TUser>.Try(r =>
         {
             var salt = EncryptionUtils.GenerateSalt();
 
-            user.PasswordHash = EncryptionUtils.GenerateHash(newPassword, salt);
+            user.PasswordHash = EncryptionUtils.GenerateHash(password, salt);
             user.Salt = salt;
             user.SecurityStamp = Guid.NewGuid().ToString("N");
 

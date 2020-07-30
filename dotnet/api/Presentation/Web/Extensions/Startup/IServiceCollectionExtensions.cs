@@ -29,8 +29,6 @@ using AndcultureCode.CSharp.Core.Models.Configuration;
 using AndcultureCode.GB.Business.Core.Models.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Threading.Tasks;
-using AndcultureCode.GB.Web.Middleware.Authentication;
-using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
@@ -137,10 +135,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
                 {
                     context.Response.StatusCode = 401; // Don't redirect, set to unauthorized
                     return Task.CompletedTask;
-                },
-                // Uncomment if desiring custom cookie security stamp validation
-                // See https://aspnetcore.readthedocs.io/en/stable/security/authentication/cookie.html
-                // OnValidatePrincipal = SecurityStampValidator.ValidateAsync<User>
+                }
             };
 
             services

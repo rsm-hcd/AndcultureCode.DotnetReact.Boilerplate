@@ -4,6 +4,7 @@ using AndcultureCode.CSharp.Core.Models;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Extensions;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
 {
@@ -11,7 +12,6 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
     {
         #region Constants
 
-        protected const string HEADER_FORWARDED_FOR = "X-Forwarded-For";
         protected const string HEADER_USER_AGENT = "User-Agent";
 
         #endregion Constants
@@ -66,9 +66,9 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
                     return string.Empty;
                 }
 
-                if (headers.ContainsKey(HEADER_FORWARDED_FOR) && !string.IsNullOrWhiteSpace(headers[HEADER_FORWARDED_FOR]))
+                if (headers.ContainsKey(HttpHeaders.X_FORWARDED_FOR) && !string.IsNullOrWhiteSpace(headers[HttpHeaders.X_FORWARDED_FOR]))
                 {
-                    return headers[HEADER_FORWARDED_FOR];
+                    return headers[HttpHeaders.X_FORWARDED_FOR];
                 }
 
                 var forwardedIp = Request.GetForwardedIpAddress();

@@ -101,6 +101,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers
         public BadRequestObjectResult BadRequest<T>(T value, params IError[] errors)
             => base.BadRequest(CreateResult(value, errors));
 
+        [ApiExplorerSettings(IgnoreApi = true)] // Tell swagger to ignore
         public BadRequestObjectResult BadRequest(string key, string message, ErrorType type = ErrorType.Error)
             => base.BadRequest(new List<Error>
             {

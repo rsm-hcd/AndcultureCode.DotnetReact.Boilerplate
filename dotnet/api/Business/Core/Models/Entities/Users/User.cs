@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Core.Models;
 
 namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 {
-    public class User : Auditable
+    public class User : Auditable, IUser
     {
         #region Properties
 

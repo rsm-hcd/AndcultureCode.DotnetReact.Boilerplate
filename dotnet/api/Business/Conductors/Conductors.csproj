@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.4.8" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.1" />
   </ItemGroup>
 
   <ItemGroup>

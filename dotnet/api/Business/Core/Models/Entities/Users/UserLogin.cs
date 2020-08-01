@@ -1,10 +1,11 @@
 using System;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 
 namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 {
-    public class UserLogin : Auditable
+    public class UserLogin : Auditable, IUserLogin
     {
         #region Properties
 
@@ -20,11 +21,13 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 
         #endregion Properties
 
-
         #region Navigation Properties
 
         public virtual Role Role { get; set; }
         public virtual User User { get; set; }
+
+        IRole IUserLogin.Role { get => Role; }
+        IUser IUserLogin.User { get => User; }
 
         #endregion Navigation Properties
     }

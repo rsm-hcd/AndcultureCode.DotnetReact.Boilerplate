@@ -30,6 +30,8 @@ using AndcultureCode.CSharpCore.Constants;
 using AndcultureCode.CSharp.Business.Core.Models.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Threading.Tasks;
+using AndcultureCode.CSharp.Core.Constants;
+using AndcultureCode.CSharp.Core.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
@@ -44,6 +46,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
                 environment.EnvironmentName
             );
             services.AddContexts(configuration, environment.EnvironmentName);
+            services.AddSeeding(configuration);
             services.AddSqlServer(configuration);
             services.AddConductors(configuration);
             services.AddProviders();
@@ -71,7 +74,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 
             // Register Configuration Instance
             services.AddSingleton<IConfigurationRoot>(configuration);
-            services.AddSingleton((sp) => authenticationSection.GetSection("Basic").Get<BasicAuthenticationConfiguration>());
+            services.AddSingleton((sp) => authenticationSection.GetSection(WebConfiguration.AUTHENTICATION_BASIC).Get<BasicAuthenticationConfiguration>());
             services.AddSingleton((sp) => configuration.GetSection("Email").Get<EmailSettings>());
 
             return services;

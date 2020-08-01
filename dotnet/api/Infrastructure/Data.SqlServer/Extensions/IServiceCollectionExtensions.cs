@@ -10,9 +10,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions
     {
         public static IServiceCollection AddSqlServer(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            // Configuration
-            services.AddSingleton((sp) => configuration.GetSection("DatabaseSeeds").Get<SeedsConfiguration>());
-
             // Repositories
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 

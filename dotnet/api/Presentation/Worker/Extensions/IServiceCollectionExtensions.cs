@@ -6,7 +6,7 @@ namespace AndcultureCode.GB.Presentation.Worker.Extensions
     {
         public static IServiceCollection AddWorkers(this IServiceCollection services)
         {
-            // Publication Worker
+            // Workers
             // services.AddScoped<IWorker, XYZWorker>();
             // services.AddScoped<IXYZWorker, XYZWorker>();
 

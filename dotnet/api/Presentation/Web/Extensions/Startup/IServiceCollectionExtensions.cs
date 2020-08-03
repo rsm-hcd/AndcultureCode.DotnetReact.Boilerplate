@@ -35,20 +35,21 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
     {
         public static IServiceCollection AddApi(this IServiceCollection services, IConfigurationRoot configuration, IHostEnvironment environment)
         {
-            services.AddAutoMapper(typeof(MappingProfile));
-            services.AddConfiguration(
-                configuration,
-                environment.ContentRootPath,
-                environment.EnvironmentName
-            );
-            services.AddContexts(configuration, environment.EnvironmentName);
-            services.AddSeeding(configuration);
-            services.AddSqlServer();
-            services.AddConductors(configuration);
-            services.AddProviders();
-            services.AddClients(configuration);
-            services.AddWorkers();
-            services.AddMiddleware(configuration);
+            services
+                .AddAutoMapper(typeof(MappingProfile))
+                .AddConfiguration(
+                        configuration,
+                        environment.ContentRootPath,
+                        environment.EnvironmentName
+                    )
+                .AddContexts(configuration, environment.EnvironmentName)
+                .AddSeeding(configuration)
+                .AddSqlServer()
+                .AddConductors(configuration)
+                .AddProviders()
+                .AddClients(configuration)
+                .AddWorkers()
+                .AddMiddleware(configuration);
 
             return services;
         }
@@ -69,9 +70,10 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             var authenticationSection = configuration.GetSection(WebConfiguration.AUTHENTICATION);
 
             // Register Configuration Instance
-            services.AddSingleton<IConfigurationRoot>(configuration);
-            services.AddSingleton((sp) => authenticationSection.GetSection(WebConfiguration.AUTHENTICATION_BASIC).Get<BasicAuthenticationConfiguration>());
-            services.AddSingleton((sp) => configuration.GetSection("Email").Get<EmailSettings>());
+            services
+                .AddSingleton<IConfigurationRoot>(configuration)
+                .AddSingleton((sp) => authenticationSection.GetSection(WebConfiguration.AUTHENTICATION_BASIC).Get<BasicAuthenticationConfiguration>())
+                .AddSingleton((sp) => configuration.GetSection("Email").Get<EmailSettings>());
 
             return services;
         }
@@ -83,13 +85,13 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             var loggerFactory = isTestingEnvironment ? null : new SerilogLoggerFactory(Log.Logger, false);
 
             // Context gets registered several different ways (will this still be the same instance in the single scope?)
-            services.AddDbContext<GBApiContext>(ServiceLifetime.Scoped);
-            services.AddScoped((sp) => new GBApiContext(connectionString, loggerFactory));
-            services.AddScoped<GBApiContext>((sp) => new GBApiContext(connectionString, loggerFactory));
-            services.AddScoped<IContext>((sp) => new GBApiContext(connectionString, loggerFactory));
-            services.AddScoped<IGBApiContext>((sp) => new GBApiContext(connectionString, loggerFactory));
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services
+                .AddDbContext<GBApiContext>(ServiceLifetime.Scoped)
+                .AddScoped((sp) => new GBApiContext(connectionString, loggerFactory))
+                .AddScoped<GBApiContext>((sp) => new GBApiContext(connectionString, loggerFactory))
+                .AddScoped<IContext>((sp) => new GBApiContext(connectionString, loggerFactory))
+                .AddScoped<IGBApiContext>((sp) => new GBApiContext(connectionString, loggerFactory))
+                .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services;
         }
@@ -100,9 +102,10 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             services.AddScoped<IStringLocalizer>((sp) => localizerFactory.Create(null));
 
             // Configuration of services
-            services.ConfigureRequestLocalizationOptions()
-                    .ConfigureRewriteOptions()
-                    .ConfigureRouteOptions();
+            services
+                .ConfigureRequestLocalizationOptions()
+                .ConfigureRewriteOptions()
+                .ConfigureRouteOptions();
 
             Console.WriteLine($"Default Localization Culture: {LocalizationUtils.DefaultCultureCode}");
             Console.WriteLine($"Localization Cultures: {LocalizationUtils.CultureCodes(", ")}");
@@ -112,11 +115,11 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 
         public static IServiceCollection AddMiddleware(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
-
-            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
-            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
-            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services
+                .Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"))
+                .AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>()
+                .AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>()
+                .AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
 
             return services;
         }

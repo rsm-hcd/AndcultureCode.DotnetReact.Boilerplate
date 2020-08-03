@@ -26,9 +26,13 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
         public virtual Role Role { get; set; }
         public virtual User User { get; set; }
 
+        #endregion Navigation Properties
+
+        #region IUserLogin Implementation
+
         IRole IUserLogin.Role { get => Role; }
         IUser IUserLogin.User { get => User; }
 
-        #endregion Navigation Properties
+        #endregion IUserLogin Implementation
     }
 }

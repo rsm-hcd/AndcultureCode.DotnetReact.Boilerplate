@@ -33,6 +33,8 @@ using AndcultureCode.CSharp.Web.Extensions;
 using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
+using AndcultureCode.CSharp.Data.Extensions;
+using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
 
 namespace AndcultureCode.GB.Presentation.Web
 {
@@ -142,10 +144,13 @@ namespace AndcultureCode.GB.Presentation.Web
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
+                var serviceProvider = serviceScope.ServiceProvider;
+                var seeds = new Seeds(serviceProvider, env.IsDevelopment());
+
                 app.ConfigureDatabase(
-                    serviceScope.ServiceProvider,
+                    serviceProvider,
                     migrate: true,
-                    seed: true
+                    seeds
                 );
             }
 

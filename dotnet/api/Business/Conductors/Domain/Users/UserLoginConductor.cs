@@ -46,7 +46,7 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.UserLogins
         {
             userName = userName.ToLower();
 
-            var userResult = _userReadConductor.FindAll(e => e.UserName.ToLower() == userName && e.DeletedOn == null);
+            var userResult = _userReadConductor.FindAll(e => e.UserName.ToLower() == userName);
             if (userResult.HasErrors)
             {
                 return r.AddErrorsAndReturnDefault(userResult);

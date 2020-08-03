@@ -14,15 +14,18 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 
         #endregion Properties
 
-
         #region Navigation Properties
 
         public Role Role { get; set; }
         public User User { get; set; }
 
+        #endregion Navigation Properties
+
+        #region IUserRole Implementation
+
         IRole IUserRole.Role { get => Role; }
         IUser IUserRole.User { get => User; }
 
-        #endregion Navigation Properties
+        #endregion IUserRole Implementation
     }
 }

@@ -26,10 +26,6 @@ using AndcultureCode.CSharp.Extensions;
 using AndcultureCode.CSharp.Core.Models.Mail;
 using AndcultureCode.CSharp.Core.Models.Configuration;
 using AndcultureCode.CSharp.Web.Constants;
-using AndcultureCode.CSharpCore.Constants;
-using AndcultureCode.CSharp.Business.Core.Models.Configuration;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Threading.Tasks;
 using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Extensions;
 
@@ -47,7 +43,7 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
             );
             services.AddContexts(configuration, environment.EnvironmentName);
             services.AddSeeding(configuration);
-            services.AddSqlServer(configuration);
+            services.AddSqlServer();
             services.AddConductors(configuration);
             services.AddProviders();
             services.AddClients(configuration);

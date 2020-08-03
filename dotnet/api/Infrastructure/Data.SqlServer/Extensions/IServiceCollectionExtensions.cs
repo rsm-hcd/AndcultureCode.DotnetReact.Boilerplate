@@ -8,7 +8,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddSqlServer(this IServiceCollection services, IConfigurationRoot configuration)
+        public static IServiceCollection AddSqlServer(this IServiceCollection services)
         {
             // Repositories
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

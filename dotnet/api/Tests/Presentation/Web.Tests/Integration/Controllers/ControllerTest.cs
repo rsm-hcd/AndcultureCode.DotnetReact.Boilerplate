@@ -30,17 +30,12 @@ using AndcultureCode.GB.Testing.Tests;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
-using AndcultureCode.CSharpCore.Constants;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
@@ -475,7 +470,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddConfiguration(Configuration, "does-not-matter-for-tests", EnvironmentName)
                 .AddContexts(Configuration, EnvironmentName)
-                .AddSqlServer(Configuration)
+                .AddSqlServer()
                 .AddClients(Configuration)
                 .AddConductors(Configuration)
                 .AddAndcultureCodeLocalization()

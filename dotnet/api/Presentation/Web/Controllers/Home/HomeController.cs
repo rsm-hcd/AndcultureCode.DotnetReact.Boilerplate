@@ -4,10 +4,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using AndcultureCode.CSharp.Core.Constants;
+using AndcultureController = AndcultureCode.CSharp.Web.Controllers.Controller;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Home
 {
-    public class HomeController : Controller
+    public class HomeController : AndcultureController
     {
         #region Properties
 

@@ -299,7 +299,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 controllerContext,
                 new List<IFilterMetadata>(),
                 new Dictionary<string, object>(),
-                new Mock<AndcultureCode.GB.Presentation.Web.Controllers.Controller>()
+                new Mock<AndcultureCode.CSharp.Web.Controllers.Controller>()
             );
 
             Sut.ControllerContext = controllerContext;

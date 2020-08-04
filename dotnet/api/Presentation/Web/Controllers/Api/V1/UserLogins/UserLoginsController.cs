@@ -143,7 +143,7 @@ namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
                     errors = createResult.Errors;
                 }
 
-                return InternalError<UserLoginDto>(errors, _logger);
+                return BadRequest<UserLoginDto>(errors);
             }
 
             userLogin.FailedAttemptCount += 1;

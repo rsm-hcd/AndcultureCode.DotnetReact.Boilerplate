@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -48,6 +49,14 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Extensions
             response.Value.ShouldBeOfType<T>();
             return response.Value as T;
         }
+
+        /// <summary>
+        /// Verifies the result is the correct HTTP response type of 'BadRequest'
+        /// and additionally the result object is of the supplied type 'T'
+        /// /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public static T AsBadRequest<T>(this Task<IActionResult> actionTask) where T : class
+            => actionTask.Result.AsBadRequest<T>();
 
         /// <summary>
         /// Verifies the result is the correct HTTP response type of 'Conflict'

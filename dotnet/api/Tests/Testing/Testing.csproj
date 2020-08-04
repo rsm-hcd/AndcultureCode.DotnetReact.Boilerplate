@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.4" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.5" />
     <PackageReference Include="AndcultureCode.CSharp.Testing" Version="0.2.3" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Bogus" Version="28.2.1" />

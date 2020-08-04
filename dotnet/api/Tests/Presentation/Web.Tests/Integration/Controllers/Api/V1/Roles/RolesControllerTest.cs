@@ -21,7 +21,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
     /// Unskip on project versions of boilerplate. Skipped until can setup EF in-memory
     /// so the integration tests can be run on Travis CI.
     /// </summary>
-    [Trait(Category.SKIP_CI, Category.VALUE_TRUE)]
+    [Trait(Trait.CATEGORY, TraitCategory.SKIP_CI)]
     [Collection("ControllerIntegration")]
     public class RolesControllerTest : ControllerTest<RolesController>, IDisposable
     {

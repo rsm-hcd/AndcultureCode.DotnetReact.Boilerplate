@@ -467,7 +467,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
             ConfigureMvcActors(services);
 
             services
-                .AddLogging() // Note: We don't need logging interface given a concrete implementation at this time - Will want this given a mock
+                .AddLogging()
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddConfiguration(Configuration, "does-not-matter-for-tests", EnvironmentName)
                 .AddContexts(Configuration, EnvironmentName)

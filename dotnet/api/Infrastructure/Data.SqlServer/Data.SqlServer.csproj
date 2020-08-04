@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.2" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.4" />
     <PackageReference Include="AndcultureCode.CSharp.Data" Version="0.0.1" />
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.3" />
     <PackageReference Include="EFCore.BulkExtensions" Version="2.6.0" />

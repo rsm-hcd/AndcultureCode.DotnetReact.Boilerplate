@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AndcultureCode.CSharp.Business.Core.Models.Configuration;
+using AndcultureCode.CSharp.Core;
 using AndcultureCode.CSharp.Core.Extensions;
+using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using Core.Constants;
@@ -30,10 +32,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development
 
         #region Public Methods
 
-        public static void SeedUsers(this Seeds seeds)
+        public static IResult<bool> SeedUsers(this Seeds seeds) => Do<bool>.TrySeed(seeds, (r) =>
         {
-            seeds.LogStart<User>();
-
             var context = seeds.Context;
             _config = seeds.GetDep<SeedsConfiguration>();
             _userLoginConductor = seeds.GetDep<IUserLoginConductor<User>>();
@@ -62,8 +62,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development
 
             context.SaveChanges();
 
-            seeds.LogEnd<User>();
-        }
+            return true;
+        }).Result;
 
         #endregion Public Methods
 

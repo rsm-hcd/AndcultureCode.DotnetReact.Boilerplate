@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using AndcultureController = AndcultureCode.CSharp.Web.Controllers.Controller;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Kop
 {
-    public class KopController : AndcultureController
+    public class KopController : AndcultureCode.CSharp.Web.Controllers.Controller
     {
         public KopController(IStringLocalizer localizer) : base(localizer) { }
 

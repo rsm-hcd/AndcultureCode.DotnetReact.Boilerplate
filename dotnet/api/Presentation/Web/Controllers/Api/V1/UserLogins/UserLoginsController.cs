@@ -128,6 +128,16 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins
             return _conductor.Create(userLogin, userId);
         }
 
+        private IActionResult HandleCreateOrUpdate<T>(IResult<T> r, List<IError> errors)
+        {
+            if (r.HasErrorsOrResultIsNull())
+            {
+                return InternalError<UserLoginDto>(r.Errors, _logger);
+            }
+
+            return BadRequest<UserLoginDto>(errors);
+        }
+
         private IActionResult HandleFailedLogin(string userName, List<IError> errors)
         {
             // Find the last UserLogin for this Username
@@ -138,24 +148,13 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins
             if (userLogin == null || userLogin.IsSuccessful)
             {
                 var createResult = CreateUserLogin(userName, isSuccessful: false);
-                if (createResult.HasErrorsOrResultIsNull())
-                {
-                    errors = createResult.Errors;
-                }
-
-                return BadRequest<UserLoginDto>(errors);
+                return HandleCreateOrUpdate(createResult, errors);
             }
 
             userLogin.FailedAttemptCount += 1;
             userLogin.UserAgent = UserAgent;
 
-            var updateUserLoginResult = _conductor.Update(userLogin);
-            if (updateUserLoginResult.HasErrorsOrResultIsNull())
-            {
-                return InternalError<UserLoginDto>(updateUserLoginResult.Errors, _logger);
-            }
-
-            return BadRequest<UserLoginDto>(errors);
+            return HandleCreateOrUpdate(_conductor.Update(userLogin), errors);
         }
 
         /// <summary>

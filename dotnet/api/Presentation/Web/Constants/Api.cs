@@ -1,4 +1,4 @@
-using Core.Constants;
+using AndcultureCode.GB.Business.Core.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Constants
 {

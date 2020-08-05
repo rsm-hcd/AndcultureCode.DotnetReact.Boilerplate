@@ -1,4 +1,4 @@
-namespace Testing.Constants
+namespace AndcultureCode.GB.Testing.Constants
 {
     /// <summary>
     /// Testing categories

@@ -7,7 +7,7 @@ using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
-using Core.Constants;
+using AndcultureCode.GB.Business.Core.Constants;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds.Development
 {

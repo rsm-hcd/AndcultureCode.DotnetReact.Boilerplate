@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using AndcultureCode.CSharp.Business.Core.Models.Configuration;
 
-namespace LMS.Presentation.Web.Controllers.Api.V1.UserLogins
+namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins
 {
     [ApiRoute("userlogins")]
     [FormatFilter]

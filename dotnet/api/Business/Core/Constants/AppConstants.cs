@@ -1,4 +1,4 @@
-namespace Core.Constants
+namespace AndcultureCode.GB.Business.Core.Constants
 {
     public class AppConstants
     {

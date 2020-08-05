@@ -10,7 +10,7 @@ using Shouldly;
 using System;
 using Xunit;
 using Xunit.Abstractions;
-using Testing.Constants;
+using AndcultureCode.GB.Testing.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.SystemSettings
 {

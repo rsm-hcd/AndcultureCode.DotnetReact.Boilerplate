@@ -186,8 +186,8 @@ namespace AndcultureCode.GB.Business.Conductors.Tests.Integration
 
         private IServiceCollection ConfigureMvcActors(IServiceCollection services)
         {
-            var hostingEnvironmentMock = new Mock<IHostingEnvironment>();
-            services.AddScoped<IHostingEnvironment>((sp) => hostingEnvironmentMock.Object);
+            var hostingEnvironmentMock = new Mock<IHostEnvironment>();
+            services.AddScoped<IHostEnvironment>((sp) => hostingEnvironmentMock.Object);
             return services;
         }
 

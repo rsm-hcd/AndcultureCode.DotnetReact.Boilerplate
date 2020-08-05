@@ -3,6 +3,7 @@ export const siteMap = {
         user: "/dashboards/user",
     },
     errors: {
+        accessDenied: "/errors/access-denied",
         notFound: "/errors/not-found",
     },
     root: "/",

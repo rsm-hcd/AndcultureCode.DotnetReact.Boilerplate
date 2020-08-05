@@ -30,16 +30,13 @@ using AndcultureCode.GB.Testing.Tests;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using AndcultureCode.CSharp.Core.Utilities.Localization;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
+using AndcultureCode.CSharp.Web.Extensions;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
@@ -303,7 +300,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 controllerContext,
                 new List<IFilterMetadata>(),
                 new Dictionary<string, object>(),
-                new Mock<AndcultureCode.GB.Presentation.Web.Controllers.Controller>()
+                new Mock<AndcultureCode.CSharp.Web.Controllers.Controller>()
             );
 
             Sut.ControllerContext = controllerContext;
@@ -470,10 +467,11 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
             ConfigureMvcActors(services);
 
             services
-                //.AddLogging() - Note: We don't need logging interface given a concrete implementation at this time - Will want this given a mock
+                .AddLogging()
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddConfiguration(Configuration, "does-not-matter-for-tests", EnvironmentName)
                 .AddContexts(Configuration, EnvironmentName)
+                .AddCookieAuthentication(Configuration)
                 .AddSqlServer()
                 .AddClients(Configuration)
                 .AddConductors(Configuration)
@@ -593,7 +591,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
         /// </summary>
         private void SetDefaultEnvironmentVariables(GBApiConnection connection)
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing");
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", EnvironmentConstants.TESTING);
             Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.API_DATABASE_CONFIGURATION_KEY}", connection.ToString());
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isDashboardEnabled", "false");
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isServerEnabled",    "false");

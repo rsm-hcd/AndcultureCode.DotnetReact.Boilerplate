@@ -4,7 +4,7 @@ using Microsoft.Extensions.Localization;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Kop
 {
-    public class KopController : Controller
+    public class KopController : AndcultureCode.CSharp.Web.Controllers.Controller
     {
         public KopController(IStringLocalizer localizer) : base(localizer) { }
 

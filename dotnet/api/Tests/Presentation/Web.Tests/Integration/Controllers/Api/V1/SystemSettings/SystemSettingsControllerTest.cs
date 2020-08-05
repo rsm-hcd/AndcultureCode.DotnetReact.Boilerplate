@@ -10,9 +10,15 @@ using Shouldly;
 using System;
 using Xunit;
 using Xunit.Abstractions;
+using AndcultureCode.GB.Testing.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.SystemSettings
 {
+    /// <summary>
+    /// Unskip on project versions of boilerplate. Skipped until can setup EF in-memory
+    /// so the integration tests can be run on Travis CI.
+    /// </summary>
+    [Trait(Trait.CATEGORY, TraitCategory.SKIP_CI)]
     [Collection("ControllerIntegration")]
     public class SystemSettingsControllerTest : ControllerTest<SystemSettingsController>, IDisposable
     {
@@ -31,7 +37,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #region Index
 
-        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
+        [Fact]
         public void Index_When_NonProduction_Environment_Returns_Record()
         {
             // Arrange
@@ -50,7 +56,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
             result.MachineName.ShouldBe(Environment.MachineName);
         }
 
-        [Fact(Skip = "TODO: Use in-memory database for integration test suite")]
+        [Fact]
         public void Index_When_Production_Environment_Return_Record_Without_NonProduction_Properties()
         {
             // Arrange

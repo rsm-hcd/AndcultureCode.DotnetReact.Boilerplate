@@ -7,22 +7,22 @@ using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.Roles;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using Microsoft.Extensions.Localization;
-using AndcultureCode.GB.Business.Core.Models.Security;
+using AndcultureCode.CSharp.Web.Interfaces;
+using AndcultureCode.CSharp.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
 {
     [FormatFilter]
     [ApiRoute("roles")]
-    public class RolesController : ApiController
+    public class RolesController : ApiController, IApiEntityController<RolesController, Role>
     {
-        #region Private Members
+        #region Public Members
 
-        private readonly ILogger<RolesController> _logger;
-        private readonly IMapper _mapper;
-        private readonly IRepositoryConductor<Role> _repositoryConductor;
+        public IRepositoryConductor<Role> Conductor { get; private set; }
+        public ILogger<RolesController> Logger { get; private set; }
+        public IMapper Mapper { get; private set; }
 
-        #endregion Private Members
-
+        #endregion Public Members
 
         #region Constructor
 
@@ -30,18 +30,17 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
             IStringLocalizer localizer,
             ILogger<RolesController> logger,
             IMapper mapper,
-            IRepositoryConductor<Role> repositoryConductor
+            IRepositoryConductor<Role> conductor
         ) : base(localizer)
         {
-            _logger = logger;
-            _mapper = mapper;
-            _repositoryConductor = repositoryConductor;
+            Conductor = conductor;
+            Logger = logger;
+            Mapper = mapper;
         }
 
         #endregion Constructor
 
-
-        #region Get
+        #region HTTP GET
 
         /// <summary>
         /// Get's a single Role
@@ -52,22 +51,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
         /// <response code="500">Error Getting Role</response>
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(RoleDto))]
-        public IActionResult Get(long id)
-        {
-            var readResult = _repositoryConductor.FindById(id);
-            if (readResult.HasErrors)
-            {
-                return InternalError<RoleDto>(null, readResult.Errors, _logger);
-            }
-
-            var role = readResult.ResultObject;
-            if (role == null)
-            {
-                return NotFound<RoleDto>();
-            }
-
-            return Ok(_mapper.Map<RoleDto>(role), null);
-        }
+        public IActionResult Get(long id) => this.GetDefault<RolesController, Role, RoleDto>(id);
 
         /// <summary>
         /// Get's Roles in the system
@@ -77,17 +61,8 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles
         /// <response code="500">Error Getting Roles</response>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IList<RoleDto>))]
-        public IActionResult Index()
-        {
-            var readResult = _repositoryConductor.FindAll();
-            if (readResult.HasErrors)
-            {
-                return InternalError<List<RoleDto>>(null, readResult.Errors, _logger);
-            }
+        public IActionResult Index() => this.IndexDefault<RolesController, Role, RoleDto>();
 
-            return Ok(_mapper.Map<List<RoleDto>>(readResult.ResultObject), null);
-        }
-
-        #endregion Get
+        #endregion HTTP GET
     }
 }

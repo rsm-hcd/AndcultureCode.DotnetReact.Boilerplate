@@ -12,6 +12,7 @@ namespace AndcultureCode.GB.Presentation.Web.Middleware.Authentication
         #region Constants
 
         public const string AUTHENTICATION_SCHEME = "GB";
+        public const string AUTHENTICATION_TYPE = "api";
 
         #endregion Constants
 
@@ -23,12 +24,22 @@ namespace AndcultureCode.GB.Presentation.Web.Middleware.Authentication
             IsPersistent = true
         };
 
-        public static List<Claim> GetClaims(User user, IEnumerable<long> roleIds = null)
+        public static List<Claim> GetClaims(
+            User user,
+            UserLogin userLogin,
+            IEnumerable<long> roleIds = null,
+            int? roleType = null
+        )
         {
+            var isSuperAdmin = user.IsSuperAdmin;
+            var roleId = userLogin.RoleId;
+            var userId = userLogin.UserId;
+
             var claims = new List<Claim>
             {
-                new Claim(ApiClaimTypes.USER_ID,  user.Id.ToString(), ClaimValueTypes.Integer64),
-                new Claim(ApiClaimTypes.IS_SUPER_ADMIN, user.IsSuperAdmin.ToString().ToLower(), ClaimValueTypes.Boolean),
+                new Claim(ApiClaimTypes.IS_SUPER_ADMIN, isSuperAdmin.ToString().ToLower(), ClaimValueTypes.Boolean),
+                new Claim(ApiClaimTypes.ROLE_ID, roleId.ToString(), ClaimValueTypes.Integer64),
+                new Claim(ApiClaimTypes.USER_ID, userId.ToString(), ClaimValueTypes.Integer64),
             };
 
             if (!roleIds.IsNullOrEmpty())

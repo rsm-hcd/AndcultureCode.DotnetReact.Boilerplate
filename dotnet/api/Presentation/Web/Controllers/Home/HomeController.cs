@@ -7,7 +7,7 @@ using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Home
 {
-    public class HomeController : Controller
+    public class HomeController : AndcultureCode.CSharp.Web.Controllers.Controller
     {
         #region Properties
 

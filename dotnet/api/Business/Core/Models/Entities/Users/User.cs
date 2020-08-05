@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
+using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Core.Models;
 
 namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 {
-    public class User : Auditable
+    public class User : Auditable, IUser
     {
         #region Properties
 
@@ -12,6 +12,9 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
         public string FirstName { get; set; }
         public bool IsSuperAdmin { get; set; }
         public string LastName { get; set; }
+        public string PasswordHash { get; set; }
+        public string Salt { get; set; }
+        public string SecurityStamp { get; set; }
         public string UserName { get; set; }
 
         #endregion Properties

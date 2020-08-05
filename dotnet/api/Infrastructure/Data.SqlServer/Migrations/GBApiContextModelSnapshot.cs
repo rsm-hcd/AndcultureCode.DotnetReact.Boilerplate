@@ -19,7 +19,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AndcultureCode.GB.Business.Core.Models.Entities.Acls.Acl", b =>
+            modelBuilder.Entity("AndcultureCode.CSharp.Core.Models.Entities.Acl", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,6 +111,14 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                     b.Property<bool>("IsSuperAdmin");
 
                     b.Property<string>("LastName");
+
+                    b.Property<string>("PasswordHash")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Salt");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasMaxLength(150);
 
                     b.Property<long?>("UpdatedById");
 

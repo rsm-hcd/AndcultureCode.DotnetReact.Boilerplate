@@ -6,6 +6,7 @@ import ApplicationLayout from "templates/application-layout";
 import UserLoginLayout from "templates/user-login-layout";
 import { RouteMap } from "utilities/interfaces/route-map";
 import HomePage from "pages/home/home";
+import AccessDeniedPage from "pages/errors/access-denied-page";
 
 /*
 ---------------------------------------------------------------------------------------------
@@ -32,6 +33,14 @@ export const routes: RouteMap = {
             },
 
             // errors
+            accessDenied: {
+                authRequired: false,
+                component: AccessDeniedPage,
+                exact: true,
+                path: siteMap.errors.accessDenied,
+                routes: {},
+            },
+
             notFound: {
                 authRequired: false,
                 component: NotFoundPage,

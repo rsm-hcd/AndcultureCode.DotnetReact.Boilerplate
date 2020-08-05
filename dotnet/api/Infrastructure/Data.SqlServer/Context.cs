@@ -159,7 +159,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
         {
         }
 
-        public virtual long ExecuteCommand(string commandText) => base.Database.ExecuteSqlCommand(commandText);
+        public virtual long ExecuteCommand(string commandText) => base.Database.ExecuteSqlRaw(commandText);
 
         #endregion
 

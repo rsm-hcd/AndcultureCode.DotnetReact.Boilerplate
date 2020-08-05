@@ -1,3 +1,5 @@
+using AndcultureCode.GB.Business.Core.Constants;
+
 namespace AndcultureCode.GB.Presentation.Web.Constants
 {
     public static class Api
@@ -22,7 +24,7 @@ namespace AndcultureCode.GB.Presentation.Web.Constants
         /// <value></value>
         public const string ROUTING_CULTURE_CONSTRAINT_TEMPLATE = "{culture:culture}";
 
-        public const string TITLE = "Gravity Boots API";
+        public static string TITLE = $"{AppConstants.NAME} API";
 
         /// <summary>
         /// Version number component of API route

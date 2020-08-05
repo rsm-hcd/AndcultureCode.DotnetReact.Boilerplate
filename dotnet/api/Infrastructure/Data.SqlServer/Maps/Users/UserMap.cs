@@ -1,6 +1,6 @@
 using AndcultureCode.GB.Business.Core.Models.Entities.Users;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
+using AndcultureCode.CSharp.Core.Models.Configuration;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
 {
@@ -11,6 +11,14 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
             entity
                 .Property(e => e.Email)
                 .IsRequired();
+
+            entity
+                .Property(e => e.PasswordHash)
+                    .HasMaxLength(DataConfiguration.SHORT_STRING_LENGTH);
+
+            entity
+                .Property(e => e.SecurityStamp)
+                    .HasMaxLength(DataConfiguration.SHORT_STRING_LENGTH);
 
             entity
                 .Property(e => e.UserName)

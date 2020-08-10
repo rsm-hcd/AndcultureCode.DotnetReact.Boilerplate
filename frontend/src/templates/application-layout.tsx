@@ -1,21 +1,33 @@
 import * as React from "react";
-import { NestedRoutes } from "utilities/routing/nested-route";
 import { SkipNavLink } from "@reach/skip-nav";
+import { NestedRoutes } from "andculturecode-javascript-react";
+import { siteMap } from "sitemap";
+import { useGlobalState } from "utilities/contexts/use-global-state-context";
 
-/*
----------------------------------------------------------------------------------------------
-Component
----------------------------------------------------------------------------------------------
-*/
+// -----------------------------------------------------------------------------------------
+// #region Constants
+// -----------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-application-layout";
+
+// #endregion Constants
+
+// ---------------------------------------------------------------------------------------------
+// #region Component
+// ---------------------------------------------------------------------------------------------
 
 const ApplicationLayout: React.FC<any> = (props: any) => {
+    const { globalState } = useGlobalState();
+
     return (
         <React.Fragment>
             <SkipNavLink>Skip to main content</SkipNavLink>
-            <div className="c-application-layout">
-                <div className="c-application-layout__panel">
+            <div className={COMPONENT_CLASS}>
+                <div className={`${COMPONENT_CLASS}__panel`}>
                     <NestedRoutes
-                        redirectIfNotFound={true}
+                        isAuthenticated={globalState.isAuthenticated()}
+                        redirectToIfNotFound={siteMap.errors.notFound}
+                        redirectToIfUnauthenticated={siteMap.userlogins.new}
                         routes={props.routes}
                     />
                 </div>
@@ -24,10 +36,12 @@ const ApplicationLayout: React.FC<any> = (props: any) => {
     );
 };
 
-/*
----------------------------------------------------------------------------------------------
-Exports
----------------------------------------------------------------------------------------------
-*/
+// #endregion Component
+
+// -----------------------------------------------------------------------------------------
+// #region Exports
+// -----------------------------------------------------------------------------------------
 
 export default ApplicationLayout;
+
+// #endregion Exports

@@ -13,11 +13,6 @@ import { routes } from "routes";
 import GlobalStateContext, {
     useGlobalState,
 } from "utilities/contexts/use-global-state-context";
-import { RouteUtils } from "utilities/route-utils";
-import {
-    NestedRoutes,
-    NestedRoutesByProperty,
-} from "utilities/routing/nested-route";
 import ServiceUtils from "utilities/service-utils";
 import {
     CoreUtils,
@@ -32,6 +27,11 @@ import CultureResources from "utilities/interfaces/culture-resources";
 import { IconUtils } from "andculturecode-javascript-react-components";
 import { SvgIcons } from "atoms/constants/svg-icons";
 import { siteMap } from "sitemap";
+import {
+    NestedRoutesByProperty,
+    NestedRoutes,
+    RouteUtils,
+} from "andculturecode-javascript-react";
 
 // -----------------------------------------------------------------------------------------
 // #region Application Component
@@ -88,7 +88,9 @@ const App: React.FC = () => {
                     */}
                     <Switch>
                         <NestedRoutes
-                            redirectIfNotFound={true}
+                            isAuthenticated={globalState.isAuthenticated()}
+                            redirectToIfNotFound={siteMap.errors.notFound}
+                            redirectToIfUnauthenticated={siteMap.userlogins.new}
                             routes={routeArray}
                         />
                     </Switch>

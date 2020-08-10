@@ -1,13 +1,33 @@
 import * as React from "react";
+import { NestedRoutes } from "andculturecode-javascript-react";
+import { siteMap } from "sitemap";
+import { useGlobalState } from "utilities/contexts/use-global-state-context";
 
-import { NestedRoutes } from "utilities/routing/nested-route";
+// -----------------------------------------------------------------------------------------
+// #region Component
+// -----------------------------------------------------------------------------------------
 
 const UserLoginLayout: React.FC<any> = (props: any) => {
+    const { globalState } = useGlobalState();
+
     return (
         <div className="c-login-layout">
-            <NestedRoutes redirectIfNotFound={true} routes={props.routes} />
+            <NestedRoutes
+                isAuthenticated={globalState.isAuthenticated()}
+                redirectToIfNotFound={siteMap.errors.notFound}
+                redirectToIfUnauthenticated={siteMap.errors.accessDenied}
+                routes={props.routes}
+            />
         </div>
     );
 };
 
+// #endregion Component
+
+// -----------------------------------------------------------------------------------------
+// #region Exports
+// -----------------------------------------------------------------------------------------
+
 export default UserLoginLayout;
+
+// #endregion Exports

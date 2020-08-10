@@ -2,12 +2,14 @@ import { routes } from "routes";
 import { siteMap } from "sitemap";
 import {
     CollectionUtils,
+    CoreUtils,
     RouteUtils as AndcultureCodeRouteUtils,
     StringUtils,
 } from "andculturecode-javascript-core";
-import { CoreUtils } from "andculturecode-javascript-core";
-import { RouteDefinition } from "utilities/interfaces/route-definition";
-import { RouteMap } from "utilities/interfaces/route-map";
+import {
+    RouteDefinition,
+    RouteUtils as AndcultureCodeReactRouteUtils,
+} from "andculturecode-javascript-react";
 
 /*
 ---------------------------------------------------------------------------------------------
@@ -33,33 +35,6 @@ const absoluteToRelativePath = (absolutePath: string): string =>
     absolutePath.replace(/^(?:\/\/|[^/]+)*\//, "");
 
 /**
- * Outputs flattened routing table for debugging purposes
- */
-const debugRoutes = (routes: RouteMap) => {
-    const flattenedRoutes = getFlattenedRoutes(CoreUtils.objectToArray(routes));
-    flattenedRoutes.forEach((route: RouteDefinition) => {
-        // tslint:disable-next-line:no-console
-        console.log(JSON.stringify(route));
-    });
-};
-
-const getFlattenedRoutes = (routeArray: any[]) => {
-    const results = [...routeArray];
-
-    results.forEach((route: RouteDefinition) => {
-        if (route.routes == null) {
-            return null;
-        }
-
-        results.push(
-            ...getFlattenedRoutes(CoreUtils.objectToArray(route.routes))
-        );
-    });
-
-    return results;
-};
-
-/**
  * Get the {RouteDefinition} metadata for the specified route; defaults to the current route of the application.
  * @param route the route for which to retrieve the {RouteDefinition} metadata; defaults to current route of the
  * application.
@@ -81,7 +56,7 @@ const getCurrentRouteDefinition = (
     }
 
     if (CollectionUtils.isEmpty(_cachedFlattenedRoutes)) {
-        _cachedFlattenedRoutes = getFlattenedRoutes(
+        _cachedFlattenedRoutes = AndcultureCodeReactRouteUtils.getFlattenedRoutes(
             CoreUtils.objectToArray(routes)
         );
     }
@@ -220,9 +195,7 @@ Exports
 export const RouteUtils = {
     absoluteToRelativePath,
     assertCurrentUrl,
-    debugRoutes,
     getCurrentRouteDefinition,
-    getFlattenedRoutes,
     getUrl,
     removeQueryString,
     replacePathParams,

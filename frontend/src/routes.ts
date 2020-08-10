@@ -4,7 +4,7 @@ import NewUserLoginPage from "pages/userlogins/new-userlogin";
 import { siteMap } from "sitemap";
 import ApplicationLayout from "templates/application-layout";
 import UserLoginLayout from "templates/user-login-layout";
-import { RouteMap } from "utilities/interfaces/route-map";
+import { RouteMap } from "andculturecode-javascript-react";
 import HomePage from "pages/home/home";
 import AccessDeniedPage from "pages/errors/access-denied-page";
 

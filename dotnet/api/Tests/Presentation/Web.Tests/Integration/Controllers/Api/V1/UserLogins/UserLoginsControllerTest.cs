@@ -41,7 +41,21 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
         #region Delete
 
         [Fact]
-        public void Delete_When_Logout_Successful_Returns_Ok()
+        public void Delete_When_Id_DoesNotMatch_Current_Session_UserLogin_Id_Returns_Unauthorized()
+        {
+            // Arrange
+            var user = Create<User>();
+            var currentUserLogin = Create<UserLogin>(e => e.UserId = user.Id);
+            var requestedUserLogin = Create<UserLogin>(e => e.UserId = user.Id);
+
+            MockAuthenticatedUser(user, currentUserLogin);
+
+            // Act & Assert
+            Sut.Delete(requestedUserLogin.Id).Result.AsUnauthorized<UserLoginDto>();
+        }
+
+        [Fact]
+        public void Delete_When_Logout_Successful_Then_Deletes_Login_Adn_Returns_Ok()
         {
             // Arrange
             var user = Create<User>();
@@ -49,8 +63,13 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
             MockAuthenticatedUser(user, userLogin);
 
-            // Act & Assert
+            // Act
             Sut.Delete(userLogin.Id).Result.AsOk<Result<object>>();
+
+            // Assert
+            Reload(userLogin);
+            userLogin.DeletedById.ShouldNotBeNull();
+            userLogin.DeletedOn.ShouldNotBeNull();
         }
 
         #endregion Delete

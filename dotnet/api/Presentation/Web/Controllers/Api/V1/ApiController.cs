@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
 // -------------------------------------------------------------------------------------------------
@@ -26,5 +27,16 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1
         public ApiController(IStringLocalizer localizer) : base(localizer) { }
 
         #endregion Constructors
+
+        #region Public Methods
+
+        /// <summary>
+        /// Responds with HTTP 200 Ok
+        /// TODO: Abstract to AndcultureCode.CSharp.Web.Controllers.Controller
+        /// </summary>
+        /// <returns></returns>
+        public new OkObjectResult Ok() => base.Ok<object>(value: null, errors: null);
+
+        #endregion Public Methods
     }
 }

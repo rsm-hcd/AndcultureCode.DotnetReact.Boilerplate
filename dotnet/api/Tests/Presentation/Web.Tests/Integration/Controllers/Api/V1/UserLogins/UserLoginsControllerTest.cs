@@ -13,6 +13,7 @@ using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Domain.Users;
 using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.GB.Business.Conductors.Domain.UserLogins;
 using AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.Roles
 {
@@ -34,6 +35,27 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
         }
 
         #endregion Setup
+
+        #region HTTP DELETE
+
+        #region Delete
+
+        [Fact]
+        public void Delete_When_Logout_Successful_Returns_Ok()
+        {
+            // Arrange
+            var user = Create<User>();
+            var userLogin = Create<UserLogin>(e => e.UserId = user.Id);
+
+            MockAuthenticatedUser(user, userLogin);
+
+            // Act & Assert
+            Sut.Delete(userLogin.Id).Result.AsOk<Result<object>>();
+        }
+
+        #endregion Delete
+
+        #endregion HTTP DELETE
 
         #region HTTP POST
 

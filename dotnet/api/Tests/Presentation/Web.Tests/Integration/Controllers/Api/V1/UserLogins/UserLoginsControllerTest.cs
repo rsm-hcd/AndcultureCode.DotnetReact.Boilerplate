@@ -55,7 +55,7 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
         }
 
         [Fact]
-        public void Delete_When_Logout_Successful_Then_Deletes_Login_Adn_Returns_Ok()
+        public void Delete_When_Logout_Successful_Then_Deletes_Login_And_Returns_Ok()
         {
             // Arrange
             var user = Create<User>();

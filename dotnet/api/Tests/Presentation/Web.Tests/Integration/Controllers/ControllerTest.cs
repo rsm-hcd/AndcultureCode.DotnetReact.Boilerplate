@@ -379,9 +379,9 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 
             Sut.ApiClaimsPrincipal = new ApiClaimsPrincipal
             {
-                RoleId = userLogin.RoleId,
-                UserId = user.Id,
-                UserLoginId = userLogin.Id
+                RoleId = userLogin?.RoleId,
+                UserId = user?.Id,
+                UserLoginId = userLogin?.Id
             };
         }
 

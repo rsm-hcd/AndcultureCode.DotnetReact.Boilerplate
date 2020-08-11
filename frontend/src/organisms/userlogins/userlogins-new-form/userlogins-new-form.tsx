@@ -41,8 +41,9 @@ interface NewUserLoginFormProps {
      * Optional callback that will be fired after successfully logging in the user.
      */
     onSuccess?: () => void;
+
     showLogo?: boolean;
-    showSignInTitle?: boolean;
+    showTitle?: boolean;
 }
 
 // #endregion Interfaces
@@ -55,14 +56,16 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     props: NewUserLoginFormProps
 ) => {
     const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
-    const { pageErrors } = usePageErrors();
     const [password, setPassword] = useState("");
-    const [passwordError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
-    const [signingIn] = useState(false);
+    const { setPageErrors, pageErrors, resetPageErrors } = usePageErrors();
+    const [signingIn, setSigningIn] = useState(false);
     const { t } = useLocalization<CultureResources>();
-    const [username, setUserName] = useState("");
-    const [usernameError] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userNameError, setUserNameError] = useState("");
+
+    const showTitle = props.showTitle === true;
 
     useEffect(() => {
         if (StringUtils.hasValue(props.defaultEmail)) {
@@ -73,27 +76,59 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        setSigningIn(true);
+
+        const formHasErrors = await validate();
+        if (formHasErrors) {
+            setSigningIn(false);
+            return;
+        }
+        resetPageErrors();
+
+        // TODO
+
         props.onSuccess?.();
+    };
+
+    const resetErrors = () => {
+        setUserNameError("");
+        setPasswordError("");
+    };
+
+    const validate = async () => {
+        resetErrors();
+        let hasErrors = false;
+
+        if (userName.length === 0) {
+            setUserNameError("Email Address is required.");
+            hasErrors = true;
+        }
+        if (password.length === 0) {
+            setPasswordError("Password is required.");
+            hasErrors = true;
+        }
+
+        return hasErrors;
     };
 
     return (
         <div className={COMPONENT_CLASS}>
-            {(props.showSignInTitle ?? true) && (
+            {showTitle && (
                 <Heading priority={HeadingPriority.One}>{t("signIn")}</Heading>
             )}
             <Form onSubmit={handleSubmit} buttonText={t("signIn")}>
                 <InputFormField
                     disabled={hasDefaultEmail || signingIn}
-                    errorMessage={usernameError}
+                    errorMessage={userNameError}
                     inputTestId="userName"
-                    isValid={StringUtils.isEmpty(usernameError)}
+                    isValid={StringUtils.isEmpty(userNameError)}
                     label={t("emailAddress")}
                     maxLength={100}
                     onChange={(e) => setUserName(e.target.value)}
                     required={!hasDefaultEmail}
                     showCharacterCount={false}
                     type={InputTypes.Email}
-                    value={username}
+                    value={userName}
                 />
                 <PasswordFormField
                     disabled={signingIn}

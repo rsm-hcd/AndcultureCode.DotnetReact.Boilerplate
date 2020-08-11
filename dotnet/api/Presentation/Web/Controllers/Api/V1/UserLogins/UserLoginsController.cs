@@ -72,6 +72,32 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins
 
         #endregion Constructors
 
+        #region DELETE
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] long id)
+        {
+            // Only allow deleting the Current UserLogin
+            if (id != CurrentUserLoginId)
+            {
+                return Unauthorized();
+            }
+
+            // Perform signout in our system
+            await _httpContext.SignOutAsync(AuthenticationUtils.AUTHENTICATION_SCHEME);
+
+            // After successful logout, soft-delete from our system. If that fails, only log
+            var deleteResult = _conductor.Delete(id, CurrentUserId);
+            if (deleteResult.HasErrorsOrResultIsFalse())
+            {
+                _logger.LogWarning($"Failed to delete UserLogin {id} -- {deleteResult.ListErrors()}");
+            }
+
+            return Ok();
+        }
+
+        #endregion DELETE
+
         #region POST
 
         [AllowAnonymous]

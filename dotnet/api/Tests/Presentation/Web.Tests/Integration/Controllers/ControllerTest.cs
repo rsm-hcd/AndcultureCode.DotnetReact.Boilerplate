@@ -334,6 +334,19 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 
         protected User MockAuthenticatedUser() => MockAuthenticatedUser(null);
 
+        protected User MockAuthenticatedUser(User user = null, UserLogin userLogin = null)
+        {
+            if (user == null)
+            {
+                user = Create<User>(e => e.Id = 0);
+            }
+
+            AuthenticatedUser = user;
+            SetSutClaimsPrincipal(AuthenticatedUser, userLogin);
+
+            return user;
+        }
+
         /// <summary>
         /// Sets the current assigned Sut with the provided User and Role as the current authenticated user
         /// </summary>
@@ -349,6 +362,26 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
             Sut.ApiClaimsPrincipal = new ApiClaimsPrincipal
             {
                 UserId = user.Id
+            };
+        }
+
+        /// <summary>
+        /// Sets the current assigned Sut with the provided User and Role as the current authenticated user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="userLogin"></param>
+        protected void SetSutClaimsPrincipal(User user, UserLogin userLogin)
+        {
+            if (Sut == null)
+            {
+                throw new InvalidOperationException("[ControllerTest] Sut MUST be set");
+            }
+
+            Sut.ApiClaimsPrincipal = new ApiClaimsPrincipal
+            {
+                RoleId = userLogin?.RoleId,
+                UserId = user?.Id,
+                UserLoginId = userLogin?.Id
             };
         }
 

@@ -40,6 +40,7 @@ namespace AndcultureCode.GB.Presentation.Web.Middleware.Authentication
                 new Claim(ApiClaimTypes.IS_SUPER_ADMIN, isSuperAdmin.ToString().ToLower(), ClaimValueTypes.Boolean),
                 new Claim(ApiClaimTypes.ROLE_ID, roleId.ToString(), ClaimValueTypes.Integer64),
                 new Claim(ApiClaimTypes.USER_ID, userId.ToString(), ClaimValueTypes.Integer64),
+                new Claim(ApiClaimTypes.USER_LOGIN_ID, userLogin.Id.ToString(), ClaimValueTypes.Integer64)
             };
 
             if (!roleIds.IsNullOrEmpty())

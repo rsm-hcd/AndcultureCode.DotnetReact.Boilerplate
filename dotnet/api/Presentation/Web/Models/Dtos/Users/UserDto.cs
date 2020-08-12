@@ -31,11 +31,6 @@ namespace AndcultureCode.GB.Presentation.Web.Models.Dtos.Users
         public string Password { get; set; }
 
         /// <summary>
-        /// List of UserRoles
-        /// </summary>
-        public List<UserRoleDto> Roles { get; set; }
-
-        /// <summary>
         /// Unique ID for the user
         /// </summary>
         public string UserName { get; set; }

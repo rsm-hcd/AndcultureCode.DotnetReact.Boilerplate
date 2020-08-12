@@ -1,5 +1,5 @@
 import { Record } from "immutable";
-import Role from "models/interfaces/role";
+import { Role } from "andculturecode-javascript-core";
 import { StringUtils } from "andculturecode-javascript-core";
 
 const defaultValues: Role = {

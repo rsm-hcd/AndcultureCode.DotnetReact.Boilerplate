@@ -1,7 +1,5 @@
 import NewUserLoginForm from "organisms/userlogins/userlogins-new-form/userlogins-new-form";
 import React from "react";
-import { useLocalization } from "andculturecode-javascript-react";
-import CultureResources from "utilities/interfaces/culture-resources";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants
@@ -24,8 +22,6 @@ interface NewUserLoginPageProps {}
 // -------------------------------------------------------------------------------------------------
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
-    const { t } = useLocalization<CultureResources>();
-
     return (
         <React.Fragment>
             <div className={`${COMPONENT_CLASS} -left`}>

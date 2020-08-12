@@ -1,7 +1,8 @@
-import fileRecordFactory from "tests/factories/file-record-factory";
 import globalStateRecordFactory from "tests/factories/global-state-record-factory";
 import identityRecordFactory from "tests/factories/identity-record-factory";
+import roleRecordFactory from "tests/factories/role-record-factory";
 import userFactory from "tests/factories/user-factory";
+import userLoginRecordFactory from "tests/factories/user-login-record-factory";
 
 /**
  * Being factories are registered and referenced loosely, we must
@@ -9,8 +10,9 @@ import userFactory from "tests/factories/user-factory";
  */
 
 export {
-    fileRecordFactory,
     globalStateRecordFactory,
     identityRecordFactory,
+    roleRecordFactory,
     userFactory,
+    userLoginRecordFactory,
 };

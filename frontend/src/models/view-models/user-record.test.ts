@@ -5,58 +5,6 @@ import faker from "faker";
 
 describe("UserRecord", () => {
     // -----------------------------------------------------------------------------------------
-    // #region getInitials()
-    // -----------------------------------------------------------------------------------------
-
-    describe("getInitials()", () => {
-        test("when 'firstName' is empty, it returns an empty string", () => {
-            // Arrange
-            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
-                firstName: "",
-                lastName: faker.name.lastName(),
-            });
-
-            // Act
-            const result = sut.getInitials();
-
-            // Assert
-            expect(result).toBeEmpty();
-        });
-
-        test("when 'lastName' is empty, it returns an empty string", () => {
-            // Arrange
-            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
-                firstName: faker.name.firstName(),
-                lastName: "",
-            });
-
-            // Act
-            const result = sut.getInitials();
-
-            // Assert
-            expect(result).toBeEmpty();
-        });
-
-        test("when 'firstName' and 'lastName' have values, it returns the first character of each", () => {
-            // Arrange
-            const firstName = faker.name.firstName();
-            const lastName = faker.name.lastName();
-            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
-                firstName,
-                lastName,
-            });
-
-            // Act
-            const result = sut.getInitials();
-
-            // Assert
-            expect(result).toBe(`${firstName[0]}${lastName[0]}`);
-        });
-    });
-
-    // #endregion getInitials()
-
-    // -----------------------------------------------------------------------------------------
     // #region hasFirstName
     // -----------------------------------------------------------------------------------------
 
@@ -109,7 +57,7 @@ describe("UserRecord", () => {
     // -----------------------------------------------------------------------------------------
 
     describe("hasLastName", () => {
-        interface HastLastNameTestInterface {
+        interface HasLastNameTestInterface {
             lastName: string | undefined;
         }
 
@@ -121,7 +69,7 @@ describe("UserRecord", () => {
             ${" "}
         `(
             "when lastName is '$value', it returns false",
-            ({ lastName }: HastLastNameTestInterface) => {
+            ({ lastName }: HasLastNameTestInterface) => {
                 // Arrange
                 const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
                     lastName,
@@ -151,4 +99,56 @@ describe("UserRecord", () => {
     });
 
     // #endregion hasLastName
+
+    // -----------------------------------------------------------------------------------------
+    // #region initials
+    // -----------------------------------------------------------------------------------------
+
+    describe("initials", () => {
+        test("when 'firstName' is empty, it returns an empty string", () => {
+            // Arrange
+            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
+                firstName: "",
+                lastName: faker.name.lastName(),
+            });
+
+            // Act
+            const result = sut.initials();
+
+            // Assert
+            expect(result).toBeEmpty();
+        });
+
+        test("when 'lastName' is empty, it returns an empty string", () => {
+            // Arrange
+            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
+                firstName: faker.name.firstName(),
+                lastName: "",
+            });
+
+            // Act
+            const result = sut.initials();
+
+            // Assert
+            expect(result).toBeEmpty();
+        });
+
+        test("when 'firstName' and 'lastName' have values, it returns the first character of each", () => {
+            // Arrange
+            const firstName = faker.name.firstName();
+            const lastName = faker.name.lastName();
+            const sut = Factory.build<UserRecord>(FactoryType.userRecord, {
+                firstName,
+                lastName,
+            });
+
+            // Act
+            const result = sut.initials();
+
+            // Assert
+            expect(result).toBe(`${firstName[0]}${lastName[0]}`);
+        });
+    });
+
+    // #endregion initials
 });

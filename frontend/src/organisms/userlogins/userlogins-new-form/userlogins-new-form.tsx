@@ -11,7 +11,7 @@ import {
     InputTypes,
 } from "andculturecode-javascript-react-components";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { siteMap } from "sitemap";
 import {
     useLocalization,

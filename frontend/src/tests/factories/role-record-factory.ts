@@ -1,4 +1,4 @@
-import FileRecord from "models/view-models/file-record";
+import RoleRecord from "models/view-models/role-record";
 import { Factory } from "rosie";
 import FactoryType from "tests/factories/factory-type";
 
@@ -6,16 +6,12 @@ import FactoryType from "tests/factories/factory-type";
 // #region Factory
 // -----------------------------------------------------------------------------------------
 
-export const fileRecordFactory = Factory.define<FileRecord>(
-    FactoryType.fileRecord,
-    FileRecord
+export const roleRecordFactory = Factory.define<RoleRecord>(
+    FactoryType.roleRecord,
+    RoleRecord
 )
-    .sequence(
-        "relativeProviderPath",
-        (i: number) => `/relativeProviderPath-${i}/default.csv`
-    )
-    .sequence("storageContainer", (i: number) => `storagecontainer-${i}`)
-    .sequence("resourceType", () => "default");
+    .sequence("description", (i: number) => `role${i}`)
+    .sequence("name", (i: number) => `role${i}`);
 
 // #endregion Factory
 
@@ -23,6 +19,6 @@ export const fileRecordFactory = Factory.define<FileRecord>(
 // #region Export
 // -----------------------------------------------------------------------------------------
 
-export default fileRecordFactory;
+export default roleRecordFactory;
 
 // #endregion Export

@@ -1,7 +1,7 @@
 import { Record } from "immutable";
 import UserLogin from "models/interfaces/user-login";
 import RoleRecord from "models/view-models/role-record";
-import { RecordUtils } from "utilities/record-utils";
+import { RecordUtils } from "andculturecode-javascript-core";
 
 const defaultValues: UserLogin = {
     createdById: undefined,

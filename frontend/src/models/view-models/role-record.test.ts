@@ -2,8 +2,6 @@ import RoleRecord from "models/view-models/role-record";
 import { Factory } from "rosie";
 import FactoryType from "tests/factories/factory-type";
 import faker from "faker";
-import RoleType from "utilities/enumerations/role-type";
-import { TestUtils } from "utilities/test-utils";
 import { nameof } from "ts-simple-nameof";
 
 describe(nameof(RoleRecord), () => {

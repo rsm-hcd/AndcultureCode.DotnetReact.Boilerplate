@@ -1,5 +1,5 @@
 import { Factory } from "rosie";
-import User from "models/interfaces/user";
+import { User } from "andculturecode-javascript-core";
 import FactoryType from "tests/factories/factory-type";
 import UserRecord from "models/view-models/user-record";
 
@@ -7,7 +7,6 @@ import UserRecord from "models/view-models/user-record";
 
 export const userFactory = Factory.define<User>(FactoryType.user)
     .sequence("email", (i) => `testemail${i}@email.com`)
-    .sequence("externalIdentifier", (i) => `external-id-${i}`)
     .sequence("firstName", (i) => `First${i}`)
     .sequence("lastName", (i) => `Last${i}`)
     .sequence("userName", (i) => `testuser${i}`);
@@ -17,7 +16,6 @@ export const userRecordFactory = Factory.define<UserRecord>(
     UserRecord
 )
     .sequence("email", (i) => `testemail${i}@email.com`)
-    .sequence("externalIdentifier", (i) => `external-id-${i}`)
     .sequence("firstName", (i) => `First${i}`)
     .sequence("lastName", (i) => `Last${i}`)
     .sequence("userName", (i) => `testuser${i}`);

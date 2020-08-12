@@ -36,16 +36,6 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #endregion Setup
 
-
-        #region Teardown
-
-        public override void Dispose()
-        {
-        }
-
-        #endregion Teardown
-
-
         #region HTTP GET
 
         #region Get

@@ -5,13 +5,46 @@ namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Users
 {
     public class UserFactory : Factory
     {
+        #region Constants
+
+        public const string SUPER_ADMIN = "SUPER_ADMIN";
+
+        #endregion Constants
+
+        #region Factories
+
         public override void Define()
         {
-            this.DefineFactory(() => new User
+            this.DefineFactory(() => DefaultUser());
+
+            this.DefineFactory<User>(SUPER_ADMIN, () => DefaultUser(user =>
             {
-                Email = $"testuser{Milliseconds}@example.com",
-                UserName = $"TestUserName{Milliseconds}"
-            });
+                user.IsSuperAdmin = true;
+            }));
         }
+
+        #endregion Factories
+
+        #region Private Methods
+
+        private User DefaultUser(DefaultUserCallback callback = null)
+        {
+            var user = new User
+            {
+                Email = $"testuser{UniqueNumber}@example.com",
+                UserName = $"TestUserName{UniqueNumber}"
+            };
+
+            if (callback != null)
+            {
+                callback(user);
+            }
+
+            return user;
+        }
+
+        private delegate void DefaultUserCallback(User user);
+
+        #endregion Private Methods
     }
 }

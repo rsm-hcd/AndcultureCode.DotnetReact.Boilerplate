@@ -20,6 +20,8 @@ import {
 import { RouteUtils } from "utilities/route-utils";
 import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 import CultureResources from "utilities/interfaces/culture-resources";
+import UserLoginService from "utilities/services/user-login-service";
+import UserLoginRecord from "models/view-models/user-login-record";
 
 // -----------------------------------------------------------------------------------------
 // #region Constants
@@ -35,7 +37,6 @@ const COMPONENT_CLASS = "c-userlogin-new-form";
 
 interface NewUserLoginFormProps {
     buttonText?: string;
-    defaultEmail?: string;
 
     /**
      * Optional callback that will be fired after successfully logging in the user.
@@ -55,7 +56,11 @@ interface NewUserLoginFormProps {
 const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     props: NewUserLoginFormProps
 ) => {
-    const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
+    // -----------------------------------------------------------------------------------------
+    // #region Properties
+    // -----------------------------------------------------------------------------------------
+
+    const { create } = UserLoginService.useCreate();
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
@@ -65,13 +70,59 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     const [userName, setUserName] = useState("");
     const [userNameError, setUserNameError] = useState("");
 
-    const showTitle = props.showTitle === true;
+    const showTitle = props.showTitle !== false;
 
-    useEffect(() => {
-        if (StringUtils.hasValue(props.defaultEmail)) {
-            setUserName(props.defaultEmail!);
+    // #endregion Properties
+
+    // -----------------------------------------------------------------------------------------
+    // #region Private Functions
+    // -----------------------------------------------------------------------------------------
+
+    const resetErrors = () => {
+        setUserNameError("");
+        setPasswordError("");
+    };
+
+    const signIn = async () => {
+        try {
+            const response = await create(
+                new UserLoginRecord({
+                    password: password,
+                    userName: userName,
+                })
+            );
+
+            // TODO: Load User and Role to construct identity object
+            props.onSuccess?.();
+        } catch (ex) {
+            setPageErrors([
+                "There was a problem logging you in. Please try again.",
+            ]);
         }
-    }, [props.defaultEmail]);
+    };
+
+    const validate = async () => {
+        resetErrors();
+        let hasErrors = false;
+
+        if (StringUtils.isEmpty(password)) {
+            setPasswordError("Password is required.");
+            hasErrors = true;
+        }
+
+        if (StringUtils.isEmpty(userName)) {
+            setUserNameError("Email Address is required.");
+            hasErrors = true;
+        }
+
+        return hasErrors;
+    };
+
+    // #endregion Private Functions
+
+    // -----------------------------------------------------------------------------------------
+    // #region Event Handlers
+    // -----------------------------------------------------------------------------------------
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -85,47 +136,27 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         }
         resetPageErrors();
 
-        // TODO
-
-        props.onSuccess?.();
+        await signIn();
     };
 
-    const resetErrors = () => {
-        setUserNameError("");
-        setPasswordError("");
-    };
-
-    const validate = async () => {
-        resetErrors();
-        let hasErrors = false;
-
-        if (userName.length === 0) {
-            setUserNameError("Email Address is required.");
-            hasErrors = true;
-        }
-        if (password.length === 0) {
-            setPasswordError("Password is required.");
-            hasErrors = true;
-        }
-
-        return hasErrors;
-    };
+    // #endregion Event Handlers
 
     return (
         <div className={COMPONENT_CLASS}>
-            {showTitle && (
+            {// if
+            showTitle && (
                 <Heading priority={HeadingPriority.One}>{t("signIn")}</Heading>
             )}
             <Form onSubmit={handleSubmit} buttonText={t("signIn")}>
                 <InputFormField
-                    disabled={hasDefaultEmail || signingIn}
+                    disabled={signingIn}
                     errorMessage={userNameError}
                     inputTestId="userName"
                     isValid={StringUtils.isEmpty(userNameError)}
                     label={t("emailAddress")}
                     maxLength={100}
                     onChange={(e) => setUserName(e.target.value)}
-                    required={!hasDefaultEmail}
+                    required={true}
                     showCharacterCount={false}
                     type={InputTypes.Email}
                     value={userName}

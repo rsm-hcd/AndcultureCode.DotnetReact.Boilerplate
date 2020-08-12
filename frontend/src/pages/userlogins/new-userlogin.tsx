@@ -1,7 +1,3 @@
-import {
-    Heading,
-    HeadingPriority,
-} from "andculturecode-javascript-react-components";
 import NewUserLoginForm from "organisms/userlogins/userlogins-new-form/userlogins-new-form";
 import React from "react";
 import { useLocalization } from "andculturecode-javascript-react";
@@ -10,6 +6,8 @@ import CultureResources from "utilities/interfaces/culture-resources";
 // -------------------------------------------------------------------------------------------------
 // #region Constants
 // -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-login-layout__panel";
 
 // #endregion Constants
 
@@ -30,14 +28,10 @@ const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
 
     return (
         <React.Fragment>
-            <div className="c-login-layout__panel -left">
+            <div className={`${COMPONENT_CLASS} -left`}>
                 <NewUserLoginForm />
             </div>
-            <div className="c-login-layout__panel -right">
-                <Heading priority={HeadingPriority.Two}>
-                    {t("createAnAccount").toUpperCase()}
-                </Heading>
-            </div>
+            <div className={`${COMPONENT_CLASS} -right`}></div>
         </React.Fragment>
     );
 };

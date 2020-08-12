@@ -361,6 +361,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 
             Sut.ApiClaimsPrincipal = new ApiClaimsPrincipal
             {
+                IsSuperAdmin = user != null ? user.IsSuperAdmin : false,
                 UserId = user.Id
             };
         }
@@ -379,6 +380,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 
             Sut.ApiClaimsPrincipal = new ApiClaimsPrincipal
             {
+                IsSuperAdmin = user != null ? user.IsSuperAdmin : false,
                 RoleId = userLogin?.RoleId,
                 UserId = user?.Id,
                 UserLoginId = userLogin?.Id

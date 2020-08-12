@@ -8,7 +8,7 @@ using AndcultureCode.GB.Presentation.Web.Models.Dtos.Users;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Web.Interfaces;
-using ProjectExtensions;
+using AndcultureCode.CSharp.Web.Extensions;
 // using AndcultureCode.CSharp.Web.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Users

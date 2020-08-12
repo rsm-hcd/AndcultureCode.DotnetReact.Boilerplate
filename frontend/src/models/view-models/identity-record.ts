@@ -3,8 +3,10 @@ import { Identity } from "models/interfaces/identity";
 import UserRecord from "models/view-models/user-record";
 import LocalStorageKey from "utilities/enumerations/local-storage-keys";
 import { LocalStorageUtils } from "utilities/local-storage-utils";
+import RoleRecord from "models/view-models/role-record";
 
 const defaultValues: Identity = {
+    role: undefined,
     user: undefined,
 };
 
@@ -25,9 +27,11 @@ export default class IdentityRecord extends Record(defaultValues)
 
     constructor(params?: Identity) {
         if (params == null) {
-            params = {
-                ...defaultValues,
-            };
+            params = { ...defaultValues };
+        }
+
+        if (params.role != null && !(params.role instanceof RoleRecord)) {
+            params.role = new RoleRecord(params.role);
         }
 
         if (params.user != null && !(params.user instanceof UserRecord)) {

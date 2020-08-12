@@ -22,6 +22,8 @@ import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 import CultureResources from "utilities/interfaces/culture-resources";
 import UserLoginService from "utilities/services/user-login-service";
 import UserLoginRecord from "models/view-models/user-login-record";
+import useIdentity from "utilities/hooks/use-identity";
+import { useGlobalState } from "utilities/contexts/use-global-state-context";
 
 // -----------------------------------------------------------------------------------------
 // #region Constants
@@ -61,12 +63,14 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     // -----------------------------------------------------------------------------------------
 
     const { create } = UserLoginService.useCreate();
+    const { globalState, setGlobalState } = useGlobalState();
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
     const { setPageErrors, pageErrors, resetPageErrors } = usePageErrors();
     const [signingIn, setSigningIn] = useState(false);
     const { t } = useLocalization<CultureResources>();
+    const { getIdentity } = useIdentity();
     const [userName, setUserName] = useState("");
     const [userNameError, setUserNameError] = useState("");
 
@@ -78,44 +82,56 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     // #region Private Functions
     // -----------------------------------------------------------------------------------------
 
+    const createUserLogin = async (): Promise<UserLoginRecord> => {
+        const response = await create(
+            new UserLoginRecord({
+                password: password,
+                userName: userName,
+            })
+        );
+
+        return response.result!.resultObject;
+    };
+
     const resetErrors = () => {
         setUserNameError("");
         setPasswordError("");
     };
 
-    const signIn = async () => {
+    const signIn = async (): Promise<boolean> => {
         try {
-            const response = await create(
-                new UserLoginRecord({
-                    password: password,
-                    userName: userName,
-                })
-            );
+            const userLogin = await createUserLogin();
+            const identity = await getIdentity(userLogin);
 
-            // TODO: Load User and Role to construct identity object
-            props.onSuccess?.();
+            if (identity == null) {
+                return false;
+            }
+
+            setGlobalState((state) => state.setIdentity(identity));
+
+            return true;
         } catch (ex) {
-            setPageErrors([
-                "There was a problem logging you in. Please try again.",
-            ]);
+            setPageErrors([t("errorSigningIn")]);
         }
+
+        return false;
     };
 
-    const validate = async () => {
+    const validate = () => {
         resetErrors();
         let hasErrors = false;
 
         if (StringUtils.isEmpty(password)) {
-            setPasswordError("Password is required.");
+            setPasswordError(t("propertyIsRequired", { name: "Password" }));
             hasErrors = true;
         }
 
         if (StringUtils.isEmpty(userName)) {
-            setUserNameError("Email Address is required.");
+            setUserNameError(t("propertyIsRequired", { name: "Email" }));
             hasErrors = true;
         }
 
-        return hasErrors;
+        return !hasErrors;
     };
 
     // #endregion Private Functions
@@ -127,16 +143,20 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        // Validate
         setSigningIn(true);
 
-        const formHasErrors = await validate();
-        if (formHasErrors) {
+        if (!validate()) {
             setSigningIn(false);
             return;
         }
         resetPageErrors();
 
-        await signIn();
+        // Sign-in
+        const isSignedIn = await signIn();
+        if (isSignedIn) {
+            props.onSuccess?.();
+        }
     };
 
     // #endregion Event Handlers
@@ -173,7 +193,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                 />
                 {// if
                 signingIn ? (
-                    "Signing In..."
+                    `${t("signingIn")}...`
                 ) : (
                     //else
                     <React.Fragment>

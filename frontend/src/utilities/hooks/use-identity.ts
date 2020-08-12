@@ -1,86 +1,65 @@
-// import IdentityRecord from "models/view-models/identity-record";
-// import UserLoginRecord from "models/view-models/user-login-record";
-// import { useCallback } from "react";
-// import RoleService from "utilities/services/roles/role-service";
-// import UserRoleService from "utilities/services/users/user-roles/user-role-service";
-// import UserService from "utilities/services/users/user-service";
-// import UserRoleRecord from "models/view-models/user-role-record";
-// import UserRoleGroupRecord from "models/view-models/user-role-group-record";
-// import UserLoginService from "utilities/services/user-logins/user-login-service";
+import { UserResourcePathParams } from "./../services/user-service";
+import IdentityRecord from "models/view-models/identity-record";
+import { useCallback } from "react";
+import UserLoginRecord from "models/view-models/user-login-record";
+import RoleService from "utilities/services/role-service";
+import UserService from "utilities/services/user-service";
+import UserRecord from "models/view-models/user-record";
+import RoleRecord from "models/view-models/role-record";
 
-// /**
-//  * Custom hook providing utility functions for the current identity of the user
-//  */
-// export default function useIdentity() {
-//     const { get: getUserApi } = UserService.useGet();
-//     const { get: getUserLoginApi } = UserLoginService.useGet();
-//     const { list: listUserRolesApi } = UserRoleService.useList();
-//     const { list: listRolesApi } = RoleService.useList();
+/**
+ * Custom hook providing utility functions for the current identity of the user
+ */
+export default function useIdentity() {
+    const { get: getRoleApi } = RoleService.useGet();
+    const { get: getUserApi } = UserService.useGet();
 
-//     /**
-//      * Build the identity record including the current User, UserLogin and UserRoles
-//      *
-//      * @param  {UserLoginRecord|undefined} (userLogin
-//      * @returns Promise
-//      */
-//     const buildCurrentIdentity = useCallback(
-//         (userLogin: UserLoginRecord | undefined) => {
-//             const getIdentity = async (
-//                 userLogin: UserLoginRecord
-//             ): Promise<IdentityRecord | undefined> => {
-//                 const userLoginResponse = await getUserLoginApi({
-//                     id: userLogin.id!,
-//                 });
+    /**
+     * Build the identity record including the current User and Role
+     *
+     * @param  {UserLoginRecord|undefined} (userLogin
+     * @returns Promise
+     */
+    const getHook = (userLogin: UserLoginRecord | undefined) => {
+        if (userLogin == null) {
+            return;
+        }
 
-//                 const userResponse = await getUserApi({
-//                     id: userLogin.userId!,
-//                 });
-//                 const rolesResponse = await listRolesApi();
-//                 const userRolesResponse = await listUserRolesApi({
-//                     userId: userLogin.userId!,
-//                 });
+        return getIdentity(userLogin);
+    };
 
-//                 if (userResponse.result!.hasErrors()) {
-//                     return;
-//                 }
+    const getIdentity = async (
+        userLogin: UserLoginRecord
+    ): Promise<IdentityRecord | undefined> => {
+        const role = await getRole(userLogin?.roleId);
+        const user = await getUser(userLogin?.userId);
 
-//                 const updatedUserLogin = userLoginResponse.resultObject;
-//                 const user = userResponse.resultObject;
-//                 const roles = rolesResponse.resultObjects;
-//                 const userRoles = userRolesResponse.resultObjects;
+        if (user == null) {
+            return;
+        }
 
-//                 // For now, we can't depend on everyone having roles.
-//                 // Eventually we will want to refrain from setting identity
-//                 // if there are no roles
-//                 if (roles == null || userRoles == null) {
-//                     return new IdentityRecord({
-//                         user,
-//                         userLogin: updatedUserLogin,
-//                         userRoles: [],
-//                     });
-//                 }
+        return new IdentityRecord({ role, user });
+    };
 
-//                 const userLoginWithRoles = updatedUserLogin
-//                     ?.withRole(roles)
-//                     .withUserRole(userRoles);
+    const getRole = async (
+        roleId: number | undefined
+    ): Promise<RoleRecord | undefined> => {
+        if (roleId == null) {
+            return;
+        }
 
-//                 const identityRecord = new IdentityRecord({
-//                     user,
-//                     userLogin: userLoginWithRoles,
-//                 });
+        return (await getRoleApi({ id: roleId })).result?.resultObject;
+    };
 
-//                 return identityRecord;
-//             };
-//             if (userLogin == null) {
-//                 return;
-//             }
+    const getUser = async (
+        userId: number | undefined
+    ): Promise<UserRecord | undefined> => {
+        if (userId == null) {
+            return;
+        }
 
-//             return getIdentity(userLogin);
-//         },
-//         [getUserApi, getUserLoginApi, listRolesApi, listUserRolesApi]
-//     );
+        return (await getUserApi({ id: userId })).result?.resultObject;
+    };
 
-//     return { buildCurrentIdentity };
-// }
-
-export default {};
+    return { getIdentity: useCallback(getHook, [getRoleApi, getUserApi]) };
+}

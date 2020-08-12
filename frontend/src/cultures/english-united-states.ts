@@ -11,6 +11,8 @@ const EnglishUnitedStates: Culture<CultureResources> = LocalizationUtils.culture
         resources: {
             createAnAccount: "Create An Account",
             emailAddress: "Email address",
+            errorSigningIn:
+                "There was a problem logging you in. Please try again.",
             forgotYourPassword: "Forgot Your Password",
             needHelpSigningIn: "Need Help Signing In?",
             "newUserLoginForm-errors-loginGeneral":

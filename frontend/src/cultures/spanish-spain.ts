@@ -11,6 +11,8 @@ const SpanishSpain: Culture<CultureResources> = LocalizationUtils.cultureFactory
         resources: {
             createAnAccount: "Crea una cuenta",
             emailAddress: "dirección de correo electrónico",
+            errorSigningIn:
+                "Hubo un problema al iniciar sesión. Vuelva a intentarlo.",
             forgotYourPassword: "Olvidaste tu contraseña",
             needHelpSigningIn: "¿Necesita ayuda para iniciar sesión?",
             "newUserLoginForm-errors-loginGeneral":

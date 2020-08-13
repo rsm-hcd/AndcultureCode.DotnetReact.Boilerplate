@@ -25,6 +25,7 @@ const EnglishUnitedStates: Culture<CultureResources> = LocalizationUtils.culture
             signIn: "Sign In",
             signingIn: "Signing In",
             signUp: "Sign Up",
+            userName: "Username",
         },
     }
 );

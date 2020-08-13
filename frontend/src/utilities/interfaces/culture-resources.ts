@@ -15,4 +15,5 @@ export default interface CultureResources {
     signIn: string;
     signingIn: string;
     signUp: string;
+    userName: string;
 }

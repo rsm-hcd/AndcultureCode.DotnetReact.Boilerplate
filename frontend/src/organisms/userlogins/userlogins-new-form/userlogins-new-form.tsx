@@ -127,7 +127,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         }
 
         if (StringUtils.isEmpty(userName)) {
-            setUserNameError(t("propertyIsRequired", { name: "Email" }));
+            setUserNameError(t("propertyIsRequired", { name: "Username" }));
             hasErrors = true;
         }
 
@@ -173,12 +173,12 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                     errorMessage={userNameError}
                     inputTestId="userName"
                     isValid={StringUtils.isEmpty(userNameError)}
-                    label={t("emailAddress")}
+                    label={t("userName")}
                     maxLength={100}
                     onChange={(e) => setUserName(e.target.value)}
                     required={true}
                     showCharacterCount={false}
-                    type={InputTypes.Email}
+                    type={InputTypes.Text}
                     value={userName}
                 />
                 <PasswordFormField

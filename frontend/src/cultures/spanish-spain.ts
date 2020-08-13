@@ -25,6 +25,7 @@ const SpanishSpain: Culture<CultureResources> = LocalizationUtils.cultureFactory
             signIn: "Registrarse",
             signingIn: "Iniciando sesión",
             signUp: "Regístrate",
+            userName: "Nombre de usuario",
         },
     }
 );

@@ -1,5 +1,6 @@
 import NewUserLoginForm from "organisms/userlogins/userlogins-new-form/userlogins-new-form";
 import React from "react";
+import IdentityRecord from "models/view-models/identity-record";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants
@@ -22,10 +23,14 @@ interface NewUserLoginPageProps {}
 // -------------------------------------------------------------------------------------------------
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
+    const handleLoginSuccess = (identity: IdentityRecord) => {
+        window.alert("SIGNED IN!!!");
+    };
+
     return (
         <React.Fragment>
             <div className={`${COMPONENT_CLASS} -left`}>
-                <NewUserLoginForm />
+                <NewUserLoginForm onSuccess={handleLoginSuccess} />
             </div>
             <div className={`${COMPONENT_CLASS} -right`}></div>
         </React.Fragment>

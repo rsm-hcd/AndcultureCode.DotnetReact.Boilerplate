@@ -24,6 +24,7 @@ import UserLoginService from "utilities/services/user-login-service";
 import UserLoginRecord from "models/view-models/user-login-record";
 import useIdentity from "utilities/hooks/use-identity";
 import { useGlobalState } from "utilities/contexts/use-global-state-context";
+import IdentityRecord from "models/view-models/identity-record";
 
 // -----------------------------------------------------------------------------------------
 // #region Constants
@@ -43,7 +44,7 @@ interface NewUserLoginFormProps {
     /**
      * Optional callback that will be fired after successfully logging in the user.
      */
-    onSuccess?: () => void;
+    onSuccess?: (identity: IdentityRecord) => void;
 
     showLogo?: boolean;
     showTitle?: boolean;
@@ -98,23 +99,19 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         setPasswordError("");
     };
 
-    const signIn = async (): Promise<boolean> => {
+    const signIn = async (): Promise<IdentityRecord | undefined> => {
         try {
             const userLogin = await createUserLogin();
             const identity = await getIdentity(userLogin);
 
             if (identity == null) {
-                return false;
+                return;
             }
 
-            setGlobalState((state) => state.setIdentity(identity));
-
-            return true;
-        } catch (ex) {
-            setPageErrors([t("errorSigningIn")]);
+            return identity;
+        } catch {
+            return;
         }
-
-        return false;
     };
 
     const validate = () => {
@@ -153,10 +150,16 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         resetPageErrors();
 
         // Sign-in
-        const isSignedIn = await signIn();
-        if (isSignedIn) {
-            props.onSuccess?.();
+        const identity = await signIn();
+        if (identity == null) {
+            setSigningIn(false);
+            setPageErrors([t("errorSigningIn")]);
+            return;
         }
+
+        setGlobalState((state) => state.setIdentity(identity));
+
+        props.onSuccess?.(identity);
     };
 
     // #endregion Event Handlers
@@ -201,15 +204,6 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                             buttonText={props.buttonText ?? t("signIn")}
                             cssClassName="c-button"
                         />
-                        {// if
-                        CollectionUtils.hasValues(pageErrors) &&
-                            pageErrors.map((error: string, key: number) => (
-                                <Paragraph
-                                    key={key}
-                                    cssClassName={`${COMPONENT_CLASS}__errors`}>
-                                    {error}
-                                </Paragraph>
-                            ))}
                         <CheckboxFormField
                             checked={rememberMe}
                             label={t("rememberMe")}
@@ -217,6 +211,16 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                         />
                     </React.Fragment>
                 )}
+
+                {// if
+                CollectionUtils.hasValues(pageErrors) &&
+                    pageErrors.map((error: string, key: number) => (
+                        <Paragraph
+                            key={key}
+                            cssClassName={`${COMPONENT_CLASS}__errors`}>
+                            {error}
+                        </Paragraph>
+                    ))}
             </Form>
             {// if
             !signingIn && (

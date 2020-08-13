@@ -47,8 +47,20 @@ export default class IdentityRecord extends Record(defaultValues)
     // #region Public Methods
     // -----------------------------------------------------------------------------------------
 
+    public hasRole(): boolean {
+        return this.role != null;
+    }
+
+    public hasUser(): boolean {
+        return this.user != null;
+    }
+
+    public hasUserId(): boolean {
+        return this.hasUser() && this.userId() > 0;
+    }
+
     public isValid(): boolean {
-        return true;
+        return this.hasUserId();
     }
 
     /**
@@ -64,11 +76,11 @@ export default class IdentityRecord extends Record(defaultValues)
      * @returns number
      */
     public userId(): number {
-        if (this.user != null && this.user.id != null) {
-            return this.user.id;
+        if (!this.hasUser() || this.user?.id == null) {
+            return 0; // Not authenticated
         }
-        // Not authenticated
-        return 0;
+
+        return this.user.id;
     }
 
     /**

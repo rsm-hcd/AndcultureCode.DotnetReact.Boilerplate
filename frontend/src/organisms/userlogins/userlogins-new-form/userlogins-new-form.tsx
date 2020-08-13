@@ -64,7 +64,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     // -----------------------------------------------------------------------------------------
 
     const { create } = UserLoginService.useCreate();
-    const { globalState, setGlobalState } = useGlobalState();
+    const { setGlobalState } = useGlobalState();
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
@@ -84,13 +84,8 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     // -----------------------------------------------------------------------------------------
 
     const createUserLogin = async (): Promise<UserLoginRecord> => {
-        const response = await create(
-            new UserLoginRecord({
-                password: password,
-                userName: userName,
-            })
-        );
-
+        const login = new UserLoginRecord({ password, userName });
+        const response = await create(login);
         return response.result!.resultObject;
     };
 
@@ -139,10 +134,9 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        // Validate
         setSigningIn(true);
 
+        // Validate
         if (!validate()) {
             setSigningIn(false);
             return;
@@ -158,7 +152,6 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
         }
 
         setGlobalState((state) => state.setIdentity(identity));
-
         props.onSuccess?.(identity);
     };
 

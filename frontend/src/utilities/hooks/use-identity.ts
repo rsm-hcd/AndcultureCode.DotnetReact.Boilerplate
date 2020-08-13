@@ -1,4 +1,3 @@
-import { UserResourcePathParams } from "./../services/user-service";
 import IdentityRecord from "models/view-models/identity-record";
 import { useCallback } from "react";
 import UserLoginRecord from "models/view-models/user-login-record";

@@ -1,6 +1,7 @@
 import NewUserLoginForm from "organisms/userlogins/userlogins-new-form/userlogins-new-form";
-import React from "react";
-import IdentityRecord from "models/view-models/identity-record";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { siteMap } from "sitemap";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants
@@ -23,9 +24,13 @@ interface NewUserLoginPageProps {}
 // -------------------------------------------------------------------------------------------------
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
-    const handleLoginSuccess = (identity: IdentityRecord) => {
-        window.alert("SIGNED IN!!!");
-    };
+    const [redirectToDashboard, setRedirectToDashboard] = useState(false);
+
+    const handleLoginSuccess = () => setRedirectToDashboard(true);
+
+    if (redirectToDashboard) {
+        return <Redirect to={siteMap.dashboards.user} />;
+    }
 
     return (
         <React.Fragment>

@@ -12,6 +12,7 @@ namespace AndcultureCode.GB.Business.Core.Interfaces.Data
         IQueryable<Role> Roles { get; }
         IQueryable<User> Users { get; }
         IQueryable<UserLogin> UserLogins { get; }
+        IQueryable<UserMetadata> UserMetadata { get; }
         IQueryable<UserRole> UserRoles { get; }
     }
 }

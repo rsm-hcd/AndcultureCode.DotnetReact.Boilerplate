@@ -35,6 +35,21 @@ using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 using AndcultureCode.CSharp.Data.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
+using AndcultureCode.CSharp.Core.Constants;
+using AndcultureCode.CSharp.Web.Constants;
+using Web.Models.Configuration;
+using Web.Extensions.Startup;
+using AndcultureCode.CSharp.Business.Core.Models.Configuration;
+using AndcultureCode.GB.Presentation.Web.Middleware.Authentication;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using Web.Models;
 
 namespace AndcultureCode.GB.Presentation.Web
 {
@@ -98,7 +113,53 @@ namespace AndcultureCode.GB.Presentation.Web
             services.AddAndcultureCodeLocalization();
             services.AddApi(_configuration, _environment);
             services.AddBackgroundWorkers(_configuration);
-            services.AddCookieAuthentication(_configuration);
+
+            // Configure microsoft auth
+            // NOTE: Might need to break out CookieAuthentication as it calls 'AddAuthentication' as well
+            var authenticationSection = _configuration.GetSection(WebConfiguration.AUTHENTICATION);
+            var cookieSection = authenticationSection.GetSection(WebConfiguration.AUTHENTICATION_COOKIE);
+            var microsoftSection = authenticationSection.GetSection(AppConfiguration.MICROSOFT);
+
+            var cookieConfig = cookieSection.Get<CookieAuthenticationConfiguration>();
+            var microsoftAccountConfig = microsoftSection.Get<MicrosoftAccountConfiguration>();
+
+            services.AddSingleton((sp) => cookieConfig); // TODO: find a new home
+
+            services.AddAuthentication((options) =>
+                {
+                    options.DefaultScheme = cookieConfig.AuthenticationScheme;
+                    options.DefaultChallengeScheme = MicrosoftAccountDefaults.AuthenticationScheme;
+                })
+                .AddCookieAuthentication(cookieConfig)
+                .AddMicrosoftAccount(microsoftOptions =>
+                {
+                    microsoftOptions.Events.OnCreatingTicket = async (context) =>
+                    {
+                        var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint);
+                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
+
+                        var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
+                        response.EnsureSuccessStatusCode();
+
+                        // var user = JObject.Parse(await response.Content.ReadAsStringAsync());
+                        var content = await response.Content.ReadAsStringAsync();
+                        var user = JsonSerializer.Deserialize<MicrosoftAccountUser>(content, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+
+                        Console.WriteLine($"GivenName: {user.GivenName}");
+                        Console.WriteLine($"Email: {user.Mail}");
+
+                        // TODO: Look up or create user along with UserMetadata
+                        // TODO: Create or update cookie with our claims
+                        // TODO: Create UserLogin on behalf of oauth <---
+
+                        context.RunClaimActions();
+                    };
+
+                    microsoftOptions.ClientId = microsoftAccountConfig.ClientId;
+                    microsoftOptions.ClientSecret = microsoftAccountConfig.ClientSecret;
+                });
+
             services.AddForwardedHeaders();
             services.AddSerilogServices(_configuration);
 
@@ -154,7 +215,6 @@ namespace AndcultureCode.GB.Presentation.Web
                 );
             }
 
-            app.UseCookieAuthentication();
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
@@ -192,6 +252,8 @@ namespace AndcultureCode.GB.Presentation.Web
             app.UseRouting(); // Adds metadata to controllers based upon request path
 
             // Authentication and authorization middleware should be configured here
+            app.UseCookieAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(routes =>
             {
@@ -201,10 +263,10 @@ namespace AndcultureCode.GB.Presentation.Web
                 );
 
                 // In non-development environments, the backend wraps the home ("/") route in authorization handling
-                if (!env.IsDevelopment())
-                {
-                    routes.MapFallbackToController(action: "Index", controller: "Home"); // Home Controller handles authorization
-                }
+                // if (!env.IsDevelopment())
+                // {
+                routes.MapFallbackToController(action: "Index", controller: "Home"); // Home Controller handles authorization
+                // }
             });
 
             // Configure SPA routing
@@ -214,11 +276,11 @@ namespace AndcultureCode.GB.Presentation.Web
             //   with all javascript, css and image assets absolutely referenced in Amazon CloudFront/S3
             app.UseSpa(spa =>
             {
-                if (env.IsDevelopment())
-                {
-                    Console.WriteLine($"Proxying frontend from {FRONTEND_DEVELOPMENT_SERVER_URL}");
-                    spa.UseProxyToSpaDevelopmentServer(FRONTEND_DEVELOPMENT_SERVER_URL);
-                }
+                // if (env.IsDevelopment())
+                // {
+                //     Console.WriteLine($"Proxying frontend from {FRONTEND_DEVELOPMENT_SERVER_URL}");
+                //     spa.UseProxyToSpaDevelopmentServer(FRONTEND_DEVELOPMENT_SERVER_URL);
+                // }
             });
 
             // Register Background Jobs

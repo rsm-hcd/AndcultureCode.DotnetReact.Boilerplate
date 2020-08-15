@@ -7,7 +7,7 @@ import RoleType from "utilities/enumerations/role-type";
 import UserRoleRecord from "models/view-models/user-role-record";
 import { nameof } from "ts-simple-nameof";
 
-describe(nameof(RoleRecord), () => {
+describe(nameof(UserLoginRecord), () => {
     let sut: UserLoginRecord;
     beforeEach(() => {
         sut = Factory.build<UserLoginRecord>(FactoryType.userLoginRecord);

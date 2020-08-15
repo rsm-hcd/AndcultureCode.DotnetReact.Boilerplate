@@ -15,9 +15,9 @@ namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Users
 
         public override void Define()
         {
-            this.DefineFactory(() => DefaultUser());
+            this.DefineFactory(() => GetDefaultUser());
 
-            this.DefineFactory<User>(SUPER_ADMIN, () => DefaultUser(user =>
+            this.DefineFactory<User>(SUPER_ADMIN, () => GetDefaultUser(user =>
             {
                 user.IsSuperAdmin = true;
             }));
@@ -27,7 +27,7 @@ namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Users
 
         #region Private Methods
 
-        private User DefaultUser(DefaultUserCallback callback = null)
+        private User GetDefaultUser(GetDefaultUserCallback callback = null)
         {
             var user = new User
             {
@@ -43,7 +43,7 @@ namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Users
             return user;
         }
 
-        private delegate void DefaultUserCallback(User user);
+        private delegate void GetDefaultUserCallback(User user);
 
         #endregion Private Methods
     }

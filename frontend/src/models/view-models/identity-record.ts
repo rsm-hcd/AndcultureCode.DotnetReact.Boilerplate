@@ -4,6 +4,7 @@ import UserRecord from "models/view-models/user-record";
 import LocalStorageKey from "utilities/enumerations/local-storage-keys";
 import { LocalStorageUtils } from "utilities/local-storage-utils";
 import RoleRecord from "models/view-models/role-record";
+import { RecordUtils } from "andculturecode-javascript-core";
 
 const defaultValues: Identity = {
     role: undefined,
@@ -30,12 +31,12 @@ export default class IdentityRecord extends Record(defaultValues)
             params = { ...defaultValues };
         }
 
-        if (params.role != null && !(params.role instanceof RoleRecord)) {
-            params.role = new RoleRecord(params.role);
+        if (params.role != null) {
+            params.role = RecordUtils.ensureRecord(params.role, RoleRecord);
         }
 
-        if (params.user != null && !(params.user instanceof UserRecord)) {
-            params.user = new UserRecord(params.user);
+        if (params.user != null) {
+            params.user = RecordUtils.ensureRecord(params.user, UserRecord);
         }
 
         super(params);

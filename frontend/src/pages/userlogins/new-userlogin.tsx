@@ -1,15 +1,13 @@
-import {
-    Heading,
-    HeadingPriority,
-} from "andculturecode-javascript-react-components";
 import NewUserLoginForm from "organisms/userlogins/userlogins-new-form/userlogins-new-form";
-import React from "react";
-import { useLocalization } from "andculturecode-javascript-react";
-import CultureResources from "utilities/interfaces/culture-resources";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { siteMap } from "sitemap";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants
 // -------------------------------------------------------------------------------------------------
+
+const COMPONENT_CLASS = "c-login-layout__panel";
 
 // #endregion Constants
 
@@ -26,18 +24,20 @@ interface NewUserLoginPageProps {}
 // -------------------------------------------------------------------------------------------------
 
 const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
-    const { t } = useLocalization<CultureResources>();
+    const [redirectToDashboard, setRedirectToDashboard] = useState(false);
+
+    const handleLoginSuccess = () => setRedirectToDashboard(true);
+
+    if (redirectToDashboard) {
+        return <Redirect to={siteMap.dashboards.user} />;
+    }
 
     return (
         <React.Fragment>
-            <div className="c-login-layout__panel -left">
-                <NewUserLoginForm />
+            <div className={`${COMPONENT_CLASS} -left`}>
+                <NewUserLoginForm onSuccess={handleLoginSuccess} />
             </div>
-            <div className="c-login-layout__panel -right">
-                <Heading priority={HeadingPriority.Two}>
-                    {t("createAnAccount").toUpperCase()}
-                </Heading>
-            </div>
+            <div className={`${COMPONENT_CLASS} -right`}></div>
         </React.Fragment>
     );
 };

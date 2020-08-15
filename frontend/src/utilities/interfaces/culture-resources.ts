@@ -1,6 +1,10 @@
 export default interface CultureResources {
     createAnAccount: string;
     emailAddress: string;
+    /**
+     * General sign in error message
+     */
+    errorSigningIn: string;
     forgotYourPassword: string;
     needHelpSigningIn: string;
     "newUserLoginForm-errors-loginGeneral": string;
@@ -11,4 +15,5 @@ export default interface CultureResources {
     signIn: string;
     signingIn: string;
     signUp: string;
+    userName: string;
 }

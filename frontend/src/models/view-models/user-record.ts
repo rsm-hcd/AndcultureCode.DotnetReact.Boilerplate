@@ -1,11 +1,8 @@
 import { Record } from "immutable";
-import User from "models/interfaces/user";
-import { StringUtils } from "andculturecode-javascript-core";
+import { StringUtils, User } from "andculturecode-javascript-core";
 
 const defaultValues: User = {
     email: undefined,
-    externalIdentifier: undefined,
-    externalTopicsUpdatedOn: undefined,
     firstName: "",
     id: undefined,
     isSuperAdmin: false,
@@ -41,16 +38,7 @@ export default class UserRecord extends Record(defaultValues) implements User {
     // #region Public Methods
     // -----------------------------------------------------------------------------------------
 
-    public getInitials(): string {
-        if (!this.hasFirstName() || !this.hasLastName()) {
-            return "";
-        }
-
-        return `${this.firstName[0] ?? ""}${this.lastName[0] ??
-            ""}`.toUpperCase();
-    }
-
-    public getFirstAndLastName(): string {
+    public displayName(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 
@@ -60,6 +48,17 @@ export default class UserRecord extends Record(defaultValues) implements User {
 
     public hasLastName(): boolean {
         return StringUtils.hasValue(this.lastName);
+    }
+
+    public initials(): string {
+        if (!this.hasFirstName() || !this.hasLastName()) {
+            return "";
+        }
+
+        const firstInitial = this.firstName[0] ?? "";
+        const lastInitial = this.lastName[0] ?? "";
+
+        return `${firstInitial}${lastInitial}`.toUpperCase();
     }
 
     public with(values: Partial<User>): UserRecord {

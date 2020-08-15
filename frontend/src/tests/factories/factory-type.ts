@@ -1,8 +1,9 @@
 enum FactoryType {
-    fileRecord = "fileRecord",
     globalStateRecord = "globalStateRecord",
     identityRecord = "identityRecord",
+    roleRecord = "roleRecord",
     user = "user",
+    userLoginRecord = "userLoginRecord",
     userRecord = "userRecord",
 }
 

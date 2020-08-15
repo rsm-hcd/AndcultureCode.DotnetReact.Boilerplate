@@ -1,4 +1,4 @@
-import UserRecord from "models/view-models/user-record";
+import RoleRecord from "models/view-models/role-record";
 import {
     ServiceFactory,
     ServiceHookFactory,
@@ -8,9 +8,9 @@ import {
 // #region Interfaces
 // -----------------------------------------------------------------------------------------
 
-export interface UserIndexQueryParams {}
+export interface RoleIndexQueryParams {}
 
-export interface UserResourcePathParams {
+export interface RoleResourcePathParams {
     id: number;
 }
 
@@ -20,8 +20,8 @@ export interface UserResourcePathParams {
 // #region Constants
 // -----------------------------------------------------------------------------------------
 
-const baseEndpoint = "users";
-const resourceType = UserRecord;
+const baseEndpoint = "roles";
+const resourceType = RoleRecord;
 const resourceEndpoint = `${baseEndpoint}/:id`;
 
 // #endregion Constants
@@ -30,20 +30,20 @@ const resourceEndpoint = `${baseEndpoint}/:id`;
 // #region Service
 // -----------------------------------------------------------------------------------------
 
-const UserService = {
-    get: ServiceFactory.get<UserRecord, UserResourcePathParams>(
+const RoleService = {
+    get: ServiceFactory.get<RoleRecord, RoleResourcePathParams>(
         resourceType,
         resourceEndpoint
     ),
-    list: ServiceFactory.list<UserRecord, UserIndexQueryParams>(
+    list: ServiceFactory.list<RoleRecord, RoleIndexQueryParams>(
         resourceType,
         baseEndpoint
     ),
-    useGet: ServiceHookFactory.useGet<UserRecord, UserResourcePathParams>(
+    useGet: ServiceHookFactory.useGet<RoleRecord, RoleResourcePathParams>(
         resourceType,
         resourceEndpoint
     ),
-    useList: ServiceHookFactory.useList<UserRecord, UserIndexQueryParams>(
+    useList: ServiceHookFactory.useList<RoleRecord, RoleIndexQueryParams>(
         resourceType,
         baseEndpoint
     ),
@@ -55,6 +55,6 @@ const UserService = {
 // #region Exports
 // -----------------------------------------------------------------------------------------
 
-export default UserService;
+export default RoleService;
 
 // #endregion Exports

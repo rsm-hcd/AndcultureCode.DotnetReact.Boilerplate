@@ -11,7 +11,7 @@ import {
     InputTypes,
 } from "andculturecode-javascript-react-components";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { siteMap } from "sitemap";
 import {
     useLocalization,
@@ -20,6 +20,11 @@ import {
 import { RouteUtils } from "utilities/route-utils";
 import { CollectionUtils, StringUtils } from "andculturecode-javascript-core";
 import CultureResources from "utilities/interfaces/culture-resources";
+import UserLoginService from "utilities/services/user-login-service";
+import UserLoginRecord from "models/view-models/user-login-record";
+import useIdentity from "utilities/hooks/use-identity";
+import { useGlobalState } from "utilities/contexts/use-global-state-context";
+import IdentityRecord from "models/view-models/identity-record";
 
 // -----------------------------------------------------------------------------------------
 // #region Constants
@@ -35,14 +40,14 @@ const COMPONENT_CLASS = "c-userlogin-new-form";
 
 interface NewUserLoginFormProps {
     buttonText?: string;
-    defaultEmail?: string;
 
     /**
      * Optional callback that will be fired after successfully logging in the user.
      */
-    onSuccess?: () => void;
+    onSuccess?: (identity: IdentityRecord) => void;
+
     showLogo?: boolean;
-    showSignInTitle?: boolean;
+    showTitle?: boolean;
 }
 
 // #endregion Interfaces
@@ -54,46 +59,123 @@ interface NewUserLoginFormProps {
 const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
     props: NewUserLoginFormProps
 ) => {
-    const hasDefaultEmail = StringUtils.hasValue(props.defaultEmail);
-    const { pageErrors } = usePageErrors();
-    const [password, setPassword] = useState("");
-    const [passwordError] = useState("");
-    const [rememberMe, setRememberMe] = useState(false);
-    const [signingIn] = useState(false);
-    const { t } = useLocalization<CultureResources>();
-    const [username, setUserName] = useState("");
-    const [usernameError] = useState("");
+    // -----------------------------------------------------------------------------------------
+    // #region Properties
+    // -----------------------------------------------------------------------------------------
 
-    useEffect(() => {
-        if (StringUtils.hasValue(props.defaultEmail)) {
-            setUserName(props.defaultEmail!);
+    const { create } = UserLoginService.useCreate();
+    const { setGlobalState } = useGlobalState();
+    const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [rememberMe, setRememberMe] = useState(false);
+    const { setPageErrors, pageErrors, resetPageErrors } = usePageErrors();
+    const [signingIn, setSigningIn] = useState(false);
+    const { t } = useLocalization<CultureResources>();
+    const { getIdentity } = useIdentity();
+    const [userName, setUserName] = useState("");
+    const [userNameError, setUserNameError] = useState("");
+
+    const showTitle = props.showTitle !== false;
+
+    // #endregion Properties
+
+    // -----------------------------------------------------------------------------------------
+    // #region Private Functions
+    // -----------------------------------------------------------------------------------------
+
+    const createUserLogin = async (): Promise<UserLoginRecord> => {
+        const login = new UserLoginRecord({ password, userName });
+        const response = await create(login);
+        return response.result!.resultObject;
+    };
+
+    const resetErrors = () => {
+        setUserNameError("");
+        setPasswordError("");
+    };
+
+    const signIn = async (): Promise<IdentityRecord | undefined> => {
+        try {
+            const userLogin = await createUserLogin();
+            const identity = await getIdentity(userLogin);
+
+            if (identity == null) {
+                return;
+            }
+
+            return identity;
+        } catch {
+            return;
         }
-    }, [props.defaultEmail]);
+    };
+
+    const validate = () => {
+        resetErrors();
+        let hasErrors = false;
+
+        if (StringUtils.isEmpty(password)) {
+            setPasswordError(t("propertyIsRequired", { name: "Password" }));
+            hasErrors = true;
+        }
+
+        if (StringUtils.isEmpty(userName)) {
+            setUserNameError(t("propertyIsRequired", { name: "Username" }));
+            hasErrors = true;
+        }
+
+        return !hasErrors;
+    };
+
+    // #endregion Private Functions
+
+    // -----------------------------------------------------------------------------------------
+    // #region Event Handlers
+    // -----------------------------------------------------------------------------------------
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setSigningIn(true);
 
-        props.onSuccess?.();
+        // Validate
+        if (!validate()) {
+            setSigningIn(false);
+            return;
+        }
+        resetPageErrors();
+
+        // Sign-in
+        const identity = await signIn();
+        if (identity == null) {
+            setSigningIn(false);
+            setPageErrors([t("errorSigningIn")]);
+            return;
+        }
+
+        setGlobalState((state) => state.setIdentity(identity));
+        props.onSuccess?.(identity);
     };
+
+    // #endregion Event Handlers
 
     return (
         <div className={COMPONENT_CLASS}>
-            {(props.showSignInTitle ?? true) && (
+            {// if
+            showTitle && (
                 <Heading priority={HeadingPriority.One}>{t("signIn")}</Heading>
             )}
             <Form onSubmit={handleSubmit} buttonText={t("signIn")}>
                 <InputFormField
-                    disabled={hasDefaultEmail || signingIn}
-                    errorMessage={usernameError}
+                    disabled={signingIn}
+                    errorMessage={userNameError}
                     inputTestId="userName"
-                    isValid={StringUtils.isEmpty(usernameError)}
-                    label={t("emailAddress")}
+                    isValid={StringUtils.isEmpty(userNameError)}
+                    label={t("userName")}
                     maxLength={100}
                     onChange={(e) => setUserName(e.target.value)}
-                    required={!hasDefaultEmail}
+                    required={true}
                     showCharacterCount={false}
-                    type={InputTypes.Email}
-                    value={username}
+                    type={InputTypes.Text}
+                    value={userName}
                 />
                 <PasswordFormField
                     disabled={signingIn}
@@ -107,7 +189,7 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                 />
                 {// if
                 signingIn ? (
-                    "Signing In..."
+                    `${t("signingIn")}...`
                 ) : (
                     //else
                     <React.Fragment>
@@ -115,15 +197,6 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                             buttonText={props.buttonText ?? t("signIn")}
                             cssClassName="c-button"
                         />
-                        {// if
-                        CollectionUtils.hasValues(pageErrors) &&
-                            pageErrors.map((error: string, key: number) => (
-                                <Paragraph
-                                    key={key}
-                                    cssClassName={`${COMPONENT_CLASS}__errors`}>
-                                    {error}
-                                </Paragraph>
-                            ))}
                         <CheckboxFormField
                             checked={rememberMe}
                             label={t("rememberMe")}
@@ -131,6 +204,16 @@ const NewUserLoginForm: React.FunctionComponent<NewUserLoginFormProps> = (
                         />
                     </React.Fragment>
                 )}
+
+                {// if
+                CollectionUtils.hasValues(pageErrors) &&
+                    pageErrors.map((error: string, key: number) => (
+                        <Paragraph
+                            key={key}
+                            cssClassName={`${COMPONENT_CLASS}__errors`}>
+                            {error}
+                        </Paragraph>
+                    ))}
             </Form>
             {// if
             !signingIn && (

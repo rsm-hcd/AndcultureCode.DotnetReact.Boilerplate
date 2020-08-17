@@ -16,7 +16,12 @@ namespace Web.Models
         /// </summary>
         public string GivenName { get; set; }
 
-        public Guid Id { get; set; }
+        /// <summary>
+        /// Unique external user identifier (guid)
+        /// </summary>
+        /// <value></value>
+        public string Id { get; set; }
+
         public string JobTitle { get; set; }
 
         /// <summary>

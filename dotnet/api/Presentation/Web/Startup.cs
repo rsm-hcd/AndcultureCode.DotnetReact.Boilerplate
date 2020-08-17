@@ -133,29 +133,7 @@ namespace AndcultureCode.GB.Presentation.Web
                 .AddCookieAuthentication(cookieConfig)
                 .AddMicrosoftAccount(microsoftOptions =>
                 {
-                    microsoftOptions.Events.OnCreatingTicket = async (context) =>
-                    {
-                        var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint);
-                        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
-
-                        var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
-                        response.EnsureSuccessStatusCode();
-
-                        // var user = JObject.Parse(await response.Content.ReadAsStringAsync());
-                        var content = await response.Content.ReadAsStringAsync();
-                        var user = JsonSerializer.Deserialize<MicrosoftAccountUser>(content, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
-
-                        Console.WriteLine($"GivenName: {user.GivenName}");
-                        Console.WriteLine($"Email: {user.Mail}");
-
-                        // TODO: Look up or create user along with UserMetadata
-                        // TODO: Create or update cookie with our claims
-                        // TODO: Create UserLogin on behalf of oauth <---
-
-                        context.RunClaimActions();
-                    };
-
+                    microsoftOptions.Events.OnCreatingTicket = OAuthMicrosoftAccountHandler.HandleCreatingTicket;
                     microsoftOptions.ClientId = microsoftAccountConfig.ClientId;
                     microsoftOptions.ClientSecret = microsoftAccountConfig.ClientSecret;
                 });

@@ -20,6 +20,11 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
                     .IsRequired();
 
             entity
+                .Property(e => e.Type)
+                    .HasMaxLength(DataConfiguration.SHORT_TITLE_LENGTH)
+                    .IsRequired();
+
+            entity
                 .Property(e => e.UserId)
                     .IsRequired();
 

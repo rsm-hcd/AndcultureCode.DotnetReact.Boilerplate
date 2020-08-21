@@ -1,22 +1,15 @@
-﻿using AndcultureCode.CSharp.Core.Extensions;
-using AspNetCoreRateLimit;
+﻿using AspNetCoreRateLimit;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Rewrite;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
-using AndcultureCode.GB.Business.Core.Extensions;
 using AndcultureCode.GB.Business.Core.Extensions.Startup;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions;
 using AndcultureCode.GB.Presentation.Web.Extensions.Startup;
@@ -27,7 +20,6 @@ using System.IO;
 using System.Reflection;
 using AndcultureCode.GB.Presentation.Web.Filters.Swagger;
 using AndcultureCode.GB.Presentation.Web.Constants;
-using AndcultureCode.GB.Presentation.Web.Filters;
 using Microsoft.OpenApi.Models;
 using AndcultureCode.CSharp.Web.Extensions;
 using AndcultureCode.CSharp.Extensions;
@@ -35,21 +27,7 @@ using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 using AndcultureCode.CSharp.Data.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
-using AndcultureCode.CSharp.Core.Constants;
-using AndcultureCode.CSharp.Web.Constants;
-using Web.Models.Configuration;
 using Web.Extensions.Startup;
-using AndcultureCode.CSharp.Business.Core.Models.Configuration;
-using AndcultureCode.GB.Presentation.Web.Middleware.Authentication;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json.Linq;
-using System.Text.Json;
-using Web.Models;
 
 namespace AndcultureCode.GB.Presentation.Web
 {
@@ -82,6 +60,11 @@ namespace AndcultureCode.GB.Presentation.Web
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Program>();
+            }
+
             _configuration = builder.Build();
             _environment = env;
 
@@ -113,31 +96,10 @@ namespace AndcultureCode.GB.Presentation.Web
             services.AddAndcultureCodeLocalization();
             services.AddApi(_configuration, _environment);
             services.AddBackgroundWorkers(_configuration);
-
-            // Configure microsoft auth
-            // NOTE: Might need to break out CookieAuthentication as it calls 'AddAuthentication' as well
-            var authenticationSection = _configuration.GetSection(WebConfiguration.AUTHENTICATION);
-            var cookieSection = authenticationSection.GetSection(WebConfiguration.AUTHENTICATION_COOKIE);
-            var microsoftSection = authenticationSection.GetSection(AppConfiguration.MICROSOFT);
-
-            var cookieConfig = cookieSection.Get<CookieAuthenticationConfiguration>();
-            var microsoftAccountConfig = microsoftSection.Get<MicrosoftAccountConfiguration>();
-
-            services.AddSingleton((sp) => cookieConfig); // TODO: find a new home
-
-            services.AddAuthentication((options) =>
-                {
-                    options.DefaultScheme = cookieConfig.AuthenticationScheme;
-                    options.DefaultChallengeScheme = MicrosoftAccountDefaults.AuthenticationScheme;
-                })
-                .AddCookieAuthentication(cookieConfig)
-                .AddMicrosoftAccount(microsoftOptions =>
-                {
-                    microsoftOptions.Events.OnCreatingTicket = OAuthMicrosoftAccountHandler.HandleCreatingTicket;
-                    microsoftOptions.ClientId = microsoftAccountConfig.ClientId;
-                    microsoftOptions.ClientSecret = microsoftAccountConfig.ClientSecret;
-                });
-
+            services
+                .AddCookieAuthentication(_configuration)
+                .AddGoogleOAuth(_configuration)
+                .AddMicrosoftOAuth(_configuration);
             services.AddForwardedHeaders();
             services.AddSerilogServices(_configuration);
 
@@ -241,10 +203,10 @@ namespace AndcultureCode.GB.Presentation.Web
                 );
 
                 // In non-development environments, the backend wraps the home ("/") route in authorization handling
-                // if (!env.IsDevelopment())
-                // {
-                routes.MapFallbackToController(action: "Index", controller: "Home"); // Home Controller handles authorization
-                // }
+                if (!env.IsDevelopment())
+                {
+                    routes.MapFallbackToController(action: "Index", controller: "Home"); // Home Controller handles authorization
+                }
             });
 
             // Configure SPA routing
@@ -254,11 +216,11 @@ namespace AndcultureCode.GB.Presentation.Web
             //   with all javascript, css and image assets absolutely referenced in Amazon CloudFront/S3
             app.UseSpa(spa =>
             {
-                // if (env.IsDevelopment())
-                // {
-                //     Console.WriteLine($"Proxying frontend from {FRONTEND_DEVELOPMENT_SERVER_URL}");
-                //     spa.UseProxyToSpaDevelopmentServer(FRONTEND_DEVELOPMENT_SERVER_URL);
-                // }
+                if (env.IsDevelopment())
+                {
+                    Console.WriteLine($"Proxying frontend from {FRONTEND_DEVELOPMENT_SERVER_URL}");
+                    spa.UseProxyToSpaDevelopmentServer(FRONTEND_DEVELOPMENT_SERVER_URL);
+                }
             });
 
             // Register Background Jobs

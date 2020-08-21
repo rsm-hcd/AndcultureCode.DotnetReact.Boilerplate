@@ -4,14 +4,16 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
+namespace Data.SqlServer.Migrations
 {
     [DbContext(typeof(GBApiContext))]
-    partial class GBApiContextModelSnapshot : ModelSnapshot
+    [Migration("20200820103007_UpdateUserLoginIpOptional")]
+    partial class UpdateUserLoginIpOptional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,10 +270,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                     b.Property<long?>("RoleId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
 
                     b.Property<long?>("UpdatedById")
                         .HasColumnType("bigint");

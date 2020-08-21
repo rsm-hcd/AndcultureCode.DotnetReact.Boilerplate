@@ -13,6 +13,10 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
                 .IsRequired();
 
             entity
+                .HasIndex(e => e.Email)
+                .IsUnique();
+
+            entity
                 .Property(e => e.PasswordHash)
                     .HasMaxLength(DataConfiguration.SHORT_STRING_LENGTH);
 

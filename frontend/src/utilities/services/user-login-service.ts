@@ -4,11 +4,14 @@ import {
     ServiceHookFactory,
 } from "andculturecode-javascript-react";
 
+export interface UserLoginPathParams {}
+
 // -----------------------------------------------------------------------------------------
 // #region Constants
 // -----------------------------------------------------------------------------------------
 
 const baseEndpoint = "userlogins";
+const baseEndpointFromCookie = `${baseEndpoint}/cookie`;
 const resourceType = UserLoginRecord;
 const resourceEndpoint = `${baseEndpoint}/:id`;
 
@@ -38,6 +41,15 @@ const UserLoginService = {
      * Custom hook for leveraging service delete calls in react components
      */
     useDelete: ServiceHookFactory.useDelete(resourceEndpoint),
+
+    /**
+     * Attempts to locate the user's current login via the cookie.
+     * When successful a UserLogin was found
+     */
+    useGetFromCookie: ServiceHookFactory.useGet<
+        UserLoginRecord,
+        UserLoginPathParams
+    >(resourceType, baseEndpointFromCookie),
 };
 
 // #endregion Service

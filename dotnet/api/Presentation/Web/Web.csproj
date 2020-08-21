@@ -1,5 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
     <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
@@ -9,25 +9,25 @@
     <PackageVersion>0.0.2</PackageVersion>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Version>1.2.0</Version>
+    <UserSecretsId>6510a244-52fc-449b-ae8e-de4850755130</UserSecretsId>
   </PropertyGroup>
-
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Uncomment to suppress these warnings -->
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.5" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.10" />
     <PackageReference Include="AndcultureCode.CSharp.Data" Version="0.0.1" />
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.3" />
-    <PackageReference Include="AndcultureCode.CSharp.Web" Version="0.1.1" />
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
+    <PackageReference Include="AndcultureCode.CSharp.Web" Version="0.2.0" />
     <PackageReference Include="AspNetCoreRateLimit" Version="3.0.5" />
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.0.0" />
@@ -37,7 +37,6 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Business\Conductors\Conductors.csproj" />
     <ProjectReference Include="..\..\Business\Core\Core.csproj" />
@@ -45,7 +44,6 @@
     <ProjectReference Include="..\..\Infrastructure\Workers.Hangfire\Workers.Hangfire.csproj" />
     <ProjectReference Include="..\Worker\Worker.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="appsettings.Development.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -54,12 +52,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <!-- Cultures are automatically copied for entry application -->
   <!-- <ItemGroup>
     <Content Include="Cultures\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup> -->
-
 </Project>

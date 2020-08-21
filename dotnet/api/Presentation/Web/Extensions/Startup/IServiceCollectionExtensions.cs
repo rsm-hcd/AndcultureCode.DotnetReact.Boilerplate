@@ -28,17 +28,11 @@ using AndcultureCode.CSharp.Core.Models.Configuration;
 using AndcultureCode.CSharp.Web.Constants;
 using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Extensions;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using AndcultureCode.CSharp.Business.Core.Models.Configuration;
-using Microsoft.AspNetCore.HttpOverrides;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
     public static class IServiceCollectionExtensions
     {
-
         public static IServiceCollection AddApi(this IServiceCollection services, IConfigurationRoot configuration, IHostEnvironment environment)
         {
             services

@@ -33,9 +33,8 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Home
         /// <summary>
         /// Our deployments of the application artifacts output to `wwwroot/`.
         /// </summary>
-        // [AllowAnonymous] // Must be configured or 'AuthorizeFilter' is executed
-        // [BasicAuth]
-        [Authorize]
+        [AllowAnonymous] // Must be configured or 'AuthorizeFilter' is executed
+        [BasicAuth]
         public IActionResult Index()
         {
             var file = _env.ContentRootFileProvider.GetFileInfo(_filePath);

@@ -19,11 +19,11 @@ Please follow the instructions below to configure the OpenID provider accounts.
 For development machines, we leverage [User Secret Manager](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
 
 ```shell
-dotnet user-secrets set "Authentication:Google:ClientId" "<1Password: Gravity Boots / Working App Registration / Client ID>"
-dotnet user-secrets set "Authentication:Google:ClientSecret" "<1Password: Gravity Boots / Working App Registration / Client Secret>"
+dotnet user-secrets set "Authentication:Google:ClientId" "<App Registration / Client ID>"
+dotnet user-secrets set "Authentication:Google:ClientSecret" "<App Registration / Client Secret>"
 
-dotnet user-secrets set "Authentication:Microsoft:ClientId" "<1Password: Gravity Boots / Working App Registration / Client ID>"
-dotnet user-secrets set "Authentication:Microsoft:ClientSecret" "<1Password: Gravity Boots / Working App Registration / Client Secret>"
+dotnet user-secrets set "Authentication:Microsoft:ClientId" "<App Registration / Client ID>"
+dotnet user-secrets set "Authentication:Microsoft:ClientSecret" "<App Registration / Client Secret>"
 ```
 
 ### Hosting Environments
@@ -50,7 +50,7 @@ Again, **DO NOT** add these details into any of the `appsettings.*.json` files i
 
 ### Microsoft
 
--   Create microsoft account (developer@andculture.com)
+-   Create microsoft account
 -   Create application registration for application (gravityboots-working)
     -   Search for 'App Registrations' in search of Azure Portal
 -   Configure redirect-url

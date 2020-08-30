@@ -27,7 +27,6 @@ using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 using AndcultureCode.CSharp.Data.Extensions;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Seeds;
-using Web.Extensions.Startup;
 
 namespace AndcultureCode.GB.Presentation.Web
 {

@@ -21,7 +21,7 @@ namespace AndcultureCode.GB.Business.Core.Models.Entities.Users
 
         #region Navigation Properties
 
-        public List<UserMetadata> UserMetadatas { get; set; }
+        public List<UserMetadata> UserMetadata { get; set; }
         public List<UserRole> UserRoles { get; set; }
 
         #endregion Navigation Properties

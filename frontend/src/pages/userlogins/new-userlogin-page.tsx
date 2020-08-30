@@ -64,8 +64,8 @@ const NewUserLoginPage: React.FC<NewUserLoginPageProps> = () => {
             <div className={`${COMPONENT_CLASS} -right`}>
                 {AUTHENTICATION_OPTIONS.map((option) => (
                     <Button
-                        style={ButtonStyles.Secondary}
-                        onClick={() => handleLoginWith(option.scheme)}>
+                        onClick={() => handleLoginWith(option.scheme)}
+                        style={ButtonStyles.Secondary}>
                         Login with {option.name}
                     </Button>
                 ))}

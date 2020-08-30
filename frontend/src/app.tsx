@@ -159,7 +159,7 @@ const App: React.FC = () => {
 // -----------------------------------------------------------------------------------------
 
 /**
- * TODO: Abstract to AndcultureCode.JavaScript.Core before PR
+ * TODO: Abstract to AndcultureCode.JavaScript.Core https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/41
  * @param cookieName
  */
 const getCookie = (cookieName: string) => {
@@ -181,6 +181,10 @@ const getCookie = (cookieName: string) => {
     return "";
 };
 
+/**
+ * TODO: Abstract to AndcultureCode.JavaScript.Core https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/41
+ * @param cookieName
+ */
 const hasCookie = (cookieName: string) =>
     StringUtils.hasValue(getCookie(cookieName));
 

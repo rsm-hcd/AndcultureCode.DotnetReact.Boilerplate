@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Web.Extensions.Startup
+namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
 {
     #region Public Methods
 

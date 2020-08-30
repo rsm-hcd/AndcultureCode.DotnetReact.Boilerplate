@@ -1,11 +1,11 @@
-import UserDashboardPage from "pages/dashboards/user-dashboard";
-import NotFoundPage from "pages/errors/not-found";
-import NewUserLoginPage from "pages/userlogins/new-userlogin";
+import UserDashboardPage from "pages/dashboards/user-dashboard-page";
+import NotFoundPage from "pages/errors/not-found-page";
+import NewUserLoginPage from "pages/userlogins/new-userlogin-page";
 import { siteMap } from "sitemap";
 import ApplicationLayout from "templates/application-layout";
 import UserLoginLayout from "templates/user-login-layout";
 import { RouteMap } from "andculturecode-javascript-react";
-import HomePage from "pages/home/home";
+import HomePage from "pages/home/home-page";
 import AccessDeniedPage from "pages/errors/access-denied-page";
 
 /*

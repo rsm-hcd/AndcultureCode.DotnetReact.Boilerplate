@@ -32,6 +32,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<UserMetadata> UserMetadata { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
         #endregion Properties
@@ -68,6 +69,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
         IQueryable<Role> IGBApiContext.Roles => Roles;
         IQueryable<User> IGBApiContext.Users => Users;
         IQueryable<UserLogin> IGBApiContext.UserLogins => UserLogins;
+        IQueryable<UserMetadata> IGBApiContext.UserMetadata => UserMetadata;
         IQueryable<UserRole> IGBApiContext.UserRoles => UserRoles;
 
 
@@ -92,6 +94,9 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
             // UserLogins
             modelBuilder.AddMapping(new UserLoginMap());
 
+            // UserMetadata
+            modelBuilder.AddMapping(new UserMetadataMap());
+
             // UserRoles
             modelBuilder.AddMapping(new UserRoleMap());
 
@@ -106,6 +111,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
             AddSoftDeletionFilter<Role>(modelBuilder);
             AddSoftDeletionFilter<User>(modelBuilder);
             AddSoftDeletionFilter<UserLogin>(modelBuilder);
+            AddSoftDeletionFilter<UserMetadata>(modelBuilder);
             AddSoftDeletionFilter<UserRole>(modelBuilder);
 
             base.OnModelCreating(modelBuilder);

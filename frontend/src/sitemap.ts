@@ -8,7 +8,9 @@ export const siteMap = {
     },
     root: "/",
     userlogins: {
+        cookie: "/userlogins/cookie",
         index: "/userlogins",
         new: "/userlogins/new",
+        oauth: "/userlogins/challenge", // non-api route
     },
 };

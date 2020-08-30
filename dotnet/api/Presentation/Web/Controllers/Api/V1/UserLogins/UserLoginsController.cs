@@ -98,6 +98,27 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins
 
         #endregion DELETE
 
+        #region GET
+
+        [HttpGet("cookie")]
+        public IActionResult GetByCookie()
+        {
+            if (CurrentUserLoginId == null)
+            {
+                return NotFound();
+            }
+
+            var findResult = _conductor.FindById(CurrentUserLoginId.Value);
+            if (findResult.HasErrorsOrResultIsNull())
+            {
+                return InternalError<UserLoginDto>(findResult.Errors, _logger);
+            }
+
+            return Ok(_mapper.Map<UserLoginDto>(findResult.ResultObject));
+        }
+
+        #endregion GET
+
         #region POST
 
         [AllowAnonymous]

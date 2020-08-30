@@ -1,22 +1,15 @@
-﻿using AndcultureCode.CSharp.Core.Extensions;
-using AspNetCoreRateLimit;
+﻿using AspNetCoreRateLimit;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Rewrite;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
-using AndcultureCode.GB.Business.Core.Extensions;
 using AndcultureCode.GB.Business.Core.Extensions.Startup;
 using AndcultureCode.GB.Infrastructure.Workers.Hangfire.Extensions;
 using AndcultureCode.GB.Presentation.Web.Extensions.Startup;
@@ -27,7 +20,6 @@ using System.IO;
 using System.Reflection;
 using AndcultureCode.GB.Presentation.Web.Filters.Swagger;
 using AndcultureCode.GB.Presentation.Web.Constants;
-using AndcultureCode.GB.Presentation.Web.Filters;
 using Microsoft.OpenApi.Models;
 using AndcultureCode.CSharp.Web.Extensions;
 using AndcultureCode.CSharp.Extensions;
@@ -67,6 +59,11 @@ namespace AndcultureCode.GB.Presentation.Web
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets<Program>();
+            }
+
             _configuration = builder.Build();
             _environment = env;
 
@@ -98,7 +95,10 @@ namespace AndcultureCode.GB.Presentation.Web
             services.AddAndcultureCodeLocalization();
             services.AddApi(_configuration, _environment);
             services.AddBackgroundWorkers(_configuration);
-            services.AddCookieAuthentication(_configuration);
+            services
+                .AddCookieAuthentication(_configuration)
+                .AddGoogleOAuth(_configuration)
+                .AddMicrosoftOAuth(_configuration);
             services.AddForwardedHeaders();
             services.AddSerilogServices(_configuration);
 
@@ -154,7 +154,6 @@ namespace AndcultureCode.GB.Presentation.Web
                 );
             }
 
-            app.UseCookieAuthentication();
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
@@ -192,6 +191,8 @@ namespace AndcultureCode.GB.Presentation.Web
             app.UseRouting(); // Adds metadata to controllers based upon request path
 
             // Authentication and authorization middleware should be configured here
+            app.UseCookieAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(routes =>
             {

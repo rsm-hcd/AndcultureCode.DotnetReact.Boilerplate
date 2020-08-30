@@ -76,6 +76,20 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V
 
         #endregion HTTP DELETE
 
+        #region HTTP GET
+
+        #region GetByCookie
+
+        [Fact(Skip = "TODO: Write integration tests")]
+        public void GetByCookie_Todo()
+        {
+
+        }
+
+        #endregion GetByCookie
+
+        #endregion HTTP GET
+
         #region HTTP POST
 
         #region Create

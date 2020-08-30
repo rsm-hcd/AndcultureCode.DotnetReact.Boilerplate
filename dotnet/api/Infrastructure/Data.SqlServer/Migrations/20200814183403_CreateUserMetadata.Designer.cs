@@ -4,14 +4,16 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
+namespace Data.SqlServer.Migrations
 {
     [DbContext(typeof(GBApiContext))]
-    partial class GBApiContextModelSnapshot : ModelSnapshot
+    [Migration("20200814183403_CreateUserMetadata")]
+    partial class CreateUserMetadata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,7 +132,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -164,9 +166,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
-
                     b.HasIndex("UserName")
                         .IsUnique();
 
@@ -196,6 +195,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Ip")
+                        .IsRequired()
                         .HasColumnType("nvarchar(39)")
                         .HasMaxLength(39);
 
@@ -268,10 +268,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
                     b.Property<long?>("RoleId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
 
                     b.Property<long?>("UpdatedById")
                         .HasColumnType("bigint");

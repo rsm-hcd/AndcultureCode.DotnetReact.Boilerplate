@@ -19,6 +19,7 @@ import {
     LocalizationUtils,
     ScrollUtils,
     ServiceUtils as AndcultureCodeServiceUtils,
+    StringUtils,
 } from "andculturecode-javascript-core";
 import { initReactI18next } from "react-i18next";
 import EnglishUnitedStates from "cultures/english-united-states";
@@ -32,12 +33,19 @@ import {
     NestedRoutes,
     RouteUtils,
 } from "andculturecode-javascript-react";
+import { AppConstants } from "constants/app-constants";
+import UserLoginService from "utilities/services/user-login-service";
+import useIdentity from "utilities/hooks/use-identity";
 
 // -----------------------------------------------------------------------------------------
 // #region Application Component
 // -----------------------------------------------------------------------------------------
 
 const App: React.FC = () => {
+    const { getIdentity } = useIdentity();
+    const { get: getUserLoginApi } = UserLoginService.useGetFromCookie();
+    const [loading, setLoading] = useState(true);
+
     const globalStateRecord = getInitialGlobalState();
     const [globalState, setGlobalState] = useState(globalStateRecord);
 
@@ -56,6 +64,41 @@ const App: React.FC = () => {
 
     const routeArray = CoreUtils.objectToArray(routes);
     const flattenedRoutes = RouteUtils.getFlattenedRoutes(routeArray);
+
+    // Detect cookie
+    useEffect(() => {
+        const getUserLogin = async () => {
+            const userLoginResult = (await getUserLoginApi({})).result;
+
+            if (
+                userLoginResult?.hasErrors() ||
+                userLoginResult?.resultObject == null
+            ) {
+                setLoading(false);
+                return;
+            }
+
+            const userLogin = userLoginResult?.resultObject;
+            const identity = await getIdentity(userLogin);
+
+            setGlobalState((state) => state.setIdentity(identity));
+            setLoading(false);
+        };
+
+        if (
+            globalState.isAuthenticated() ||
+            !hasCookie(AppConstants.AuthenticationCookieName)
+        ) {
+            setLoading(false);
+            return;
+        }
+
+        getUserLogin();
+    }, [getUserLoginApi, globalState, getIdentity]);
+
+    if (loading) {
+        return null;
+    }
 
     return (
         <Router>
@@ -115,6 +158,36 @@ const App: React.FC = () => {
 // #region Functions
 // -----------------------------------------------------------------------------------------
 
+/**
+ * TODO: Abstract to AndcultureCode.JavaScript.Core https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/41
+ * @param cookieName
+ */
+const getCookie = (cookieName: string) => {
+    let name = cookieName + "=";
+    const parts = document.cookie.split(";");
+
+    for (let i = 0; i < parts.length; i++) {
+        let cookie = parts[i];
+
+        while (cookie.charAt(0) === " ") {
+            cookie = cookie.substring(1);
+        }
+
+        if (cookie.indexOf(name) === 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+
+    return "";
+};
+
+/**
+ * TODO: Abstract to AndcultureCode.JavaScript.Core https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/issues/41
+ * @param cookieName
+ */
+const hasCookie = (cookieName: string) =>
+    StringUtils.hasValue(getCookie(cookieName));
+
 const getInitialGlobalState = () =>
     new GlobalStateRecord().setFromLocalStorage();
 
@@ -134,7 +207,6 @@ const PageViews = () => {
         const cultureCode = LocalizationUtils.detectCultureCode();
         AndcultureCodeServiceUtils.configureCultureCode(cultureCode);
 
-        // Reset the focus back to the document root element on page change so tabbing
         // re-opens the Skip to content accessibility option
         setFocusToRoot();
     }, [location, globalState, setGlobalState]);

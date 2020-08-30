@@ -11,8 +11,7 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps.Users
         {
             entity
                 .Property(e => e.Ip)
-                    .HasMaxLength(DataConfiguration.IP_ADDRESS_LENGTH)
-                    .IsRequired();
+                    .HasMaxLength(DataConfiguration.IP_ADDRESS_LENGTH);
 
             entity
                 .Property(e => e.ServerName)

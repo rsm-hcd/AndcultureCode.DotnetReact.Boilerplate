@@ -506,7 +506,6 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 .AddAutoMapper(typeof(MappingProfile))
                 .AddConfiguration(Configuration, "does-not-matter-for-tests", EnvironmentName)
                 .AddContexts(Configuration, EnvironmentName)
-                .AddCookieAuthentication(Configuration)
                 .AddSqlServer()
                 .AddClients(Configuration)
                 .AddConductors(Configuration)
@@ -514,6 +513,8 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
                 .AddWorkers()
                 .AddClients(Configuration)
                 .AddProviders();
+
+            services.AddCookieAuthentication(Configuration);
 
 
             // Additional Project Dependencies

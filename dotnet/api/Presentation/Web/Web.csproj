@@ -8,7 +8,7 @@
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
     <PackageVersion>0.0.2</PackageVersion>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <UserSecretsId>6510a244-52fc-449b-ae8e-de4850755130</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup>

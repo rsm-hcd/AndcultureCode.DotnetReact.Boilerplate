@@ -10,6 +10,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
     {
         public const string InitialMigrationId = "20200603183650_InitialCreate";
 
+        // This should contain all migration ID consts listed above, in the order that they should
+        // be run.
         public static readonly List<string> FlattenedMigrations = new List<string> {
             InitialMigrationId
         };
@@ -41,6 +43,31 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
             }
         }
 
+        public void LogMigrationMessage(params string[] messages)
+        {
+            LogMigrationMessageLine("");
+            LogMigrationMessageLine("------------------------------------------------");
+            foreach (var m in messages)
+            {
+                LogMigrationMessageLine(m);
+            }
+            LogMigrationMessageLine("------------------------------------------------");
+            LogMigrationMessageLine("");
+        }
+
+        public void LogMigrationMessageLine(string line, string direction = "Up")
+        {
+            var migrationName = this.GetType().Name;
+            Console.WriteLine($"[Migration::{migrationName}#{direction}] {line}");
+        }
+
+        /// <summary>
+        /// This will check if, based on the sort order of the other migrations, this flattened
+        /// migration has not run on a fresh install.
+        /// </summary>
+        /// <param name="id">The ID of the flattened migration, as defined in the FlattenedMigrations list.</param>
+        /// <returns>True indicates the migration should be run. False indicates you should abort
+        /// running the migration, as this is not a fresh install, and the migration will likely fail.</returns>
         public bool ValidateFlattenedShouldRun(string id)
         {
             int count = 0;
@@ -65,24 +92,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
             }
 
             return true;
-        }
-
-        public void LogMigrationMessage(params string[] messages)
-        {
-            LogMigrationMessageLine("");
-            LogMigrationMessageLine("------------------------------------------------");
-            foreach (var m in messages)
-            {
-                LogMigrationMessageLine(m);
-            }
-            LogMigrationMessageLine("------------------------------------------------");
-            LogMigrationMessageLine("");
-        }
-
-        public void LogMigrationMessageLine(string line, string direction = "Up")
-        {
-            var migrationName = this.GetType().Name;
-            Console.WriteLine($"[Migration::{migrationName}#{direction}] {line}");
         }
     }
 }

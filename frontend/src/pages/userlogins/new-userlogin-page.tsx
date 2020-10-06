@@ -14,14 +14,14 @@ import { AuthenticationSchemes } from "constants/authentication-schemes";
 // -------------------------------------------------------------------------------------------------
 
 const AUTHENTICATION_OPTIONS: AuthenticationOption[] = [
-    {
-        name: "Google",
-        scheme: AuthenticationSchemes.Google,
-    },
-    {
-        name: "Microsoft",
-        scheme: AuthenticationSchemes.Microsoft,
-    },
+    // {
+    //     name: "Google",
+    //     scheme: AuthenticationSchemes.Google,
+    // },
+    // {
+    //     name: "Microsoft",
+    //     scheme: AuthenticationSchemes.Microsoft,
+    // },
 ];
 const COMPONENT_CLASS = "c-login-layout__panel";
 

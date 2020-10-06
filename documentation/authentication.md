@@ -2,9 +2,13 @@
 
 The application supports three modes of authentication
 
--   Cookie
--   Google OAuth
--   Microsoft OAuth
+-   Cookie (Enabled by default)
+-   Google OAuth (Disabled by default)
+    -   Set `Authentication:Google:IsEnabled` in `appsettings.json` to `true`
+    -   Uncomment Google option in `new-userlogin-page.tsx`
+-   Microsoft OAuth (Disabled by default)
+    -   Set `Authentication:Microsoft:IsEnabled` in `appsettings.json` to `true`
+    -   Uncomment Microsoft option in `new-userlogin-page.tsx`
 
 Please follow the instructions below to configure the OpenID provider accounts.
 

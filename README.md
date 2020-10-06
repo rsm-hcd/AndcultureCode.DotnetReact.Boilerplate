@@ -73,6 +73,20 @@ Below are a few basics to get you started, but there are many more commands and 
 -   `cd frontend && npm run cypress:run:working` - run functional test suite headlessly
 -   `cd frontend && npm run test:debug` - starts web socket connection for easy editor independent interactive debugging https://create-react-app.dev/docs/debugging-tests/
 
+## 5. Getting Started
+
+Restore the dotnet packages (first time only)
+    `and-cli dotnet --restore`
+    
+Restore the NPM node modules (first time only)
+    `and-cli webpack --restore`
+
+Start the dotnet server
+    `and-cli dotnet`
+
+Start the webpack server
+    `and-cli webpack`
+
 ## Documentation
 
 ### Engineering Documentation

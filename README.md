@@ -93,7 +93,7 @@ Start the webpack server
     
 Open your browser and navigate to:
 
-    http://localhost:3000
+    https://localhost:5001
 
 ## Documentation
 

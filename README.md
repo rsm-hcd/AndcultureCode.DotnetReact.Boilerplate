@@ -91,7 +91,8 @@ Start the webpack server
 
     `and-cli webpack`
     
-Open your browser and navigate to 
+Open your browser and navigate to:
+
     `http://localhost:3000`
 
 ## Documentation

@@ -1,13 +1,7 @@
 import GlobalStateRecord from "models/view-models/global-state-record";
 import { GlobalStateUpdater } from "./contexts/use-global-state-context";
 import { AxiosResponse } from "axios";
-import {
-    PagedResult,
-    PromiseFactory,
-    Result,
-    ResultRecord,
-    ServiceResponse,
-} from "andculturecode-javascript-core";
+import { PromiseFactory, ResultRecord } from "andculturecode-javascript-core";
 import { ServiceUtils as AndcultureCodeServiceUtils } from "andculturecode-javascript-core";
 
 /*
@@ -47,65 +41,6 @@ const configure = (configuration: ServicesConfiguration) => {
         handleApiResponseError,
         handleApiResponseSuccess
     );
-};
-
-/**
- * Translates axios specific data response to a more generic ServiceResponse
- * type for consumption throughout the system
- */
-const mapAxiosResponse = function<TRecord>(
-    recordType: { new (props: Partial<TRecord>): TRecord },
-    axiosResponse: AxiosResponse<Result<TRecord>>
-): ServiceResponse<TRecord> {
-    if (axiosResponse == null) {
-        return axiosResponse;
-    }
-
-    // Ensure result data is wrapped within a record
-    let resultObject;
-    if (axiosResponse.data != null && axiosResponse.data.resultObject != null) {
-        resultObject = new recordType(axiosResponse.data.resultObject);
-        axiosResponse.data.resultObject = resultObject;
-    }
-
-    return {
-        result: new ResultRecord<TRecord>(axiosResponse.data),
-        resultObject: resultObject,
-        rowCount: 1,
-        status: axiosResponse.status,
-    };
-};
-
-/**
- * Translates axios specific data responses to a more generic ServiceResponse
- * type for consumption throughout the system
- */
-const mapPagedAxiosResponse = function<TRecord>(
-    recordType: { new (props: Partial<TRecord>): TRecord },
-    axiosResponse: AxiosResponse<PagedResult<TRecord>>
-): ServiceResponse<TRecord> {
-    if (axiosResponse == null) {
-        return axiosResponse;
-    }
-    const data = axiosResponse.data;
-
-    // Ensure result data is wrapped within records
-    let resultObjects;
-    if (
-        data != null &&
-        data.resultObject != null &&
-        data.resultObject.length > 0
-    ) {
-        resultObjects = data.resultObject.map((r) => new recordType(r));
-        data.resultObject = resultObjects;
-    }
-
-    return {
-        results: new ResultRecord<TRecord[]>(data),
-        resultObjects: resultObjects,
-        rowCount: axiosResponse.data.rowCount,
-        status: axiosResponse.status,
-    };
 };
 
 /*
@@ -169,8 +104,6 @@ const ServiceUtils = {
     configure,
     handleApiResponseError,
     handleApiResponseSuccess,
-    mapAxiosResponse,
-    mapPagedAxiosResponse,
 };
 
 export default ServiceUtils;

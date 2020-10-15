@@ -18,8 +18,8 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
         #region Properties
 
         private IConfigurationRoot _configuration { get; set; }
-        public GBApiConnection Connection { get; set; }
-        public IContext Context => new GBApiContext(Connection, null);
+        public SqlConnectionStringBuilder ConnectionStringBuilder { get; set; }
+        public IContext Context => new GBApiContext(ConnectionStringBuilder.ConnectionString, null);
         public bool DeleteDatabaseBetweenTests = false;
 
         #endregion Properties
@@ -33,9 +33,9 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test
             // project's .csproj file correctly.
-            Connection = _configuration.GetTestDatabaseConnection();
+            ConnectionStringBuilder = _configuration.GetTestDatabaseConnectionStringBuilder();
 
-            Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.Database}");
+            Console.WriteLine($"[DatabaseFixture] Test database name: {ConnectionStringBuilder.InitialCatalog}");
             Console.WriteLine($"[DatabaseFixture] -- Shared mode (higher performance): Leave 'TEST_DATABASE_NAME' environment variable unset or assign your own value.");
             Console.WriteLine($"[DatabaseFixture] -- Generation mode (flexible and less error prone): Set 'TEST_DATABASE_NAME' environment variable to 'generate' to have unique database created for each test run.");
 
@@ -69,7 +69,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
         /// </summary>
         public void CleanDatabaseTables()
         {
-            using (var sqlConnection = new SqlConnection(Connection.ToString()))
+            using (var sqlConnection = new SqlConnection(ConnectionStringBuilder.ToString()))
             {
                 sqlConnection.Open();
 
@@ -116,7 +116,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
         /// <returns></returns>
         public Context GetNewContext()
         {
-            return new GBApiContext(Connection, null);
+            return new GBApiContext(ConnectionStringBuilder.ConnectionString, null);
         }
 
         /// <summary>

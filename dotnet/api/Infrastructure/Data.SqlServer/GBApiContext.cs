@@ -53,13 +53,6 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
             // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
         }
 
-        public GBApiContext(IConnection connection, ILoggerFactory loggerFactory)
-            : base(connection.ToString(), loggerFactory)
-        {
-            // Uncomment for debugging purposes only
-            // Console.WriteLine($"GBApiContext (IConnection connection) => {connection.ToString()}");
-        }
-
         #endregion Constructor
 
         #region IGBApiContextImplementation

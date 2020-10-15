@@ -15,6 +15,7 @@
   <ItemGroup>
     <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.10" />
     <PackageReference Include="AndcultureCode.CSharp.Data" Version="0.0.1" />
+    <PackageReference Include="AndcultureCode.CSharp.Data.SqlServer" Version="0.0.2" />
     <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.5" />
     <PackageReference Include="EFCore.BulkExtensions" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="3.1.6" />

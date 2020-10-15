@@ -1,13 +1,19 @@
 ﻿using System;
+using AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.SqlServer.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreate : GBFlattenedMigration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            if (!ValidateFlattenedShouldRun(InitialMigrationId))
+            {
+                return;
+            }
+
             migrationBuilder.CreateTable(
                 name: "Acls",
                 columns: table => new

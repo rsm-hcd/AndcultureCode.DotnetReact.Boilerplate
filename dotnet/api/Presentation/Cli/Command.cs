@@ -75,8 +75,8 @@ namespace AndcultureCode.GB.Presentation.Cli
             {
                 if (_cachedTestDatabaseContext == null)
                 {
-                    var connection = _configurationRoot.GetTestDatabaseConnection();
-                    _cachedTestDatabaseContext = new GBApiContext(connection, null);
+                    var connectionStringBuilder = _configurationRoot.GetTestDatabaseConnectionStringBuilder();
+                    _cachedTestDatabaseContext = new GBApiContext(connectionStringBuilder.ConnectionString, null);
                 }
 
                 return _cachedTestDatabaseContext;
@@ -149,8 +149,8 @@ namespace AndcultureCode.GB.Presentation.Cli
         /// </summary>
         protected void MakeNewContextsUseTestDatabase()
         {
-            var connection = _configurationRoot.GetTestDatabaseConnection();
-            ConfigurationUtils.SetConnectionString(connection.ToString());
+            var connectionStringBuilder = _configurationRoot.GetTestDatabaseConnectionStringBuilder();
+            ConfigurationUtils.SetConnectionString(connectionStringBuilder.ConnectionString);
         }
 
         /// <summary>

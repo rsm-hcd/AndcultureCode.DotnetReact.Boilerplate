@@ -6,7 +6,7 @@
     <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
     <AssemblyVersion>0.0.2</AssemblyVersion>
     <PackageVersion>0.0.2</PackageVersion>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

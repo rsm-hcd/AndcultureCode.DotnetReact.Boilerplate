@@ -11,6 +11,8 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
 {
     public partial class GBFlattenedMigration : FlattenedMigration
     {
+        #region Public Properties
+
         public const string InitialMigrationId = "20200603183650_InitialCreate";
 
         // This should contain all migration ID consts listed above, in the order that they should
@@ -19,11 +21,13 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
             InitialMigrationId
         };
 
-        #region Private
+        #endregion Public Properties
+
+        #region Private Properties
 
         GBApiContext _context;
 
-        #endregion Private
+        #endregion Private Properties
 
         #region Overrides
 

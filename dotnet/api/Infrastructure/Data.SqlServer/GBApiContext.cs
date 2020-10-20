@@ -46,6 +46,13 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
             // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
         }
 
+        public GBApiContext(string connectionString)
+        : base(connectionString, null)
+        {
+            // Uncomment for debugging purposes only
+            // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
+        }
+
         public GBApiContext(string connectionString, ILoggerFactory loggerFactory)
         : base(connectionString, loggerFactory)
         {

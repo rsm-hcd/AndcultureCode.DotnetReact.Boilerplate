@@ -76,7 +76,7 @@ namespace AndcultureCode.GB.Presentation.Cli
                 if (_cachedTestDatabaseContext == null)
                 {
                     var connectionStringBuilder = _configurationRoot.GetTestDatabaseConnectionStringBuilder();
-                    _cachedTestDatabaseContext = new GBApiContext(connectionStringBuilder.ConnectionString, null);
+                    _cachedTestDatabaseContext = new GBApiContext(connectionStringBuilder.ConnectionString);
                 }
 
                 return _cachedTestDatabaseContext;

@@ -19,7 +19,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
 
         private IConfigurationRoot _configuration { get; set; }
         public SqlConnectionStringBuilder ConnectionStringBuilder { get; set; }
-        public IContext Context => new GBApiContext(ConnectionStringBuilder.ConnectionString, null);
+        public IContext Context => new GBApiContext(ConnectionStringBuilder.ConnectionString);
         public bool DeleteDatabaseBetweenTests = false;
 
         #endregion Properties
@@ -114,10 +114,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
         /// Retrieves a new Context object, connecting to the test database.
         /// </summary>
         /// <returns></returns>
-        public Context GetNewContext()
-        {
-            return new GBApiContext(ConnectionStringBuilder.ConnectionString, null);
-        }
+        public Context GetNewContext() => new GBApiContext(ConnectionStringBuilder.ConnectionString, null);
 
         /// <summary>
         /// Retrieves all application specific database table names for the provided sql server connection

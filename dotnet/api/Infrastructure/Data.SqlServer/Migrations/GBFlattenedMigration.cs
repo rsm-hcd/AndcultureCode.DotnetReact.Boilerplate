@@ -31,26 +31,9 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations
         {
         }
 
-        public override List<string> FlattenedMigrations
-        {
-            get
-            {
-                return _flattenedMigrations;
-            }
-        }
+        public override List<string> FlattenedMigrations => _flattenedMigrations;
 
-        public override DbContext Context
-        {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new GBApiContext();
-                }
-
-                return _context;
-            }
-        }
+        public override DbContext Context => _context ??= new GBApiContext();
 
         #endregion Overrides
     }

@@ -37,6 +37,7 @@ using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
 using AndcultureCode.CSharp.Web.Extensions;
+using System.Data.SqlClient;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
@@ -186,7 +187,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
             _fixture = fixture;
             _fixture.CleanDatabaseTables();
 
-            SetDefaultEnvironmentVariables(_fixture.Connection);
+            SetDefaultEnvironmentVariables(_fixture.ConnectionStringBuilder);
 
             // Register SUT/Controller being they aren't in DI by default
             ServiceCollection.AddScoped(typeof(TController), typeof(TController));
@@ -625,10 +626,10 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
         /// <summary>
         /// Set shared testing related environment variables used across ALL controller integration tests
         /// </summary>
-        private void SetDefaultEnvironmentVariables(GBApiConnection connection)
+        private void SetDefaultEnvironmentVariables(SqlConnectionStringBuilder connection)
         {
             Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", EnvironmentConstants.TESTING);
-            Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.API_DATABASE_CONFIGURATION_KEY}", connection.ToString());
+            Environment.SetEnvironmentVariable($"ConnectionStrings__{ApplicationConstants.API_DATABASE_CONFIGURATION_KEY}", connection.ConnectionString);
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isDashboardEnabled", "false");
             // Environment.SetEnvironmentVariable("Workers.Hangfire__isServerEnabled",    "false");
         }

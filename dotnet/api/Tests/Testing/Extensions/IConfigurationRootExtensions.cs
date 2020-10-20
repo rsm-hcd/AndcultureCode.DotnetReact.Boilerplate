@@ -1,53 +1,43 @@
-using System;
-using Microsoft.Extensions.Configuration;
-using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.CSharp.Core.Constants;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Data.SqlClient;
 
 namespace Testing.Extensions
 {
     public static class IConfigurationRootExtensions
     {
         /// <summary>
-        /// Requires the appsettings.json/environment variables
-        /// configure the ConnectionStrings__GBApi in an object format.
-        /// Not a delimited string.
+        /// Retrieves the connection string from appsettings
+        /// and returns a new SqlConnectionStringBuilder from
+        /// that connection string.
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static GBApiConnection GetDatabaseConnection(this IConfigurationRoot configuration)
+        public static SqlConnectionStringBuilder GetDatabaseConnectionStringBuilder(this IConfigurationRoot configuration)
         {
-            var section = configuration
+            var connectionString = configuration
                 .GetSection("ConnectionStrings")
-                .GetSection(ApplicationConstants.API_DATABASE_CONFIGURATION_KEY)
-                .Get<GBApiConnection>();
+                .GetValue<string>(ApplicationConstants.API_DATABASE_CONFIGURATION_KEY);
 
-            if (section == null)
-            {
-                throw new Exception("[IConfigurationRootExtensions.GetGBApiConnection] Ensure appsettings loaded provide GBApi connection string in the object format (like the web.test project)");
-            }
-
-            return section;
+            return new SqlConnectionStringBuilder(connectionString);
         }
 
         /// <summary>
-        /// Retrieves an GBApiConnection configured to work with the test database.
-        ///
-        /// Requires the appsettings.json/environment variables
-        /// configure the ConnectionStrings__GBApi in an object format.
-        /// Not a delimited string.
+        /// Retrieves an SqlConnectionStringBuilder configured to work with the test database.
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static GBApiConnection GetTestDatabaseConnection(this IConfigurationRoot configuration)
+        public static SqlConnectionStringBuilder GetTestDatabaseConnectionStringBuilder(this IConfigurationRoot configuration)
         {
-            var connection = configuration.GetDatabaseConnection();
-            connection.Database = configuration.GetTestDatabaseName();
-            return connection;
+            var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
+            connectionStringBuilder.InitialCatalog = configuration.GetTestDatabaseName();
+            return connectionStringBuilder;
         }
 
         public static string GetTestDatabaseName(this IConfigurationRoot configuration)
         {
-            var connection = configuration.GetDatabaseConnection();
+            var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
             var databaseName = Environment.GetEnvironmentVariable("TEST_DATABASE_NAME");
 
             // When a test database name isn't specified, we default it for the runner
@@ -59,7 +49,7 @@ namespace Testing.Extensions
             // Running system context explicitly wants the database name to be generated
             if (configuration.IsTestDatabaseNameDynamic())
             {
-                return $"{connection.Database}-{DateTimeOffset.Now:yyyyMMdd-HHmmss}";
+                return $"{connectionStringBuilder.InitialCatalog}-{DateTimeOffset.Now:yyyyMMdd-HHmmss}";
             }
 
             return databaseName;

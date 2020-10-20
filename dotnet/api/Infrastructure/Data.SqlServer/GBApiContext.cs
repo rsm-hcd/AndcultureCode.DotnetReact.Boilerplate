@@ -46,18 +46,18 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
             // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
         }
 
-        public GBApiContext(string connectionString, ILoggerFactory loggerFactory)
-        : base(connectionString, loggerFactory)
+        public GBApiContext(string connectionString)
+        : base(connectionString, null)
         {
             // Uncomment for debugging purposes only
             // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
         }
 
-        public GBApiContext(IConnection connection, ILoggerFactory loggerFactory)
-            : base(connection.ToString(), loggerFactory)
+        public GBApiContext(string connectionString, ILoggerFactory loggerFactory)
+        : base(connectionString, loggerFactory)
         {
             // Uncomment for debugging purposes only
-            // Console.WriteLine($"GBApiContext (IConnection connection) => {connection.ToString()}");
+            // Console.WriteLine($"GBApiContext () => {Configuration.GetConnectionString()}");
         }
 
         #endregion Constructor

@@ -28,44 +28,18 @@ namespace Testing.Extensions
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns></returns>
-        public static SqlConnectionStringBuilder GetTestDatabaseConnectionStringBuilder(this IConfigurationRoot configuration)
+        public static SqlConnectionStringBuilder GetTestDatabaseConnectionStringBuilder(this IConfigurationRoot configuration, string collectionName)
         {
             var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
-            connectionStringBuilder.InitialCatalog = configuration.GetTestDatabaseName();
+            connectionStringBuilder.InitialCatalog = configuration.GetTestDatabaseName(collectionName);
             return connectionStringBuilder;
         }
 
-        public static string GetTestDatabaseName(this IConfigurationRoot configuration)
+        public static string GetTestDatabaseName(this IConfigurationRoot configuration, string collectionName)
         {
-            var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
-            var databaseName = Environment.GetEnvironmentVariable("TEST_DATABASE_NAME");
+            var connection = configuration.GetDatabaseConnectionStringBuilder();
 
-            // When a test database name isn't specified, we default it for the runner
-            if (string.IsNullOrWhiteSpace(databaseName))
-            {
-                return "GravityBootsApi-Test";
-            }
-
-            // Running system context explicitly wants the database name to be generated
-            if (configuration.IsTestDatabaseNameDynamic())
-            {
-                return $"{connectionStringBuilder.InitialCatalog}-{DateTimeOffset.Now:yyyyMMdd-HHmmss}";
-            }
-
-            return databaseName;
-        }
-
-        /// <summary>
-        /// Whether the test runner is to generate a dynamic database name for each test suite run
-        /// </summary>
-        /// <param name="configuration">If 'TEST_DATABASE_NAME' is set to 'generate', it will dynamically create a unique database</param>
-        /// <returns>Whether or not the database name is dynamic</returns>
-        public static bool IsTestDatabaseNameDynamic(this IConfigurationRoot configuration)
-        {
-            return false;
-            // Until we decide how we want to configure this
-            // var databaseName = Environment.GetEnvironmentVariable("TEST_DATABASE_NAME");
-            // return !string.IsNullOrWhiteSpace(databaseName) && databaseName.ToLower() == "generate";
+            return $"{connection.DataSource}-{collectionName}";
         }
     }
 }

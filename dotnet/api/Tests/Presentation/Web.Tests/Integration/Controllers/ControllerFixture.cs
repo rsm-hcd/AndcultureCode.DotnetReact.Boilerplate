@@ -4,7 +4,12 @@ using Xunit;
 
 namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
-    public class ControllerFixture : DatabaseFixture, IDisposable { }
+    public class ControllerFixture : DatabaseFixture, IDisposable
+    {
+        public ControllerFixture(string collectionName) : base(nameof(ControllerFixture))
+        {
+        }
+    }
 
     [CollectionDefinition("ControllerIntegration")]
     public class ControllerTestCollection : ICollectionFixture<ControllerFixture> { }

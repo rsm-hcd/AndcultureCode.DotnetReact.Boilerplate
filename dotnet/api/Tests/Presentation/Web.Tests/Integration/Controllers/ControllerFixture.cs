@@ -6,7 +6,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
 {
     public class ControllerFixture : DatabaseFixture, IDisposable
     {
-        public ControllerFixture(string collectionName) : base(nameof(ControllerFixture))
+        public ControllerFixture() : base(nameof(ControllerFixture))
         {
         }
     }

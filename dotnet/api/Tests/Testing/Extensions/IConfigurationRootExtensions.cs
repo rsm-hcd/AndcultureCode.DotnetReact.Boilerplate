@@ -32,13 +32,15 @@ namespace Testing.Extensions
         {
             var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
             connectionStringBuilder.InitialCatalog = configuration.GetTestDatabaseName(collectionName);
+            connectionStringBuilder.MultipleActiveResultSets = true;
+            connectionStringBuilder.IntegratedSecurity = true;
+
             return connectionStringBuilder;
         }
 
         public static string GetTestDatabaseName(this IConfigurationRoot configuration, string collectionName)
         {
             var connection = configuration.GetDatabaseConnectionStringBuilder();
-
             return $"{connection.DataSource}-{collectionName}";
         }
     }

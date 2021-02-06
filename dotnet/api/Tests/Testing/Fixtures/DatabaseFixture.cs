@@ -6,8 +6,8 @@ using AndcultureCode.CSharp.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Testing.Extensions;
-using Config = AndcultureCode.CSharp.Core.Utilities.Configuration;
 using Respawn;
+using AndcultureCode.CSharp.Core.Utilities.Configuration;
 
 namespace AndcultureCode.GB.Tests.Testing.Fixtures
 {
@@ -29,6 +29,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test
             // project's .csproj file correctly.
+            _configuration = ConfigurationUtils.GetConfiguration();
             Connection = _configuration.GetTestDatabaseConnectionStringBuilder(collectionName);
             Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.DataSource}");
             Context.CreateStructure();

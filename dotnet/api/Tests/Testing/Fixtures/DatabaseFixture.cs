@@ -31,7 +31,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // project's .csproj file correctly.
             _configuration = ConfigurationUtils.GetConfiguration();
             Connection = _configuration.GetTestDatabaseConnectionStringBuilder(collectionName);
-            Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.DataSource}");
+            Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.InitialCatalog}");
             Context.CreateStructure();
 
         }

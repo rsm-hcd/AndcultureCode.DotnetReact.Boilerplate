@@ -41,7 +41,7 @@ namespace Testing.Extensions
         public static string GetTestDatabaseName(this IConfigurationRoot configuration, string collectionName)
         {
             var connection = configuration.GetDatabaseConnectionStringBuilder();
-            return $"{connection.DataSource}-{collectionName}";
+            return $"{connection.InitialCatalog}-{collectionName}";
         }
     }
 }

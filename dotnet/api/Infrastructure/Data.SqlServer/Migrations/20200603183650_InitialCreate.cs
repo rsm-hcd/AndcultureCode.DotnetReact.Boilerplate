@@ -9,10 +9,10 @@ namespace Data.SqlServer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            if (!ValidateFlattenedShouldRun(InitialMigrationId))
-            {
-                return;
-            }
+            // if (!ValidateFlattenedShouldRun(InitialMigrationId))
+            // {
+            //     return;
+            // }
 
             migrationBuilder.CreateTable(
                 name: "Acls",

@@ -16,7 +16,7 @@ notifications:
 before_script:
     - nvm install 14.15.4
     - nvm use 14.15.4
-    - npm ci && cd frontend && npm ci && cd ../
+    - npm ci --no-optional && cd frontend && npm ci --no-optional && cd ../
     - npm install -g codecov
 script:
     - dotnet restore dotnet/api/Api.sln

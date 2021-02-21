@@ -46,13 +46,6 @@
     },
     "devDependencies": {
         "@babel/core": "7.6.0",
-        "@storybook/addon-actions": "5.3.19",
-        "@storybook/addon-info": "5.3.19",
-        "@storybook/addon-knobs": "5.3.19",
-        "@storybook/addon-links": "5.3.19",
-        "@storybook/addon-options": "5.3.19",
-        "@storybook/addons": "5.3.19",
-        "@storybook/react": "5.3.19",
         "@testing-library/jest-dom": "4.2.3",
         "@testing-library/react": "9.3.2",
         "@types/faker": "4.1.7",
@@ -79,14 +72,21 @@
         "moment": "2.24.0",
         "prettier": "1.19.1",
         "query-string": "6.12.1",
-        "react-docgen-typescript-loader": "3.2.1",
         "rosie": "2.0.1",
-        "storybook-addon-smart-knobs": "5.0.0",
-        "storybook-react-router": "1.0.8",
         "uuid": "3.3.3"
     },
     "optionalDependencies": {
-        "cypress": "6.5.0"
+        "@storybook/addon-actions": "5.3.19",
+        "@storybook/addon-info": "5.3.19",
+        "@storybook/addon-knobs": "5.3.19",
+        "@storybook/addon-links": "5.3.19",
+        "@storybook/addon-options": "5.3.19",
+        "@storybook/addons": "5.3.19",
+        "@storybook/react": "5.3.19",
+        "cypress": "6.5.0",
+        "react-docgen-typescript-loader": "3.2.1",
+        "storybook-addon-smart-knobs": "5.0.0",
+        "storybook-react-router": "1.0.8"
     },
     "eslintConfig": {
         "extends": "react-app"

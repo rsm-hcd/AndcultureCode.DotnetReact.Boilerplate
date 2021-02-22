@@ -8,6 +8,7 @@ using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using Testing.Extensions;
 using Respawn;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
+using AndcultureCode.CSharp.Core.Constants;
 
 namespace AndcultureCode.GB.Tests.Testing.Fixtures
 {
@@ -29,7 +30,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test
             // project's .csproj file correctly.
-            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing"); // For use in EF Core migration
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", EnvironmentConstants.TESTING); // For use in EF Core migration
             _configuration = ConfigurationUtils.GetConfiguration();
             Connection = _configuration.GetTestDatabaseConnectionStringBuilder(collectionName);
             Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.InitialCatalog}");

@@ -29,6 +29,7 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             // Note: If 'Connection' is resulting in 'null', you need to make sure the correct appSettings.json
             // is getting copied into your test project output. Verify you have the file being copied in your test
             // project's .csproj file correctly.
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing"); // For use in EF Core migration
             _configuration = ConfigurationUtils.GetConfiguration();
             Connection = _configuration.GetTestDatabaseConnectionStringBuilder(collectionName);
             Console.WriteLine($"[DatabaseFixture] Test database name: {Connection.InitialCatalog}");

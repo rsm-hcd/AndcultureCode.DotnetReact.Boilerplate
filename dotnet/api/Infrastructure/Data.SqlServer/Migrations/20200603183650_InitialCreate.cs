@@ -9,10 +9,11 @@ namespace Data.SqlServer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            // if (!ValidateFlattenedShouldRun(InitialMigrationId))
-            // {
-            //     return;
-            // }
+            var environmentIsTest = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != "Testing";
+            if (environmentIsTest && !ValidateFlattenedShouldRun(InitialMigrationId))
+            {
+                return;
+            }
 
             migrationBuilder.CreateTable(
                 name: "Acls",

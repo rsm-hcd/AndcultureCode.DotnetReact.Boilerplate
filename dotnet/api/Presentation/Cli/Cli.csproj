@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+    <TieredCompilation>true</TieredCompilation>
+    <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
+    <AssemblyVersion>0.0.2</AssemblyVersion>
+    <PackageVersion>0.0.2</PackageVersion>
+    <Version>1.5.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Web\Web.csproj" />
+    <ProjectReference Include="..\..\Tests\Testing\Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.cli.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.cli.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

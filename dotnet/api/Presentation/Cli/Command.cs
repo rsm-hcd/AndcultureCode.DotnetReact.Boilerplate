@@ -32,7 +32,6 @@ namespace AndcultureCode.GB.Presentation.Cli
 
         private GBApiContext _cachedContext;
         private IServiceProvider _cachedServiceProvider;
-        private GBApiContext _cachedTestDatabaseContext;
         private CommandOption _verbose;
 
         #endregion Private Properties
@@ -69,19 +68,6 @@ namespace AndcultureCode.GB.Presentation.Cli
             get => _cachedServiceProvider = _cachedServiceProvider ?? _serviceCollection.BuildServiceProvider();
         }
 
-        protected GBApiContext _testDatabaseContext
-        {
-            get
-            {
-                if (_cachedTestDatabaseContext == null)
-                {
-                    var connectionStringBuilder = _configurationRoot.GetTestDatabaseConnectionStringBuilder();
-                    _cachedTestDatabaseContext = new GBApiContext(connectionStringBuilder.ConnectionString);
-                }
-
-                return _cachedTestDatabaseContext;
-            }
-        }
 
         #endregion Protected Properties
 
@@ -138,20 +124,6 @@ namespace AndcultureCode.GB.Presentation.Cli
         /// </summary>
         protected T GetDep<T>() where T : class => _serviceProvider.GetService(typeof(T)) as T;
 
-        /// <summary>
-        /// Configures newly configured GBApiContext instances to use the test database
-        /// connection string instead of what is directly configured in appsettings.
-        ///
-        /// While there are a few reasons we do this, one is that migrations instantiate
-        /// the GBApiContext directly. Without configuring this global static value, currently
-        /// those migrations would try to connect to what is configured in appsettings instead
-        /// of our dynamically determined test database.
-        /// </summary>
-        protected void MakeNewContextsUseTestDatabase()
-        {
-            var connectionStringBuilder = _configurationRoot.GetTestDatabaseConnectionStringBuilder();
-            ConfigurationUtils.SetConnectionString(connectionStringBuilder.ConnectionString);
-        }
 
         /// <summary>
         /// Cli-wide method for printing output to the console with prefixing

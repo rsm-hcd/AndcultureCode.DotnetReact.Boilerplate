@@ -23,10 +23,9 @@ Code name: Gravity Boots (GB)
 
 1. Install [Microsoft SQL Server 2017](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-2. Create the following databases
+2. Create the following database
 
     - Development: `GravityBootsApi` (See [appsettings.json](./dotnet/api/Presentation/Web/appsettings.json) for details.)
-    - Test: `GravityBootsApi-Test` (See [appsettings.cli.json](./dotnet/api/Presentation/Cli/appsettings.cli.json) for details.)
 
 3. Configure user.
     - Get credentials from the `appsettings.json` file listed above.
@@ -78,7 +77,7 @@ Below are a few basics to get you started, but there are many more commands and 
 Restore the dotnet packages (first time only)
 
     and-cli dotnet --restore
-    
+
 Restore the NPM node modules (first time only)
 
     and-cli webpack --restore
@@ -90,7 +89,7 @@ Start the dotnet server
 Start the webpack server
 
     and-cli webpack
-    
+
 Open your browser and navigate to:
 
     https://localhost:5001
@@ -125,7 +124,6 @@ _External Resources_ cover requirements, high level architecture, design, and pr
 -   Here is our [documentation style guide and template](./documentation/documentation-style-guide-and-template.md) to get started.
 -   Documentation should be written with Markdown and should have the `.md` extension. Bitbucket has a [Markdown Syntax Guide](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html) for reference.
 -   For information on writing docs, go to [Write the Docs](https://www.writethedocs.org/).
-
 
 # Community
 

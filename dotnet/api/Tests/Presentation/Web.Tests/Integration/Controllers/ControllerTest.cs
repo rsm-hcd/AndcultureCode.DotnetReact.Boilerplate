@@ -187,7 +187,7 @@ namespace AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers
             _fixture = fixture;
             _fixture.CleanDatabaseTables();
 
-            SetDefaultEnvironmentVariables(_fixture.ConnectionStringBuilder);
+            SetDefaultEnvironmentVariables(_fixture.Connection);
 
             // Register SUT/Controller being they aren't in DI by default
             ServiceCollection.AddScoped(typeof(TController), typeof(TController));

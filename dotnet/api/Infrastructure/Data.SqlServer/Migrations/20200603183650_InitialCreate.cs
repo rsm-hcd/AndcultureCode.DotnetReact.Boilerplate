@@ -1,4 +1,5 @@
 ﻿using System;
+using AndcultureCode.CSharp.Core.Constants;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -9,7 +10,8 @@ namespace Data.SqlServer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            if (!ValidateFlattenedShouldRun(InitialMigrationId))
+            var environmentIsTest = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") != EnvironmentConstants.TESTING;
+            if (environmentIsTest && !ValidateFlattenedShouldRun(InitialMigrationId))
             {
                 return;
             }

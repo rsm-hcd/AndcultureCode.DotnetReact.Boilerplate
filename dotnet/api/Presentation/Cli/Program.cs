@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using AndcultureCode.GB.Business.Conductors.Extensions.Startup;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Extensions;
-using AndcultureCode.GB.Presentation.Cli.Test;
 using AndcultureCode.GB.Presentation.Web.Extensions.Startup;
 using AndcultureCode.GB.Presentation.Web.Models;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
@@ -119,7 +118,6 @@ namespace AndcultureCode.GB.Presentation.Cli
 
             _app.HelpOption(inherited: true);
 
-            RegisterSubCommands();
 
             _app.OnExecute(() => DefaultResponse(_app));
 
@@ -138,11 +136,6 @@ namespace AndcultureCode.GB.Presentation.Cli
             return SUCCESSFUL;
         }
 
-        private static void RegisterSubCommands()
-        {
-            _app.Command("test", cmd => new TestCommand(cmd, _configuration, _serviceCollection));
-
-            #endregion Private Methods
-        }
+        #endregion Private Methods
     }
 }

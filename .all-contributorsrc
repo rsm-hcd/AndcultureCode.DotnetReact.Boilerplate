@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "wintondeshong",
+      "name": "Winton DeShong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48424?v=4",
+      "profile": "https://winton.me",
+      "contributions": [
+        "code",
+        "test",
+        "maintenance",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "AndcultureCode.DotnetReact.Boilerplate",
+  "projectOwner": "AndcultureCode",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

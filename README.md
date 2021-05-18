@@ -1,5 +1,5 @@
-# AndcultureCode.DotnetReact.Boilerplate [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+# AndcultureCode.DotnetReact.Boilerplate 
+[![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 

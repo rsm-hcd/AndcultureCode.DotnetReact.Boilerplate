@@ -22,18 +22,5 @@ namespace Testing.Extensions
 
             return new SqlConnectionStringBuilder(connectionString);
         }
-
-        /// <summary>
-        /// Retrieves an SqlConnectionStringBuilder configured to work with the test database.
-        /// </summary>
-        /// <param name="configuration"></param>
-        /// <returns></returns>
-        public static string GetTestDatabaseName(this IConfigurationRoot configuration, string collectionName)
-        {
-            var connection = configuration.GetDatabaseConnectionStringBuilder();
-            return $"GBTest-{collectionName}";
-        }
-
-
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using AndcultureCode.GB.Tests.Testing.Constants;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit;
 
@@ -10,7 +11,7 @@ namespace Data.SqlServer.Tests.Integration
     public class RepositoryTestFixture : DatabaseFixture, IDisposable
     {
 
-        public RepositoryTestFixture() : base(nameof(RepositoryTestFixture))
+        public RepositoryTestFixture() : base(nameof(RepositoryTestFixture), FixturePorts.REPOSITORY_FIXTURE_PORT)
         {
         }
     }

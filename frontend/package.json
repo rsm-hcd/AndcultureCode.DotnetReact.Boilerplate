@@ -74,6 +74,7 @@
         "babel-loader": "8.1.0",
         "babel-plugin-react-docgen": "3.1.0",
         "cross-env": "6.0.3",
+        "cypress": "3.8.3",
         "faker": "4.1.0",
         "immutable": "4.0.0-rc.12",
         "jest-extended": "0.11.2",
@@ -86,9 +87,6 @@
         "storybook-addon-smart-knobs": "5.0.0",
         "storybook-react-router": "1.0.8",
         "uuid": "3.3.3"
-    },
-    "optionalDependencies": {
-        "cypress": "8.3.0"
     },
     "eslintConfig": {
         "extends": "react-app"

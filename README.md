@@ -1,4 +1,7 @@
-# AndcultureCode.DotnetReact.Boilerplate [![Build Status](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate.svg?branch=master)](https://travis-ci.org/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate) [![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)
+# AndcultureCode.DotnetReact.Boilerplate
+![build status](https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/actions/workflows/build.yaml/badge.svg)[![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/main/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Code name: Gravity Boots (GB)
 
@@ -125,6 +128,25 @@ _External Resources_ cover requirements, high level architecture, design, and pr
 -   Documentation should be written with Markdown and should have the `.md` extension. Bitbucket has a [Markdown Syntax Guide](https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html) for reference.
 -   For information on writing docs, go to [Write the Docs](https://www.writethedocs.org/).
 
-# Community
+## Contributors ✨
 
-[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/0)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/0)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/1)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/1)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/2)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/2)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/3)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/3)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/4)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/4)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/5)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/5)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/6)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/6)[![](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/images/7)](https://sourcerer.io/fame/andCulture/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/links/7)
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://winton.me"><img src="https://avatars.githubusercontent.com/u/48424?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Winton DeShong</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=wintondeshong" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=wintondeshong" title="Tests">⚠️</a> <a href="#maintenance-wintondeshong" title="Maintenance">🚧</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/pulls?q=is%3Apr+reviewed-by%3Awintondeshong" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/brandongregoryscott"><img src="https://avatars.githubusercontent.com/u/11774799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brandon Scott</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=brandongregoryscott" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=brandongregoryscott" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/pulls?q=is%3Apr+reviewed-by%3Abrandongregoryscott" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://resume.dylanjustice.com"><img src="https://avatars.githubusercontent.com/u/22502365?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dylan Justice</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=dylanjustice" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=dylanjustice" title="Tests">⚠️</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/pulls?q=is%3Apr+reviewed-by%3Adylanjustice" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/Stefanie899"><img src="https://avatars.githubusercontent.com/u/37462028?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stefanie Leitch</b></sub></a><br /><a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=Stefanie899" title="Code">💻</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/pulls?q=is%3Apr+reviewed-by%3AStefanie899" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/commits?author=Stefanie899" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

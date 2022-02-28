@@ -1,0 +1,91 @@
+name: build
+
+on:
+    push:
+        branches: ["*"]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+env:
+    SLACK_BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
+
+jobs:
+    notify_start:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: voxmedia/github-action-slack-notify-build@v1
+              if: env.SLACK_BOT_TOKEN != ''
+              with:
+                  channel: company-andculture-code-ci
+                  color: "#3278BD"
+                  status: STARTED
+
+    build:
+        env:
+            DOTNET_NOLOGO: true
+            DOTNET_CLI_TELEMETRY_OPTOUT: true
+        runs-on: windows-latest
+        needs: [notify_start]
+        if: always()
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup .NET Core SDK
+              uses: actions/setup-dotnet@v1.7.2
+              with:
+                  dotnet-version: 3.1
+
+            - name: Setup node
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+
+            - name: Output dotnet info
+              run: dotnet --info
+
+            - name: Dotnet tests
+              run: |
+                  dotnet restore dotnet/api/Api.sln
+                  dotnet test dotnet/api/Api.sln -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0 --filter "Category!=SkipCI"
+
+            - name: npm install
+              # Using Cypress action for caching optimization (saves ~3mins of downloading Cypress every build)
+              uses: cypress-io/github-action@v2
+              with:
+                  # Skipping actual tests for now - requires dotnet & webpack running
+                  runTests: false
+                  working-directory: frontend
+
+            - name: npm run test
+              run: |
+                  cd frontend
+                  npm run test -- --coverage
+
+            - name: Upload to codecov
+              uses: codecov/codecov-action@v1
+
+    notify_success:
+        runs-on: ubuntu-latest
+        needs: [build]
+        if: success()
+        steps:
+            - uses: voxmedia/github-action-slack-notify-build@v1
+              if: env.SLACK_BOT_TOKEN != ''
+              with:
+                  channel: company-andculture-code-ci
+                  color: good
+                  status: SUCCESS
+
+    notify_failure:
+        runs-on: ubuntu-latest
+        needs: [build]
+        if: failure()
+        steps:
+            - uses: voxmedia/github-action-slack-notify-build@v1
+              if: env.SLACK_BOT_TOKEN != ''
+              with:
+                  channel: company-andculture-code-ci
+                  color: danger
+                  status: FAILED

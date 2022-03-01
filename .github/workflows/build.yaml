@@ -11,15 +11,15 @@ env:
     SLACK_BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
 
 jobs:
-    notify_start:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: voxmedia/github-action-slack-notify-build@v1
-              if: env.SLACK_BOT_TOKEN != ''
-              with:
-                  channel: company-andculture-code-ci
-                  color: "#3278BD"
-                  status: STARTED
+    # notify_start:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - uses: voxmedia/github-action-slack-notify-build@v1
+    #           if: env.SLACK_BOT_TOKEN != ''
+    #           with:
+    #               channel: company-andculture-code-ci
+    #               color: "#3278BD"
+    #               status: STARTED
 
     build:
         env:
@@ -38,7 +38,7 @@ jobs:
             - name: Setup .NET Core SDK
               uses: actions/setup-dotnet@v1.7.2
               with:
-                  dotnet-version: 5.0
+                  dotnet-version: "5.0.x"
 
             - name: Setup node
               uses: actions/setup-node@v2

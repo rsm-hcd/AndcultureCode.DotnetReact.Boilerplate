@@ -103,7 +103,8 @@ Open your browser and navigate to:
 ## 6. Unit Tests
 
 In order to run tests in a CI environment, the database is spun up in an Docker container using the latest mssql image from docker hub.
-You will need to install Docker, or Docker Desktop on Windows, and ensure the engine is running prior to running all unit tests.
+You will need to [install Docker](https://docs.docker.com/get-docker/), (Docker Desktop on Windows), and ensure the engine is running prior to running all unit tests.
+The database fixture will pull the image, if it doesn't exist, and start the container. Each collection gets a separate container. Once finished, the containers are automatically cleaned up.
 
 ## Documentation
 

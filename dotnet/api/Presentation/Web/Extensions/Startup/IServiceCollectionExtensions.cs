@@ -107,9 +107,6 @@ namespace AndcultureCode.GB.Presentation.Web.Extensions.Startup
                 .ConfigureRewriteOptions()
                 .ConfigureRouteOptions();
 
-            Console.WriteLine($"Default Localization Culture: {LocalizationUtils.DefaultCultureCode}");
-            Console.WriteLine($"Localization Cultures: {LocalizationUtils.CultureCodes(", ")}");
-
             return services;
         }
 

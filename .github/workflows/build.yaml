@@ -55,7 +55,7 @@ jobs:
             - name: Dotnet tests
               run: |
                   dotnet restore dotnet/api/Api.sln
-                  dotnet test dotnet/api/Api.sln -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0
+                  dotnet test dotnet/api/Api.sln -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:Threshold=0 --filter "Category!=SkipCI"
 
             - name: npm install
               # Using Cypress action for caching optimization (saves ~3mins of downloading Cypress every build)

@@ -18,11 +18,6 @@ using AndcultureCode.GB.Testing.Factories.Models.Entities.Users;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.Users
 {
-    /// <summary>
-    /// Unskip on project versions of boilerplate. Skipped until can setup EF in-memory
-    /// so the integration tests can be run on Travis CI.
-    /// </summary>
-    [Trait(Trait.CATEGORY, TraitCategory.SKIP_CI)]
     [Collection("ControllerIntegration")]
     public class UsersControllerTest : ControllerTest<UsersController>, IDisposable
     {

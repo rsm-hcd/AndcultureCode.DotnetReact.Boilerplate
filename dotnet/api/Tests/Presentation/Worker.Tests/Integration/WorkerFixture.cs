@@ -1,4 +1,5 @@
 using System;
+using AndcultureCode.GB.Tests.Testing.Constants;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace AndcultureCode.GB.Presentation.Worker.Tests.Integration
     /// </summary>
     public class WorkerFixture : DatabaseFixture, IDisposable
     {
-        public WorkerFixture() : base(nameof(WorkerFixture))
+        public WorkerFixture() : base(nameof(WorkerFixture), FixturePorts.WORKER_FIXTURE_PORT)
         {
         }
     }

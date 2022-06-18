@@ -1,6 +1,8 @@
 # AndcultureCode.DotnetReact.Boilerplate
+
 ![build status](https://github.com/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/actions/workflows/build.yaml/badge.svg)[![codecov](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate/branch/main/graph/badge.svg)](https://codecov.io/gh/AndcultureCode/AndcultureCode.DotnetReact.Boilerplate)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Code name: Gravity Boots (GB)
@@ -11,12 +13,13 @@ Code name: Gravity Boots (GB)
 
 ### Technologies
 
--   Dotnet Core 3.1
+-   Dotnet 5
 -   Node 8.16
 -   NPM 6
 -   React 16.13
 -   SQL Server 2017+
 -   TypeScript 3.8
+-   Docker (Unit Tests Only)
 
 ### Development Setup
 
@@ -45,7 +48,7 @@ Code name: Gravity Boots (GB)
 
 #### 2. Backend: Dotnet Core CSharp
 
-Install [Dotnet Core 3.1 SDK & Runtime](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+Install [Dotnet Core 5.0.14 SDK & Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
 #### 3. Frontend: React TypeScript
 
@@ -96,6 +99,12 @@ Start the webpack server
 Open your browser and navigate to:
 
     https://localhost:5001
+
+## 6. Unit Tests
+
+In order to run tests in a CI environment, the database is spun up in an Docker container using the latest mssql image from docker hub.
+You will need to [install Docker](https://docs.docker.com/get-docker/), (Docker Desktop on Windows), and ensure the engine is running prior to running all unit tests.
+The database fixture will pull the image, if it doesn't exist, and start the container. Each collection gets a separate container. Once finished, the containers are automatically cleaned up.
 
 ## Documentation
 

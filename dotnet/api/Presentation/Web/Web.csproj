@@ -7,7 +7,7 @@
     <AssemblyVersion>0.0.2</AssemblyVersion>
     <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
     <PackageVersion>0.0.2</PackageVersion>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Version>1.5.0</Version>
     <UserSecretsId>6510a244-52fc-449b-ae8e-de4850755130</UserSecretsId>
   </PropertyGroup>

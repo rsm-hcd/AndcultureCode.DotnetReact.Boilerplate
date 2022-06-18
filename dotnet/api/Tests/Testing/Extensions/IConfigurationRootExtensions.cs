@@ -22,26 +22,5 @@ namespace Testing.Extensions
 
             return new SqlConnectionStringBuilder(connectionString);
         }
-
-        /// <summary>
-        /// Retrieves an SqlConnectionStringBuilder configured to work with the test database.
-        /// </summary>
-        /// <param name="configuration"></param>
-        /// <returns></returns>
-        public static SqlConnectionStringBuilder GetTestDatabaseConnectionStringBuilder(this IConfigurationRoot configuration, string collectionName)
-        {
-            var connectionStringBuilder = configuration.GetDatabaseConnectionStringBuilder();
-            connectionStringBuilder.InitialCatalog = configuration.GetTestDatabaseName(collectionName);
-            connectionStringBuilder.MultipleActiveResultSets = true;
-            connectionStringBuilder.IntegratedSecurity = true;
-
-            return connectionStringBuilder;
-        }
-
-        public static string GetTestDatabaseName(this IConfigurationRoot configuration, string collectionName)
-        {
-            var connection = configuration.GetDatabaseConnectionStringBuilder();
-            return $"{connection.InitialCatalog}-{collectionName}";
-        }
     }
 }

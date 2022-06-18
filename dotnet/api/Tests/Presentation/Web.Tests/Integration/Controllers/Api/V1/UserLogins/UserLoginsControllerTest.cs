@@ -17,11 +17,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.Roles
 {
-    /// <summary>
-    /// Unskip on project versions of boilerplate. Skipped until can setup EF in-memory
-    /// so the integration tests can be run on Travis CI.
-    /// </summary>
-    [Trait(Trait.CATEGORY, TraitCategory.SKIP_CI)]
     [Collection("ControllerIntegration")]
     public class UserLoginsControllerTest : ControllerTest<UserLoginsController>, IDisposable
     {

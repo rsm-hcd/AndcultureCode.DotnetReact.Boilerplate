@@ -1,4 +1,5 @@
 using System;
+using AndcultureCode.GB.Tests.Testing.Constants;
 using AndcultureCode.GB.Tests.Testing.Fixtures;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace AndcultureCode.GB.Tests.Business.Core.Tests.Integration
     /// </summary>
     public class CoreIntegrationTestFixture : DatabaseFixture, IDisposable
     {
-        public CoreIntegrationTestFixture() : base(nameof(CoreIntegrationTestFixture))
+        public CoreIntegrationTestFixture() : base(nameof(CoreIntegrationTestFixture), FixturePorts.CORE_FIXTURE_PORT)
         {
         }
     }

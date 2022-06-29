@@ -13,14 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.10" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="2.0.0" />
     <PackageReference Include="AndcultureCode.CSharp.Data" Version="0.0.1" />
     <PackageReference Include="AndcultureCode.CSharp.Data.SqlServer" Version="0.0.2" />
-    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="0.4.10" />
-    <PackageReference Include="EFCore.BulkExtensions" Version="3.1.5" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+    <PackageReference Include="AndcultureCode.CSharp.Extensions" Version="2.0.0" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="6.5.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

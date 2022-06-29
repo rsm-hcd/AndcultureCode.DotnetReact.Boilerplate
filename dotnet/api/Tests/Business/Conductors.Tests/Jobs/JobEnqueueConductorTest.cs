@@ -12,10 +12,10 @@ using Bogus;
 using Shouldly;
 using AndcultureCode.GB.Business.Core.Interfaces.Workers;
 using AndcultureCode.GB.Business.Core.Interfaces.Conductors.Jobs;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using System;
 using Microsoft.Extensions.Localization;
 using AndcultureCode.CSharp.Core.Interfaces.Providers.Worker;
+using AndcultureCode.CSharp.Core.Models.Errors;
 
 namespace AndcultureCode.GB.Business.Conductors.Tests.Integration.Jobs
 {

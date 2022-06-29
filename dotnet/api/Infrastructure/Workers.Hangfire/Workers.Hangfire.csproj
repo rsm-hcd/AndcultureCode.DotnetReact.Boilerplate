@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HangFire" Version="1.7.6" />
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.6" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.6" />
+    <PackageReference Include="HangFire" Version="1.7.30" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.30" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.30" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.30" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using AndcultureCode.GB.Infrastructure.Data.SqlServer.Maps;
 using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Core.Models.Configuration;
+using AndcultureCode.CSharp.Core.Models.Entities.Acls;
 
 namespace Data.SqlServer.Maps.Acls
 {

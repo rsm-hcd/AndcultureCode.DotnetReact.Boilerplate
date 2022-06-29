@@ -4,13 +4,14 @@ using Moq;
 using AndcultureCode.GB.Business.Core.Models.Configuration;
 using AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.SystemSettings;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.SystemSettings;
-using AndcultureCode.GB.Presentation.Web.Tests.Extensions;
 using AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers;
 using Shouldly;
 using System;
 using Xunit;
 using Xunit.Abstractions;
 using AndcultureCode.GB.Testing.Constants;
+using AndcultureCode.CSharp.Core.Models.Errors;
+using AndcultureCode.CSharp.Testing.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.SystemSettings
 {

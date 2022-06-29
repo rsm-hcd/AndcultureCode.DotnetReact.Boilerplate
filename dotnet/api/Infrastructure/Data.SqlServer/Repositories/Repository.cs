@@ -9,6 +9,7 @@ using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Interfaces.Entity;
 using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.CSharp.Core.Models.Errors;
 using AndcultureCode.GB.Business.Core.Extensions;
 using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -666,6 +667,26 @@ namespace AndcultureCode.GB.Infrastructure.Data.SqlServer.Repositories
             }
 
             return query;
+        }
+
+        public IResult<bool> Delete(IEnumerable<T> items, long? deletedById = null, long batchSize = 100, bool soft = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult<IQueryable<IGrouping<TKey, T>>> FindAll<TKey>(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Expression<Func<T, TKey>> groupBy = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult<IQueryable<TResult>> FindAll<TKey, TResult>(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Expression<Func<T, TKey>> groupBy = null, Expression<Func<TKey, IEnumerable<T>, TResult>> groupBySelector = null, string includeProperties = null, int? skip = null, int? take = null, bool? ignoreQueryFilters = false, bool asNoTracking = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult<T> FindById(long id, Expression<Func<T, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

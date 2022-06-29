@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using AndcultureCode.GB.Business.Core.Models.Entities.Roles;
 using AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Roles;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.Roles;
-using AndcultureCode.GB.Presentation.Web.Tests.Extensions;
 using AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers;
 using Xunit;
 using Xunit.Abstractions;
@@ -12,8 +11,8 @@ using AndcultureCode.CSharp.Core.Models;
 using AndcultureCode.CSharp.Testing.Extensions;
 using Moq;
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using AndcultureCode.GB.Testing.Constants;
+using AndcultureCode.CSharp.Core.Models.Errors;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.Roles
 {

@@ -20,6 +20,7 @@ using AndcultureCode.CSharp.Core.Models.Entities;
 using AndcultureCode.CSharp.Core.Interfaces.Data;
 using AndcultureCode.CSharp.Core.Utilities.Configuration;
 using AndcultureCode.CSharp.Data.Interfaces;
+using AndcultureCode.CSharp.Core.Models.Entities.Acls;
 
 namespace AndcultureCode.GB.Infrastructure.Data.SqlServer
 {

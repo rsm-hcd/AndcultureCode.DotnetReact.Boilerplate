@@ -3,6 +3,7 @@ using AndcultureCode.CSharp.Extensions;
 using FluentValidation;
 using Newtonsoft.Json;
 using AndcultureCode.GB.Presentation.Web.Models.Dtos.Jobs;
+using System;
 
 namespace AndcultureCode.GB.Presentation.Web.Validators.Jobs
 {
@@ -33,6 +34,11 @@ namespace AndcultureCode.GB.Presentation.Web.Validators.Jobs
             {
                 return false;
             }
+        }
+
+        public void ShouldHaveValidationErrorFor<TDto>(TDto dto, string value)
+        {
+            throw new NotImplementedException();
         }
     }
 }

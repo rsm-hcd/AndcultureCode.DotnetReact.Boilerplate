@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.10" />
+    <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="2.0.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

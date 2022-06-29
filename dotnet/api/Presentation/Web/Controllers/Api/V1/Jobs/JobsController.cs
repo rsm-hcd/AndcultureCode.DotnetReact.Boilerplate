@@ -55,7 +55,7 @@ namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Jobs
         [AclAuthorize(AclStrings.JOBS_CREATE)]
         public IActionResult Create([FromBody] JobDto dto)
         {
-            if (_workers.IsEmpty())
+            if (_workers.Count() == 0)
             {
                 return NotFound<JobDto>();
             }

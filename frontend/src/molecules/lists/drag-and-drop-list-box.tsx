@@ -24,6 +24,7 @@ import {
     Droppable,
     DroppableProvided,
     DroppableStateSnapshot,
+    DraggableId,
 } from "react-beautiful-dnd";
 import { CollectionUtils } from "andculturecode-javascript-core";
 import uuid from "uuid";
@@ -98,11 +99,19 @@ const DragAndDropListBox = <T extends any>(
         const cssIsDragging = (snapshot: DraggableStateSnapshot) =>
             snapshot.isDragging ? "-dragging" : "";
 
+        const itemIdToDraggableId = (itemId: T): DraggableId => {
+            const itemIdAsObject: object = itemId as object;
+            if (itemIdAsObject?.toString() != null) {
+                return itemIdAsObject.toString();
+            }
+            return JSON.stringify(itemId);
+        };
+
         return (
             <React.Fragment>
                 {itemProps.items.map((item: ListBoxItem<T>, index: number) => (
                     <Draggable
-                        draggableId={item.id.toString()}
+                        draggableId={JSON.stringify(item.id)}
                         index={index}
                         key={uuid.v4()}>
                         {(

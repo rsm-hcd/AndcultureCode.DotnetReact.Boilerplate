@@ -27,6 +27,8 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Users
 
         #region Email
 
+        // - TODO - Linked to issue re: UserValidator
+
         //[Fact]
         //public void UserValidator_When_Email_IsEmpty_Then_Returns_WithError()
         //{
@@ -36,6 +38,8 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Users
         #endregion Email
 
         #region UserName
+
+        // - TODO - Linked to issue re: UserValidator
 
         //[Fact]
         //public void UserValidator_When_UserName_IsEmpty_Then_Returns_WithError()
@@ -55,6 +59,8 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Users
         #endregion FirstName
 
         #region LastName
+
+        // - TODO - Linked to issue re: UserValidator
 
         //[Fact]
         //public void UserValidator_When_LastName_IsEmpty_Then_Returns_WithError()

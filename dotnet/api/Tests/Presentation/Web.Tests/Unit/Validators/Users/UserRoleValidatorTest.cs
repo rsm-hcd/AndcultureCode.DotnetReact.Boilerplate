@@ -28,6 +28,8 @@ namespace AndcultureCode.GB.Presentation.Web.Tests.Unit.Validators.Users
 
         #region RoleId
 
+        // - TODO - Linked to issue re: UserRoleValidator
+
         //[Fact]
         //public void RoleId_ShouldHaveError_When_0()
         //{

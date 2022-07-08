@@ -110,7 +110,7 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.Jobs
             );
 
             // The worker provider returns a string if the enqueue is successful.
-            if (backgroundJobId.IsNullOrEmpty())
+            if (backgroundJobId == null || backgroundJobId.Any()) //replace IsNullOrEmpty
             {
                 r.AddError(
                     _localizer,
@@ -152,7 +152,7 @@ namespace AndcultureCode.GB.Business.Conductors.Domain.Jobs
                 .ToList();
 
             // There can only be one valid TWorker implementation.
-            if (workerTypes.IsEmpty() || workerTypes.Count > 1)
+            if (!workerTypes.Any() || workerTypes.Count > 1)
             {
                 return false;
             }

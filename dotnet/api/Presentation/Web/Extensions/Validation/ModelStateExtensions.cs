@@ -2,6 +2,7 @@
 using AndcultureCode.CSharp.Core.Extensions;
 using AndcultureCode.CSharp.Core.Interfaces;
 using AndcultureCode.CSharp.Core.Models;
+using AndcultureCode.CSharp.Core.Models.Errors;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace AndcultureCode.GB.Presentation.Web.Extensions.Validation

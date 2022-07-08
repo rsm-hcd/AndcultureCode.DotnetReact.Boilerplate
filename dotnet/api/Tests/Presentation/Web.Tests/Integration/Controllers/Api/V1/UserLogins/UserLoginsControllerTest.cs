@@ -1,6 +1,5 @@
 using Shouldly;
 using System;
-using AndcultureCode.GB.Presentation.Web.Tests.Extensions;
 using AndcultureCode.GB.Tests.Presentation.Web.Tests.Integration.Controllers;
 using Xunit;
 using Xunit.Abstractions;
@@ -14,6 +13,7 @@ using AndcultureCode.CSharp.Testing.Extensions;
 using AndcultureCode.GB.Business.Conductors.Domain.UserLogins;
 using AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.UserLogins;
 using Microsoft.AspNetCore.Mvc;
+using AndcultureCode.CSharp.Core.Models.Errors;
 
 namespace AndcultureCode.GB.Presentation.Web.Tests.Integration.Controllers.Api.V1.Roles
 {

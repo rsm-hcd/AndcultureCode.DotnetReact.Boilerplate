@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>AndcultureCode.GB.Business.Conductors</AssemblyName>
     <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
     <AssemblyVersion>0.0.2</AssemblyVersion>
@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="1.1.0" />
-    <PackageReference Include="AndcultureCode.CSharp.Core" Version="0.5.10" />
+    <PackageReference Include="AndcultureCode.CSharp.Conductors" Version="2.0.0" />
+    <PackageReference Include="AndcultureCode.CSharp.Core" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

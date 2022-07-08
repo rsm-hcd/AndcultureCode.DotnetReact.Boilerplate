@@ -1,6 +1,5 @@
 using AndcultureCode.CSharp.Core.Interfaces.Conductors;
 using AndcultureCode.CSharp.Testing.Tests;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks.Conductors;
 using Moq;
 using Shouldly;
 using AndcultureCode.GB.Business.Core.Models.Jobs;
@@ -12,8 +11,8 @@ using System.Linq.Expressions;
 using System;
 using AndcultureCode.CSharp.Core;
 using Bogus;
-using AndcultureCode.CSharp.Testing.Extensions.Mocks;
 using Hangfire;
+using AndcultureCode.CSharp.Testing.Extensions;
 
 namespace AndcultureCode.GB.Presentation.Worker.Tests.Unit
 {

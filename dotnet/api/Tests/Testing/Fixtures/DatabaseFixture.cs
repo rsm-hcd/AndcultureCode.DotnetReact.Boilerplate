@@ -57,12 +57,12 @@ namespace AndcultureCode.GB.Tests.Testing.Fixtures
             {
                 sqlConnection.Open();
 
+                var table = new Respawn.Graph.Table("__EFMigrationsHistory");
+                var tableList = new Respawn.Graph.Table[] { table };
+
                 var checkpoint = new Checkpoint
                 {
-                    TablesToIgnore = new string[]
-                    {
-                        "__EFMigrationsHistory"
-                    },
+                    TablesToIgnore = tableList
                 };
 
                 checkpoint.Reset(sqlConnection).GetAwaiter().GetResult();

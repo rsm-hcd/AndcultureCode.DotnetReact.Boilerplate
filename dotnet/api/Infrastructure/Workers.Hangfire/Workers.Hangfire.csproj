@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+	  <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>AndcultureCode.GB.Infrastructure.Workers.Hangfire</AssemblyName>
     <AssemblyFileVersion>0.0.2</AssemblyFileVersion>
     <AssemblyVersion>0.0.2</AssemblyVersion>
@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HangFire" Version="1.7.6" />
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.6" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.6" />
+    <PackageReference Include="HangFire" Version="1.7.30" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.30" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.30" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.30" />
   </ItemGroup>
 
   <ItemGroup>

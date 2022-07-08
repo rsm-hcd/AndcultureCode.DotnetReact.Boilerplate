@@ -11,7 +11,7 @@ Code name: Gravity Boots (GB)
 
 ### Technologies
 
--   Dotnet Core 3.1
+-   Dotnet Core 6.0
 -   Node 8.16
 -   NPM 6
 -   React 16.13

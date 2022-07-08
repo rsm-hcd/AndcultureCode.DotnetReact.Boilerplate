@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using AndcultureCode.GB.Presentation.Web.Attributes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
+using AndcultureCode.CSharp.Core.Models.Errors;
 
 namespace AndcultureCode.GB.Presentation.Web.Controllers.Api.V1.Errors
 {

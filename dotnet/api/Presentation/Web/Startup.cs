@@ -102,6 +102,8 @@ namespace AndcultureCode.GB.Presentation.Web
             services.AddForwardedHeaders();
             services.AddSerilogServices(_configuration);
 
+            //adding as per author AspNetCoreRateLimit github - https://github.com/stefanprodan/AspNetCoreRateLimit/issues/236#issuecomment-883311511
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
             // Caching
             services.AddMemoryCache();
             services.AddResponseCaching();
@@ -141,6 +143,7 @@ namespace AndcultureCode.GB.Presentation.Web
             // "You should register the middleware before any other components."
             // https://github.com/stefanprodan/AspNetCoreRateLimit/wiki/IpRateLimitMiddleware#setup
             app.UseIpRateLimiting();
+
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -232,6 +235,7 @@ namespace AndcultureCode.GB.Presentation.Web
             IWorkerProvider workerProvider
         )
         {
+            
             if (env.IsEnvironment("Testing"))
             {
                 return;

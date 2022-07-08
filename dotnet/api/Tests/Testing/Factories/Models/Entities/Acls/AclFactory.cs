@@ -1,5 +1,6 @@
 using AndcultureCode.CSharp.Core.Enumerations;
 using AndcultureCode.CSharp.Core.Models.Entities;
+using AndcultureCode.CSharp.Core.Models.Entities.Acls;
 using AndcultureCode.CSharp.Testing.Factories;
 
 namespace AndcultureCode.GB.Testing.Factories.Models.Entities.Acls

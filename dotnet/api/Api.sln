@@ -1,49 +1,54 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{E3B96EAB-CC2C-4F62-8C9D-18CC69D790B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Business\Core\Core.csproj", "{BF61F319-F1AE-4952-B56E-7CA0B7F0A718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Business\Core\Core.csproj", "{BF61F319-F1AE-4952-B56E-7CA0B7F0A718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conductors", "Business\Conductors\Conductors.csproj", "{C44BB255-AE99-4AD8-85C2-C968231D06FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conductors", "Business\Conductors\Conductors.csproj", "{C44BB255-AE99-4AD8-85C2-C968231D06FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5AAD663D-CFD7-4FDD-A1F6-E0DA34D7971B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.SqlServer", "Infrastructure\Data.SqlServer\Data.SqlServer.csproj", "{6326F2C8-2777-4056-B146-63ED84932ADF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlServer", "Infrastructure\Data.SqlServer\Data.SqlServer.csproj", "{6326F2C8-2777-4056-B146-63ED84932ADF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workers.Hangfire", "Infrastructure\Workers.Hangfire\Workers.Hangfire.csproj", "{0C3E1ADA-DA14-4319-8E4E-FC70F063C339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workers.Hangfire", "Infrastructure\Workers.Hangfire\Workers.Hangfire.csproj", "{0C3E1ADA-DA14-4319-8E4E-FC70F063C339}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{2BCBBA5C-033C-4CF6-90A4-A21CCEA15E0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Presentation\Cli\Cli.csproj", "{706B0EAB-ECDE-45D7-A31D-AB4C85F7A2A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cli", "Presentation\Cli\Cli.csproj", "{706B0EAB-ECDE-45D7-A31D-AB4C85F7A2A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Presentation\Web\Web.csproj", "{BD6876C6-FCA1-4618-B9CD-86095B14DDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Presentation\Web\Web.csproj", "{BD6876C6-FCA1-4618-B9CD-86095B14DDA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Presentation\Worker\Worker.csproj", "{91DC3090-8102-4AB7-9422-50D61C8CAD1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worker", "Presentation\Worker\Worker.csproj", "{91DC3090-8102-4AB7-9422-50D61C8CAD1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84BE5399-EFF2-4248-91CF-89B7CE2CEFCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{A5731201-15D2-4ABC-B8B0-29C9A2730273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conductors.Tests", "Tests\Business\Conductors.Tests\Conductors.Tests.csproj", "{0F9EE6D5-3B90-4D8E-ADCC-C5F9B65F60E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conductors.Tests", "Tests\Business\Conductors.Tests\Conductors.Tests.csproj", "{0F9EE6D5-3B90-4D8E-ADCC-C5F9B65F60E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Tests\Business\Core.Tests\Core.Tests.csproj", "{7D535AE7-99CA-4AF1-8B7B-2637CEB7D60E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "Tests\Business\Core.Tests\Core.Tests.csproj", "{7D535AE7-99CA-4AF1-8B7B-2637CEB7D60E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E86C07E1-D374-47B2-B068-F2F2F604865E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.SqlServer.Tests", "Tests\Infrastructure\Data.SqlServer.Tests\Data.SqlServer.Tests.csproj", "{D613725C-A10B-4B9D-8151-5182C3B15AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.SqlServer.Tests", "Tests\Infrastructure\Data.SqlServer.Tests\Data.SqlServer.Tests.csproj", "{D613725C-A10B-4B9D-8151-5182C3B15AF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{43AD4AF2-41A1-4B15-AB34-2644FA7AFC6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli.Tests", "Tests\Presentation\Cli.Tests\Cli.Tests.csproj", "{1232B483-D49A-4E75-96F0-8563D2E75D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cli.Tests", "Tests\Presentation\Cli.Tests\Cli.Tests.csproj", "{1232B483-D49A-4E75-96F0-8563D2E75D94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Tests\Presentation\Web.Tests\Web.Tests.csproj", "{7DE28002-F4B0-4DD1-9081-6F36BC48593E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Tests", "Tests\Presentation\Web.Tests\Web.Tests.csproj", "{7DE28002-F4B0-4DD1-9081-6F36BC48593E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker.Tests", "Tests\Presentation\Worker.Tests\Worker.Tests.csproj", "{A507FB53-8847-4808-BCB5-48FA61C8EF27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worker.Tests", "Tests\Presentation\Worker.Tests\Worker.Tests.csproj", "{A507FB53-8847-4808-BCB5-48FA61C8EF27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Tests\Testing\Testing.csproj", "{3F3CA96E-0910-4A4F-A4A4-74870355C975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing", "Tests\Testing\Testing.csproj", "{3F3CA96E-0910-4A4F-A4A4-74870355C975}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{665D4DC4-C90B-44DC-9763-7C2358E7AE41}"
+	ProjectSection(SolutionItems) = preProject
+		test.runsettings = test.runsettings
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,9 +58,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF61F319-F1AE-4952-B56E-7CA0B7F0A718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -227,6 +229,9 @@ Global
 		{3F3CA96E-0910-4A4F-A4A4-74870355C975}.Release|x86.ActiveCfg = Release|Any CPU
 		{3F3CA96E-0910-4A4F-A4A4-74870355C975}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BF61F319-F1AE-4952-B56E-7CA0B7F0A718} = {E3B96EAB-CC2C-4F62-8C9D-18CC69D790B1}
 		{C44BB255-AE99-4AD8-85C2-C968231D06FF} = {E3B96EAB-CC2C-4F62-8C9D-18CC69D790B1}
@@ -245,5 +250,8 @@ Global
 		{7DE28002-F4B0-4DD1-9081-6F36BC48593E} = {43AD4AF2-41A1-4B15-AB34-2644FA7AFC6E}
 		{A507FB53-8847-4808-BCB5-48FA61C8EF27} = {43AD4AF2-41A1-4B15-AB34-2644FA7AFC6E}
 		{3F3CA96E-0910-4A4F-A4A4-74870355C975} = {84BE5399-EFF2-4248-91CF-89B7CE2CEFCC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE813044-5393-47EF-A362-7A29A2790066}
 	EndGlobalSection
 EndGlobal

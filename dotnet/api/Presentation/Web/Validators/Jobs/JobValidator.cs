@@ -36,9 +36,9 @@ namespace AndcultureCode.GB.Presentation.Web.Validators.Jobs
             }
         }
 
-        public void ShouldHaveValidationErrorFor<TDto>(TDto dto, string value)
-        {
-            throw new NotImplementedException();
-        }
+        //public void ShouldHaveValidationErrorFor<TDto>(TDto dto, string value)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

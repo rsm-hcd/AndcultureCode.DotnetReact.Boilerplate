@@ -101,7 +101,7 @@ const DragAndDropListBox = <T extends any>(
 
         const itemIdToDraggableId = (itemId: T): DraggableId => {
             const itemIdAsObject: object = itemId as object;
-            if (itemIdAsObject?.toString() != null) {
+            if (itemIdAsObject?.toString != null) {
                 return itemIdAsObject.toString();
             }
             return JSON.stringify(itemId);
@@ -111,7 +111,7 @@ const DragAndDropListBox = <T extends any>(
             <React.Fragment>
                 {itemProps.items.map((item: ListBoxItem<T>, index: number) => (
                     <Draggable
-                        draggableId={JSON.stringify(item.id)}
+                        draggableId={itemIdToDraggableId(item.id)}
                         index={index}
                         key={uuid.v4()}>
                         {(

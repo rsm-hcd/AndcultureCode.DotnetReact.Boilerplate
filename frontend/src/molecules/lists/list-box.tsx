@@ -22,7 +22,7 @@ export const ListBoxItemClassName = `${ListBoxBaseClassName}__item`;
 // #region Interfaces
 // -------------------------------------------------------------------------------------------------
 
-export interface ListBoxItem<T extends any> {
+export interface ListBoxItem<T> {
     customAction?: React.ReactNode | React.ReactNodeArray;
     id: T;
     key?: Key;

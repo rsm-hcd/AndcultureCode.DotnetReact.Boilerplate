@@ -5,8 +5,9 @@ import {
     ButtonTypes,
 } from "andculturecode-javascript-react-components";
 import { Paragraph } from "andculturecode-javascript-react-components";
-import React, { ReactElement } from "react";
+import React, { Key, ReactElement } from "react";
 import { CollectionUtils } from "andculturecode-javascript-core";
+import uuid from "uuid";
 
 // -------------------------------------------------------------------------------------------------
 // #region Constants
@@ -24,6 +25,7 @@ export const ListBoxItemClassName = `${ListBoxBaseClassName}__item`;
 export interface ListBoxItem<T> {
     customAction?: React.ReactNode | React.ReactNodeArray;
     id: T;
+    key?: Key;
     label?: string;
     text: string | React.ReactNode | React.ReactNodeArray;
 }
@@ -61,7 +63,9 @@ const ListBox = <T extends any>(
         <div className={ListBoxBaseClassName}>
             {CollectionUtils.hasValues(props.items) &&
                 props.items!.map((item: ListBoxItem<T>) => (
-                    <div className={ListBoxItemClassName} key={item.id}>
+                    <div
+                        className={ListBoxItemClassName}
+                        key={item.key ?? uuid.v4()}>
                         {// if
                         item.label != null && (
                             <div className={`${ListBoxItemClassName}__label`}>
